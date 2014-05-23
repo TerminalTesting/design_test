@@ -356,7 +356,7 @@ class CatinnerPageTest(unittest.TestCase):
 
     HOST = 'http://%s.%s/' % (os.getenv('CITY'), os.getenv('DOMAIN'))
     driver = webdriver.Firefox()
-    CATINNER = HOST + 'catalog/%s/' % (os.getenv('CATINNER')
+    CATINNER = HOST + 'catalog/%s/' % (os.getenv('CATINNER'))
     driver.get(CATINNER)
 
     def tearDown(self):
