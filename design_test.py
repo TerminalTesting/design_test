@@ -358,10 +358,11 @@ class CatinnerPageTest(unittest.TestCase):
     driver = webdriver.Firefox()
     driver.get(HOST + 'catalog/%s/' % (os.getenv('CATINNER'))#открывается страница шаблона catInner /mobilnye-telefony/, при изменении ТОП-меню, возможны правки
 
+
     def tearDown(self):
         """Удаление переменных для всех тестов. Остановка приложения"""
-        
-        if sys.exc_info()[0]:
+
+        if sys.exc_info()[0]:   
             print sys.exc_info()[0]
 
     def test_content(self):
