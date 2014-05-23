@@ -356,7 +356,8 @@ class CatinnerPageTest(unittest.TestCase):
 
     HOST = 'http://%s.%s/' % (os.getenv('CITY'), os.getenv('DOMAIN'))
     driver = webdriver.Firefox()
-    driver.get(HOST + 'catalog/%s/' % (os.getenv('CATINNER'))#открывается страница шаблона catInner /mobilnye-telefony/, при изменении ТОП-меню, возможны правки
+    CATINNER = HOST + 'catalog/%s/' % (os.getenv('CATINNER')
+    driver.get(CATINNER)
 
     def tearDown(self):
         """Удаление переменных для всех тестов. Остановка приложения"""
@@ -805,9 +806,9 @@ class CatinnerPageTest(unittest.TestCase):
 
         try:
             button.click()
-            self.driver.get(self.HOST + 'catalog/%s/' % (os.getenv('CATINNER'))
+            self.driver.get(self.CATINNER)
         except:
-            self.driver.get(self.HOST + 'catalog/%s/' % (os.getenv('CATINNER'))
+            self.driver.get(self.CATINNER)
             cnt+=1
             print 'Кнопка "Показать" не доступна для щелчка'
             print '-'*80
@@ -846,9 +847,9 @@ class CatinnerPageTest(unittest.TestCase):
 
         try:
             allParameters.click()
-            self.driver.get(self.HOST + 'catalog/%s/' % (os.getenv('CATINNER'))
+            self.driver.get(self.CATINNER)
         except:
-            self.driver.get(self.HOST + 'catalog/%s/' % (os.getenv('CATINNER'))
+            self.driver.get(self.CATINNER)
             cnt+=1
             print 'Cсылка "Все характеристики" не доступна для щелчка'
             print '-'*80
