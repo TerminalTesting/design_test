@@ -17,7 +17,7 @@ class CatPageTest(unittest.TestCase):
     tm_first_icon = driver.find_element_by_class_name('headerNav').find_element_by_tag_name('td')
     a = tm_first_icon.find_element_by_tag_name('a').get_attribute('href') #открывается страница шаблона cat, при изменении ТОП-меню, возможны правки
     driver.get(a)
-
+    time.sleep(5)
     
 
     def tearDown(self):
@@ -358,6 +358,7 @@ class CatinnerPageTest(unittest.TestCase):
     driver = webdriver.Firefox()
     CATINNER = HOST + 'catalog/%s/' % (os.getenv('CATINNER'))
     driver.get(CATINNER)
+    time.sleep(5)
 
     def tearDown(self):
         """Удаление переменных для всех тестов. Остановка приложения"""
@@ -394,10 +395,10 @@ class CatinnerPageTest(unittest.TestCase):
 
         if ComponentHeader.size['height'] != 43:
             cnt+=1
-            print 'Нужная ширина заголовка(наименование секции) - 43, а на странице: ', ComponentHeader.size['height']
+            print 'Нужная высота заголовка(наименование секции) - 43, а на странице: ', ComponentHeader.size['height']
             print '-'*80
             
-        if ComponentHeader.is_displayed(): #проверяем отображается ли
+        if not ComponentHeader.is_displayed(): #проверяем отображается ли
             cnt+=1
             print 'Заголовок(наименование секции) область не отображается'
             print '-'*80
@@ -437,7 +438,7 @@ class CatinnerPageTest(unittest.TestCase):
 
         if catNav.size['height'] != 42:
             cnt+=1
-            print 'Нужная ширина блока товаров с дочерними секциями - 42, а на странице: ', catNav.size['height']
+            print 'Нужная высота блока товаров с дочерними секциями - 42, а на странице: ', catNav.size['height']
             print '-'*80
             
         if not catNav.is_displayed(): #проверяем отображается ли
@@ -480,7 +481,7 @@ class CatinnerPageTest(unittest.TestCase):
 
         if tags.size['height'] != 78:
             cnt+=1
-            print 'Нужная ширина блока с тегами - 78, а на странице: ', tags.size['height']
+            print 'Нужная высота блока с тегами - 78, а на странице: ', tags.size['height']
             print '-'*80
             
         if not tags.is_displayed(): #проверяем отображается ли
@@ -522,7 +523,7 @@ class CatinnerPageTest(unittest.TestCase):
 
         if picking.size['height'] != 50:
             cnt+=1
-            print 'Нужная ширина панели выбора видов вывода товара - 50, а на странице: ', picking.size['height']
+            print 'Нужная высота панели выбора видов вывода товара - 50, а на странице: ', picking.size['height']
             print '-'*80
             
         if not picking.is_displayed(): #проверяем отображается ли
@@ -555,7 +556,7 @@ class CatinnerPageTest(unittest.TestCase):
 
         if available.size['height'] != 29:
             cnt+=1
-            print 'Нужная ширина блока с фильтром "показать в наличии" - 29, а на странице: ', available.size['height']
+            print 'Нужная высота блока с фильтром "показать в наличии" - 29, а на странице: ', available.size['height']
             print '-'*80
             
         if not available.is_displayed(): #проверяем отображается ли
@@ -580,14 +581,14 @@ class CatinnerPageTest(unittest.TestCase):
         cnt=0
         dropStyleBase_title = self.driver.find_element_by_id('dropStyleBase_title')
 
-        if dropStyleBase_title.size['width'] != 144:
+        if dropStyleBase_title.size['width'] != 132:
             cnt+=1
-            print 'Нужная ширина блока с заголовком вида сортировки - 144, а на странице: ', dropStyleBase_title.size['width']
+            print 'Нужная ширина блока с заголовком вида сортировки - 132, а на странице: ', dropStyleBase_title.size['width']
             print '-'*80
 
-        if dropStyleBase_title.size['height'] != 29:
+        if dropStyleBase_title.size['height'] != 30:
             cnt+=1
-            print 'Нужная ширина блока с заголовком вида сортировки - 29, а на странице: ', dropStyleBase_title.size['height']
+            print 'Нужная высота блока с заголовком вида сортировки - 30, а на странице: ', dropStyleBase_title.size['height']
             print '-'*80
             
         if not dropStyleBase_title.is_displayed(): #проверяем отображается ли
@@ -595,14 +596,14 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Блок с заголовком вида сортировки не отображается'
             print '-'*80
 
-        if dropStyleBase_title.location['y'] != 458:
+        if dropStyleBase_title.location['y'] != 459:
             cnt+=1
-            print 'Расположение блока с заголовком вида сортировки по оси y - 458, а на странице: ', dropStyleBase_title.location['y']
+            print 'Расположение блока с заголовком вида сортировки по оси y - 459, а на странице: ', dropStyleBase_title.location['y']
             print '-'*80
             
-        if dropStyleBase_title.location['x'] != 580:
+        if dropStyleBase_title.location['x'] != 735:
             cnt+=1
-            print 'Расположение блока с заголовком вида сортировки по оси x - 580, а на странице: ', dropStyleBase_title.location['x']
+            print 'Расположение блока с заголовком вида сортировки по оси x - 735, а на странице: ', dropStyleBase_title.location['x']
             print '-'*80
                 
         assert cnt==0, ('Error in dropStyleBase_title\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -619,7 +620,7 @@ class CatinnerPageTest(unittest.TestCase):
 
         if changeOrderBy.size['height'] != 29:
             cnt+=1
-            print 'Нужная ширина блока с пиктограмой направления сортировки - 29, а на странице: ', changeOrderBy.size['height']
+            print 'Нужная высота блока с пиктограмой направления сортировки - 29, а на странице: ', changeOrderBy.size['height']
             print '-'*80
             
         if not changeOrderBy.is_enabled(): #проверяем отображается ли
@@ -651,7 +652,7 @@ class CatinnerPageTest(unittest.TestCase):
 
         if pageListing.size['height'] != 38:
             cnt+=1
-            print 'Нужная ширина блока с пагинатором - 38, а на странице: ', pageListing.size['height']
+            print 'Нужная высота блока с пагинатором - 38, а на странице: ', pageListing.size['height']
             print '-'*80
             
         if not pageListing.is_displayed(): #проверяем отображается ли
@@ -683,7 +684,7 @@ class CatinnerPageTest(unittest.TestCase):
 
         if lastPick.size['height'] != 50:
             cnt+=1
-            print 'Нужная ширина блока навигации внизу страницы - 50, а на странице: ', lastPick.size['height']
+            print 'Нужная высота блока навигации внизу страницы - 50, а на странице: ', lastPick.size['height']
             print '-'*80
             
         if not lastPick.is_displayed(): #проверяем отображается ли
@@ -713,9 +714,9 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Нужная ширина блока с подбором по параметрам - 218, а на странице: ', bfilter.size['width']
             print '-'*80
 
-        if bfilter.size['height'] != 832:
+        if bfilter.size['height'] != 808:
             cnt+=1
-            print 'Нужная ширина блока с подбором по параметрам - 832, а на странице: ', bfilter.size['height']
+            print 'Нужная высота блока с подбором по параметрам - 808, а на странице: ', bfilter.size['height']
             print '-'*80
             
         if not bfilter.is_displayed(): #проверяем отображается ли
@@ -728,7 +729,7 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Расположение блока с подбором по параметрам по оси y - 447, а на странице: ', bfilter.location['y']
             print '-'*80
             
-        if bfilter.location['x'] != 231:
+        if bfilter.location['x'] != 23:
             cnt+=1
             print 'Расположение блока с подбором по параметрам по оси x - 23, а на странице: ', bfilter.location['x']
             print '-'*80
@@ -747,17 +748,17 @@ class CatinnerPageTest(unittest.TestCase):
 
         if clearFilter.size['height'] != 17:
             cnt+=1
-            print 'Нужная ширина блока с ссылкой "сбросить фильтр" - 17, а на странице: ', clearFilter.size['height']
+            print 'Нужная высота блока с ссылкой "сбросить фильтр" - 17, а на странице: ', clearFilter.size['height']
             print '-'*80
             
-        if clearFilter.is_displayed(): #проверяем отображается ли
+        if not clearFilter.is_displayed(): #проверяем отображается ли
             cnt+=1
             print 'Блок с ссылкой "сбросить фильтр" не отображается'
             print '-'*80
 
-        if clearFilter.location['y'] != 1249:
+        if clearFilter.location['y'] != 1225:
             cnt+=1
-            print 'Расположение блока с ссылкой "сбросить фильтр" по оси y - 1249, а на странице: ', clearFilter.location['y']
+            print 'Расположение блока с ссылкой "сбросить фильтр" по оси y - 1225, а на странице: ', clearFilter.location['y']
             print '-'*80
             
         if clearFilter.location['x'] != 34:
@@ -786,7 +787,7 @@ class CatinnerPageTest(unittest.TestCase):
 
         if button.size['height'] != 32:
             cnt+=1
-            print 'Нужная ширина кнопки "Показать" - 32, а на странице: ', button.size['height']
+            print 'Нужная высота кнопки "Показать" - 32, а на странице: ', button.size['height']
             print '-'*80
             
         if not button.is_displayed(): #проверяем отображается ли
@@ -794,9 +795,9 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Кнопка "Показать" не отображается'
             print '-'*80
 
-        if button.location['y'] != 1185:
+        if button.location['y'] != 1161:
             cnt+=1
-            print 'Расположение кнопки "Показать" по оси y - 1185, а на странице: ', button.location['y']
+            print 'Расположение кнопки "Показать" по оси y - 1161, а на странице: ', button.location['y']
             print '-'*80
             
         if button.location['x'] != 34:
@@ -807,8 +808,10 @@ class CatinnerPageTest(unittest.TestCase):
         try:
             button.click()
             self.driver.get(self.CATINNER)
+            time.sleep(5)
         except:
             self.driver.get(self.CATINNER)
+            time.sleep(5)
             cnt+=1
             print 'Кнопка "Показать" не доступна для щелчка'
             print '-'*80
@@ -820,14 +823,14 @@ class CatinnerPageTest(unittest.TestCase):
         cnt=0
         allParameters = self.driver.find_element_by_class_name('allParameters')
 
-        if allParameters.size['width'] != 196:
+        if allParameters.size['width'] != 105:
             cnt+=1
-            print 'Нужная ширина блока с ссылкой "Все характеристики" - 196, а на странице: ', allParameters.size['width']
+            print 'Нужная ширина блока с ссылкой "Все характеристики" - 105, а на странице: ', allParameters.size['width']
             print '-'*80
 
-        if allParameters.size['height'] != 32:
+        if allParameters.size['height'] != 17:
             cnt+=1
-            print 'Нужная ширина блока с ссылкой "Все характеристики" - 32, а на странице: ', allParameters.size['height']
+            print 'Нужная высота блока с ссылкой "Все характеристики" - 17, а на странице: ', allParameters.size['height']
             print '-'*80
             
         if not allParameters.is_displayed(): #проверяем отображается ли
@@ -835,9 +838,9 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Блок с ссылкой "Все характеристики" не отображается'
             print '-'*80
 
-        if allParameters.location['y'] != 1185:
+        if allParameters.location['y'] != 1203:
             cnt+=1
-            print 'Расположение блока с ссылкой "Все характеристики" по оси y - 1185, а на странице: ', allParameters.location['y']
+            print 'Расположение блока с ссылкой "Все характеристики" по оси y - 1203, а на странице: ', allParameters.location['y']
             print '-'*80
             
         if allParameters.location['x'] != 34:
@@ -848,8 +851,10 @@ class CatinnerPageTest(unittest.TestCase):
         try:
             allParameters.click()
             self.driver.get(self.CATINNER)
+            time.sleep(5)
         except:
             self.driver.get(self.CATINNER)
+            time.sleep(5)
             cnt+=1
             print 'Cсылка "Все характеристики" не доступна для щелчка'
             print '-'*80
@@ -869,7 +874,7 @@ class CatinnerPageTest(unittest.TestCase):
 
         if cardCont.size['height'] != 2104:
             cnt+=1
-            print 'Нужная ширина области со всеми товарами - 2104, а на странице: ', cardCont.size['height']
+            print 'Нужная высота области со всеми товарами - 2104, а на странице: ', cardCont.size['height']
             print '-'*80
             
         if not cardCont.is_displayed(): #проверяем отображается ли
@@ -896,7 +901,7 @@ class CatinnerPageTest(unittest.TestCase):
 
         if pageCap.size['height'] != 34:
             cnt+=1
-            print 'Нужная ширина блока "Выводить по" - 34, а на странице: ', pageCap.size['height']
+            print 'Нужная высота блока "Выводить по" - 34, а на странице: ', pageCap.size['height']
             print '-'*80
             
         if not pageCap.is_displayed(): #проверяем отображается ли
