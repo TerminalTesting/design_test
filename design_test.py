@@ -661,9 +661,9 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Блок с пагинатором не отображается'
             print '-'*80
 
-        if pageListing.location['y'] != 2631:
+        if pageListing.location['y'] != 2651:
             cnt+=1
-            print 'Расположение блока с пагинатором по оси y - 2631, а на странице: ', pageListing.location['y']
+            print 'Расположение блока с пагинатором по оси y - 2651, а на странице: ', pageListing.location['y']
             print '-'*80
             
         if pageListing.location['x'] != 712:
@@ -693,9 +693,9 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Блок навигации внизу страницы не отображается'
             print '-'*80
 
-        if lastPick.location['y'] != 2631:
+        if lastPick.location['y'] != 2651:
             cnt+=1
-            print 'Расположение блока навигации внизу страницы по оси y - 2631, а на странице: ', lastPick.location['y']
+            print 'Расположение блока навигации внизу страницы по оси y - 2651, а на странице: ', lastPick.location['y']
             print '-'*80
             
         if lastPick.location['x'] != 272:
@@ -873,9 +873,9 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Нужная ширина области со всеми товарами - 685, а на странице: ', cardCont.size['width']
             print '-'*80
 
-        if cardCont.size['height'] != 2104:
+        if cardCont.size['height'] != 2124:
             cnt+=1
-            print 'Нужная высота области со всеми товарами - 2104, а на странице: ', cardCont.size['height']
+            print 'Нужная высота области со всеми товарами - 2124, а на странице: ', cardCont.size['height']
             print '-'*80
             
         if not cardCont.is_displayed(): #проверяем отображается ли
@@ -1519,9 +1519,9 @@ class CartPageTest(unittest.TestCase):
             print 'Нужная ширина блока "Поделиться" от Яндекс - 454, а на странице: ', sharing.size['width']
             print '-'*80
             
-        if sharing.size['height'] != 42:
+        if sharing.size['height'] != 70:
             cnt+=1
-            print 'Нужная высота блока "Поделиться" от Яндекс - 42, а на странице: ', sharing.size['height']
+            print 'Нужная высота блока "Поделиться" от Яндекс - 70, а на странице: ', sharing.size['height']
             print '-'*80
             
         if not sharing.is_displayed(): #проверяем отображается ли
