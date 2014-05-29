@@ -232,7 +232,7 @@ class CatPageTest(unittest.TestCase):
     def test_segNavi(self):
         """ Проверка блока с ссылками на дочерние секции"""
         cnt=0
-        segNavi = self.driver.find_element_by_class_name('segNavi')
+        segNavi = self.driver.find_element_by_class_name('pds').find_element_by_class_name('segNavi')
         
         if segNavi.size['width'] != 223:
             cnt+=1
