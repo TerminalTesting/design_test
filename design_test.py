@@ -6,6 +6,7 @@ import os
 import time
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
+from models import *
 
 class CatPageTest(unittest.TestCase):
 
@@ -927,3 +928,642 @@ class CatinnerPageTest(unittest.TestCase):
         self.driver.close()
                 
         assert cnt==0, ('Error in pageCap\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+class CartPageTest(unittest.TestCase):
+
+    CONNECT_STRING = 'mysql://%s:%s@%s:%s/%s?charset=utf8' %(os.getenv('USER'), os.getenv('PSWD'), os.getenv('DBHOST'), os.getenv('PORT'), os.getenv('SCHEMA'))
+    engine = create_engine(CONNECT_STRING, echo=False) #Значение False параметра echo убирает отладочную информацию
+    metadata = MetaData(engine)
+    session = create_session(bind = engine)
+
+    #ищем магазин - склад
+    store_shop = session.query(Shops.db_sort_field).\
+              join(Region, Shops.city_id == Region.id).\
+              filter(Shops.active == 1).\
+              filter(Shops.flag_store_shop_kbt == 1).\
+              filter(Region.domain == os.getenv('CITY')).\
+              first()
+    if store_shop != None:
+        store_shop = store_shop[0]
+    else:
+        store_shop = session.query(Shops.db_sort_field).\
+                         filter(Shops.id == session.query(Region.supplier_id).filter(Region.domain == os.getenv('CITY')).first()[0]).\
+                         first()[0]
+        
+    item = session.query(Goods).\
+               join(Goods_stat, Goods.id == Goods_stat.goods_id).\
+               join(Region, Goods_stat.city_id == Region.id).\
+               join(Goods_block, Goods.block_id == Goods_block.id).\
+               join(Goods_price, Goods.id == Goods_price.goods_id ).\
+               join(Remains, Remains.goods_id == Goods.id).\
+               filter(Region.domain == os.getenv('CITY')).\
+               filter(Goods_stat.status == 1).\
+               filter(Goods.overall_type == 0).\
+               filter(Goods_block.delivery_type == 1).\
+               filter(Goods_price.price_type_guid == Region.price_type_guid).\
+               filter(Goods_price.price > 2000).\
+               filter('t_goods_remains.%s > 0' % store_shop).\
+               first()
+
+    HOST = 'http://%s.%s/' % (os.getenv('CITY'), os.getenv('DOMAIN'))
+    driver = webdriver.Firefox()
+    driver.get(HOST + 'product/' + item.alias)
+    
+
+    def tearDown(self):
+        """Удаление переменных для всех тестов. Остановка приложения"""
+        
+        if sys.exc_info()[0]:   
+            print sys.exc_info()[0]
+
+    def test_header(self):
+        """ Проверка заголовка в карточке товара """
+        cnt=0
+        componentHeader = self.driver.find_element_by_class_name('componentHeader')
+
+        if componentHeader.size['width'] != 750:
+            cnt+=1
+            print 'Нужная ширина заголовка - 750, а на странице: ', componentHeader.size['width']
+            print '-'*80
+            
+        if not componentHeader.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Заголовок не отображается'
+            print '-'*80
+        
+        if componentHeader.location['y'] != 261:
+            cnt+=1
+            print 'Расположение заголовка по оси y - 261, а на странице: ', componentHeader.location['y']
+            print '-'*80
+            
+        if componentHeader.location['x'] != 23:
+            cnt+=1
+            print 'Расположение заголовка по оси x - 23, а на странице: ', componentHeader.location['x']
+            print '-'*80
+            
+        if componentHeader.value_of_css_property('color') != 'rgba(0, 0, 0, 1)':
+            cnt+=1
+            print 'Цвет заголовка не соответствует заданному( rgba(0, 0, 0, 1) ). На странице: ', componentHeader.value_of_css_property('color')
+            print '-'*80
+            
+        if componentHeader.value_of_css_property('font-size') != '36px':
+            cnt+=1
+            print 'Размер шрифта заголовка не соответствует заданному( 36px ). На странице: ', componentHeader.value_of_css_property('font-size')
+            print '-'*80
+
+        assert cnt==0, ('Error in card header\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_artTop(self):
+        """ Проверка блока с кодом товара """
+        cnt=0
+        artTop = self.driver.find_element_by_class_name('artTop')
+
+        if artTop.size['width'] != 934:
+            cnt+=1
+            print 'Нужная ширина блока с кодом товара - 934, а на странице: ', artTop.size['width']
+            print '-'*80
+            
+        if artTop.size['height'] != 20:
+            cnt+=1
+            print 'Нужная высота блока с кодом товара - 20, а на странице: ', artTop.size['height']
+            print '-'*80
+            
+        if not artTop.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с кодом товара не отображается'
+            print '-'*80
+        
+        if artTop.location['y'] != 350:
+            cnt+=1
+            print 'Расположение блока с кодом товара по оси y - 350, а на странице: ', artTop.location['y']
+            print '-'*80
+            
+        if artTop.location['x'] != 23:
+            cnt+=1
+            print 'Расположение блока с кодом товара по оси x - 23, а на странице: ', artTop.location['x']
+            print '-'*80
+            
+        if artTop.value_of_css_property('color') != 'rgba(0, 0, 0, 1)':
+            cnt+=1
+            print 'Цвет текста с кодом товара не соответствует заданному( rgba(0, 0, 0, 1) ). На странице: ', artTop.value_of_css_property('color')
+            print '-'*80
+            
+        if artTop.value_of_css_property('font-size') != '14px':
+            cnt+=1
+            print 'Размер шрифта текста с кодом товара не соответствует заданному( 14px ). На странице: ', artTop.value_of_css_property('font-size')
+            print '-'*80
+
+        assert cnt==0, ('Error in artTop\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_middlePrice(self):
+        """ Проверка блока с ценой товара """
+        cnt=0
+        middlePrice = self.driver.find_element_by_class_name('cardPrice').find_element_by_class_name('middlePrice')
+
+        if middlePrice.size['width'] != 170:
+            cnt+=1
+            print 'Нужная ширина блока с ценой товара - 170, а на странице: ', middlePrice.size['width']
+            print '-'*80
+            
+        if middlePrice.size['height'] != 55:
+            cnt+=1
+            print 'Нужная высота блока с ценой товара - 55, а на странице: ', middlePrice.size['height']
+            print '-'*80
+            
+        if not middlePrice.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с ценой товара не отображается'
+            print '-'*80
+        
+        if middlePrice.location['y'] != 400:
+            cnt+=1
+            print 'Расположение блока с ценой товара по оси y - 400, а на странице: ', middlePrice.location['y']
+            print '-'*80
+            
+        if middlePrice.location['x'] != 503:
+            cnt+=1
+            print 'Расположение блока с ценой товара по оси x - 503, а на странице: ', middlePrice.location['x']
+            print '-'*80
+
+        assert cnt==0, ('Error in middlePrice\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_basketButton(self):
+        """ Проверка кнопки купить """
+        cnt=0
+        basketButton = self.driver.find_element_by_class_name('combinedPrice').find_element_by_class_name('basketButton')
+
+        if basketButton.size['width'] != 125:
+            cnt+=1
+            print 'Нужная ширина блока с кнопкой купить - 125, а на странице: ', basketButton.size['width']
+            print '-'*80
+            
+        if basketButton.size['height'] != 55:
+            cnt+=1
+            print 'Нужная высота блока с кнопкой купить - 55, а на странице: ', basketButton.size['height']
+            print '-'*80
+            
+        if not basketButton.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с кнопкой купить не отображается'
+            print '-'*80
+        
+        if basketButton.location['y'] != 400:
+            cnt+=1
+            print 'Расположение блока с кнопкой купить по оси y - 400, а на странице: ', basketButton.location['y']
+            print '-'*80
+            
+        if basketButton.location['x'] != 673:
+            cnt+=1
+            print 'Расположение блока с кнопкой купить по оси x - 673, а на странице: ', basketButton.location['x']
+            print '-'*80
+
+        assert cnt==0, ('Error in basketButton\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_serviceInfo(self):
+        """ Проверка блока со статусом товара """
+        cnt=0
+        serviceInfo = self.driver.find_element_by_class_name('serviceInfo')
+
+        if serviceInfo.size['width'] != 159:
+            cnt+=1
+            print 'Нужная ширина блока со статусом товара - 159, а на странице: ', serviceInfo.size['width']
+            print '-'*80
+            
+        if serviceInfo.size['height'] != 55:
+            cnt+=1
+            print 'Нужная высота блока со статусом товара - 55, а на странице: ', serviceInfo.size['height']
+            print '-'*80
+            
+        if not serviceInfo.is_enabled(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок со статусом товара не отображается'
+            print '-'*80
+        
+        if serviceInfo.location['y'] != 400:
+            cnt+=1
+            print 'Расположение блока со статусом товара по оси y - 400, а на странице: ', serviceInfo.location['y']
+            print '-'*80
+            
+        if serviceInfo.location['x'] != 798:
+            cnt+=1
+            print 'Расположение блока со статусом товара по оси x - 798, а на странице: ', serviceInfo.location['x']
+            print '-'*80
+
+        assert cnt==0, ('Error in serviceInfo\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_currentItemTags(self):
+        """ Проверка блока с тегами """
+        cnt=0
+        currentItemTags = self.driver.find_element_by_class_name('currentItemTags')
+
+        if currentItemTags.size['width'] != 454:
+            cnt+=1
+            print 'Нужная ширина блока с тегами товара - 454, а на странице: ', currentItemTags.size['width']
+            print '-'*80
+            
+        if not currentItemTags.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с тегами товара не отображается'
+            print '-'*80
+        
+        if currentItemTags.location['y'] != 676:
+            cnt+=1
+            print 'Расположение блока с тегами товара по оси y - 676, а на странице: ', currentItemTags.location['y']
+            print '-'*80
+            
+        if currentItemTags.location['x'] != 503:
+            cnt+=1
+            print 'Расположение блока с тегами товара по оси x - 503, а на странице: ', currentItemTags.location['x']
+            print '-'*80
+
+        assert cnt==0, ('Error in currentItemTags\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_standartFeatures(self):
+        """ Проверка блока с пиктограммами купить, сравнение, избранное """
+        cnt=0
+        standartFeatures = self.driver.find_element_by_class_name('standartFeatures')
+
+        if standartFeatures.size['width'] != 454:
+            cnt+=1
+            print 'Нужная ширина блока с пиктограммами купить, сравнение, избранное - 454, а на странице: ', standartFeatures.size['width']
+            print '-'*80
+            
+        if standartFeatures.size['height'] != 17:
+            cnt+=1
+            print 'Нужная высота блока с пиктограммами купить, сравнение, избранное - 17, а на странице: ', standartFeatures.size['height']
+            print '-'*80
+            
+        if not standartFeatures.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с пиктограммами купить, сравнение, избранное не отображается'
+            print '-'*80
+        
+        if standartFeatures.location['y'] != 575:
+            cnt+=1
+            print 'Расположение блока с пиктограммами купить, сравнение, избранное по оси y - 575, а на странице: ', standartFeatures.location['y']
+            print '-'*80
+            
+        if standartFeatures.location['x'] != 503:
+            cnt+=1
+            print 'Расположение блока с пиктограммами купить, сравнение, избранное по оси x - 503, а на странице: ', standartFeatures.location['x']
+            print '-'*80
+
+        assert cnt==0, ('Error in standartFeatures\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_basket(self):
+        """ Проверка блока с пиктограммой купить """
+        cnt=0
+        basket = self.driver.find_element_by_class_name('standartFeatures').find_element_by_class_name('basket')
+
+        if basket.size['width'] != 75:
+            cnt+=1
+            print 'Нужная ширина блока с пиктограммой купить - 75, а на странице: ', basket.size['width']
+            print '-'*80
+            
+        if basket.size['height'] != 15:
+            cnt+=1
+            print 'Нужная высота блока с пиктограммой купить - 15, а на странице: ', basket.size['height']
+            print '-'*80
+            
+        if not basket.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с пиктограммой купить не отображается'
+            print '-'*80
+        
+        if basket.location['y'] != 575:
+            cnt+=1
+            print 'Расположение блока с пиктограммой купить по оси y - 575, а на странице: ', basket.location['y']
+            print '-'*80
+            
+        if basket.location['x'] != 589:
+            cnt+=1
+            print 'Расположение блока с пиктограммой купить по оси x - 589, а на странице: ', basket.location['x']
+            print '-'*80
+
+        if '%sbasket/add/%s' % (self.HOST, self.item.id) != basket.get_attribute('href'):
+            cnt+=1
+            print 'Неверная ссылка на добавление товара в корзину'
+            print 'Надо: ', '%sbasket/add/%s' % (self.HOST, self.item.id)
+            print 'На странице: ', basket.get_attribute('href')
+            print '-'*80
+
+        assert cnt==0, ('Error in basket\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_fave1(self):
+        """ Проверка блока с пиктограммой в избранное """
+        cnt=0
+        fave1 = self.driver.find_element_by_class_name('standartFeatures').find_element_by_class_name('fave1')
+
+        if fave1.size['width'] != 87:
+            cnt+=1
+            print 'Нужная ширина блока с пиктограммой в избранное - 87, а на странице: ', fave1.size['width']
+            print '-'*80
+            
+        if fave1.size['height'] != 15:
+            cnt+=1
+            print 'Нужная высота блока с пиктограммой в избранное - 15, а на странице: ', fave1.size['height']
+            print '-'*80
+            
+        if not fave1.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с пиктограммой в избранное не отображается'
+            print '-'*80
+        
+        if fave1.location['y'] != 575:
+            cnt+=1
+            print 'Расположение блока с пиктограммой в избранное по оси y - 575, а на странице: ', fave1.location['y']
+            print '-'*80
+            
+        if fave1.location['x'] != 682:
+            cnt+=1
+            print 'Расположение блока с пиктограммой в избранное по оси x - 682, а на странице: ', fave1.location['x']
+            print '-'*80
+
+        if '%sfavorite/add/%s' % (self.HOST, self.item.id) != fave1.get_attribute('href'):
+            cnt+=1
+            print 'Неверная ссылка на добавление товара в избранное'
+            print 'Надо: ', '%sfavorite/add/%s' % (self.HOST, self.item.id)
+            print 'На странице: ', fave1.get_attribute('href')
+            print '-'*80
+
+        assert cnt==0, ('Error in fave1\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        
+    def test_compare2(self):
+        """ Проверка блока с пиктограммой в сравнение """
+        cnt=0
+        compare2 = self.driver.find_element_by_class_name('standartFeatures').find_element_by_class_name('compare2')
+
+        if compare2.size['width'] != 70:
+            cnt+=1
+            print 'Нужная ширина блока с пиктограммой в сравнение - 70, а на странице: ', compare2.size['width']
+            print '-'*80
+            
+        if compare2.size['height'] != 15:
+            cnt+=1
+            print 'Нужная высота блока с пиктограммой в сравнение - 15, а на странице: ', compare2.size['height']
+            print '-'*80
+            
+        if not compare2.is_enabled(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с пиктограммой в сравнение не отображается'
+            print '-'*80
+        
+        if compare2.location['y'] != 575:
+            cnt+=1
+            print 'Расположение блока с пиктограммой в сравнение по оси y - 575, а на странице: ', compare2.location['y']
+            print '-'*80
+            
+        if compare2.location['x'] != 787:
+            cnt+=1
+            print 'Расположение блока с пиктограммой в сравнение по оси x - 787, а на странице: ', compare2.location['x']
+            print '-'*80
+
+        if '%scompare/add/%s' % (self.HOST, self.item.id) != compare2.get_attribute('href'):
+            cnt+=1
+            print 'Неверная ссылка на добавление товара в избранное'
+            print 'Надо: ', '%scompare/add/%s' % (self.HOST, self.item.id)
+            print 'На странице: ', compare2.get_attribute('href')
+            print '-'*80
+
+        assert cnt==0, ('Error in compare2\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_capabilities(self):
+        """ Проверка блока вызова доп.слоев """
+        cnt=0
+        capabilities = self.driver.find_element_by_class_name('capabilities')
+
+        if capabilities.size['width'] != 454:
+            cnt+=1
+            print 'Нужная ширина блока вызова доп.слоев - 454, а на странице: ', capabilities.size['width']
+            print '-'*80
+            
+        if capabilities.size['height'] != 54:
+            cnt+=1
+            print 'Нужная высота блока вызова доп.слоев - 54, а на странице: ', capabilities.size['height']
+            print '-'*80
+            
+        if not capabilities.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок вызова доп.слоев не отображается'
+            print '-'*80
+        
+        if capabilities.location['y'] != 609:
+            cnt+=1
+            print 'Расположение блока вызова доп.слоев по оси y - 609, а на странице: ', capabilities.location['y']
+            print '-'*80
+            
+        if capabilities.location['x'] != 503:
+            cnt+=1
+            print 'Расположение блока вызова доп.слоев по оси x - 503, а на странице: ', capabilities.location['x']
+            print '-'*80
+
+        assert cnt==0, ('Error in capabilities\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_abilityLink2(self):
+        """ Блок вызова слоя 'Дополнительные услуги' """
+        cnt=0
+        abilityLink2 = self.driver.find_element_by_class_name('capabilities').find_element_by_id('abilityLink2')
+
+        if abilityLink2.size['width'] != 101:
+            cnt+=1
+            print 'Нужная ширина блока вызова слоя "Дополнительные услуги" - 101, а на странице: ', abilityLink2.size['width']
+            print '-'*80
+            
+        if abilityLink2.size['height'] != 34:
+            cnt+=1
+            print 'Нужная высота блока вызова слоя "Дополнительные услуги" - 34, а на странице: ', abilityLink2.size['height']
+            print '-'*80
+            
+        if not abilityLink2.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок вызова слоя "Дополнительные услуги" не отображается'
+            print '-'*80
+        
+        if abilityLink2.location['y'] != 619:
+            cnt+=1
+            print 'Расположение блока вызова слоя "Дополнительные услуги" по оси y - 619, а на странице: ', abilityLink2.location['y']
+            print '-'*80
+            
+        if abilityLink2.location['x'] != 542:
+            cnt+=1
+            print 'Расположение блока вызова слоя "Дополнительные услуги" по оси x - 542, а на странице: ', abilityLink2.location['x']
+            print '-'*80
+
+        assert cnt==0, ('Error in abilityLink2\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_abilityLink3(self):
+        """ Блок вызова слоя 'Обратный звонок' """
+        cnt=0
+        abilityLink3 = self.driver.find_element_by_class_name('capabilities').find_element_by_id('abilityLink3')
+
+        if abilityLink3.size['width'] != 60:
+            cnt+=1
+            print 'Нужная ширина блока вызова слоя "Обратный звонок" - 60, а на странице: ', abilityLink3.size['width']
+            print '-'*80
+            
+        if abilityLink3.size['height'] != 34:
+            cnt+=1
+            print 'Нужная высота блока вызова слоя "Обратный звонок" - 34, а на странице: ', abilityLink3.size['height']
+            print '-'*80
+            
+        if not abilityLink3.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок вызова слоя "Обратный звонок" не отображается'
+            print '-'*80
+        
+        if abilityLink3.location['y'] != 619:
+            cnt+=1
+            print 'Расположение блока вызова слоя "Обратный звонок" по оси y - 619, а на странице: ', abilityLink3.location['y']
+            print '-'*80
+            
+        if abilityLink3.location['x'] != 723:
+            cnt+=1
+            print 'Расположение блока вызова слоя "Обратный звонок" по оси x - 723, а на странице: ', abilityLink3.location['x']
+            print '-'*80
+
+        assert cnt==0, ('Error in abilityLink3\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_abilityLink1(self):
+        """ Блок вызова слоя 'Услуга доставки' """
+        cnt=0
+        abilityLink1 = self.driver.find_element_by_class_name('capabilities').find_element_by_id('abilityLink1')
+
+        if abilityLink1.size['width'] != 56:
+            cnt+=1
+            print 'Нужная ширина блока вызова слоя "Услуга доставки" - 56, а на странице: ', abilityLink1.size['width']
+            print '-'*80
+            
+        if abilityLink1.size['height'] != 34:
+            cnt+=1
+            print 'Нужная высота блока вызова слоя "Услуга доставки" - 34, а на странице: ', abilityLink1.size['height']
+            print '-'*80
+            
+        if not abilityLink1.is_enabled(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок вызова слоя "Услуга доставки" не отображается'
+            print '-'*80
+        
+        if abilityLink1.location['y'] != 619:
+            cnt+=1
+            print 'Расположение блока вызова слоя "Услуга доставки" по оси y - 619, а на странице: ', abilityLink1.location['y']
+            print '-'*80
+            
+        if abilityLink1.location['x'] != 862:
+            cnt+=1
+            print 'Расположение блока вызова слоя "Услуга доставки" по оси x - 862, а на странице: ', abilityLink1.location['x']
+            print '-'*80
+
+        assert cnt==0, ('Error in abilityLink3\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_imageContainer(self):
+        """ Проверка контейнера с основным изображением """
+        cnt=0
+        imageContainer = self.driver.find_element_by_class_name('imageContainer')
+
+        if imageContainer.size['width'] != 454:
+            cnt+=1
+            print 'Нужная ширина блока с основным изображением - 454, а на странице: ', imageContainer.size['width']
+            print '-'*80
+            
+        if imageContainer.size['height'] != 454:
+            cnt+=1
+            print 'Нужная высота блока с основным изображением - 454, а на странице: ', imageContainer.size['height']
+            print '-'*80
+            
+        if not imageContainer.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с основным изображением не отображается'
+            print '-'*80
+        
+        if imageContainer.location['y'] != 390:
+            cnt+=1
+            print 'Расположение блока с основным изображением по оси y - 390, а на странице: ', imageContainer.location['y']
+            print '-'*80
+            
+        if imageContainer.location['x'] != 23:
+            cnt+=1
+            print 'Расположение блока с основным изображением по оси x - 23, а на странице: ', imageContainer.location['x']
+            print '-'*80
+
+        assert cnt==0, ('Error in imageContainer\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+    #этого пункта может и не быть
+    def test_rolloverControl(self):
+        cnt=0
+        rolloverControl = self.driver.find_element_by_class_name('rolloverControl').find_element_by_tag_name('div')
+
+        if not rolloverControl.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с миниатюрами изображений не отображается'
+            print '-'*80
+
+        assert cnt==0, ('Error in rolloverControl\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+    #этого пункта может и не быть
+    def test_description(self):
+        cnt=0
+        description = self.driver.find_element_by_class_name('description')
+
+        if not description.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с описанием не отображается'
+            print '-'*80
+
+        assert cnt==0, ('Error in description\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_sharing(self):
+        """ Проверка блока "Поделиться" от Яндекс """
+        cnt=0
+        sharing = self.driver.find_element_by_class_name('sharing')
+
+        if sharing.size['width'] != 454:
+            cnt+=1
+            print 'Нужная ширина блока "Поделиться" от Яндекс - 454, а на странице: ', sharing.size['width']
+            print '-'*80
+            
+        if sharing.size['height'] != 42:
+            cnt+=1
+            print 'Нужная высота блока "Поделиться" от Яндекс - 42, а на странице: ', sharing.size['height']
+            print '-'*80
+            
+        if not sharing.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок "Поделиться" от Яндекс не отображается'
+            print '-'*80
+            
+        if sharing.location['x'] != 23:
+            cnt+=1
+            print 'Расположение блока "Поделиться" от Яндекс по оси x - 23, а на странице: ', sharing.location['x']
+            print '-'*80
+
+        assert cnt==0, ('Error in sharing\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_feedBack(self):
+        cnt=0
+        feedBack = self.driver.find_element_by_class_name('feedBack')
+        
+        if not feedBack.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с отзывом не отображается'
+            print '-'*80
+
+        assert cnt==0, ('Error in feedBack\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_params(self):
+        cnt=0
+        params = self.driver.find_element_by_class_name('params')
+        
+        if not params.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с характеристиками не отображается'
+            print '-'*80
+
+        if params.location['x'] != 503:
+            cnt+=1
+            print 'Расположение блока c характеристиками по оси x - 503, а на странице: ', params.location['x']
+            print '-'*80
+            
+        if params.size['width'] != 454:
+            cnt+=1
+            print 'Нужная ширина блока с характеристиками - 454, а на странице: ', params.size['width']
+            print '-'*80
+
+        assert cnt==0, ('Error in params\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
