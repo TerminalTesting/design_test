@@ -145,8 +145,8 @@ class CatPageTest(unittest.TestCase):
 
     def test_arrows(self):
         cnt=0
-        arrowLeft = self.driver.find_element_by_class_name('arrowLeft')
-        arrowRight = self.driver.find_element_by_class_name('arrowRight')
+        arrowLeft = self.driver.find_element_by_class_name('pds').find_element_by_class_name('arrowLeft')
+        arrowRight = self.driver.find_element_by_class_name('pds').find_element_by_class_name('arrowRight')
         
         if arrowLeft.size['width'] != 52:
             cnt+=1
