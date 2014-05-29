@@ -239,9 +239,9 @@ class CatPageTest(unittest.TestCase):
             print 'Нужная ширина блока с cсылками в слайдере - 223, а на странице: ', segNavi.size['width']
             print '-'*80
             
-        if segNavi.size['height'] != 177:
+        if segNavi.size['height'] != 138:
             cnt+=1
-            print 'Нужная высота блока с cсылками в слайдере - 177, а на странице: ', segNavi.size['height']
+            print 'Нужная высота блока с cсылками в слайдере - 138, а на странице: ', segNavi.size['height']
             print '-'*80
             
         if not segNavi.is_displayed():
@@ -249,9 +249,9 @@ class CatPageTest(unittest.TestCase):
             print 'Ссылки в слайдере не отображается'
             print '-'*80
             
-        if segNavi.location['y'] != 89:
+        if segNavi.location['y'] != 109:
             cnt+=1
-            print 'Расположение блока с сcылками по оси y - 89, а на странице: ', segNavi.location['y']
+            print 'Расположение блока с сcылками по оси y - 109, а на странице: ', segNavi.location['y']
             print '-'*80
             
         if segNavi.location['x'] != 29:
