@@ -1567,3 +1567,289 @@ class CartPageTest(unittest.TestCase):
             print '-'*80
 
         assert cnt==0, ('Error in params\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+class BasketAnonsTest(unittest.TestCase):
+
+    CONNECT_STRING = 'mysql://%s:%s@%s:%s/%s?charset=utf8' %(os.getenv('USER'), os.getenv('PSWD'), os.getenv('DBHOST'), os.getenv('PORT'), os.getenv('SCHEMA'))
+    engine = create_engine(CONNECT_STRING, echo=False) #Значение False параметра echo убирает отладочную информацию
+    metadata = MetaData(engine)
+    session = create_session(bind = engine)
+
+    #ищем магазин - склад
+    store_shop = session.query(Shops.db_sort_field).\
+              join(Region, Shops.city_id == Region.id).\
+              filter(Shops.active == 1).\
+              filter(Shops.flag_store_shop_kbt == 1).\
+              filter(Region.domain == os.getenv('CITY')).\
+              first()
+    if store_shop != None:
+        store_shop = store_shop[0]
+    else:
+        store_shop = session.query(Shops.db_sort_field).\
+                         filter(Shops.id == session.query(Region.supplier_id).filter(Region.domain == os.getenv('CITY')).first()[0]).\
+                         first()[0]
+        
+    item = session.query(Goods).\
+               join(Goods_stat, Goods.id == Goods_stat.goods_id).\
+               join(Region, Goods_stat.city_id == Region.id).\
+               join(Goods_block, Goods.block_id == Goods_block.id).\
+               join(Goods_price, Goods.id == Goods_price.goods_id ).\
+               join(Remains, Remains.goods_id == Goods.id).\
+               filter(Region.domain == os.getenv('CITY')).\
+               filter(Goods_stat.status == 1).\
+               filter(Goods.overall_type == 0).\
+               filter(Goods_block.delivery_type == 2).\
+               filter(Goods_price.price_type_guid == Region.price_type_guid).\
+               filter(Goods_price.price > 9000).\
+               filter('t_goods_remains.%s > 0' % store_shop).\
+               first()
+
+    HOST = 'http://%s.%s/' % (os.getenv('CITY'), os.getenv('DOMAIN'))
+    driver = webdriver.Firefox()
+    driver.get(HOST + ('product/%s/' % item.alias))
+    driver.find_element_by_partial_link_text('Купить').click()
+    time.sleep(5)
+
+    def tearDown(self):
+        """Удаление переменных для всех тестов. Остановка приложения"""
+        
+        if sys.exc_info()[0]:
+            print
+            print sys.exc_info()[0]
+
+    def test_basketParams(self):
+        """ Проверка слоя анонса корзины """
+        cnt=0
+        basketParams = self.driver.find_element_by_class_name('basketParams')
+
+        if basketParams.size['width'] != 690:
+            cnt+=1
+            print 'Нужная ширина слоя анонса корзины - 690, а на странице: ', basketParams.size['width']
+            print '-'*80
+            
+        if not basketParams.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Слой анонса корзины не отображается'
+            print '-'*80
+        
+        if basketParams.location['y'] != 173:
+            cnt+=1
+            print 'Расположение слоя анонса корзины по оси y - 173, а на странице: ', basketParams.location['y']
+            print '-'*80
+            
+        if basketParams.location['x'] != 246:
+            cnt+=1
+            print 'Расположение слоя анонса корзины по оси x - 246, а на странице: ', basketParams.location['x']
+            print '-'*80
+
+        assert cnt==0, ('Error in basketParams\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_colGoods(self):
+        """ Проверка заголовка слоя """
+        cnt=0
+        colGoods = self.driver.find_element_by_class_name('colGoods')
+
+        if colGoods.size['width'] != 624:
+            cnt+=1
+            print 'Нужная ширина заголовка слоя - 624, а на странице: ', colGoods.size['width']
+            print '-'*80
+            
+        if colGoods.size['height'] != 29:
+            cnt+=1
+            print 'Нужная высота заголовка слоя - 29, а на странице: ', colGoods.size['height']
+            print '-'*80
+            
+        if not colGoods.is_displayed(): #проверяем отображается ли 
+            cnt+=1
+            print 'Заголовка слоя не отображается'
+            print '-'*80
+        
+        if colGoods.location['y'] != 188:
+            cnt+=1
+            print 'Расположение заголовка слоя по оси y - 188, а на странице: ', colGoods.location['y']
+            print '-'*80
+            
+        if colGoods.location['x'] != 266:
+            cnt+=1
+            print 'Расположение заголовка слоя по оси x - 266, а на странице: ', colGoods.location['x']
+            print '-'*80
+            
+        if colGoods.value_of_css_property('color') != 'rgba(100, 33, 158, 1)':
+            cnt+=1
+            print 'Цвет заголовка не соответствует заданному( rgba(100, 33, 158, 1) ). На странице: ', colGoods.value_of_css_property('color')
+            print '-'*80
+            
+        if colGoods.value_of_css_property('font-size') != '24px':
+            cnt+=1
+            print 'Размер шрифта заголовка не соответствует заданному( 24px ). На странице: ', colGoods.value_of_css_property('font-size')
+            print '-'*80
+            
+        assert cnt==0, ('Error in colGoods\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_close(self):
+        """ Проверка кнопки закрыть """
+        cnt=0
+        close = self.driver.find_element_by_class_name('basketParams').find_element_by_class_name('close')
+        
+
+        if close.size['width'] != 26:
+            cnt+=1
+            print 'Нужная ширина блока кнопки закрыть - 26, а на странице: ', close.size['width']
+            print '-'*80
+            
+        if close.size['height'] != 26:
+            cnt+=1
+            print 'Нужная высота блока кнопки закрыть - 26, а на странице: ', close.size['height']
+            print '-'*80
+            
+        if not close.is_enabled(): #проверяем отображается ли 
+            cnt+=1
+            print 'Блок кнопки закрыть не отображается'
+            print '-'*80
+        
+        if close.location['y'] != 186:
+            cnt+=1
+            print 'Расположение блока кнопки закрыть по оси y - 186, а на странице: ', close.location['y']
+            print '-'*80
+            
+        if close.location['x'] != 890:
+            cnt+=1
+            print 'Расположение блока кнопки закрыть по оси x - 890, а на странице: ', close.location['x']
+            print '-'*80
+
+        assert cnt==0, ('Error in close\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_td_name(self):
+        """ Блок с наименованием товара """
+        cnt=0
+        td_name = self.driver.find_element_by_class_name('td-name')
+
+        if td_name.size['width'] != 291:
+            cnt+=1
+            print 'Нужная ширина блока с наименованием товара - 291, а на странице: ', td_name.size['width']
+            print '-'*80
+                      
+        if not td_name.is_displayed(): #проверяем отображается ли 
+            cnt+=1
+            print 'Блок с наименованием товара не отображается'
+            print '-'*80
+
+        if td_name.location['y'] != 227:
+            cnt+=1
+            print 'Расположение блока с наименованием товара по оси y - 227, а на странице: ', td_name.location['y']
+            print '-'*80
+            
+        if td_name.location['x'] != 376:
+            cnt+=1
+            print 'Расположение блока с наименованием товара по оси x - 376, а на странице: ', td_name.location['x']
+            print '-'*80
+
+        assert cnt==0, ('Error in td_name\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_smallPrice(self):
+        """ Проверка итогового ценника """
+        cnt=0
+        smallPrice = self.driver.find_element_by_class_name('basketParams').find_element_by_class_name('smallPrice')
+
+        if smallPrice.size['height'] != 34:
+            cnt+=1
+            print 'Нужная высота блока итогового ценника - 34, а на странице: ', smallPrice.size['height']
+            print '-'*80
+            
+        if not smallPrice.is_enabled(): #проверяем отображается ли 
+            cnt+=1
+            print 'Блок итогового ценника не отображается'
+            print '-'*80
+            
+        if smallPrice.location['x'] != 758:
+            cnt+=1
+            print 'Расположение блока итогового ценника по оси x - 758, а на странице: ', smallPrice.location['x']
+            print '-'*80
+
+        assert cnt==0, ('Error in smallPrice\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_button(self):
+        """ Блок кнопки "Оформить заказ" """
+        cnt=0
+        button = self.driver.find_element_by_class_name('decisionLinks').find_element_by_class_name('button')
+
+        if button.size['width'] != 139:
+            cnt+=1
+            print 'Нужная ширина кнопки "Оформить заказ" - 139, а на странице: ', button.size['width']
+            print '-'*80
+            
+        if button.size['height'] != 32:
+            cnt+=1
+            print 'Нужная высота кнопки "Оформить заказ" - 32, а на странице: ', button.size['height']
+            print '-'*80
+            
+        if not button.is_displayed(): #проверяем отображается ли 
+            cnt+=1
+            print 'Кнопка "Оформить заказ" не отображается'
+            print '-'*80
+            
+        if button.location['x'] != 266:
+            cnt+=1
+            print 'Расположение кнопки "Оформить заказ" по оси x - 266, а на странице: ', button.location['x']
+            print '-'*80
+            
+        if button.value_of_css_property('color') != 'rgba(255, 255, 255, 1)':
+            cnt+=1
+            print 'Цвет кнопки "Оформить заказ" не соответствует заданному( rgba(255, 255, 255, 1) ). На странице: ', button.value_of_css_property('color')
+            print '-'*80
+
+        if '%sbasket/'% self.HOST != button.get_attribute('href'):
+            cnt+=1
+            print 'Ошибка в ссылке на корзину'
+            print 'Надо:', '%sbasket/'% self.HOST
+            print 'На странице:', button.get_attribute('href')
+            print '-'*80
+
+        assert cnt==0, ('Error in button\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_zcontinues(self):
+        """ Проверка блока с ссылкой "Продолжить покупки" """
+        cnt=0
+        continues = self.driver.find_element_by_class_name('continue')
+        
+        if continues.size['width'] != 114:
+            cnt+=1
+            print 'Нужная ширина блока с ссылкой "Продолжить покупки" - 114, а на странице: ', continues.size['width']
+            print '-'*80
+            
+        if continues.size['height'] != 17:
+            cnt+=1
+            print 'Нужная высота блока с ссылкой "Продолжить покупки" - 17, а на странице: ', continues.size['height']
+            print '-'*80
+            
+        if not continues.is_displayed(): #проверяем отображается ли 
+            cnt+=1
+            print 'Блок с ссылкой "Продолжить покупки" не отображается'
+            print '-'*80
+            
+        if continues.location['x'] != 415:
+            cnt+=1
+            print 'Расположение блока с ссылкой "Продолжить покупки"  по оси x - 415, а на странице: ', continues.location['x']
+            print '-'*80
+            
+        if continues.value_of_css_property('color') != 'rgba(100, 33, 157, 1)':
+            cnt+=1
+            print 'Цвет ссылки "Продолжить покупки"  не соответствует заданному( rgba(100, 33, 157, 1) ). На странице: ', continues.value_of_css_property('color')
+            print '-'*80
+            
+        if continues.value_of_css_property('font-size') != '14px':
+            cnt+=1
+            print 'Размер шрифта ссылки "Продолжить покупки" не соответствует заданному( 14px ). На странице: ', continues.value_of_css_property('font-size')
+            print '-'*80
+
+        continues.click()
+        if continues.is_displayed():
+            cnt+=1
+            print 'Кнопка "Продолжить покупки" не работает'
+            print '-'*80
+        
+        
+        self.driver.close()
+
+        assert cnt==0, ('Error in continues\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
