@@ -660,11 +660,6 @@ class CatinnerPageTest(unittest.TestCase):
             cnt+=1
             print 'Блок с пагинатором не отображается'
             print '-'*80
-
-        if pageListing.location['y'] != 2651:
-            cnt+=1
-            print 'Расположение блока с пагинатором по оси y - 2651, а на странице: ', pageListing.location['y']
-            print '-'*80
             
         if pageListing.location['x'] != 712:
             cnt+=1
@@ -691,11 +686,6 @@ class CatinnerPageTest(unittest.TestCase):
         if not lastPick.is_displayed(): #проверяем отображается ли
             cnt+=1
             print 'Блок навигации внизу страницы не отображается'
-            print '-'*80
-
-        if lastPick.location['y'] != 2651:
-            cnt+=1
-            print 'Расположение блока навигации внизу страницы по оси y - 2651, а на странице: ', lastPick.location['y']
             print '-'*80
             
         if lastPick.location['x'] != 272:
@@ -871,11 +861,6 @@ class CatinnerPageTest(unittest.TestCase):
         if cardCont.size['width'] != 685:
             cnt+=1
             print 'Нужная ширина области со всеми товарами - 685, а на странице: ', cardCont.size['width']
-            print '-'*80
-
-        if cardCont.size['height'] != 2124:
-            cnt+=1
-            print 'Нужная высота области со всеми товарами - 2124, а на странице: ', cardCont.size['height']
             print '-'*80
             
         if not cardCont.is_displayed(): #проверяем отображается ли
