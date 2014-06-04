@@ -2535,3 +2535,252 @@ class BasketPageTest(unittest.TestCase):
 
         assert cnt==0, ('Error in order_form_comment\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
 
+class OrderCompletePageTest(unittest.TestCase):
+
+    CONNECT_STRING = 'mysql://%s:%s@%s:%s/%s?charset=utf8' %(os.getenv('USER'), os.getenv('PSWD'), os.getenv('DBHOST'), os.getenv('PORT'), os.getenv('SCHEMA'))
+    engine = create_engine(CONNECT_STRING, echo=False) #Значение False параметра echo убирает отладочную информацию
+    metadata = MetaData(engine)
+    session = create_session(bind = engine)
+
+    #ищем магазин - склад
+    store_shop = session.query(Shops.db_sort_field).\
+              join(Region, Shops.city_id == Region.id).\
+              filter(Shops.active == 1).\
+              filter(Shops.flag_store_shop_kbt == 1).\
+              filter(Region.domain == os.getenv('CITY')).\
+              first()
+    if store_shop != None:
+        store_shop = store_shop[0]
+    else:
+        store_shop = session.query(Shops.db_sort_field).\
+                         filter(Shops.id == session.query(Region.supplier_id).filter(Region.domain == os.getenv('CITY')).first()[0]).\
+                         first()[0]
+        
+    item = session.query(Goods).\
+               join(Goods_stat, Goods.id == Goods_stat.goods_id).\
+               join(Region, Goods_stat.city_id == Region.id).\
+               join(Goods_block, Goods.block_id == Goods_block.id).\
+               join(Goods_price, Goods.id == Goods_price.goods_id ).\
+               join(Remains, Remains.goods_id == Goods.id).\
+               filter(Region.domain == os.getenv('CITY')).\
+               filter(Goods_stat.status == 1).\
+               filter(Goods.overall_type == 0).\
+               filter(Goods_block.delivery_type == 2).\
+               filter(Goods_price.price_type_guid == Region.price_type_guid).\
+               filter(Goods_price.price > 9000).\
+               filter('t_goods_remains.%s > 0' % store_shop).\
+               first()
+
+    HOST = 'http://%s.%s/' % (os.getenv('CITY'), os.getenv('DOMAIN'))
+    driver = webdriver.Firefox()
+    GOOD = HOST + ('product/%s/' % item.alias)
+    driver.get(GOOD)
+    driver.find_element_by_partial_link_text('Купить').click()
+    time.sleep(5)
+    driver.get('%sbasket/' % HOST)
+    driver.find_element_by_css_selector("div.dcityContainer > span.radio").click()
+    driver.find_element_by_id('personal_order_form_firstName').send_keys('AutoTEST design')
+    driver.find_element_by_id('personal_order_form_phoneNumber').send_keys('123456789')
+    driver.find_element_by_id('personal_order_form_email').send_keys('AutoTEST@design.test')
+    driver.find_element_by_id('personal_order_form_comment').send_keys('AutoTEST design')
+    driver.find_element_by_class_name('btn-primary').click()
+
+    def tearDown(self):
+        """Удаление переменных для всех тестов. Остановка приложения"""
+        
+        if sys.exc_info()[0]:   
+            print sys.exc_info()[0]
+
+    def test_order(self):
+        """ Проверка блока с заказом """
+        cnt=0
+        order = self.driver.find_element_by_class_name('order')
+        
+        if order.size['width'] != 934:
+            cnt+=1
+            print 'Нужная ширина блока с заказом - 934, а на странице: ', order.size['width']
+            print '-'*80
+            
+        if not order.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'блока с заказом не отображается'
+            print '-'*80
+            
+        if order.location['x'] != -182:
+            cnt+=1
+            print 'Расположение блока с заказом по оси x - -182, а на странице: ', order.location['x']
+            print '-'*80
+
+        assert cnt==0, ('Error in order\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_h1(self):
+        """ Проверка заголовка с именем покупателя """
+        cnt=0
+        h1 = self.driver.find_element_by_tag_name('h1')
+
+        if h1.size['width'] != 544:
+            cnt+=1
+            print 'Нужная ширина заголовка - 544, а на странице: ', h1.size['width']
+            print '-'*80
+            
+        if h1.size['height'] != 32:
+            cnt+=1
+            print 'Нужная высота заголовка - 32, а на странице: ', h1.size['height']
+            print '-'*80
+            
+        if not h1.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Заголовок не отображается'
+            print '-'*80
+        
+        if h1.location['y'] != 352:
+            cnt+=1
+            print 'Расположение заголовка по оси y - 352, а на странице: ', h1.location['y']
+            print '-'*80
+            
+        if h1.location['x'] != -112:
+            cnt+=1
+            print 'Расположение заголовка по оси x - -112, а на странице: ', h1.location['x']
+            print '-'*80
+            
+        if h1.value_of_css_property('color') != 'rgba(0, 0, 0, 1)':
+            cnt+=1
+            print 'Цвет заголовка не соответствует заданному( rgba(0, 0, 0, 1) ). На странице: ', h1.value_of_css_property('color')
+            print '-'*80
+            
+        if h1.value_of_css_property('font-size') != '36px':
+            cnt+=1
+            print 'Размер шрифта заголовка не соответствует заданному( 36px ). На странице: ', h1.value_of_css_property('font-size')
+            print '-'*80
+            
+        assert cnt==0, ('Error in h1\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+
+    def test_lead(self):
+        """ Проверка блока с номером заказа """
+        cnt=0
+        lead = self.driver.find_elements_by_class_name('lead')
+        for x in lead:
+            if u'Мы получили ваш' in x.text:
+                lead = x
+            else:
+                lead = lead[0]
+                
+        if u'Мы получили ваш' not in lead.text:
+            cnt+=1
+            print 'Блок с номером заказа не отображается'
+            print 'Для проверки выбран заголовок с содержанием: "', lead.text,'"'
+            print '-'*80
+
+            assert cnt==0, ('Error in lead\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+        if lead.size['width'] != 544:
+            cnt+=1
+            print 'Нужная ширина блока с номером заказа - 544, а на странице: ', lead.size['width']
+            print '-'*80
+            
+        if lead.size['height'] != 34:
+            cnt+=1
+            print 'Нужная высота блока с номером заказа - 34, а на странице: ', lead.size['height']
+            print '-'*80
+            
+        if not lead.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с номером заказа не отображается'
+            print '-'*80
+            
+        if lead.location['x'] != -112:
+            cnt+=1
+            print 'Расположение блока с номером заказа по оси x - -112, а на странице: ', lead.location['x']
+            print '-'*80
+            
+        if lead.value_of_css_property('color') != 'rgba(76, 76, 76, 1)':
+            cnt+=1
+            print 'Цвет блока с номером заказа не соответствует заданному( rgba(76, 76, 76, 1) ). На странице: ', lead.value_of_css_property('color')
+            print '-'*80
+            
+        if lead.value_of_css_property('font-size') != '24px':
+            cnt+=1
+            print 'Размер шрифта блока с номером заказа не соответствует заданному( 24px ). На странице: ', lead.value_of_css_property('font-size')
+            print '-'*80
+
+        assert cnt==0, ('Error in lead\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_order_details(self):
+        """ Проверка блока с информацией о товаре """
+        cnt=0
+        order_details = self.driver.find_element_by_class_name('order-details')
+
+        if order_details.size['width'] != 547:
+            cnt+=1
+            print 'Нужная ширина блока с информацией о товаре - 547, а на странице: ', order_details.size['width']
+            print '-'*80
+            
+        if not order_details.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с информацией о товаре не отображается'
+            print '-'*80
+            
+        if order_details.location['x'] != -112:
+            cnt+=1
+            print 'Расположение блока с информацией о товаре по оси x - -112, а на странице: ', order_details.location['x']
+            print '-'*80
+            
+        if order_details.value_of_css_property('color') != 'rgba(102, 102, 102, 1)':
+            cnt+=1
+            print 'Цвет блока с информацией о товаре не соответствует заданному( rgba(102, 102, 102, 1) ). На странице: ', order_details.value_of_css_property('color')
+            print '-'*80
+            
+        if order_details.value_of_css_property('font-size') != '14px':
+            cnt+=1
+            print 'Размер шрифта блока с информацией о товаре не соответствует заданному( 14px ). На странице: ', order_details.value_of_css_property('font-size')
+            print '-'*80
+
+        assert cnt==0, ('Error in order_details\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_post_message(self):
+        """ Проверка блока с информацией после описания заказа """
+        cnt=0
+        post_message = self.driver.find_element_by_class_name('post-message')
+
+        if post_message.size['width'] != 544:
+            cnt+=1
+            print 'Нужная ширина блока с информацией после описания заказа - 544, а на странице: ', post_message.size['width']
+            print '-'*80
+            
+        if post_message.size['height'] != 48:
+            cnt+=1
+            print 'Нужная высота блока с информацией после описания заказа - 48, а на странице: ', post_message.size['height']
+            print '-'*80
+            
+        if not post_message.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с информацией после описания заказа не отображается'
+            print '-'*80
+            
+        if post_message.location['x'] != -112:
+            cnt+=1
+            print 'Расположение блока с информацией после описания заказа по оси x - -112, а на странице: ', post_message.location['x']
+            print '-'*80
+            
+        if post_message.value_of_css_property('color') != 'rgba(76, 76, 76, 1)':
+            cnt+=1
+            print 'Цвет блока с информацией после описания заказа не соответствует заданному( rgba(76, 76, 76, 1) ). На странице: ', post_message.value_of_css_property('color')
+            print '-'*80
+            
+        if post_message.value_of_css_property('font-size') != '18px':
+            cnt+=1
+            print 'Размер шрифта блока с информацией после описания заказа не соответствует заданному( 18px ). На странице: ', post_message.value_of_css_property('font-size')
+            print '-'*80
+        
+        if post_message.find_element_by_tag_name('a').get_attribute('href') != self.HOST:
+            cnt+=1
+            print 'Ссылка в блоке информацией после описания заказа не соответствует'
+            print 'Нужно:', self.HOST
+            print 'На сайте:', post_message.find_element_by_tag_name('a').get_attribute('href')
+            print '-'*80
+            
+            
+        self.driver.close()
+
+        assert cnt==0, ('Error in h1\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
