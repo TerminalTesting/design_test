@@ -2784,3 +2784,183 @@ class OrderCompletePageTest(unittest.TestCase):
         self.driver.close()
 
         assert cnt==0, ('Error in h1\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+class StaticPageTest(unittest.TestCase):
+    
+    HOST = 'http://%s.%s/' % (os.getenv('CITY'), os.getenv('DOMAIN'))
+    driver = webdriver.Firefox()
+    driver.get(HOST + 'about/')
+    
+
+    def tearDown(self):
+        """ Удаление переменных для всех тестов. Остановка приложения """
+        
+        if sys.exc_info()[0]:   
+            print sys.exc_info()[0]
+
+    def test_pds(self):
+        """ Проверка контентной области  """
+        cnt=0
+        pds = self.driver.find_element_by_class_name('pds')
+
+        if pds.size['width'] != 960:
+            cnt+=1
+            print 'Нужная ширина контентной области - 960, а на странице: ', pds.size['width']
+            print '-'*80
+            
+        if pds.size['height'] != 1676:
+            cnt+=1
+            print 'Нужная высота контентной области - 1676, а на странице: ', pds.size['height']
+            print '-'*80
+            
+        if not pds.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Контентная область не отображается'
+            print '-'*80
+        
+        if pds.location['y'] != 231:
+            cnt+=1
+            print 'Расположение контентной области по оси y - 231, а на странице: ', pds.location['y']
+            print '-'*80
+            
+        if pds.location['x'] != 9:
+            cnt+=1
+            print 'Расположение контентной области по оси x - 9, а на странице: ', pds.location['x']
+            print '-'*80
+
+        assert cnt==0, ('Error in pds\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_midNavi(self):
+        """ Проверка блока с левым меню """
+        cnt=0
+        midNavi = self.driver.find_element_by_class_name('midNavi')
+
+        if midNavi.size['width'] != 218:
+            cnt+=1
+            print 'Нужная ширина блока с левым меню - 218, а на странице: ', midNavi.size['width']
+            print '-'*80
+            
+        if not midNavi.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с левым меню не отображается'
+            print '-'*80
+        
+        if midNavi.location['y'] != 268:
+            cnt+=1
+            print 'Расположение блока с левым меню по оси y - 268, а на странице: ', midNavi.location['y']
+            print '-'*80
+            
+        if midNavi.location['x'] != 23:
+            cnt+=1
+            print 'Расположение блока с левым меню по оси x - 23, а на странице: ', midNavi.location['x']
+            print '-'*80
+
+        assert cnt==0, ('Error in midNavi\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_narrow(self):
+        """ Проверка блока с контентом страницы(без меню) """
+        cnt=0
+        narrow = self.driver.find_element_by_class_name('narrow')
+
+        if narrow.size['width'] != 700:
+            cnt+=1
+            print 'Нужная ширина блока с контентом страницы(без меню) - 700, а на странице: ', narrow.size['width']
+            print '-'*80
+            
+        if narrow.size['height'] != 1599:
+            cnt+=1
+            print 'Нужная высота блока с контентом страницы(без меню) - 1599, а на странице: ', narrow.size['height']
+            print '-'*80
+            
+        if not narrow.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с контентом страницы(без меню) не отображается'
+            print '-'*80
+        
+        if narrow.location['y'] != 268:
+            cnt+=1
+            print 'Расположение блока с контентом страницы(без меню) по оси y - 268, а на странице: ', narrow.location['y']
+            print '-'*80
+            
+        if narrow.location['x'] != 257:
+            cnt+=1
+            print 'Расположение блока с контентом страницы(без меню) по оси x - 257, а на странице: ', narrow.location['x']
+            print '-'*80
+
+        assert cnt==0, ('Error in narrow\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_h1(self):
+        """ Проверка заголовка страницы """
+        cnt=0
+        h1 = self.driver.find_element_by_tag_name('h1')
+
+        if h1.size['width'] != 700:
+            cnt+=1
+            print 'Нужная ширина заголовка - 700, а на странице: ', h1.size['width']
+            print '-'*80
+            
+        if h1.size['height'] != 43:
+            cnt+=1
+            print 'Нужная высота заголовка - 43, а на странице: ', h1.size['height']
+            print '-'*80
+            
+        if not h1.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Заголовок не отображается'
+            print '-'*80
+        
+        if h1.location['y'] != 261:
+            cnt+=1
+            print 'Расположение заголовка по оси y - 261, а на странице: ', h1.location['y']
+            print '-'*80
+            
+        if h1.location['x'] != 257:
+            cnt+=1
+            print 'Расположение заголовка по оси x - 257, а на странице: ', h1.location['x']
+            print '-'*80
+            
+        if h1.value_of_css_property('color') != 'rgba(0, 0, 0, 1)':
+            cnt+=1
+            print 'Цвет заголовка не соответствует заданному( rgba(0, 0, 0, 1) ). На странице: ', h1.value_of_css_property('color')
+            print '-'*80
+            
+        if h1.value_of_css_property('font-size') != '36px':
+            cnt+=1
+            print 'Размер шрифта заголовка не соответствует заданному( 36px ). На странице: ', h1.value_of_css_property('font-size')
+            print '-'*80
+
+        assert cnt==0, ('Error in h1\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_contBotBox(self):
+        """ Проверка блока с нижним меню """
+        cnt=0
+        contBotBox = self.driver.find_element_by_class_name('contBotBox')
+
+        if contBotBox.size['width'] != 960:
+            cnt+=1
+            print 'Нужная ширина блока с нижним меню - 960, а на странице: ', contBotBox.size['width']
+            print '-'*80
+            
+        if contBotBox.size['height'] != 150:
+            cnt+=1
+            print 'Нужная высота блока с нижним меню - 150, а на странице: ', contBotBox.size['height']
+            print '-'*80
+            
+        if not contBotBox.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блока с нижним меню не отображается'
+            print '-'*80
+        
+        if contBotBox.location['y'] != 1907:
+            cnt+=1
+            print 'Расположение блока с нижним меню по оси y - 1907, а на странице: ', contBotBox.location['y']
+            print '-'*80
+            
+        if contBotBox.location['x'] != 9:
+            cnt+=1
+            print 'Расположение блока с нижним меню по оси x - 9, а на странице: ', contBotBox.location['x']
+            print '-'*80
+        
+        self.driver.close()
+
+        assert cnt==0, ('Error in contBotBox\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
