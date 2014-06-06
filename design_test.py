@@ -3304,7 +3304,7 @@ class ComparePageTest(unittest.TestCase):
             
         if cancel.value_of_css_property('font-size') != '14px':
             cnt+=1
-            print 'Размер шрифта текста блока с ссылкой "Главные" не соответствует заданному( 14px ). На странице: ', cancel.value_of_css_property('font-size')
+            print 'Размер шрифта текста блока с ссылкой "Удалить все товары..." не соответствует заданному( 14px ). На странице: ', cancel.value_of_css_property('font-size')
             print '-'*80
 
         if u'%scompare/clear' % self.HOST != cancel.get_attribute('href'):
@@ -3470,3 +3470,207 @@ class ComparePageTest(unittest.TestCase):
         self.driver.close()
         
         assert cnt==0, ('Error in xbreadcrumbs\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+class FavoritePageTest(unittest.TestCase):
+
+    HOST = 'http://%s.%s/' % (os.getenv('CITY'), os.getenv('DOMAIN'))
+    driver = webdriver.Firefox()
+    driver.get(HOST + 'login/')
+    driver.find_element_by_id('username').send_keys(os.getenv('AUTH'))
+    driver.find_element_by_id('password').send_keys(os.getenv('AUTHPASS'))
+    driver.find_element_by_class_name('btn-primary').click()
+    driver.get('%sfavorite/' % HOST)
+        
+
+    def tearDown(self):
+        """Удаление переменных для всех тестов. Остановка приложения"""
+        
+        if sys.exc_info()[0]:   
+            print sys.exc_info()[0]
+
+    def test_pds(self):
+        """ Проверка контентной области  """
+        cnt=0
+        pds = self.driver.find_element_by_class_name('pds')
+
+        if pds.size['width'] != 960:
+            cnt+=1
+            print 'Нужная ширина контентной области - 960, а на странице: ', pds.size['width']
+            print '-'*80
+            
+        if not pds.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Контентная область не отображается'
+            print '-'*80
+            
+        if pds.location['x'] != 9:
+            cnt+=1
+            print 'Расположение контентной области по оси x - 9, а на странице: ', pds.location['x']
+            print '-'*80
+
+        assert cnt==0, ('Error in pds\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_componentHeader(self):
+        """ Проверяем заголовок страницы """
+        cnt=0
+        h1 = self.driver.find_element_by_class_name('componentHeader')
+
+        if h1.size['width'] != 750:
+            cnt+=1
+            print 'Нужная ширина заголовка - 750, а на странице: ', h1.size['width']
+            print '-'*80
+            
+        if h1.size['height'] != 43:
+            cnt+=1
+            print 'Нужная высота заголовка - 43, а на странице: ', h1.size['height']
+            print '-'*80
+            
+        if not h1.is_displayed(): #проверяем отображается ли заголовок
+            cnt+=1
+            print 'Заголовок не отображается'
+            print '-'*80
+        
+        if h1.location['y'] != 261:
+            cnt+=1
+            print 'Расположение заголовка по оси y - 261, а на странице: ', h1.location['y']
+            print '-'*80
+            
+        if h1.location['x'] != 23:
+            cnt+=1
+            print 'Расположение заголовка по оси x - 23, а на странице: ', h1.location['x']
+            print '-'*80
+            
+        if h1.value_of_css_property('color') != 'rgba(0, 0, 0, 1)':
+            cnt+=1
+            print 'Цвет заголовка не соответствует заданному( rgba(0, 0, 0, 1) ). На странице: ', h1.value_of_css_property('color')
+            print '-'*80
+            
+        if h1.value_of_css_property('font-size') != '36px':
+            cnt+=1
+            print 'Размер шрифта заголовка не соответствует заданному( 36px ). На странице: ', h1.value_of_css_property('font-size')
+            print '-'*80
+
+        assert cnt==0, ('Error in componentHeader\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_catList(self):
+        """ Проверяем блок с превью всех товаров """
+        cnt=0
+        catList = self.driver.find_element_by_class_name('catList')
+
+        if catList.size['width'] != 934:
+            cnt+=1
+            print 'Нужная ширина блок с превью всех товаров - 934, а на странице: ', catList.size['width']
+            print '-'*80
+            
+        if catList.size['height'] != 2595:
+            cnt+=1
+            print 'Нужная высота блок с превью всех товаров - 2595, а на странице: ', catList.size['height']
+            print '-'*80
+            
+        if not catList.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с превью всех товаров не отображается'
+            print '-'*80
+        
+        if catList.location['y'] != 307:
+            cnt+=1
+            print 'Расположение блок с превью всех товаров по оси y - 307, а на странице: ', catList.location['y']
+            print '-'*80
+            
+        if catList.location['x'] != 23:
+            cnt+=1
+            print 'Расположение блок с превью всех товаров по оси x - 23, а на странице: ', catList.location['x']
+            print '-'*80
+
+        assert cnt==0, ('Error in catList\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_catCard(self):
+        """ Проверяем блок с превью одного товара """
+        cnt=0
+        catCard = self.driver.find_element_by_class_name('catCard')
+
+        if catCard.size['width'] != 220:
+            cnt+=1
+            print 'Нужная ширина блок с превью одного товара - 220, а на странице: ', catCard.size['width']
+            print '-'*80
+            
+        if catCard.size['height'] != 303:
+            cnt+=1
+            print 'Нужная высота блок с превью одного товара - 303, а на странице: ', catCard.size['height']
+            print '-'*80
+            
+        if not catCard.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с превью одного товара не отображается'
+            print '-'*80
+        
+        if catCard.location['y'] != 307:
+            cnt+=1
+            print 'Расположение блок с превью одного товара по оси y - 307, а на странице: ', catCard.location['y']
+            print '-'*80
+            
+        if catCard.location['x'] != 23:
+            cnt+=1
+            print 'Расположение блок с превью одного товара по оси x - 23, а на странице: ', catCard.location['x']
+            print '-'*80
+
+        assert cnt==0, ('Error in catCard\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_xserviceText(self):
+        """ Проверяем блок с ссылкой "Очистить список..." """
+        cnt=0
+        serviceText = self.driver.find_element_by_partial_link_text(u'Очистить')
+
+        if serviceText.size['width'] != 196:
+            cnt+=1
+            print 'Нужная ширина блока с ссылкой "Очистить список..." - 196, а на странице: ', serviceText.size['width']
+            print '-'*80
+            
+        if serviceText.size['height'] != 17:
+            cnt+=1
+            print 'Нужная высота блока с ссылкой "Очистить список..." - 17, а на странице: ', serviceText.size['height']
+            print '-'*80
+            
+        if not serviceText.is_enabled(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с ссылкой "Очистить список..." не отображается'
+            print '-'*80
+        
+        if serviceText.location['y'] != 2902:
+            cnt+=1
+            print 'Расположение блока с ссылкой "Очистить список..." по оси y - 2902, а на странице: ', serviceText.location['y']
+            print '-'*80
+            
+        if serviceText.location['x'] != 23:
+            cnt+=1
+            print 'Расположение блока с ссылкой "Очистить список..." по оси x - 23, а на странице: ', serviceText.location['x']
+            print '-'*80
+            
+        if serviceText.value_of_css_property('color') != 'rgba(100, 33, 157, 1)':
+            cnt+=1
+            print 'Цвет текста блока с ссылкой "Очистить список..." не соответствует заданному( rgba(100, 33, 157, 1) ). На странице: ', serviceText.value_of_css_property('color')
+            print '-'*80
+            
+        if serviceText.value_of_css_property('font-size') != '14px':
+            cnt+=1
+            print 'Размер шрифта текста блока с ссылкой "Очистить список..." не соответствует заданному( 14px ). На странице: ', serviceText.value_of_css_property('font-size')
+            print '-'*80
+
+        if u'%sfavorite/clear' % self.HOST != serviceText.get_attribute('href'):
+            cnt+=1
+            print 'Ссылка "Очистить список..." не соответствует'
+            print 'Надо: ', u'%sfavorite/clear' % self.HOST
+            print 'На сайте: ', serviceText.get_attribute('href')
+            print '-'*80
+
+        if u'Очистить список избранных товаров' != serviceText.text:
+            cnt+=1
+            print 'Текст ссылки "Очистить список..." не соответствует'
+            print 'Надо: ', u'Очистить список избранных товаров'
+            print 'На сайте: ', serviceText.text
+            print '-'*80
+        
+        self.driver.get('%slogout' % self.HOST)
+        self.driver.close()
+        
+        assert cnt==0, ('Error in serviceText\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
