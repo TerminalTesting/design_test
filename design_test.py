@@ -895,12 +895,12 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Блок "Выводить по" не отображается'
             print '-'*80
 
-        if pageCap.location['y'] != 447:
+        if pageCap.location['y'] != 430:
             cnt+=1
             print 'Расположение блока "Выводить по" по оси y - 447, а на странице: ', pageCap.location['y']
             print '-'*80
             
-        if pageCap.location['x'] != 272:
+        if pageCap.location['x'] != 262:
             cnt+=1
             print 'Расположение блока "Выводить по" по оси x - 272, а на странице: ', pageCap.location['x']
             print '-'*80
@@ -1541,9 +1541,9 @@ class CartPageTest(unittest.TestCase):
             print 'Блок с характеристиками не отображается'
             print '-'*80
 
-        if params.location['x'] != 503:
+        if params.location['x'] != 495:
             cnt+=1
-            print 'Расположение блока c характеристиками по оси x - 503, а на странице: ', params.location['x']
+            print 'Расположение блока c характеристиками по оси x - 495, а на странице: ', params.location['x']
             print '-'*80
             
         if params.size['width'] != 454:
@@ -2523,9 +2523,9 @@ class BasketPageTest(unittest.TestCase):
             print 'Поле для ввода комментария не отображается'
             print '-'*80
 
-        if form_comment.location['x'] != 232:
+        if form_comment.location['x'] != 231:
             cnt+=1
-            print 'Расположение поля для ввода комментария по оси x - 232, а на странице: ', form_comment.location['x']
+            print 'Расположение поля для ввода комментария по оси x - 231, а на странице: ', form_comment.location['x']
             print '-'*80
         
         try:
@@ -2849,14 +2849,14 @@ class StaticPageTest(unittest.TestCase):
             print 'Блок с левым меню не отображается'
             print '-'*80
         
-        if midNavi.location['y'] != 268:
+        if midNavi.location['y'] != 251:
             cnt+=1
-            print 'Расположение блока с левым меню по оси y - 268, а на странице: ', midNavi.location['y']
+            print 'Расположение блока с левым меню по оси y - 251, а на странице: ', midNavi.location['y']
             print '-'*80
             
-        if midNavi.location['x'] != 23:
+        if midNavi.location['x'] != 29:
             cnt+=1
-            print 'Расположение блока с левым меню по оси x - 23, а на странице: ', midNavi.location['x']
+            print 'Расположение блока с левым меню по оси x - 29, а на странице: ', midNavi.location['x']
             print '-'*80
 
         assert cnt==0, ('Error in midNavi\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -2866,14 +2866,14 @@ class StaticPageTest(unittest.TestCase):
         cnt=0
         narrow = self.driver.find_element_by_class_name('narrow')
 
-        if narrow.size['width'] != 700:
+        if narrow.size['width'] != 687:
             cnt+=1
-            print 'Нужная ширина блока с контентом страницы(без меню) - 700, а на странице: ', narrow.size['width']
+            print 'Нужная ширина блока с контентом страницы(без меню) - 687, а на странице: ', narrow.size['width']
             print '-'*80
             
-        if narrow.size['height'] != 1599:
+        if narrow.size['height'] != 1619:
             cnt+=1
-            print 'Нужная высота блока с контентом страницы(без меню) - 1599, а на странице: ', narrow.size['height']
+            print 'Нужная высота блока с контентом страницы(без меню) - 1619, а на странице: ', narrow.size['height']
             print '-'*80
             
         if not narrow.is_displayed(): #проверяем отображается ли
@@ -2881,14 +2881,14 @@ class StaticPageTest(unittest.TestCase):
             print 'Блок с контентом страницы(без меню) не отображается'
             print '-'*80
         
-        if narrow.location['y'] != 268:
+        if narrow.location['y'] != 251:
             cnt+=1
-            print 'Расположение блока с контентом страницы(без меню) по оси y - 268, а на странице: ', narrow.location['y']
+            print 'Расположение блока с контентом страницы(без меню) по оси y - 251, а на странице: ', narrow.location['y']
             print '-'*80
             
-        if narrow.location['x'] != 257:
+        if narrow.location['x'] != 262:
             cnt+=1
-            print 'Расположение блока с контентом страницы(без меню) по оси x - 257, а на странице: ', narrow.location['x']
+            print 'Расположение блока с контентом страницы(без меню) по оси x - 262, а на странице: ', narrow.location['x']
             print '-'*80
 
         assert cnt==0, ('Error in narrow\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -2898,9 +2898,9 @@ class StaticPageTest(unittest.TestCase):
         cnt=0
         h1 = self.driver.find_element_by_tag_name('h1')
 
-        if h1.size['width'] != 700:
+        if h1.size['width'] != 688:
             cnt+=1
-            print 'Нужная ширина заголовка - 700, а на странице: ', h1.size['width']
+            print 'Нужная ширина заголовка - 688, а на странице: ', h1.size['width']
             print '-'*80
             
         if h1.size['height'] != 43:
@@ -2913,14 +2913,14 @@ class StaticPageTest(unittest.TestCase):
             print 'Заголовок не отображается'
             print '-'*80
         
-        if h1.location['y'] != 261:
+        if h1.location['y'] != 244:
             cnt+=1
-            print 'Расположение заголовка по оси y - 261, а на странице: ', h1.location['y']
+            print 'Расположение заголовка по оси y - 244, а на странице: ', h1.location['y']
             print '-'*80
             
-        if h1.location['x'] != 257:
+        if h1.location['x'] != 261:
             cnt+=1
-            print 'Расположение заголовка по оси x - 257, а на странице: ', h1.location['x']
+            print 'Расположение заголовка по оси x - 261, а на странице: ', h1.location['x']
             print '-'*80
             
         if h1.value_of_css_property('color') != 'rgba(0, 0, 0, 1)':
