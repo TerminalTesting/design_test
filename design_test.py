@@ -2600,9 +2600,9 @@ class OrderCompletePageTest(unittest.TestCase):
         cnt=0
         order = self.driver.find_element_by_class_name('order')
         
-        if order.size['width'] != 934:
+        if order.size['width'] != 920:
             cnt+=1
-            print 'Нужная ширина блока с заказом - 934, а на странице: ', order.size['width']
+            print 'Нужная ширина блока с заказом - 920, а на странице: ', order.size['width']
             print '-'*80
             
         if not order.is_displayed(): #проверяем отображается ли
@@ -2610,9 +2610,9 @@ class OrderCompletePageTest(unittest.TestCase):
             print 'блока с заказом не отображается'
             print '-'*80
             
-        if order.location['x'] != -182:
+        if order.location['x'] != -168:
             cnt+=1
-            print 'Расположение блока с заказом по оси x - -182, а на странице: ', order.location['x']
+            print 'Расположение блока с заказом по оси x - -168, а на странице: ', order.location['x']
             print '-'*80
 
         assert cnt==0, ('Error in order\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -2622,7 +2622,7 @@ class OrderCompletePageTest(unittest.TestCase):
         cnt=0
         h1 = self.driver.find_element_by_tag_name('h1')
 
-        if h1.size['width'] != 544:
+        if h1.size['width'] != 545:
             cnt+=1
             print 'Нужная ширина заголовка - 544, а на странице: ', h1.size['width']
             print '-'*80
@@ -2637,14 +2637,14 @@ class OrderCompletePageTest(unittest.TestCase):
             print 'Заголовок не отображается'
             print '-'*80
         
-        if h1.location['y'] != 352:
+        if h1.location['y'] != -1012:
             cnt+=1
-            print 'Расположение заголовка по оси y - 352, а на странице: ', h1.location['y']
+            print 'Расположение заголовка по оси y - -1012, а на странице: ', h1.location['y']
             print '-'*80
             
-        if h1.location['x'] != -112:
+        if h1.location['x'] != -99:
             cnt+=1
-            print 'Расположение заголовка по оси x - -112, а на странице: ', h1.location['x']
+            print 'Расположение заголовка по оси x - -99, а на странице: ', h1.location['x']
             print '-'*80
             
         if h1.value_of_css_property('color') != 'rgba(0, 0, 0, 1)':
@@ -2693,9 +2693,9 @@ class OrderCompletePageTest(unittest.TestCase):
             print 'Блок с номером заказа не отображается'
             print '-'*80
             
-        if lead.location['x'] != -112:
+        if lead.location['x'] != -98:
             cnt+=1
-            print 'Расположение блока с номером заказа по оси x - -112, а на странице: ', lead.location['x']
+            print 'Расположение блока с номером заказа по оси x - -98, а на странице: ', lead.location['x']
             print '-'*80
             
         if lead.value_of_css_property('color') != 'rgba(76, 76, 76, 1)':
@@ -2725,9 +2725,9 @@ class OrderCompletePageTest(unittest.TestCase):
             print 'Блок с информацией о товаре не отображается'
             print '-'*80
             
-        if order_details.location['x'] != -112:
+        if order_details.location['x'] != -98:
             cnt+=1
-            print 'Расположение блока с информацией о товаре по оси x - -112, а на странице: ', order_details.location['x']
+            print 'Расположение блока с информацией о товаре по оси x - -98, а на странице: ', order_details.location['x']
             print '-'*80
             
         if order_details.value_of_css_property('color') != 'rgba(102, 102, 102, 1)':
@@ -2762,9 +2762,9 @@ class OrderCompletePageTest(unittest.TestCase):
             print 'Блок с информацией после описания заказа не отображается'
             print '-'*80
             
-        if post_message.location['x'] != -112:
+        if post_message.location['x'] != -98:
             cnt+=1
-            print 'Расположение блока с информацией после описания заказа по оси x - -112, а на странице: ', post_message.location['x']
+            print 'Расположение блока с информацией после описания заказа по оси x - -98, а на странице: ', post_message.location['x']
             print '-'*80
             
         if post_message.value_of_css_property('color') != 'rgba(76, 76, 76, 1)':
@@ -2812,9 +2812,9 @@ class StaticPageTest(unittest.TestCase):
             print 'Нужная ширина контентной области - 960, а на странице: ', pds.size['width']
             print '-'*80
             
-        if pds.size['height'] != 1676:
+        if pds.size['height'] != 1679:
             cnt+=1
-            print 'Нужная высота контентной области - 1676, а на странице: ', pds.size['height']
+            print 'Нужная высота контентной области - 1679, а на странице: ', pds.size['height']
             print '-'*80
             
         if not pds.is_displayed(): #проверяем отображается ли
@@ -2945,9 +2945,9 @@ class StaticPageTest(unittest.TestCase):
             print 'Нужная ширина блока с нижним меню - 960, а на странице: ', contBotBox.size['width']
             print '-'*80
             
-        if contBotBox.size['height'] != 150:
+        if contBotBox.size['height'] != 158:
             cnt+=1
-            print 'Нужная высота блока с нижним меню - 150, а на странице: ', contBotBox.size['height']
+            print 'Нужная высота блока с нижним меню - 158, а на странице: ', contBotBox.size['height']
             print '-'*80
             
         if not contBotBox.is_displayed(): #проверяем отображается ли
@@ -2955,9 +2955,9 @@ class StaticPageTest(unittest.TestCase):
             print 'Блока с нижним меню не отображается'
             print '-'*80
         
-        if contBotBox.location['y'] != 1907:
+        if contBotBox.location['y'] != 1910:
             cnt+=1
-            print 'Расположение блока с нижним меню по оси y - 1907, а на странице: ', contBotBox.location['y']
+            print 'Расположение блока с нижним меню по оси y - 1910, а на странице: ', contBotBox.location['y']
             print '-'*80
             
         if contBotBox.location['x'] != 9:
@@ -3028,14 +3028,14 @@ class ComparePageTest(unittest.TestCase):
             print 'Заголовок не отображается'
             print '-'*80
         
-        if h1.location['y'] != 261:
+        if h1.location['y'] != 244:
             cnt+=1
-            print 'Расположение заголовка по оси y - 261, а на странице: ', h1.location['y']
+            print 'Расположение заголовка по оси y - 244, а на странице: ', h1.location['y']
             print '-'*80
             
-        if h1.location['x'] != 23:
+        if h1.location['x'] != 28:
             cnt+=1
-            print 'Расположение заголовка по оси x - 23, а на странице: ', h1.location['x']
+            print 'Расположение заголовка по оси x - 28, а на странице: ', h1.location['x']
             print '-'*80
             
         if h1.value_of_css_property('color') != 'rgba(0, 0, 0, 1)':
@@ -3055,9 +3055,9 @@ class ComparePageTest(unittest.TestCase):
         cnt=0
         catNav = self.driver.find_element_by_class_name('catNav')
 
-        if catNav.size['width'] != 934:
+        if catNav.size['width'] != 920:
             cnt+=1
-            print 'Нужная ширина блока с группами товаров - 934, а на странице: ', catNav.size['width']
+            print 'Нужная ширина блока с группами товаров - 920, а на странице: ', catNav.size['width']
             print '-'*80
             
         if catNav.size['height'] != 138:
@@ -3070,14 +3070,14 @@ class ComparePageTest(unittest.TestCase):
             print 'Блок с группами товаров не отображается'
             print '-'*80
         
-        if catNav.location['y'] != 307:
+        if catNav.location['y'] != 290:
             cnt+=1
-            print 'Расположение блока с группами товаров по оси y - 307, а на странице: ', catNav.location['y']
+            print 'Расположение блока с группами товаров по оси y - 290, а на странице: ', catNav.location['y']
             print '-'*80
             
-        if catNav.location['x'] != 23:
+        if catNav.location['x'] != 29:
             cnt+=1
-            print 'Расположение блока с группами товаров по оси x - 23, а на странице: ', catNav.location['x']
+            print 'Расположение блока с группами товаров по оси x - 29, а на странице: ', catNav.location['x']
             print '-'*80
 
         assert cnt==0, ('Error in catNav\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -3087,9 +3087,9 @@ class ComparePageTest(unittest.TestCase):
         cnt=0
         clearfix = self.driver.find_element_by_class_name('clearfix')
 
-        if clearfix.size['width'] != 934:
+        if clearfix.size['width'] != 920:
             cnt+=1
-            print 'Нужная ширина блока с превью и описанием товаров - 934, а на странице: ', clearfix.size['width']
+            print 'Нужная ширина блока с превью и описанием товаров - 920, а на странице: ', clearfix.size['width']
             print '-'*80
        
         if not clearfix.is_displayed(): #проверяем отображается ли
@@ -3097,14 +3097,14 @@ class ComparePageTest(unittest.TestCase):
             print 'Блок с превью и описанием товаров не отображается'
             print '-'*80
         
-        if clearfix.location['y'] != 445:
+        if clearfix.location['y'] != 428:
             cnt+=1
-            print 'Расположение блока с превью и описанием товаров по оси y - 445, а на странице: ', clearfix.location['y']
+            print 'Расположение блока с превью и описанием товаров по оси y - 428, а на странице: ', clearfix.location['y']
             print '-'*80
             
-        if clearfix.location['x'] != 23:
+        if clearfix.location['x'] != 29:
             cnt+=1
-            print 'Расположение блока с превью и описанием товаров по оси x - 23, а на странице: ', clearfix.location['x']
+            print 'Расположение блока с превью и описанием товаров по оси x - 29, а на странице: ', clearfix.location['x']
             print '-'*80
 
         assert cnt==0, ('Error in clearfix\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -3129,14 +3129,14 @@ class ComparePageTest(unittest.TestCase):
             print 'Блок с ссылками "Главные" и "Отличия" не отображается'
             print '-'*80
         
-        if comparing_mode_tabs.location['y'] != 261:
+        if comparing_mode_tabs.location['y'] != 251:
             cnt+=1
-            print 'Расположение блока с ссылками "Главные" и "Отличия" по оси y - 261, а на странице: ', comparing_mode_tabs.location['y']
+            print 'Расположение блока с ссылками "Главные" и "Отличия" по оси y - 251, а на странице: ', comparing_mode_tabs.location['y']
             print '-'*80
             
-        if comparing_mode_tabs.location['x'] != 810:
+        if comparing_mode_tabs.location['x'] != 802:
             cnt+=1
-            print 'Расположение блока с ссылками "Главные" и "Отличия" по оси x - 810, а на странице: ', comparing_mode_tabs.location['x']
+            print 'Расположение блока с ссылками "Главные" и "Отличия" по оси x - 802, а на странице: ', comparing_mode_tabs.location['x']
             print '-'*80
             
         if comparing_mode_tabs.value_of_css_property('color') != 'rgba(76, 76, 76, 1)':
@@ -3171,14 +3171,14 @@ class ComparePageTest(unittest.TestCase):
             print 'Блок с ссылкой "Главные" не отображается'
             print '-'*80
         
-        if li.location['y'] != 261:
+        if li.location['y'] != 251:
             cnt+=1
-            print 'Расположение блока с ссылкой "Главные" по оси y - 261, а на странице: ', li.location['y']
+            print 'Расположение блока с ссылкой "Главные" по оси y - 251, а на странице: ', li.location['y']
             print '-'*80
             
-        if li.location['x'] != 810:
+        if li.location['x'] != 802:
             cnt+=1
-            print 'Расположение блока с ссылкой "Главные" по оси x - 810, а на странице: ', li.location['x']
+            print 'Расположение блока с ссылкой "Главные" по оси x - 802, а на странице: ', li.location['x']
             print '-'*80
             
         if li.value_of_css_property('color') != 'rgba(179, 24, 172, 1)':
@@ -3213,14 +3213,14 @@ class ComparePageTest(unittest.TestCase):
             print 'Блок с ссылкой "Отличия" не отображается'
             print '-'*80
         
-        if li.location['y'] != 261:
+        if li.location['y'] != 251:
             cnt+=1
-            print 'Расположение блока ссылкой "Отличия" по оси y - 261, а на странице: ', li.location['y']
+            print 'Расположение блока ссылкой "Отличия" по оси y - 251, а на странице: ', li.location['y']
             print '-'*80
             
-        if li.location['x'] != 883:
+        if li.location['x'] != 875:
             cnt+=1
-            print 'Расположение блока с ссылкой "Отличия" по оси x - 883, а на странице: ', li.location['x']
+            print 'Расположение блока с ссылкой "Отличия" по оси x - 875, а на странице: ', li.location['x']
             print '-'*80
             
         if li.value_of_css_property('color') != 'rgba(100, 33, 157, 1)':
@@ -3255,14 +3255,14 @@ class ComparePageTest(unittest.TestCase):
             print 'Блок с превью товаров не отображается'
             print '-'*80
         
-        if catList.location['y'] != 485:
+        if catList.location['y'] != 468:
             cnt+=1
-            print 'Расположение блока с превью товаров по оси y - 485, а на странице: ', catList.location['y']
+            print 'Расположение блока с превью товаров по оси y - 468, а на странице: ', catList.location['y']
             print '-'*80
             
-        if catList.location['x'] != 252:
+        if catList.location['x'] != 249:
             cnt+=1
-            print 'Расположение блока с превью товаров по оси x - 252, а на странице: ', catList.location['x']
+            print 'Расположение блока с превью товаров по оси x - 249, а на странице: ', catList.location['x']
             print '-'*80
 
         assert cnt==0, ('Error in catList\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -3287,14 +3287,14 @@ class ComparePageTest(unittest.TestCase):
             print 'Блок с ссылкой "Удалить все товары..." не отображается'
             print '-'*80
         
-        if cancel.location['y'] != 537:
+        if cancel.location['y'] != 548:
             cnt+=1
-            print 'Расположение блока с ссылкой "Удалить все товары..." по оси y - 537, а на странице: ', cancel.location['y']
+            print 'Расположение блока с ссылкой "Удалить все товары..." по оси y - 548, а на странице: ', cancel.location['y']
             print '-'*80
             
-        if cancel.location['x'] != 23:
+        if cancel.location['x'] != 29:
             cnt+=1
-            print 'Расположение блока с ссылкой "Удалить все товары..." по оси x - 23, а на странице: ', cancel.location['x']
+            print 'Расположение блока с ссылкой "Удалить все товары..." по оси x - 29, а на странице: ', cancel.location['x']
             print '-'*80
             
         if cancel.value_of_css_property('color') != 'rgba(100, 33, 157, 1)':
@@ -3343,14 +3343,14 @@ class ComparePageTest(unittest.TestCase):
             print 'Блок c превью одного товара не отображается'
             print '-'*80
         
-        if catCard.location['y'] != 485:
+        if catCard.location['y'] != 468:
             cnt+=1
-            print 'Расположение блока c превью одного товара по оси y - 485, а на странице: ', catCard.location['y']
+            print 'Расположение блока c превью одного товара по оси y - 468, а на странице: ', catCard.location['y']
             print '-'*80
             
-        if catCard.location['x'] != 252:
+        if catCard.location['x'] != 249:
             cnt+=1
-            print 'Расположение блока c превью одного товара по оси x - 252, а на странице: ', catCard.location['x']
+            print 'Расположение блока c превью одного товара по оси x - 249, а на странице: ', catCard.location['x']
             print '-'*80
 
         assert cnt==0, ('Error in catCard\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -3360,9 +3360,9 @@ class ComparePageTest(unittest.TestCase):
         cnt=0
         features_group = self.driver.find_element_by_class_name('features-group')
 
-        if features_group.size['width'] != 934:
+        if features_group.size['width'] != 929:
             cnt+=1
-            print 'Нужная ширина блока со списком характеристик - 934, а на странице: ', features_group.size['width']
+            print 'Нужная ширина блока со списком характеристик - 929, а на странице: ', features_group.size['width']
             print '-'*80
             
         if not features_group.is_displayed(): #проверяем отображается ли
@@ -3370,14 +3370,14 @@ class ComparePageTest(unittest.TestCase):
             print 'Блок со списком характеристик не отображается'
             print '-'*80
         
-        if features_group.location['y'] != 876:
+        if features_group.location['y'] != 859:
             cnt+=1
-            print 'Расположение блока со списком характеристик по оси y - 876, а на странице: ', features_group.location['y']
+            print 'Расположение блока со списком характеристик по оси y - 859, а на странице: ', features_group.location['y']
             print '-'*80
             
-        if features_group.location['x'] != 23:
+        if features_group.location['x'] != 29:
             cnt+=1
-            print 'Расположение блока со списком характеристик по оси x - 23, а на странице: ', features_group.location['x']
+            print 'Расположение блока со списком характеристик по оси x - 29, а на странице: ', features_group.location['x']
             print '-'*80
 
         assert cnt==0, ('Error in features_group\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -3387,9 +3387,9 @@ class ComparePageTest(unittest.TestCase):
         cnt=0
         footer = self.driver.find_element_by_tag_name('footer')
 
-        if footer.size['width'] != 934:
+        if footer.size['width'] != 920:
             cnt+=1
-            print 'Нужная ширина блока с информацией после списка сравнения - 934, а на странице: ', footer.size['width']
+            print 'Нужная ширина блока с информацией после списка сравнения - 920, а на странице: ', footer.size['width']
             print '-'*80
             
         if footer.size['height'] != 34:
@@ -3402,9 +3402,9 @@ class ComparePageTest(unittest.TestCase):
             print 'Блок с информацией после списка сравнения не отображается'
             print '-'*80
             
-        if footer.location['x'] != 23:
+        if footer.location['x'] != 29:
             cnt+=1
-            print 'Расположение блока с информацией после списка сравнения по оси x - 23, а на странице: ', footer.location['x']
+            print 'Расположение блока с информацией после списка сравнения по оси x - 29, а на странице: ', footer.location['x']
             print '-'*80
             
         if footer.value_of_css_property('color') != 'rgba(76, 76, 76, 1)':
