@@ -311,7 +311,7 @@ class CatPageTest(unittest.TestCase):
         assert cnt==0, ('Error in text_block\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
 
 
-    def test_mini_logo(self):
+    def test_xmini_logo(self):
         """ Тест скролл логотипа """
         cnt=0
         self.driver.execute_script('scroll(0, 300);')
@@ -875,7 +875,7 @@ class CatinnerPageTest(unittest.TestCase):
                 
         assert cnt==0, ('Error in goods_block\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
 
-    def test_pageCap(self):
+    def test_xpageCap(self):
         """ Проверка блока "Выводить по" """
         cnt=0
         pageCap = self.driver.find_element_by_class_name('pageCap')
@@ -1532,7 +1532,7 @@ class CartPageTest(unittest.TestCase):
 
         assert cnt==0, ('Error in feedBack\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
 
-    def test_params(self):
+    def test_xparams(self):
         cnt=0
         params = self.driver.find_element_by_class_name('params')
         
@@ -1550,6 +1550,8 @@ class CartPageTest(unittest.TestCase):
             cnt+=1
             print 'Нужная ширина блока с характеристиками - 454, а на странице: ', params.size['width']
             print '-'*80
+
+        self.driver.close()
 
         assert cnt==0, ('Error in params\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
 
@@ -2501,7 +2503,7 @@ class BasketPageTest(unittest.TestCase):
 
         assert cnt==0, ('Error in order_form_addressAppartment\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
 
-    def test_personal_order_form_comment(self):
+    def test_xpersonal_order_form_comment(self):
         """ Поле для ввода комментария """
         cnt=0
         form_comment = self.driver.find_element_by_id('personal_order_form_comment')
@@ -2532,6 +2534,8 @@ class BasketPageTest(unittest.TestCase):
             cnt+=1
             print 'Поле для комментария недоступно для ввода'
             print '-'*80
+
+        self.driver.close()
 
         assert cnt==0, ('Error in order_form_comment\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
 
@@ -2738,7 +2742,7 @@ class OrderCompletePageTest(unittest.TestCase):
 
         assert cnt==0, ('Error in order_details\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
 
-    def test_post_message(self):
+    def test_xpost_message(self):
         """ Проверка блока с информацией после описания заказа """
         cnt=0
         post_message = self.driver.find_element_by_class_name('post-message')
@@ -2931,7 +2935,7 @@ class StaticPageTest(unittest.TestCase):
 
         assert cnt==0, ('Error in h1\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
 
-    def test_contBotBox(self):
+    def test_xcontBotBox(self):
         """ Проверка блока с нижним меню """
         cnt=0
         contBotBox = self.driver.find_element_by_class_name('contBotBox')
@@ -2964,3 +2968,505 @@ class StaticPageTest(unittest.TestCase):
         self.driver.close()
 
         assert cnt==0, ('Error in contBotBox\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+class ComparePageTest(unittest.TestCase):
+
+    HOST = 'http://%s.%s/' % (os.getenv('CITY'), os.getenv('DOMAIN'))
+    driver = webdriver.Firefox()
+    driver.get(HOST + 'login/')
+    driver.find_element_by_id('username').send_keys(os.getenv('AUTH'))
+    driver.find_element_by_id('password').send_keys(os.getenv('AUTHPASS'))
+    driver.find_element_by_class_name('btn-primary').click()
+    driver.get('%scompare/' % HOST)
+
+    def tearDown(self):
+        """ Удаление переменных для всех тестов. Остановка приложения """
+        
+        if sys.exc_info()[0]:   
+            print sys.exc_info()[0]
+
+    def test_pds(self):
+        """ Проверка контентной области  """
+        cnt=0
+        pds = self.driver.find_element_by_class_name('pds')
+
+        if pds.size['width'] != 960:
+            cnt+=1
+            print 'Нужная ширина контентной области - 960, а на странице: ', pds.size['width']
+            print '-'*80
+            
+        if not pds.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Контентная область не отображается'
+            print '-'*80
+            
+        if pds.location['x'] != 9:
+            cnt+=1
+            print 'Расположение контентной области по оси x - 9, а на странице: ', pds.location['x']
+            print '-'*80
+
+        assert cnt==0, ('Error in pds\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+
+    def test_componentHeader(self):
+        """ Проверяем заголовок страницы """
+        cnt=0
+        h1 = self.driver.find_element_by_tag_name('h1')
+
+        if h1.size['width'] != 750:
+            cnt+=1
+            print 'Нужная ширина заголовка - 750, а на странице: ', h1.size['width']
+            print '-'*80
+            
+        if h1.size['height'] != 43:
+            cnt+=1
+            print 'Нужная высота заголовка - 43, а на странице: ', h1.size['height']
+            print '-'*80
+            
+        if not h1.is_displayed(): #проверяем отображается ли заголовок
+            cnt+=1
+            print 'Заголовок не отображается'
+            print '-'*80
+        
+        if h1.location['y'] != 261:
+            cnt+=1
+            print 'Расположение заголовка по оси y - 261, а на странице: ', h1.location['y']
+            print '-'*80
+            
+        if h1.location['x'] != 23:
+            cnt+=1
+            print 'Расположение заголовка по оси x - 23, а на странице: ', h1.location['x']
+            print '-'*80
+            
+        if h1.value_of_css_property('color') != 'rgba(0, 0, 0, 1)':
+            cnt+=1
+            print 'Цвет заголовка не соответствует заданному( rgba(0, 0, 0, 1) ). На странице: ', h1.value_of_css_property('color')
+            print '-'*80
+            
+        if h1.value_of_css_property('font-size') != '36px':
+            cnt+=1
+            print 'Размер шрифта заголовка не соответствует заданному( 36px ). На странице: ', h1.value_of_css_property('font-size')
+            print '-'*80
+
+        assert cnt==0, ('Error in componentHeader\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_catNav(self):
+        """ Проверка блока с группами товаров """
+        cnt=0
+        catNav = self.driver.find_element_by_class_name('catNav')
+
+        if catNav.size['width'] != 934:
+            cnt+=1
+            print 'Нужная ширина блока с группами товаров - 934, а на странице: ', catNav.size['width']
+            print '-'*80
+            
+        if catNav.size['height'] != 138:
+            cnt+=1
+            print 'Нужная высота блока с группами товаров - 138, а на странице: ', catNav.size['height']
+            print '-'*80
+            
+        if not catNav.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с группами товаров не отображается'
+            print '-'*80
+        
+        if catNav.location['y'] != 307:
+            cnt+=1
+            print 'Расположение блока с группами товаров по оси y - 307, а на странице: ', catNav.location['y']
+            print '-'*80
+            
+        if catNav.location['x'] != 23:
+            cnt+=1
+            print 'Расположение блока с группами товаров по оси x - 23, а на странице: ', catNav.location['x']
+            print '-'*80
+
+        assert cnt==0, ('Error in catNav\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_clearfix(self):
+        """ Проверка блока с превью и описанием товаров """
+        cnt=0
+        clearfix = self.driver.find_element_by_class_name('clearfix')
+
+        if clearfix.size['width'] != 934:
+            cnt+=1
+            print 'Нужная ширина блока с превью и описанием товаров - 934, а на странице: ', clearfix.size['width']
+            print '-'*80
+       
+        if not clearfix.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с превью и описанием товаров не отображается'
+            print '-'*80
+        
+        if clearfix.location['y'] != 445:
+            cnt+=1
+            print 'Расположение блока с превью и описанием товаров по оси y - 445, а на странице: ', clearfix.location['y']
+            print '-'*80
+            
+        if clearfix.location['x'] != 23:
+            cnt+=1
+            print 'Расположение блока с превью и описанием товаров по оси x - 23, а на странице: ', clearfix.location['x']
+            print '-'*80
+
+        assert cnt==0, ('Error in clearfix\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_comparing_mode_tabs(self):
+        """ Проверка блока с ссылками "Главные" и "Отличия" """
+        cnt=0
+        comparing_mode_tabs = self.driver.find_element_by_class_name('comparing-mode-tabs')
+
+        if comparing_mode_tabs.size['width'] != 147:
+            cnt+=1
+            print 'Нужная ширина блока с ссылками "Главные" и "Отличия" - 147, а на странице: ', comparing_mode_tabs.size['width']
+            print '-'*80
+            
+        if comparing_mode_tabs.size['height'] != 26:
+            cnt+=1
+            print 'Нужная высота блока с ссылками "Главные" и "Отличия" - 26, а на странице: ', comparing_mode_tabs.size['height']
+            print '-'*80
+            
+        if not comparing_mode_tabs.is_enabled(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с ссылками "Главные" и "Отличия" не отображается'
+            print '-'*80
+        
+        if comparing_mode_tabs.location['y'] != 261:
+            cnt+=1
+            print 'Расположение блока с ссылками "Главные" и "Отличия" по оси y - 261, а на странице: ', comparing_mode_tabs.location['y']
+            print '-'*80
+            
+        if comparing_mode_tabs.location['x'] != 810:
+            cnt+=1
+            print 'Расположение блока с ссылками "Главные" и "Отличия" по оси x - 810, а на странице: ', comparing_mode_tabs.location['x']
+            print '-'*80
+            
+        if comparing_mode_tabs.value_of_css_property('color') != 'rgba(76, 76, 76, 1)':
+            cnt+=1
+            print 'Цвет текста блока с ссылками "Главные" и "Отличия" не соответствует заданному( rgba(76, 76, 76, 1) ). На странице: ', comparing_mode_tabs.value_of_css_property('color')
+            print '-'*80
+            
+        if comparing_mode_tabs.value_of_css_property('font-size') != '14px':
+            cnt+=1
+            print 'Размер шрифта текста блока с ссылками "Главные" и "Отличия" не соответствует заданному( 14px ). На странице: ', comparing_mode_tabs.value_of_css_property('font-size')
+            print '-'*80
+
+        assert cnt==0, ('Error in comparing_mode_tabs\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_li_main(self):
+        """ Проверка блока с ссылкой "Главные" """
+        cnt=0
+        li = self.driver.find_element_by_class_name('comparing-mode-tabs').find_element_by_class_name('j-all')
+
+        if li.size['width'] != 70:
+            cnt+=1
+            print 'Нужная ширина блока с ссылкой "Главные" - 70, а на странице: ', li.size['width']
+            print '-'*80
+            
+        if li.size['height'] != 26:
+            cnt+=1
+            print 'Нужная высота блока с ссылкой "Главные" - 26, а на странице: ', li.size['height']
+            print '-'*80
+            
+        if not li.is_enabled(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с ссылкой "Главные" не отображается'
+            print '-'*80
+        
+        if li.location['y'] != 261:
+            cnt+=1
+            print 'Расположение блока с ссылкой "Главные" по оси y - 261, а на странице: ', li.location['y']
+            print '-'*80
+            
+        if li.location['x'] != 810:
+            cnt+=1
+            print 'Расположение блока с ссылкой "Главные" по оси x - 810, а на странице: ', li.location['x']
+            print '-'*80
+            
+        if li.value_of_css_property('color') != 'rgba(179, 24, 172, 1)':
+            cnt+=1
+            print 'Цвет текста блока с ссылкой "Главные" не соответствует заданному( rgba(179, 24, 172, 1) ). На странице: ', li.value_of_css_property('color')
+            print '-'*80
+            
+        if li.value_of_css_property('font-size') != '13px':
+            cnt+=1
+            print 'Размер шрифта текста блока с ссылкой "Главные" не соответствует заданному( 13px ). На странице: ', li.value_of_css_property('font-size')
+            print '-'*80
+        
+        assert cnt==0, ('Error in li_main\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_li_other(self):
+        """ Проверка блока с ссылкой "Отличия" """
+        cnt=0
+        li = self.driver.find_element_by_class_name('comparing-mode-tabs').find_element_by_class_name('j-diff')
+
+        if li.size['width'] != 74:
+            cnt+=1
+            print 'Нужная ширина блока с ссылкой "Отличия" - 74, а на странице: ', li.size['width']
+            print '-'*80
+            
+        if li.size['height'] != 26:
+            cnt+=1
+            print 'Нужная высота блока с ссылкой "Отличия" - 26, а на странице: ', li.size['height']
+            print '-'*80
+            
+        if not li.is_enabled(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с ссылкой "Отличия" не отображается'
+            print '-'*80
+        
+        if li.location['y'] != 261:
+            cnt+=1
+            print 'Расположение блока ссылкой "Отличия" по оси y - 261, а на странице: ', li.location['y']
+            print '-'*80
+            
+        if li.location['x'] != 883:
+            cnt+=1
+            print 'Расположение блока с ссылкой "Отличия" по оси x - 883, а на странице: ', li.location['x']
+            print '-'*80
+            
+        if li.value_of_css_property('color') != 'rgba(100, 33, 157, 1)':
+            cnt+=1
+            print 'Цвет текста блока с ссылкой "Отличия" не соответствует заданному( rgba(100, 33, 157, 1) ). На странице: ', li.value_of_css_property('color')
+            print '-'*80
+            
+        if li.value_of_css_property('font-size') != '13px':
+            cnt+=1
+            print 'Размер шрифта текста блока с ссылкой "Отличия" не соответствует заданному( 13px ). На странице: ', li.value_of_css_property('font-size')
+            print '-'*80
+
+        assert cnt==0, ('Error in li_other\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_catList(self):
+        """ Блок с превью товаров """
+        cnt=0
+        catList = self.driver.find_element_by_class_name('catList')
+
+        if catList.size['width'] != 700:
+            cnt+=1
+            print 'Нужная ширина блока с превью товаров - 700, а на странице: ', catList.size['width']
+            print '-'*80
+            
+        if catList.size['height'] != 375:
+            cnt+=1
+            print 'Нужная высота блока с превью товаров - 375, а на странице: ', catList.size['height']
+            print '-'*80
+            
+        if not catList.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с превью товаров не отображается'
+            print '-'*80
+        
+        if catList.location['y'] != 485:
+            cnt+=1
+            print 'Расположение блока с превью товаров по оси y - 485, а на странице: ', catList.location['y']
+            print '-'*80
+            
+        if catList.location['x'] != 252:
+            cnt+=1
+            print 'Расположение блока с превью товаров по оси x - 252, а на странице: ', catList.location['x']
+            print '-'*80
+
+        assert cnt==0, ('Error in catList\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_cancel(self):
+        """ Блок с ссылкой "Удалить все товары..." """
+        cnt=0
+        cancel = self.driver.find_element_by_partial_link_text(u'Удалить')
+
+        if cancel.size['width'] != 181:
+            cnt+=1
+            print 'Нужная ширина блока с ссылкой "Удалить все товары..." - 181, а на странице: ', cancel.size['width']
+            print '-'*80
+            
+        if cancel.size['height'] != 18:
+            cnt+=1
+            print 'Нужная высота блока с ссылкой "Удалить все товары..." - 18, а на странице: ', cancel.size['height']
+            print '-'*80
+            
+        if not cancel.is_enabled(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с ссылкой "Удалить все товары..." не отображается'
+            print '-'*80
+        
+        if cancel.location['y'] != 537:
+            cnt+=1
+            print 'Расположение блока с ссылкой "Удалить все товары..." по оси y - 537, а на странице: ', cancel.location['y']
+            print '-'*80
+            
+        if cancel.location['x'] != 23:
+            cnt+=1
+            print 'Расположение блока с ссылкой "Удалить все товары..." по оси x - 23, а на странице: ', cancel.location['x']
+            print '-'*80
+            
+        if cancel.value_of_css_property('color') != 'rgba(100, 33, 157, 1)':
+            cnt+=1
+            print 'Цвет текста блока с ссылкой "Удалить все товары..." не соответствует заданному( rgba(100, 33, 157, 1) ). На странице: ', cancel.value_of_css_property('color')
+            print '-'*80
+            
+        if cancel.value_of_css_property('font-size') != '14px':
+            cnt+=1
+            print 'Размер шрифта текста блока с ссылкой "Главные" не соответствует заданному( 14px ). На странице: ', cancel.value_of_css_property('font-size')
+            print '-'*80
+
+        if u'%scompare/clear' % self.HOST != cancel.get_attribute('href'):
+            cnt+=1
+            print 'Ссылка "Удалить все товары..." не соответствует'
+            print 'Надо: ', u'%scompare/clear' % self.HOST
+            print 'На сайте: ', cancel.get_attribute('href')
+            print '-'*80
+
+        if u'Удалить все товары из сравнения' != cancel.text:
+            cnt+=1
+            print 'Текст ссылки "Удалить все товары..." не соответствует'
+            print 'Надо: ', u'Удалить все товары из сравнения'
+            print 'На сайте: ', cancel.text
+            print '-'*80
+
+        assert cnt==0, ('Error in cancel\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_catCard(self):
+        """ Блок c превью одного товара """
+        cnt=0
+        catCard = self.driver.find_element_by_class_name('catList').find_element_by_class_name('catCard')
+
+        if catCard.size['width'] != 231:
+            cnt+=1
+            print 'Нужная ширина блока c превью одного товара - 231, а на странице: ', catCard.size['width']
+            print '-'*80
+            
+        if catCard.size['height'] != 375:
+            cnt+=1
+            print 'Нужная высота блока c превью одного товара - 375, а на странице: ', catCard.size['height']
+            print '-'*80
+            
+        if not catCard.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок c превью одного товара не отображается'
+            print '-'*80
+        
+        if catCard.location['y'] != 485:
+            cnt+=1
+            print 'Расположение блока c превью одного товара по оси y - 485, а на странице: ', catCard.location['y']
+            print '-'*80
+            
+        if catCard.location['x'] != 252:
+            cnt+=1
+            print 'Расположение блока c превью одного товара по оси x - 252, а на странице: ', catCard.location['x']
+            print '-'*80
+
+        assert cnt==0, ('Error in catCard\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_features_group(self):
+        """ Проверка блока со списком характеристик """
+        cnt=0
+        features_group = self.driver.find_element_by_class_name('features-group')
+
+        if features_group.size['width'] != 934:
+            cnt+=1
+            print 'Нужная ширина блока со списком характеристик - 934, а на странице: ', features_group.size['width']
+            print '-'*80
+            
+        if not features_group.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок со списком характеристик не отображается'
+            print '-'*80
+        
+        if features_group.location['y'] != 876:
+            cnt+=1
+            print 'Расположение блока со списком характеристик по оси y - 876, а на странице: ', features_group.location['y']
+            print '-'*80
+            
+        if features_group.location['x'] != 23:
+            cnt+=1
+            print 'Расположение блока со списком характеристик по оси x - 23, а на странице: ', features_group.location['x']
+            print '-'*80
+
+        assert cnt==0, ('Error in features_group\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_footer(self):
+        """ Блок с информацией после списка сравнения """
+        cnt=0
+        footer = self.driver.find_element_by_tag_name('footer')
+
+        if footer.size['width'] != 934:
+            cnt+=1
+            print 'Нужная ширина блока с информацией после списка сравнения - 934, а на странице: ', footer.size['width']
+            print '-'*80
+            
+        if footer.size['height'] != 34:
+            cnt+=1
+            print 'Нужная высота блока с информацией после списка сравнения - 34, а на странице: ', footer.size['height']
+            print '-'*80
+            
+        if not footer.is_enabled(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с информацией после списка сравнения не отображается'
+            print '-'*80
+            
+        if footer.location['x'] != 23:
+            cnt+=1
+            print 'Расположение блока с информацией после списка сравнения по оси x - 23, а на странице: ', footer.location['x']
+            print '-'*80
+            
+        if footer.value_of_css_property('color') != 'rgba(76, 76, 76, 1)':
+            cnt+=1
+            print 'Цвет текста блока с информацией после списка сравнения не соответствует заданному( rgba(76, 76, 76, 1) ). На странице: ', footer.value_of_css_property('color')
+            print '-'*80
+            
+        if footer.value_of_css_property('font-size') != '14px':
+            cnt+=1
+            print 'Размер шрифта текста блока с информацией после списка сравнения не соответствует заданному( 14px ). На странице: ', footer.value_of_css_property('font-size')
+            print '-'*80
+
+        assert cnt==0, ('Error in footer\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_xbreadcrumbs(self):
+        """ Проверка блока с хлебными крошками """
+        cnt=0
+        breadcrumbs = self.driver.find_element_by_id('breadcrumbs')
+        
+        if breadcrumbs.size['width'] != 974:
+            cnt+=1
+            print 'Нужная ширина блока с хлебными крошками - 974, а на странице: ', breadcrumbs.size['width']
+            print '-'*80
+            
+        if breadcrumbs.size['height'] != 39:
+            cnt+=1
+            print 'Нужная высота блока с хлебными крошками - 39, а на странице: ', breadcrumbs.size['height']
+            print '-'*80
+            
+        if not breadcrumbs.is_enabled(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с хлебными крошками не отображается'
+            print '-'*80
+        
+        if breadcrumbs.location['y'] != 187:
+            cnt+=1
+            print 'Расположение блока с хлебными крошками по оси y - 187, а на странице: ', breadcrumbs.location['y']
+            print '-'*80
+            
+        if breadcrumbs.location['x'] != 3:
+            cnt+=1
+            print 'Расположение блока с хлебными крошками по оси x - 3, а на странице: ', breadcrumbs.location['x']
+            print '-'*80
+            
+        if breadcrumbs.value_of_css_property('color') != 'rgba(100, 33, 157, 1)':
+            cnt+=1
+            print 'Цвет текста блока с хлебными крошками" не соответствует заданному( rgba(100, 33, 157, 1) ). На странице: ', breadcrumbs.value_of_css_property('color')
+            print '-'*80
+            
+        if breadcrumbs.value_of_css_property('font-size') != '14px':
+            cnt+=1
+            print 'Размер шрифта текста блока с хлебными крошками не соответствует заданному( 14px ). На странице: ', breadcrumbs.value_of_css_property('font-size')
+            print '-'*80
+
+        try:
+            breadcrumbs.find_element_by_tag_name('a').click()
+        except:
+            cnt+=1
+            print 'Хлебные крошки недоступны для щелчка'
+            print '-'*80
+            
+        self.driver.get('%slogout' % self.HOST)
+        self.driver.close()
+        
+        assert cnt==0, ('Error in xbreadcrumbs\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
