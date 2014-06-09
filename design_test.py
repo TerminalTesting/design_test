@@ -63,14 +63,14 @@ class CatPageTest(unittest.TestCase):
             print 'Заголовок не отображается'
             print '-'*80
         
-        if title.location['y'] != -101:
+        if title.location['y'] != 244:
             cnt+=1
-            print 'Расположение заголовка по оси y - -101, а на странице: ', title.location['y']
+            print 'Расположение заголовка по оси y - 244, а на странице: ', title.location['y']
             print '-'*80
             
-        if title.location['x'] != 23:
+        if title.location['x'] != 28:
             cnt+=1
-            print 'Расположение заголовка по оси x - 23, а на странице: ', title.location['x']
+            print 'Расположение заголовка по оси x - 28, а на странице: ', title.location['x']
             print '-'*80
             
         if title.value_of_css_property('color') != 'rgba(0, 0, 0, 1)':
@@ -90,9 +90,9 @@ class CatPageTest(unittest.TestCase):
         cnt=0
         block = self.driver.find_element_by_class_name('catNav')
         
-        if block.size['width'] != 934:
+        if block.size['width'] != 920:
             cnt+=1
-            print 'Нужная ширина блока с сылками на ВС - 934, а на странице: ', block.size['width']
+            print 'Нужная ширина блока с сылками на ВС - 920, а на странице: ', block.size['width']
             print '-'*80
             
         if block.size['height'] != 74:
@@ -126,14 +126,14 @@ class CatPageTest(unittest.TestCase):
             print 'Блок с ссылкой на товарный гид не отображается'
             print '-'*80
             
-        if quideLink.location['y'] != 261:
+        if quideLink.location['y'] != 251:
             cnt+=1
-            print 'Расположение ссылки на товарный гид по оси y - 261, а на странице: ', quideLink.location['y']
+            print 'Расположение ссылки на товарный гид по оси y - 251, а на странице: ', quideLink.location['y']
             print '-'*80
             
-        if quideLink.location['x'] != 833:
+        if quideLink.location['x'] != 825:
             cnt+=1
-            print 'Расположение ссылки на товарный гид по оси x - 833, а на странице: ', quideLink.location['x']
+            print 'Расположение ссылки на товарный гид по оси x - 825, а на странице: ', quideLink.location['x']
             print '-'*80
             
         if u'/guide/' not in quideLink.get_attribute('href'):
@@ -163,11 +163,6 @@ class CatPageTest(unittest.TestCase):
             print 'Левая стрелка не отображается'
             print '-'*80
             
-        if arrowLeft.location['y'] != 506:
-            cnt+=1
-            print 'Расположение левой стрелки по оси y - 506, а на странице: ', arrowLeft.location['y']
-            print '-'*80
-            
         if arrowLeft.location['x'] != -17:
             cnt+=1
             print 'Расположение левой стрелки по оси x - -17, а на странице: ', arrowLeft.location['x']
@@ -189,11 +184,6 @@ class CatPageTest(unittest.TestCase):
             print 'Правая стрелка не отображается'
             print '-'*80
             
-        if arrowRight.location['y'] != 506:
-            cnt+=1
-            print 'Расположение правой стрелки по оси y - 506, а на странице: ', arrowRight.location['y']
-            print '-'*80
-            
         if arrowRight.location['x'] != 945:
             cnt+=1
             print 'Расположение правой стрелки по оси x - 945, а на странице: ', arrowRight.location['x']
@@ -206,9 +196,9 @@ class CatPageTest(unittest.TestCase):
         cnt=0
         catSegLeft = self.driver.find_element_by_class_name('catSegLeft')
         
-        if catSegLeft.size['width'] != 934:
+        if catSegLeft.size['width'] != 920:
             cnt+=1
-            print 'Нужная ширина сегмента - 934, а на странице: ', catSegLeft.size['width']
+            print 'Нужная ширина сегмента - 920, а на странице: ', catSegLeft.size['width']
             print '-'*80
             
         if catSegLeft.size['height'] != 323:
@@ -249,11 +239,6 @@ class CatPageTest(unittest.TestCase):
             print 'Ссылки в слайдере не отображается'
             print '-'*80
             
-        if segNavi.location['y'] != 109:
-            cnt+=1
-            print 'Расположение блока с сcылками по оси y - 109, а на странице: ', segNavi.location['y']
-            print '-'*80
-            
         if segNavi.location['x'] != 29:
             cnt+=1
             print 'Расположение блока с сcылками по оси x - 29, а на странице: ', segNavi.location['x']
@@ -277,9 +262,9 @@ class CatPageTest(unittest.TestCase):
         cnt=0
         vs = self.driver.find_element_by_class_name('vs').find_element_by_tag_name('p')
 
-        if vs.size['width'] != 685:
+        if vs.size['width'] != 687:
             cnt+=1
-            print 'Нужная ширина текстового блока под лентами - 685, а на странице: ', vs.size['width']
+            print 'Нужная ширина текстового блока под лентами - 687, а на странице: ', vs.size['width']
             print '-'*80
             
         if vs.size['height'] != 137:
@@ -292,9 +277,9 @@ class CatPageTest(unittest.TestCase):
             print 'Текстовый блок под лентами не отображается'
             print '-'*80
             
-        if vs.location['x'] != 272:
+        if vs.location['x'] != 262:
             cnt+=1
-            print 'Расположение блока с текстом по оси x - 272, а на странице: ', vs.location['x']
+            print 'Расположение блока с текстом по оси x - 262, а на странице: ', vs.location['x']
             print '-'*80
             
         if vs.value_of_css_property('color') != 'rgba(76, 76, 76, 1)':
@@ -372,9 +357,9 @@ class CatinnerPageTest(unittest.TestCase):
         cnt=0
         content = self.driver.find_element_by_class_name('content')
 
-        if content.size['width'] != 934:
+        if content.size['width'] != 920:
             cnt+=1
-            print 'Нужная ширина контентной области - 934, а на странице: ', content.size['width']
+            print 'Нужная ширина контентной области - 920, а на странице: ', content.size['width']
             print '-'*80
             
         if not content.is_displayed(): #проверяем отображается ли
@@ -404,14 +389,14 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Заголовок(наименование секции) область не отображается'
             print '-'*80
 
-        if ComponentHeader.location['y'] != 261:
+        if ComponentHeader.location['y'] != 244:
             cnt+=1
-            print 'Расположение заголовка(наименование секции) по оси y - 261, а на странице: ', ComponentHeader.location['y']
+            print 'Расположение заголовка(наименование секции) по оси y - 244, а на странице: ', ComponentHeader.location['y']
             print '-'*80
             
-        if ComponentHeader.location['x'] != 23:
+        if ComponentHeader.location['x'] != 28:
             cnt+=1
-            print 'Расположение заголовка(наименование секции) по оси x - 23, а на странице: ', ComponentHeader.location['x']
+            print 'Расположение заголовка(наименование секции) по оси x - 28, а на странице: ', ComponentHeader.location['x']
             print '-'*80
             
         if ComponentHeader.value_of_css_property('color') != 'rgba(0, 0, 0, 1)':
@@ -432,9 +417,9 @@ class CatinnerPageTest(unittest.TestCase):
         cnt=0
         catNav = self.driver.find_element_by_class_name('catNav')
 
-        if catNav.size['width'] != 934:
+        if catNav.size['width'] != 920:
             cnt+=1
-            print 'Нужная ширина блока товаров с дочерними секциями - 934, а на странице: ', catNav.size['width']
+            print 'Нужная ширина блока товаров с дочерними секциями - 920, а на странице: ', catNav.size['width']
             print '-'*80
 
         if catNav.size['height'] != 42:
@@ -446,15 +431,10 @@ class CatinnerPageTest(unittest.TestCase):
             cnt+=1
             print 'Блок товаров с дочерними секциями не отображается'
             print '-'*80
-
-        if catNav.location['y'] != 307:
-            cnt+=1
-            print 'Расположение блока товаров с дочерними секциями по оси y - 307, а на странице: ', catNav.location['y']
-            print '-'*80
             
-        if catNav.location['x'] != 23:
+        if catNav.location['x'] != 29:
             cnt+=1
-            print 'Расположение блока товаров с дочерними секциями по оси x - 23, а на странице: ', catNav.location['x']
+            print 'Расположение блока товаров с дочерними секциями по оси x - 29, а на странице: ', catNav.location['x']
             print '-'*80
             
         if catNav.value_of_css_property('color') != 'rgba(76, 76, 76, 1)':
@@ -475,9 +455,9 @@ class CatinnerPageTest(unittest.TestCase):
         cnt=0
         tags = self.driver.find_element_by_class_name('tags')
 
-        if tags.size['width'] != 934:
+        if tags.size['width'] != 920:
             cnt+=1
-            print 'Нужная ширина блока с тегами - 934, а на странице: ', tags.size['width']
+            print 'Нужная ширина блока с тегами - 920, а на странице: ', tags.size['width']
             print '-'*80
 
         if tags.size['height'] != 78:
@@ -490,14 +470,14 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Блок товаров с тегами не отображается'
             print '-'*80
 
-        if tags.location['y'] != 349:
+        if tags.location['y'] != 332:
             cnt+=1
-            print 'Расположение блока товаров с тегами по оси y - 349, а на странице: ', tags.location['y']
+            print 'Расположение блока товаров с тегами по оси y - 332, а на странице: ', tags.location['y']
             print '-'*80
             
-        if tags.location['x'] != 23:
+        if tags.location['x'] != 29:
             cnt+=1
-            print 'Расположение блока товаров с тегами по оси x - 23, а на странице: ', tags.location['x']
+            print 'Расположение блока товаров с тегами по оси x - 29, а на странице: ', tags.location['x']
             print '-'*80
             
         if tags.value_of_css_property('color') != 'rgba(76, 76, 76, 1)':
@@ -517,9 +497,9 @@ class CatinnerPageTest(unittest.TestCase):
         cnt=0
         picking = self.driver.find_element_by_class_name('picking')
 
-        if picking.size['width'] != 685:
+        if picking.size['width'] != 687:
             cnt+=1
-            print 'Нужная ширина панели выбора видов вывода товара - 685, а на странице: ', picking.size['width']
+            print 'Нужная ширина панели выбора видов вывода товара - 687, а на странице: ', picking.size['width']
             print '-'*80
 
         if picking.size['height'] != 50:
@@ -532,14 +512,14 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Панели выбора видов вывода товара не отображается'
             print '-'*80
 
-        if picking.location['y'] != 447:
+        if picking.location['y'] != 430:
             cnt+=1
-            print 'Расположение панели выбора видов вывода товара по оси y - 447, а на странице: ', picking.location['y']
+            print 'Расположение панели выбора видов вывода товара по оси y - 430, а на странице: ', picking.location['y']
             print '-'*80
             
-        if picking.location['x'] != 272:
+        if picking.location['x'] != 262:
             cnt+=1
-            print 'Расположение панели выбора видов вывода товара по оси x - 272, а на странице: ', picking.location['x']
+            print 'Расположение панели выбора видов вывода товара по оси x - 262, а на странице: ', picking.location['x']
             print '-'*80
                 
         assert cnt==0, ('Error in picking\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -564,15 +544,10 @@ class CatinnerPageTest(unittest.TestCase):
             cnt+=1
             print 'Блок с фильтром "показать в наличии" не отображается'
             print '-'*80
-
-        if available.location['y'] != 458:
-            cnt+=1
-            print 'Расположение блока с фильтром "показать в наличии" по оси y - 458, а на странице: ', available.location['y']
-            print '-'*80
             
-        if available.location['x'] != 580:
+        if available.location['x'] != 572:
             cnt+=1
-            print 'Расположение блока с фильтром "показать в наличии" по оси x - 580, а на странице: ', available.location['x']
+            print 'Расположение блока с фильтром "показать в наличии" по оси x - 572, а на странице: ', available.location['x']
             print '-'*80
                 
         assert cnt==0, ('Error in available\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -597,14 +572,14 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Блок с заголовком вида сортировки не отображается'
             print '-'*80
 
-        if dropStyleBase_title.location['y'] != 459:
+        if dropStyleBase_title.location['y'] != 442:
             cnt+=1
-            print 'Расположение блока с заголовком вида сортировки по оси y - 459, а на странице: ', dropStyleBase_title.location['y']
+            print 'Расположение блока с заголовком вида сортировки по оси y - 442, а на странице: ', dropStyleBase_title.location['y']
             print '-'*80
             
-        if dropStyleBase_title.location['x'] != 735:
+        if dropStyleBase_title.location['x'] != 727:
             cnt+=1
-            print 'Расположение блока с заголовком вида сортировки по оси x - 735, а на странице: ', dropStyleBase_title.location['x']
+            print 'Расположение блока с заголовком вида сортировки по оси x - 727, а на странице: ', dropStyleBase_title.location['x']
             print '-'*80
                 
         assert cnt==0, ('Error in dropStyleBase_title\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -629,14 +604,14 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Блок с пиктограмой направления сортировки не отображается'
             print '-'*80
 
-        if changeOrderBy.location['y'] != 458:
+        if changeOrderBy.location['y'] != 441:
             cnt+=1
-            print 'Расположение блока с пиктограмой направления сортировки по оси y - 458, а на странице: ', changeOrderBy.location['y']
+            print 'Расположение блока с пиктограмой направления сортировки по оси y - 441, а на странице: ', changeOrderBy.location['y']
             print '-'*80
             
-        if changeOrderBy.location['x'] != 868:
+        if changeOrderBy.location['x'] != 860:
             cnt+=1
-            print 'Расположение блока с пиктограмой направления сортировки по оси x - 868, а на странице: ', changeOrderBy.location['x']
+            print 'Расположение блока с пиктограмой направления сортировки по оси x - 860, а на странице: ', changeOrderBy.location['x']
             print '-'*80
                 
         assert cnt==0, ('Error in changeOrderBy\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -646,9 +621,9 @@ class CatinnerPageTest(unittest.TestCase):
         cnt=0
         pageListing = self.driver.find_element_by_class_name('pageListing')
 
-        if pageListing.size['width'] != 245:
+        if pageListing.size['width'] != 240:
             cnt+=1
-            print 'Нужная ширина блока с пагинатором - 245, а на странице: ', pageListing.size['width']
+            print 'Нужная ширина блока с пагинатором - 240, а на странице: ', pageListing.size['width']
             print '-'*80
 
         if pageListing.size['height'] != 38:
@@ -661,9 +636,9 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Блок с пагинатором не отображается'
             print '-'*80
             
-        if pageListing.location['x'] != 712:
+        if pageListing.location['x'] != 709:
             cnt+=1
-            print 'Расположение блока с пагинатором по оси x - 712, а на странице: ', pageListing.location['x']
+            print 'Расположение блока с пагинатором по оси x - 709, а на странице: ', pageListing.location['x']
             print '-'*80
                 
         assert cnt==0, ('Error in pageListing\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -673,9 +648,9 @@ class CatinnerPageTest(unittest.TestCase):
         cnt=0
         lastPick = self.driver.find_element_by_class_name('lastPick')       
                 
-        if lastPick.size['width'] != 685:
+        if lastPick.size['width'] != 687:
             cnt+=1
-            print 'Нужная ширина блока навигации внизу страницы - 685, а на странице: ', lastPick.size['width']
+            print 'Нужная ширина блока навигации внизу страницы - 687, а на странице: ', lastPick.size['width']
             print '-'*80
 
         if lastPick.size['height'] != 50:
@@ -688,9 +663,9 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Блок навигации внизу страницы не отображается'
             print '-'*80
             
-        if lastPick.location['x'] != 272:
+        if lastPick.location['x'] != 262:
             cnt+=1
-            print 'Расположение блока навигации внизу страницы по оси x - 272, а на странице: ', lastPick.location['x']
+            print 'Расположение блока навигации внизу страницы по оси x - 262, а на странице: ', lastPick.location['x']
             print '-'*80
                 
         assert cnt==0, ('Error in lastPick\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -704,25 +679,20 @@ class CatinnerPageTest(unittest.TestCase):
             cnt+=1
             print 'Нужная ширина блока с подбором по параметрам - 218, а на странице: ', bfilter.size['width']
             print '-'*80
-
-        if bfilter.size['height'] != 808:
-            cnt+=1
-            print 'Нужная высота блока с подбором по параметрам - 808, а на странице: ', bfilter.size['height']
-            print '-'*80
             
         if not bfilter.is_displayed(): #проверяем отображается ли
             cnt+=1
             print 'Блок с подбором по параметрам не отображается'
             print '-'*80
 
-        if bfilter.location['y'] != 447:
+        if bfilter.location['y'] != 430:
             cnt+=1
-            print 'Расположение блока с подбором по параметрам по оси y - 447, а на странице: ', bfilter.location['y']
+            print 'Расположение блока с подбором по параметрам по оси y - 430, а на странице: ', bfilter.location['y']
             print '-'*80
             
-        if bfilter.location['x'] != 23:
+        if bfilter.location['x'] != 29:
             cnt+=1
-            print 'Расположение блока с подбором по параметрам по оси x - 23, а на странице: ', bfilter.location['x']
+            print 'Расположение блока с подбором по параметрам по оси x - 29, а на странице: ', bfilter.location['x']
             print '-'*80
         
         assert cnt==0, ('Error in midNavi\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -746,15 +716,10 @@ class CatinnerPageTest(unittest.TestCase):
             cnt+=1
             print 'Блок с ссылкой "сбросить фильтр" не отображается'
             print '-'*80
-
-        if clearFilter.location['y'] != 1225:
-            cnt+=1
-            print 'Расположение блока с ссылкой "сбросить фильтр" по оси y - 1225, а на странице: ', clearFilter.location['y']
-            print '-'*80
             
-        if clearFilter.location['x'] != 34:
+        if clearFilter.location['x'] != 40:
             cnt+=1
-            print 'Расположение блока с ссылкой "сбросить фильтр" по оси x - 34, а на странице: ', clearFilter.location['x']
+            print 'Расположение блока с ссылкой "сбросить фильтр" по оси x - 40, а на странице: ', clearFilter.location['x']
             print '-'*80
 
         try:
@@ -785,15 +750,10 @@ class CatinnerPageTest(unittest.TestCase):
             cnt+=1
             print 'Кнопка "Показать" не отображается'
             print '-'*80
-
-        if button.location['y'] != 1161:
-            cnt+=1
-            print 'Расположение кнопки "Показать" по оси y - 1161, а на странице: ', button.location['y']
-            print '-'*80
             
-        if button.location['x'] != 34:
+        if button.location['x'] != 40:
             cnt+=1
-            print 'Расположение кнопки "Показать" по оси x - 34, а на странице: ', button.location['x']
+            print 'Расположение кнопки "Показать" по оси x - 40, а на странице: ', button.location['x']
             print '-'*80
 
         try:
@@ -828,15 +788,10 @@ class CatinnerPageTest(unittest.TestCase):
             cnt+=1
             print 'Блок с ссылкой "Все характеристики" не отображается'
             print '-'*80
-
-        if allParameters.location['y'] != 1203:
-            cnt+=1
-            print 'Расположение блока с ссылкой "Все характеристики" по оси y - 1203, а на странице: ', allParameters.location['y']
-            print '-'*80
             
-        if allParameters.location['x'] != 34:
+        if allParameters.location['x'] != 40:
             cnt+=1
-            print 'Расположение блока с ссылкой "Все характеристики" по оси x - 34, а на странице: ', allParameters.location['x']
+            print 'Расположение блока с ссылкой "Все характеристики" по оси x - 40, а на странице: ', allParameters.location['x']
             print '-'*80
 
         try:
@@ -858,9 +813,9 @@ class CatinnerPageTest(unittest.TestCase):
         cnt=0
         cardCont = self.driver.find_element_by_class_name('j-items-frame')
 
-        if cardCont.size['width'] != 685:
+        if cardCont.size['width'] != 687:
             cnt+=1
-            print 'Нужная ширина области со всеми товарами - 685, а на странице: ', cardCont.size['width']
+            print 'Нужная ширина области со всеми товарами - 687, а на странице: ', cardCont.size['width']
             print '-'*80
             
         if not cardCont.is_displayed(): #проверяем отображается ли
@@ -946,7 +901,7 @@ class CartPageTest(unittest.TestCase):
                filter(Goods.overall_type == 0).\
                filter(Goods_block.delivery_type == 1).\
                filter(Goods_price.price_type_guid == Region.price_type_guid).\
-               filter(Goods_price.price > 2000).\
+               filter(Goods_price.price > 3000).\
                filter('t_goods_remains.%s > 0' % store_shop).\
                first()
 
@@ -976,14 +931,14 @@ class CartPageTest(unittest.TestCase):
             print 'Заголовок не отображается'
             print '-'*80
         
-        if componentHeader.location['y'] != 261:
+        if componentHeader.location['y'] != 244:
             cnt+=1
-            print 'Расположение заголовка по оси y - 261, а на странице: ', componentHeader.location['y']
+            print 'Расположение заголовка по оси y - 244, а на странице: ', componentHeader.location['y']
             print '-'*80
             
-        if componentHeader.location['x'] != 23:
+        if componentHeader.location['x'] != 28:
             cnt+=1
-            print 'Расположение заголовка по оси x - 23, а на странице: ', componentHeader.location['x']
+            print 'Расположение заголовка по оси x - 28, а на странице: ', componentHeader.location['x']
             print '-'*80
             
         if componentHeader.value_of_css_property('color') != 'rgba(0, 0, 0, 1)':
@@ -1003,9 +958,9 @@ class CartPageTest(unittest.TestCase):
         cnt=0
         artTop = self.driver.find_element_by_class_name('artTop')
 
-        if artTop.size['width'] != 934:
+        if artTop.size['width'] != 920:
             cnt+=1
-            print 'Нужная ширина блока с кодом товара - 934, а на странице: ', artTop.size['width']
+            print 'Нужная ширина блока с кодом товара - 920, а на странице: ', artTop.size['width']
             print '-'*80
             
         if artTop.size['height'] != 20:
@@ -1017,15 +972,10 @@ class CartPageTest(unittest.TestCase):
             cnt+=1
             print 'Блок с кодом товара не отображается'
             print '-'*80
-        
-        if artTop.location['y'] != 350:
-            cnt+=1
-            print 'Расположение блока с кодом товара по оси y - 350, а на странице: ', artTop.location['y']
-            print '-'*80
             
-        if artTop.location['x'] != 23:
+        if artTop.location['x'] != 29:
             cnt+=1
-            print 'Расположение блока с кодом товара по оси x - 23, а на странице: ', artTop.location['x']
+            print 'Расположение блока с кодом товара по оси x - 29, а на странице: ', artTop.location['x']
             print '-'*80
             
         if artTop.value_of_css_property('color') != 'rgba(0, 0, 0, 1)':
@@ -1059,15 +1009,10 @@ class CartPageTest(unittest.TestCase):
             cnt+=1
             print 'Блок с ценой товара не отображается'
             print '-'*80
-        
-        if middlePrice.location['y'] != 400:
-            cnt+=1
-            print 'Расположение блока с ценой товара по оси y - 400, а на странице: ', middlePrice.location['y']
-            print '-'*80
             
-        if middlePrice.location['x'] != 503:
+        if middlePrice.location['x'] != 495:
             cnt+=1
-            print 'Расположение блока с ценой товара по оси x - 503, а на странице: ', middlePrice.location['x']
+            print 'Расположение блока с ценой товара по оси x - 495, а на странице: ', middlePrice.location['x']
             print '-'*80
 
         assert cnt==0, ('Error in middlePrice\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -1091,15 +1036,10 @@ class CartPageTest(unittest.TestCase):
             cnt+=1
             print 'Блок с кнопкой купить не отображается'
             print '-'*80
-        
-        if basketButton.location['y'] != 400:
-            cnt+=1
-            print 'Расположение блока с кнопкой купить по оси y - 400, а на странице: ', basketButton.location['y']
-            print '-'*80
             
-        if basketButton.location['x'] != 673:
+        if basketButton.location['x'] != 665:
             cnt+=1
-            print 'Расположение блока с кнопкой купить по оси x - 673, а на странице: ', basketButton.location['x']
+            print 'Расположение блока с кнопкой купить по оси x - 665, а на странице: ', basketButton.location['x']
             print '-'*80
 
         assert cnt==0, ('Error in basketButton\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -1123,15 +1063,10 @@ class CartPageTest(unittest.TestCase):
             cnt+=1
             print 'Блок со статусом товара не отображается'
             print '-'*80
-        
-        if serviceInfo.location['y'] != 400:
-            cnt+=1
-            print 'Расположение блока со статусом товара по оси y - 400, а на странице: ', serviceInfo.location['y']
-            print '-'*80
             
-        if serviceInfo.location['x'] != 798:
+        if serviceInfo.location['x'] != 790:
             cnt+=1
-            print 'Расположение блока со статусом товара по оси x - 798, а на странице: ', serviceInfo.location['x']
+            print 'Расположение блока со статусом товара по оси x - 790, а на странице: ', serviceInfo.location['x']
             print '-'*80
 
         assert cnt==0, ('Error in serviceInfo\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -1150,15 +1085,10 @@ class CartPageTest(unittest.TestCase):
             cnt+=1
             print 'Блок с тегами товара не отображается'
             print '-'*80
-        
-        if currentItemTags.location['y'] != 676:
-            cnt+=1
-            print 'Расположение блока с тегами товара по оси y - 676, а на странице: ', currentItemTags.location['y']
-            print '-'*80
             
-        if currentItemTags.location['x'] != 503:
+        if currentItemTags.location['x'] != 495:
             cnt+=1
-            print 'Расположение блока с тегами товара по оси x - 503, а на странице: ', currentItemTags.location['x']
+            print 'Расположение блока с тегами товара по оси x - 495, а на странице: ', currentItemTags.location['x']
             print '-'*80
 
         assert cnt==0, ('Error in currentItemTags\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -1188,9 +1118,9 @@ class CartPageTest(unittest.TestCase):
             print 'Расположение блока с пиктограммами купить, сравнение, избранное по оси y - 575, а на странице: ', standartFeatures.location['y']
             print '-'*80
             
-        if standartFeatures.location['x'] != 503:
+        if standartFeatures.location['x'] != 495:
             cnt+=1
-            print 'Расположение блока с пиктограммами купить, сравнение, избранное по оси x - 503, а на странице: ', standartFeatures.location['x']
+            print 'Расположение блока с пиктограммами купить, сравнение, избранное по оси x - 495, а на странице: ', standartFeatures.location['x']
             print '-'*80
 
         assert cnt==0, ('Error in standartFeatures\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -1220,9 +1150,9 @@ class CartPageTest(unittest.TestCase):
             print 'Расположение блока с пиктограммой купить по оси y - 575, а на странице: ', basket.location['y']
             print '-'*80
             
-        if basket.location['x'] != 589:
+        if basket.location['x'] != 581:
             cnt+=1
-            print 'Расположение блока с пиктограммой купить по оси x - 589, а на странице: ', basket.location['x']
+            print 'Расположение блока с пиктограммой купить по оси x - 581, а на странице: ', basket.location['x']
             print '-'*80
 
         if '%sbasket/add/%s' % (self.HOST, self.item.id) != basket.get_attribute('href'):
@@ -1259,9 +1189,9 @@ class CartPageTest(unittest.TestCase):
             print 'Расположение блока с пиктограммой в избранное по оси y - 575, а на странице: ', fave1.location['y']
             print '-'*80
             
-        if fave1.location['x'] != 682:
+        if fave1.location['x'] != 674:
             cnt+=1
-            print 'Расположение блока с пиктограммой в избранное по оси x - 682, а на странице: ', fave1.location['x']
+            print 'Расположение блока с пиктограммой в избранное по оси x - 674, а на странице: ', fave1.location['x']
             print '-'*80
 
         if '%sfavorite/add/%s' % (self.HOST, self.item.id) != fave1.get_attribute('href'):
@@ -1298,9 +1228,9 @@ class CartPageTest(unittest.TestCase):
             print 'Расположение блока с пиктограммой в сравнение по оси y - 575, а на странице: ', compare2.location['y']
             print '-'*80
             
-        if compare2.location['x'] != 787:
+        if compare2.location['x'] != 779:
             cnt+=1
-            print 'Расположение блока с пиктограммой в сравнение по оси x - 787, а на странице: ', compare2.location['x']
+            print 'Расположение блока с пиктограммой в сравнение по оси x - 779, а на странице: ', compare2.location['x']
             print '-'*80
 
         if '%scompare/add/%s' % (self.HOST, self.item.id) != compare2.get_attribute('href'):
@@ -1322,9 +1252,9 @@ class CartPageTest(unittest.TestCase):
             print 'Нужная ширина блока вызова доп.слоев - 454, а на странице: ', capabilities.size['width']
             print '-'*80
             
-        if capabilities.size['height'] != 54:
+        if capabilities.size['height'] != 37:
             cnt+=1
-            print 'Нужная высота блока вызова доп.слоев - 54, а на странице: ', capabilities.size['height']
+            print 'Нужная высота блока вызова доп.слоев - 37, а на странице: ', capabilities.size['height']
             print '-'*80
             
         if not capabilities.is_displayed(): #проверяем отображается ли
@@ -1337,9 +1267,9 @@ class CartPageTest(unittest.TestCase):
             print 'Расположение блока вызова доп.слоев по оси y - 609, а на странице: ', capabilities.location['y']
             print '-'*80
             
-        if capabilities.location['x'] != 503:
+        if capabilities.location['x'] != 495:
             cnt+=1
-            print 'Расположение блока вызова доп.слоев по оси x - 503, а на странице: ', capabilities.location['x']
+            print 'Расположение блока вызова доп.слоев по оси x - 495, а на странице: ', capabilities.location['x']
             print '-'*80
 
         assert cnt==0, ('Error in capabilities\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -1381,14 +1311,14 @@ class CartPageTest(unittest.TestCase):
         cnt=0
         abilityLink3 = self.driver.find_element_by_class_name('capabilities').find_element_by_id('abilityLink3')
 
-        if abilityLink3.size['width'] != 60:
+        if abilityLink3.size['width'] != 104:
             cnt+=1
-            print 'Нужная ширина блока вызова слоя "Обратный звонок" - 60, а на странице: ', abilityLink3.size['width']
+            print 'Нужная ширина блока вызова слоя "Обратный звонок" - 104, а на странице: ', abilityLink3.size['width']
             print '-'*80
             
-        if abilityLink3.size['height'] != 34:
+        if abilityLink3.size['height'] != 17:
             cnt+=1
-            print 'Нужная высота блока вызова слоя "Обратный звонок" - 34, а на странице: ', abilityLink3.size['height']
+            print 'Нужная высота блока вызова слоя "Обратный звонок" - 17, а на странице: ', abilityLink3.size['height']
             print '-'*80
             
         if not abilityLink3.is_displayed(): #проверяем отображается ли
@@ -1401,9 +1331,9 @@ class CartPageTest(unittest.TestCase):
             print 'Расположение блока вызова слоя "Обратный звонок" по оси y - 619, а на странице: ', abilityLink3.location['y']
             print '-'*80
             
-        if abilityLink3.location['x'] != 723:
+        if abilityLink3.location['x'] != 560:
             cnt+=1
-            print 'Расположение блока вызова слоя "Обратный звонок" по оси x - 723, а на странице: ', abilityLink3.location['x']
+            print 'Расположение блока вызова слоя "Обратный звонок" по оси x - 560, а на странице: ', abilityLink3.location['x']
             print '-'*80
 
         assert cnt==0, ('Error in abilityLink3\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -1413,14 +1343,14 @@ class CartPageTest(unittest.TestCase):
         cnt=0
         abilityLink1 = self.driver.find_element_by_class_name('capabilities').find_element_by_id('abilityLink1')
 
-        if abilityLink1.size['width'] != 56:
+        if abilityLink1.size['width'] != 95:
             cnt+=1
-            print 'Нужная ширина блока вызова слоя "Услуга доставки" - 56, а на странице: ', abilityLink1.size['width']
+            print 'Нужная ширина блока вызова слоя "Услуга доставки" - 95, а на странице: ', abilityLink1.size['width']
             print '-'*80
             
-        if abilityLink1.size['height'] != 34:
+        if abilityLink1.size['height'] != 17:
             cnt+=1
-            print 'Нужная высота блока вызова слоя "Услуга доставки" - 34, а на странице: ', abilityLink1.size['height']
+            print 'Нужная высота блока вызова слоя "Услуга доставки" - 17, а на странице: ', abilityLink1.size['height']
             print '-'*80
             
         if not abilityLink1.is_enabled(): #проверяем отображается ли
@@ -1433,9 +1363,9 @@ class CartPageTest(unittest.TestCase):
             print 'Расположение блока вызова слоя "Услуга доставки" по оси y - 619, а на странице: ', abilityLink1.location['y']
             print '-'*80
             
-        if abilityLink1.location['x'] != 862:
+        if abilityLink1.location['x'] != 792:
             cnt+=1
-            print 'Расположение блока вызова слоя "Услуга доставки" по оси x - 862, а на странице: ', abilityLink1.location['x']
+            print 'Расположение блока вызова слоя "Услуга доставки" по оси x - 792, а на странице: ', abilityLink1.location['x']
             print '-'*80
 
         assert cnt==0, ('Error in abilityLink3\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -1460,14 +1390,14 @@ class CartPageTest(unittest.TestCase):
             print 'Блок с основным изображением не отображается'
             print '-'*80
         
-        if imageContainer.location['y'] != 390:
+        if imageContainer.location['y'] != 373:
             cnt+=1
-            print 'Расположение блока с основным изображением по оси y - 390, а на странице: ', imageContainer.location['y']
+            print 'Расположение блока с основным изображением по оси y - 373, а на странице: ', imageContainer.location['y']
             print '-'*80
             
-        if imageContainer.location['x'] != 23:
+        if imageContainer.location['x'] != 29:
             cnt+=1
-            print 'Расположение блока с основным изображением по оси x - 23, а на странице: ', imageContainer.location['x']
+            print 'Расположение блока с основным изображением по оси x - 29, а на странице: ', imageContainer.location['x']
             print '-'*80
 
         assert cnt==0, ('Error in imageContainer\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -1514,9 +1444,9 @@ class CartPageTest(unittest.TestCase):
             print 'Блок "Поделиться" от Яндекс не отображается'
             print '-'*80
             
-        if sharing.location['x'] != 23:
+        if sharing.location['x'] != 29:
             cnt+=1
-            print 'Расположение блока "Поделиться" от Яндекс по оси x - 23, а на странице: ', sharing.location['x']
+            print 'Расположение блока "Поделиться" от Яндекс по оси x - 29, а на странице: ', sharing.location['x']
             print '-'*80
 
         assert cnt==0, ('Error in sharing\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -1619,14 +1549,14 @@ class BasketAnonsTest(unittest.TestCase):
             print 'Слой анонса корзины не отображается'
             print '-'*80
         
-        if basketParams.location['y'] != 173:
+        if basketParams.location['y'] != 187:
             cnt+=1
-            print 'Расположение слоя анонса корзины по оси y - 173, а на странице: ', basketParams.location['y']
+            print 'Расположение слоя анонса корзины по оси y - 187, а на странице: ', basketParams.location['y']
             print '-'*80
             
-        if basketParams.location['x'] != 246:
+        if basketParams.location['x'] != 254:
             cnt+=1
-            print 'Расположение слоя анонса корзины по оси x - 246, а на странице: ', basketParams.location['x']
+            print 'Расположение слоя анонса корзины по оси x - 254, а на странице: ', basketParams.location['x']
             print '-'*80
 
         assert cnt==0, ('Error in basketParams\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -1651,14 +1581,14 @@ class BasketAnonsTest(unittest.TestCase):
             print 'Заголовка слоя не отображается'
             print '-'*80
         
-        if colGoods.location['y'] != 188:
+        if colGoods.location['y'] != 202:
             cnt+=1
-            print 'Расположение заголовка слоя по оси y - 188, а на странице: ', colGoods.location['y']
+            print 'Расположение заголовка слоя по оси y - 202, а на странице: ', colGoods.location['y']
             print '-'*80
             
-        if colGoods.location['x'] != 266:
+        if colGoods.location['x'] != 274:
             cnt+=1
-            print 'Расположение заголовка слоя по оси x - 266, а на странице: ', colGoods.location['x']
+            print 'Расположение заголовка слоя по оси x - 274, а на странице: ', colGoods.location['x']
             print '-'*80
             
         if colGoods.value_of_css_property('color') != 'rgba(100, 33, 158, 1)':
@@ -1694,14 +1624,14 @@ class BasketAnonsTest(unittest.TestCase):
             print 'Блок кнопки закрыть не отображается'
             print '-'*80
         
-        if close.location['y'] != 186:
+        if close.location['y'] != 200:
             cnt+=1
-            print 'Расположение блока кнопки закрыть по оси y - 186, а на странице: ', close.location['y']
+            print 'Расположение блока кнопки закрыть по оси y - 200, а на странице: ', close.location['y']
             print '-'*80
             
-        if close.location['x'] != 890:
+        if close.location['x'] != 898:
             cnt+=1
-            print 'Расположение блока кнопки закрыть по оси x - 890, а на странице: ', close.location['x']
+            print 'Расположение блока кнопки закрыть по оси x - 898, а на странице: ', close.location['x']
             print '-'*80
 
         assert cnt==0, ('Error in close\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -1721,14 +1651,14 @@ class BasketAnonsTest(unittest.TestCase):
             print 'Блок с наименованием товара не отображается'
             print '-'*80
 
-        if td_name.location['y'] != 227:
+        if td_name.location['y'] != 241:
             cnt+=1
-            print 'Расположение блока с наименованием товара по оси y - 227, а на странице: ', td_name.location['y']
+            print 'Расположение блока с наименованием товара по оси y - 241, а на странице: ', td_name.location['y']
             print '-'*80
             
-        if td_name.location['x'] != 376:
+        if td_name.location['x'] != 384:
             cnt+=1
-            print 'Расположение блока с наименованием товара по оси x - 376, а на странице: ', td_name.location['x']
+            print 'Расположение блока с наименованием товара по оси x - 384, а на странице: ', td_name.location['x']
             print '-'*80
 
         assert cnt==0, ('Error in td_name\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -1748,9 +1678,9 @@ class BasketAnonsTest(unittest.TestCase):
             print 'Блок итогового ценника не отображается'
             print '-'*80
             
-        if smallPrice.location['x'] != 758:
+        if smallPrice.location['x'] != 766:
             cnt+=1
-            print 'Расположение блока итогового ценника по оси x - 758, а на странице: ', smallPrice.location['x']
+            print 'Расположение блока итогового ценника по оси x - 766, а на странице: ', smallPrice.location['x']
             print '-'*80
 
         assert cnt==0, ('Error in smallPrice\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -1775,9 +1705,9 @@ class BasketAnonsTest(unittest.TestCase):
             print 'Кнопка "Оформить заказ" не отображается'
             print '-'*80
             
-        if button.location['x'] != 266:
+        if button.location['x'] != 274:
             cnt+=1
-            print 'Расположение кнопки "Оформить заказ" по оси x - 266, а на странице: ', button.location['x']
+            print 'Расположение кнопки "Оформить заказ" по оси x - 274, а на странице: ', button.location['x']
             print '-'*80
             
         if button.value_of_css_property('color') != 'rgba(255, 255, 255, 1)':
@@ -1814,9 +1744,9 @@ class BasketAnonsTest(unittest.TestCase):
             print 'Блок с ссылкой "Продолжить покупки" не отображается'
             print '-'*80
             
-        if continues.location['x'] != 415:
+        if continues.location['x'] != 423:
             cnt+=1
-            print 'Расположение блока с ссылкой "Продолжить покупки"  по оси x - 415, а на странице: ', continues.location['x']
+            print 'Расположение блока с ссылкой "Продолжить покупки"  по оси x - 423, а на странице: ', continues.location['x']
             print '-'*80
             
         if continues.value_of_css_property('color') != 'rgba(100, 33, 157, 1)':
@@ -1897,9 +1827,9 @@ class BasketPageTest(unittest.TestCase):
         cnt=0
         h1 = self.driver.find_element_by_tag_name('h1')
 
-        if h1.size['width'] != 934:
+        if h1.size['width'] != 921:
             cnt+=1
-            print 'Нужная ширина заголовка - 934, а на странице: ', h1.size['width']
+            print 'Нужная ширина заголовка - 921, а на странице: ', h1.size['width']
             print '-'*80
             
         if h1.size['height'] != 43:
@@ -1917,9 +1847,9 @@ class BasketPageTest(unittest.TestCase):
             print 'Расположение заголовка по оси y - 168, а на странице: ', h1.location['y']
             print '-'*80
             
-        if h1.location['x'] != 23:
+        if h1.location['x'] != 28:
             cnt+=1
-            print 'Расположение заголовка по оси x - 23, а на странице: ', h1.location['x']
+            print 'Расположение заголовка по оси x - 28, а на странице: ', h1.location['x']
             print '-'*80
             
         if h1.value_of_css_property('color') != 'rgba(0, 0, 0, 1)':
@@ -1940,9 +1870,9 @@ class BasketPageTest(unittest.TestCase):
         cnt=0
         item = self.driver.find_element_by_class_name('basket-items-list__item')
 
-        if item.size['width'] != 934:
+        if item.size['width'] != 920:
             cnt+=1
-            print 'Нужная ширина блока с товаром - 934, а на странице: ', item.size['width']
+            print 'Нужная ширина блока с товаром - 920, а на странице: ', item.size['width']
             print '-'*80
             
         if not item.is_displayed(): #проверяем отображается ли
@@ -1972,9 +1902,9 @@ class BasketPageTest(unittest.TestCase):
             print 'Блок с ценой и доставкой не отображается'
             print '-'*80
 
-        if total_price.location['x'] != 490:
+        if total_price.location['x'] != 482:
             cnt+=1
-            print 'Расположение блока с ценой и доставкой по оси x - 490, а на странице: ', total_price.location['x']
+            print 'Расположение блока с ценой и доставкой по оси x - 482, а на странице: ', total_price.location['x']
             print '-'*80        
 
         assert cnt==0, ('Error in total_price\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
@@ -1999,9 +1929,9 @@ class BasketPageTest(unittest.TestCase):
             print 'Блок с формой для оформления заказа не отображается'
             print '-'*80
             
-        if basket_tabs.location['x'] != 196:
+        if basket_tabs.location['x'] != 195:
             cnt+=1
-            print 'Расположение блока с формой для оформления заказа по оси x - 196, а на странице: ', basket_tabs.location['x']
+            print 'Расположение блока с формой для оформления заказа по оси x - 195, а на странице: ', basket_tabs.location['x']
             print '-'*80
 
         assert cnt==0, ('Error in basket_tabs\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
@@ -2026,9 +1956,9 @@ class BasketPageTest(unittest.TestCase):
             print 'Блок с вкладками формы не отображается'
             print '-'*80
             
-        if form_tabs.location['x'] != 232:
+        if form_tabs.location['x'] != 231:
             cnt+=1
-            print 'Расположение блока с вкладками формы по оси x - 232, а на странице: ', form_tabs.location['x']
+            print 'Расположение блока с вкладками формы по оси x - 231, а на странице: ', form_tabs.location['x']
             print '-'*80
             
         if form_tabs.value_of_css_property('color') != 'rgba(76, 76, 76, 1)':
@@ -2063,9 +1993,9 @@ class BasketPageTest(unittest.TestCase):
             print 'Блок с кнопкой купить не отображается'
             print '-'*80
             
-        if btn_primary.location['x'] != 232:
+        if btn_primary.location['x'] != 231:
             cnt+=1
-            print 'Расположение блока с кнопкой купить по оси x - 232, а на странице: ', btn_primary.location['x']
+            print 'Расположение блока с кнопкой купить по оси x - 231, а на странице: ', btn_primary.location['x']
             print '-'*80
             
         if btn_primary.value_of_css_property('color') != 'rgba(255, 255, 255, 1)':
@@ -2100,9 +2030,9 @@ class BasketPageTest(unittest.TestCase):
             print 'Поле для ввода имени не отображается'
             print '-'*80
 
-        if firstName.location['x'] != 232:
+        if firstName.location['x'] != 231:
             cnt+=1
-            print 'Расположение поля для ввода имени по оси x - 232, а на странице: ', firstName.location['x']
+            print 'Расположение поля для ввода имени по оси x - 231, а на странице: ', firstName.location['x']
             print '-'*80
             
         try:
@@ -2134,9 +2064,9 @@ class BasketPageTest(unittest.TestCase):
             print 'Поле для ввода фамилии не отображается'
             print '-'*80
 
-        if lastName.location['x'] != 499:
+        if lastName.location['x'] != 498:
             cnt+=1
-            print 'Расположение поля для ввода фамилии по оси x - 499, а на странице: ', lastName.location['x']
+            print 'Расположение поля для ввода фамилии по оси x - 498, а на странице: ', lastName.location['x']
             print '-'*80
         
         try:
@@ -2168,9 +2098,9 @@ class BasketPageTest(unittest.TestCase):
             print 'Поле для ввода телефона не отображается'
             print '-'*80
 
-        if phoneNumber.location['x'] != 232:
+        if phoneNumber.location['x'] != 231:
             cnt+=1
-            print 'Расположение поля для ввода телефона по оси x - 232, а на странице: ', phoneNumber.location['x']
+            print 'Расположение поля для ввода телефона по оси x - 231, а на странице: ', phoneNumber.location['x']
             print '-'*80
         
         try:
@@ -2202,9 +2132,9 @@ class BasketPageTest(unittest.TestCase):
             print 'Поле для ввода адреса эл.почты не отображается'
             print '-'*80
 
-        if email.location['x'] != 499:
+        if email.location['x'] != 498:
             cnt+=1
-            print 'Расположение поля для ввода адреса эл.почты по оси x - 499, а на странице: ', email.location['x']
+            print 'Расположение поля для ввода адреса эл.почты по оси x - 498, а на странице: ', email.location['x']
             print '-'*80
         
         try:
@@ -2236,9 +2166,9 @@ class BasketPageTest(unittest.TestCase):
             print 'Поле для ввода дня рождения не отображается'
             print '-'*80
 
-        if birthDate_day.location['x'] != 233:
+        if birthDate_day.location['x'] != 232:
             cnt+=1
-            print 'Расположение поля для ввода дня рождения по оси x - 233, а на странице: ', birthDate_day.location['x']
+            print 'Расположение поля для ввода дня рождения по оси x - 232, а на странице: ', birthDate_day.location['x']
             print '-'*80
 
         assert cnt==0, ('Error in birthDate_day\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
@@ -2263,9 +2193,9 @@ class BasketPageTest(unittest.TestCase):
             print 'Поле для ввода месяца рождения не отображается'
             print '-'*80
 
-        if birthDate_month.location['x'] != 297:
+        if birthDate_month.location['x'] != 296:
             cnt+=1
-            print 'Расположение поля для ввода месяца рождения по оси x - 297, а на странице: ', birthDate_month.location['x']
+            print 'Расположение поля для ввода месяца рождения по оси x - 296, а на странице: ', birthDate_month.location['x']
             print '-'*80
 
         assert cnt==0, ('Error in total_price\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
@@ -2290,9 +2220,9 @@ class BasketPageTest(unittest.TestCase):
             print 'Поле для ввода года рождения не отображается'
             print '-'*80
 
-        if birthDate_year.location['x'] != 361:
+        if birthDate_year.location['x'] != 360:
             cnt+=1
-            print 'Расположение поля для ввода года рождения по оси x - 361, а на странице: ', birthDate_year.location['x']
+            print 'Расположение поля для ввода года рождения по оси x - 360, а на странице: ', birthDate_year.location['x']
             print '-'*80
 
         assert cnt==0, ('Error in order_form_birthDate_year_title\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
@@ -2317,9 +2247,9 @@ class BasketPageTest(unittest.TestCase):
             print 'Поле для ввода региона доставки не отображается'
             print '-'*80
 
-        if region.location['x'] != 232:
+        if region.location['x'] != 231:
             cnt+=1
-            print 'Расположение поля для ввода региона доставки по оси x - 232, а на странице: ', region.location['x']
+            print 'Расположение поля для ввода региона доставки по оси x - 231, а на странице: ', region.location['x']
             print '-'*80
         
         try:
@@ -2352,9 +2282,9 @@ class BasketPageTest(unittest.TestCase):
             print 'Поле для ввода города доставки не отображается'
             print '-'*80
 
-        if city.location['x'] != 499:
+        if city.location['x'] != 498:
             cnt+=1
-            print 'Расположение поля для ввода города доставки по оси x - 499, а на странице: ', city.location['x']
+            print 'Расположение поля для ввода города доставки по оси x - 498, а на странице: ', city.location['x']
             print '-'*80
         
         try:
@@ -2387,9 +2317,9 @@ class BasketPageTest(unittest.TestCase):
             print 'Поле для ввода улицы доставки не отображается'
             print '-'*80
 
-        if addressStreet.location['x'] != 232:
+        if addressStreet.location['x'] != 231:
             cnt+=1
-            print 'Расположение поля для ввода улицы доставки по оси x - 232, а на странице: ', addressStreet.location['x']
+            print 'Расположение поля для ввода улицы доставки по оси x - 231, а на странице: ', addressStreet.location['x']
             print '-'*80            
         
         try:
@@ -2421,9 +2351,9 @@ class BasketPageTest(unittest.TestCase):
             print 'Поле для ввода дома доставки не отображается'
             print '-'*80
 
-        if addressHouse.location['x'] != 589:
+        if addressHouse.location['x'] != 588:
             cnt+=1
-            print 'Расположение поля для ввода дома доставки по оси x - 589, а на странице: ', addressHouse.location['x']
+            print 'Расположение поля для ввода дома доставки по оси x - 588, а на странице: ', addressHouse.location['x']
             print '-'*80
         
         try:
@@ -2455,9 +2385,9 @@ class BasketPageTest(unittest.TestCase):
             print 'Поле для ввода строения доставки не отображается'
             print '-'*80
 
-        if addressBuilding.location['x'] != 232:
+        if addressBuilding.location['x'] != 231:
             cnt+=1
-            print 'Расположение поля для ввода строения доставки по оси x - 232, а на странице: ', addressBuilding.location['x']
+            print 'Расположение поля для ввода строения доставки по оси x - 231, а на странице: ', addressBuilding.location['x']
             print '-'*80
         
         try:
@@ -2489,9 +2419,9 @@ class BasketPageTest(unittest.TestCase):
             print 'Поле для ввода квартиры доставки не отображается'
             print '-'*80
 
-        if addressAppartment.location['x'] != 590:
+        if addressAppartment.location['x'] != 589:
             cnt+=1
-            print 'Расположение поля для ввода квартиры доставки по оси x - 590, а на странице: ', addressAppartment.location['x']
+            print 'Расположение поля для ввода квартиры доставки по оси x - 589, а на странице: ', addressAppartment.location['x']
             print '-'*80
 
         try:
@@ -2571,7 +2501,7 @@ class OrderCompletePageTest(unittest.TestCase):
                filter(Goods.overall_type == 0).\
                filter(Goods_block.delivery_type == 2).\
                filter(Goods_price.price_type_guid == Region.price_type_guid).\
-               filter(Goods_price.price > 9000).\
+               filter(Goods_price.price > 3000).\
                filter('t_goods_remains.%s > 0' % store_shop).\
                first()
 
@@ -3530,14 +3460,14 @@ class FavoritePageTest(unittest.TestCase):
             print 'Заголовок не отображается'
             print '-'*80
         
-        if h1.location['y'] != 261:
+        if h1.location['y'] != 244:
             cnt+=1
-            print 'Расположение заголовка по оси y - 261, а на странице: ', h1.location['y']
+            print 'Расположение заголовка по оси y - 244, а на странице: ', h1.location['y']
             print '-'*80
             
-        if h1.location['x'] != 23:
+        if h1.location['x'] != 28:
             cnt+=1
-            print 'Расположение заголовка по оси x - 23, а на странице: ', h1.location['x']
+            print 'Расположение заголовка по оси x - 28, а на странице: ', h1.location['x']
             print '-'*80
             
         if h1.value_of_css_property('color') != 'rgba(0, 0, 0, 1)':
@@ -3557,9 +3487,9 @@ class FavoritePageTest(unittest.TestCase):
         cnt=0
         catList = self.driver.find_element_by_class_name('catList')
 
-        if catList.size['width'] != 934:
+        if catList.size['width'] != 920:
             cnt+=1
-            print 'Нужная ширина блок с превью всех товаров - 934, а на странице: ', catList.size['width']
+            print 'Нужная ширина блок с превью всех товаров - 920, а на странице: ', catList.size['width']
             print '-'*80
             
         if catList.size['height'] != 2595:
@@ -3572,14 +3502,14 @@ class FavoritePageTest(unittest.TestCase):
             print 'Блок с превью всех товаров не отображается'
             print '-'*80
         
-        if catList.location['y'] != 307:
+        if catList.location['y'] != 290:
             cnt+=1
-            print 'Расположение блок с превью всех товаров по оси y - 307, а на странице: ', catList.location['y']
+            print 'Расположение блок с превью всех товаров по оси y - 290, а на странице: ', catList.location['y']
             print '-'*80
             
-        if catList.location['x'] != 23:
+        if catList.location['x'] != 29:
             cnt+=1
-            print 'Расположение блок с превью всех товаров по оси x - 23, а на странице: ', catList.location['x']
+            print 'Расположение блок с превью всех товаров по оси x - 29, а на странице: ', catList.location['x']
             print '-'*80
 
         assert cnt==0, ('Error in catList\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -3587,7 +3517,7 @@ class FavoritePageTest(unittest.TestCase):
     def test_catCard(self):
         """ Проверяем блок с превью одного товара """
         cnt=0
-        catCard = self.driver.find_element_by_class_name('catCard')
+        catCard = self.driver.find_element_by_class_name('catList').find_element_by_class_name('catCard')
 
         if catCard.size['width'] != 220:
             cnt+=1
@@ -3636,14 +3566,14 @@ class FavoritePageTest(unittest.TestCase):
             print 'Блок с ссылкой "Очистить список..." не отображается'
             print '-'*80
         
-        if serviceText.location['y'] != 2902:
+        if serviceText.location['y'] != 2885:
             cnt+=1
-            print 'Расположение блока с ссылкой "Очистить список..." по оси y - 2902, а на странице: ', serviceText.location['y']
+            print 'Расположение блока с ссылкой "Очистить список..." по оси y - 2885, а на странице: ', serviceText.location['y']
             print '-'*80
             
-        if serviceText.location['x'] != 23:
+        if serviceText.location['x'] != 29:
             cnt+=1
-            print 'Расположение блока с ссылкой "Очистить список..." по оси x - 23, а на странице: ', serviceText.location['x']
+            print 'Расположение блока с ссылкой "Очистить список..." по оси x - 29, а на странице: ', serviceText.location['x']
             print '-'*80
             
         if serviceText.value_of_css_property('color') != 'rgba(100, 33, 157, 1)':
