@@ -2768,7 +2768,7 @@ class BasketPageTest(unittest.TestCase):
                filter(Goods.overall_type == 0).\
                filter(Goods_block.delivery_type == 2).\
                filter(Goods_price.price_type_guid == Region.price_type_guid).\
-               filter(Goods_price.price > 9000).\
+               filter(Goods_price.price > 5000).\
                filter('t_goods_remains.%s > 0' % store_shop).\
                first()
 
