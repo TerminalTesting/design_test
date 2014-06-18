@@ -2769,7 +2769,7 @@ class BasketPageTest(unittest.TestCase):
                filter(Goods_block.delivery_type == 2).\
                filter(Goods_price.price_type_guid == Region.price_type_guid).\
                filter(Goods_price.price > 5000).\
-               filter('t_goods_remains.%s > 0' % store_shop).\
+               filter('t_goods_remains.%s > 1' % store_shop).\
                first()
 
     HOST = 'http://%s.%s/' % (os.getenv('CITY'), os.getenv('DOMAIN'))
