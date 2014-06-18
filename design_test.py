@@ -8,6 +8,982 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from models import *
 
+class MainPageTest(unittest.TestCase):
+    
+    HOST = 'http://%s.%s/' % (os.getenv('CITY'), os.getenv('DOMAIN'))
+    driver = webdriver.Firefox()
+    driver.get(HOST)
+    
+
+    def tearDown(self):
+        """Удаление переменных для всех тестов. Остановка приложения"""
+    
+        if sys.exc_info()[0]:   
+            print sys.exc_info()[0]
+
+    def test_top_menu(self):
+        """ Проверка ТОП-меню """
+        cnt=0
+        
+        top = self.driver.find_element_by_class_name('headerNavContainer')
+        
+        if top.size['width'] != 974:
+            cnt+=1
+            print 'Нужная ширина ТОП-меню - 974, а на странице: ', top.size['width']
+            print '-'*80
+            
+        if top.size['height'] != 134:
+            cnt+=1
+            print 'Нужная высота ТОП-меню - 134, а на странице: ', top.size['height']
+            print '-'*80
+            
+        if not top.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'ТОП-меню не отображается'
+            print '-'*80
+        
+        if top.location['y'] != -300:
+            cnt+=1
+            print 'Расположение ТОП-меню по оси y - -300, а на странице: ', top.location['y']
+            print '-'*80
+            
+        if top.location['x'] != 3:
+            cnt+=1
+            print 'Расположение ТОП-меню по оси x - 3, а на странице: ', top.location['x']
+            print '-'*80
+
+        assert cnt==0, ('Error in top_menu\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_logo(self):
+        """ Проверка блока с логотипом """
+        cnt=0
+        
+        logo = self.driver.find_element_by_class_name('logo')
+        
+        if logo.find_element_by_tag_name('div').size['width'] != 160:
+            cnt+=1
+            print 'Нужная ширина блока с логотипом - 160, а на странице: ', logo.find_element_by_tag_name('div').size['width']
+            print '-'*80
+            
+        if logo.find_element_by_tag_name('div').size['height'] != 119:
+            cnt+=1
+            print 'Нужная высота блока с логотипом - 119, а на странице: ', logo.find_element_by_tag_name('div').size['height']
+            print '-'*80
+            
+        if not logo.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с логотипом не отображается'
+            print '-'*80
+        
+        if logo.find_element_by_tag_name('div').location['y'] != 8:
+            cnt+=1
+            print 'Расположение блока с логотипом по оси y - 8, а на странице: ', logo.find_element_by_tag_name('div').location['y']
+            print '-'*80
+            
+        if logo.find_element_by_tag_name('div').location['x'] != 3:
+            cnt+=1
+            print 'Расположение блока с логотипом по оси x - 3, а на странице: ', logo.find_element_by_tag_name('div').location['x']
+            print '-'*80
+            
+        if logo.find_element_by_tag_name('a').get_attribute('href') != self.HOST:
+            cnt+=1
+            print 'Некорректная ссылка на логотипе: '
+            print 'На сайте: ', logo.find_element_by_tag_name('a').get_attribute('href')
+            print 'Надо: ', self.HOST
+            print '-'*80
+
+        assert cnt==0, ('Error in logo\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        
+    def test_promo(self):
+        """ Проверка промоблока """
+        cnt=0
+        
+        promo = self.driver.find_element_by_class_name('promoBox')
+
+        if promo.size['width'] != 900:
+            cnt+=1
+            print 'Нужная ширина промоблока - 900, а на странице: ', promo.size['width']
+            print '-'*80
+            
+        if promo.size['height'] != 304:
+            cnt+=1
+            print 'Нужная высота промоблока - 304, а на странице: ', promo.size['height']
+            print '-'*80
+            
+        if not promo.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Промоблок не отображается'
+            print '-'*80
+        
+        if promo.location['y'] != 221:
+            cnt+=1
+            print 'Расположение промоблока по оси y - 221, а на странице: ', promo.location['y']
+            print '-'*80
+            
+        if promo.location['x'] != 40:
+            cnt+=1
+            print 'Расположение промоблока по оси x - 40, а на странице: ', promo.location['x']
+            print '-'*80
+
+        assert cnt==0, ('Error in logo\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        
+    def test_seg_nav(self):
+        """ Проверка блока с отточиями-листалками баннера """
+        cnt=0
+        
+        seg = self.driver.find_element_by_class_name('segNavControl')
+
+        if seg.size['width'] != 195:
+            cnt+=1
+            print 'Нужная ширина промоблока - 195, а на странице: ', seg.size['width']
+            print '-'*80
+            
+        if seg.size['height'] != 17:
+            cnt+=1
+            print 'Нужная высота промоблока - 17, а на странице: ', seg.size['height']
+            print '-'*80
+            
+        if not seg.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Промоблок не отображается'
+            print '-'*80
+        
+        if seg.location['y'] != 551:
+            cnt+=1
+            print 'Расположение промоблока по оси y - 551, а на странице: ', seg.location['y']
+            print '-'*80
+            
+        if seg.location['x'] != 393:
+            cnt+=1
+            print 'Расположение промоблока по оси x - 393, а на странице: ', top.location['x']
+            print '-'*80
+
+        assert cnt==0, ('Error in logo\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        
+    def test_container(self):
+        cnt=0
+        
+        cont = self.driver.find_element_by_id('container')
+        """ Проверка блока с контентом """
+
+        if cont.size['width'] != 974:
+            cnt+=1
+            print 'Нужная ширина блока с контентом - 974, а на странице: ', cont.size['width']
+            print '-'*80
+            
+        if cont.size['height'] != 1628:
+            cnt+=1
+            print 'Нужная высота блока с контентом - 1628, а на странице: ', cont.size['height']
+            print '-'*80
+            
+        if not cont.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с контентом не отображается'
+            print '-'*80
+
+
+        assert cnt==0, ('Error in logo\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        
+    def test_sliding_panel(self):
+        """ Проверка блока с панелью прокрутки """
+        cnt=0
+        
+        self.driver.execute_script('scroll(0, 300);')
+        sliding = self.driver.find_element_by_class_name('slidingPanel')
+        
+        if sliding.size['width'] != 970:
+            cnt+=1
+            print 'Нужная ширина блока с панелью прокрутки - 970, а на странице: ', sliding.size['width']
+            print '-'*80
+            
+        if sliding.size['height'] != 53:
+            cnt+=1
+            print 'Нужная высота блока с панелью прокрутки - 53, а на странице: ', sliding.size['height']
+            print '-'*80
+            
+        if not sliding.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с панелью прокрутки не отображается'
+            print '-'*80
+        
+        if sliding.location['y'] != 0:
+            cnt+=1
+            print 'Расположение блока с панелью прокрутки по оси y - 0, а на странице: ', sliding.location['y']
+            print '-'*80
+            
+        if sliding.location['x'] != 6:
+            cnt+=1
+            print 'Расположение блока с панелью прокрутки по оси x - 6, а на странице: ', sliding.location['x']
+
+        assert cnt==0, ('Error in logo\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_why_cheaper_icon(self):
+        """ Проверка блока с иконкой "Почему дешевле?" """
+        cnt=0
+        cheaper = self.driver.find_element_by_class_name('not')
+
+        if cheaper.size['width'] != 91:
+            cnt+=1
+            print 'Нужная ширина блока с иконкой "Почему дешевле?" - 91, а на странице: ', cheaper.size['width']
+            print '-'*80
+            
+        if cheaper.size['height'] != 61:
+            cnt+=1
+            print 'Нужная высота блока с иконкой "Почему дешевле?" - 61, а на странице: ', cheaper.size['height']
+            print '-'*80
+            
+        if not cheaper.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с иконкой "Почему дешевле?" не отображается'
+            print '-'*80
+        
+        if cheaper.location['y'] != 0:
+            cnt+=1
+            print 'Расположение блока с иконкой "Почему дешевле?" по оси y - 0, а на странице: ', cheaper.location['y']
+            print '-'*80
+            
+        if cheaper.location['x'] != 13:
+            cnt+=1
+            print 'Расположение блока с иконкой "Почему дешевле?" по оси x - 13, а на странице: ', cheaper.location['x']
+
+        assert cnt==0, ('Error in why_cheaper_icon\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        
+    def test_why_cheaper_dia(self):
+        cnt=0
+        self.driver.find_element_by_class_name('not').click()
+        cheaper = self.driver.find_element_by_class_name('whyCheaperDialog')
+
+        if cheaper.size['width'] != 960:
+            cnt+=1
+            print 'Нужная ширина блока с иконкой "Почему дешевле?" - 960, а на странице: ', cheaper.size['width']
+            print '-'*80
+            
+        if cheaper.size['height'] != 150:
+            cnt+=1
+            print 'Нужная высота блока с иконкой "Почему дешевле?" - 150, а на странице: ', cheaper.size['height']
+            print '-'*80
+            
+        if not cheaper.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с иконкой "Почему дешевле?" не отображается'
+            print '-'*80
+        
+        if cheaper.location['y'] != 48:
+            cnt+=1
+            print 'Расположение блока с иконкой "Почему дешевле?" по оси y - 48, а на странице: ', cheaper.location['y']
+            print '-'*80
+            
+        if cheaper.location['x'] != 19:
+            cnt+=1
+            print 'Расположение блока с иконкой "Почему дешевле?" по оси x - 19, а на странице: ', cheaper.location['x']
+            print '-'*80
+
+        title = cheaper.find_element_by_class_name('ui-dialog-title')
+        if title.size['width'] != 381:
+            cnt+=1
+            print 'Нужная ширина заголовка слоя "Почему дешевле?" - 381, а на странице: ', title.size['width']
+            print '-'*80
+            
+        if title.size['height'] != 28:
+            cnt+=1
+            print 'Нужная высота заголовка слоя "Почему дешевле?" - 28, а на странице: ', title.size['height']
+            print '-'*80
+            
+        if not title.is_displayed(): #проверяем отображается ли заголовок слоя "Почему дешевле?"
+            cnt+=1
+            print 'Заголовок слоя "Почему дешевле?" не отображается'
+            print '-'*80
+        
+        if title.location['y'] != 63:
+            cnt+=1
+            print 'Расположение заголовка слоя "Почему дешевле?" по оси y - 63, а на странице: ', title.location['y']
+            print '-'*80
+            
+        if title.location['x'] != 36:
+            cnt+=1
+            print 'Расположение заголовка слоя "Почему дешевле?" по оси x - 36, а на странице: ', title.location['x']
+            print '-'*80
+            
+        if title.value_of_css_property('color') != 'rgba(100, 33, 158, 1)':
+            cnt+=1
+            print 'Цвет заголовка слоя "Почему дешевле?" не соответствует заданному( rgba(100, 33, 158, 1) ). На странице: ', title.value_of_css_property('color')
+            print '-'*80
+            
+        if title.value_of_css_property('font-size') != '24px':
+            cnt+=1
+            print 'Размер шрифта заголовка слоя "Почему дешевле?" не соответствует заданному( 24px ). На странице: ', title.value_of_css_property('font-size')
+            print '-'*80
+
+        close = cheaper.find_element_by_class_name('ui-icon-closethick')
+        if close.size['width'] != 27:
+            cnt+=1
+            print 'Нужная ширина кнопки закрытия слоя "Почему дешевле?" - 27, а на странице: ', close.size['width']
+            print '-'*80
+            
+        if close.size['height'] != 26:
+            cnt+=1
+            print 'Нужная высота кнопки закрытия слоя "Почему дешевле?" - 26, а на странице: ', close.size['height']
+            print '-'*80
+            
+        if not close.is_enabled(): #проверяем отображается ли заголовок слоя "Почему дешевле?"
+            cnt+=1
+            print 'Кнопка закрытия "Почему дешевле?" не отображается'
+            print '-'*80
+        
+        if close.location['y'] != 63:
+            cnt+=1
+            print 'Расположение кнопки закрытия слоя "Почему дешевле?" по оси y - 63, а на странице: ', close.location['y']
+            print '-'*80
+            
+        if close.location['x'] != 937:
+            cnt+=1
+            print 'Расположение кнопки закрытия слоя "Почему дешевле?" по оси x - 937, а на странице: ', close.location['x']
+            print '-'*80
+        
+        assert cnt==0, ('Error in why_cheaper_dia\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_region_select(self):
+        """ Проверка блока с выбором региона """
+        cnt=0
+        region = self.driver.find_element_by_class_name('telDropList')
+
+        if region.size['width'] != 210:
+            cnt+=1
+            print 'Нужная ширина блока с выбором региона - 210, а на странице: ', region.size['width']
+            print '-'*80
+            
+        if region.size['height'] != 50:
+            cnt+=1
+            print 'Нужная высота блока с выбором региона - 50, а на странице: ', region.size['height']
+            print '-'*80
+            
+        if not region.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с выбором региона не отображается'
+            print '-'*80
+        
+        if region.location['y'] != 134:
+            cnt+=1
+            print 'Расположение блока с выбором региона по оси y - 134, а на странице: ', region.location['y']
+            print '-'*80
+            
+        if region.location['x'] != 103:
+            cnt+=1
+            print 'Расположение блока с выбором региона по оси x - 103, а на странице: ', region.location['x']
+
+        assert cnt==0, ('Error in region_select\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        
+    def test_mags_page(self):
+        """ Проверка блока со ссылкой на магазины """
+        cnt=0
+        region = self.driver.find_element_by_class_name('magsList')
+
+        if region.size['width'] != 82:
+            cnt+=1
+            print 'Нужная ширина блока со ссылкой на магазины - 82, а на странице: ', region.size['width']
+            print '-'*80
+            
+        if region.size['height'] != 50:
+            cnt+=1
+            print 'Нужная высота блока со ссылкой на магазины - 50, а на странице: ', region.size['height']
+            print '-'*80
+            
+        if not region.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок со ссылкой на магазины региона не отображается'
+            print '-'*80
+        
+        if region.location['y'] != 134:
+            cnt+=1
+            print 'Расположение блока со ссылкой на магазины по оси y - 134, а на странице: ', region.location['y']
+            print '-'*80
+            
+        if region.location['x'] != 316:
+            cnt+=1
+            print 'Расположение блока со ссылкой на магазины по оси x - 316, а на странице: ', region.location['x']
+            print '-'*80
+        
+        if region.find_element_by_tag_name('a').get_attribute('href') != '%sour-contacts/' % self.HOST:
+            cnt+=1
+            print 'Некорректная ссылка на магазины'
+            print 'Надо: ', '%sour-contacts/' % self.HOST
+            print 'На сайте: ', region.find_element_by_tag_name('a').get_attribute('href')
+            print '-'*80
+                
+        assert cnt==0, ('Error in mags_page\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_search_block(self):
+        """ Проверка блока с поиском """
+        cnt=0
+        search = self.driver.find_element_by_class_name('search')
+
+        if search.size['width'] != 288:
+            cnt+=1
+            print 'Нужная ширина блока с поиском - 288, а на странице: ', search.size['width']
+            print '-'*80
+            
+        if search.size['height'] != 50:
+            cnt+=1
+            print 'Нужная высота блока с поиском - 50, а на странице: ', search.size['height']
+            print '-'*80
+            
+        if not search.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с поиском не отображается'
+            print '-'*80
+        
+        if search.location['y'] != 134:
+            cnt+=1
+            print 'Расположение блока с поиском по оси y - 134, а на странице: ', search.location['y']
+            print '-'*80
+            
+        if search.location['x'] != 401:
+            cnt+=1
+            print 'Расположение блока с поиском по оси x - 401, а на странице: ', search.location['x']
+            print '-'*80
+                
+        assert cnt==0, ('Error in search_block\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_profile_block(self):
+        """ Проверка блока "Войти" """
+        cnt=0
+        profile = self.driver.find_element_by_class_name('profile')
+
+        if profile.size['width'] != 109:
+            cnt+=1
+            print 'Нужная ширина блока "Войти" - 109, а на странице: ', profile.size['width']
+            print '-'*80
+            
+        if profile.size['height'] != 50:
+            cnt+=1
+            print 'Нужная высота блока "Войти" - 50, а на странице: ', profile.size['height']
+            print '-'*80
+            
+        if not profile.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок "Войти" не отображается'
+            print '-'*80
+        
+        if profile.location['y'] != 134:
+            cnt+=1
+            print 'Расположение блока "Войти" по оси y - 134, а на странице: ', profile.location['y']
+            print '-'*80
+            
+        if profile.location['x'] != 692:
+            cnt+=1
+            print 'Расположение блока "Войти" по оси x - 692, а на странице: ', profile.location['x']
+            print '-'*80
+        
+        if profile.find_element_by_partial_link_text('Войти').get_attribute('href') != '%slogin/' % self.HOST:
+            cnt+=1
+            print 'Некорректная ссылка блока "Войти" '
+            print 'Надо: ', '%slogin/' % self.HOST
+            print 'На сайте: ', profile.find_element_by_partial_link_text('Войти').get_attribute('href')
+            print '-'*80
+    
+        assert cnt==0, ('Error in profile_block\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_basket_block(self):
+        """ Проверка блока "Корзина" """
+        cnt=0
+        basket = self.driver.find_element_by_class_name('basket')
+
+        if basket.size['width'] != 128:
+            cnt+=1
+            print 'Нужная ширина блока "Корзина" - 128, а на странице: ', basket.size['width']
+            print '-'*80
+            
+        if basket.size['height'] != 50:
+            cnt+=1
+            print 'Нужная высота блока "Корзина" - 50, а на странице: ', basket.size['height']
+            print '-'*80
+            
+        if basket.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок "Корзина" не отображается'
+            print '-'*80
+        
+        if basket.location['y'] != 134:
+            cnt+=1
+            print 'Расположение блока "Корзина" по оси y - 134, а на странице: ', basket.location['y']
+            print '-'*80
+            
+        if basket.location['x'] != 804:
+            cnt+=1
+            print 'Расположение блока "Корзина" по оси x - 804, а на странице: ', basket.location['x']
+            print '-'*80
+        
+        if basket.find_element_by_tag_name('a').get_attribute('href') != '%s#' % self.HOST:
+            cnt+=1
+            print 'Некорректная ссылка блока "Корзина" '
+            print 'Надо: ', '%s#' % self.HOST
+            print 'На сайте: ', basket.find_element_by_tag_name('a').get_attribute('href')
+            print '-'*80
+                
+        assert cnt==0, ('Error in basket_block\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_goods_promo(self):
+        """ Проверка блока в слайдере товаров """
+        cnt=0
+        gpromo = self.driver.find_element_by_class_name('indexCatSeg')
+
+        if gpromo.size['width'] != 974:
+            cnt+=1
+            print 'Нужная ширина блока в слайдере товаров - 974, а на странице: ', gpromo.size['width']
+            print '-'*80
+            
+        if gpromo.size['height'] != 403:
+            cnt+=1
+            print 'Нужная высота блока в слайдере товаров - 403, а на странице: ', gpromo.size['height']
+            print '-'*80
+            
+        if not gpromo.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок в слайдере товаров не отображается'
+            print '-'*80
+        
+        if gpromo.location['y'] != 603:
+            cnt+=1
+            print 'Расположение блока в слайдере товаров по оси y - 603, а на странице: ', gpromo.location['y']
+            print '-'*80
+            
+        if gpromo.location['x'] != 3:
+            cnt+=1
+            print 'Расположение блока в слайдере товаров по оси x - 3, а на странице: ', gpromo.location['x']
+            print '-'*80
+                
+        assert cnt==0, ('Error in goods_promo\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_new_pic(self):
+        """ Проверка блока с пиктограммой "Новинки" """
+        cnt=0
+        new = self.driver.find_element_by_id('slControl1')
+
+        if new.size['width'] != 130:
+            cnt+=1
+            print 'Нужная ширина блока с пиктограммой "Новинки" - 130, а на странице: ', new.size['width']
+            print '-'*80
+            
+        if new.size['height'] != 69:
+            cnt+=1
+            print 'Нужная высота блока с пиктограммой "Новинки" - 69, а на странице: ', new.size['height']
+            print '-'*80
+            
+        if not new.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с пиктограммой "Новинки" не отображается'
+            print '-'*80
+        
+        if new.location['y'] != 568:
+            cnt+=1
+            print 'Расположение блока с пиктограммой "Новинки" по оси y - 568, а на странице: ', new.location['y']
+            print '-'*80
+            
+        if new.location['x'] != 272:
+            cnt+=1
+            print 'Расположение блока с пиктограммой "Новинки" по оси x - 272, а на странице: ', new.location['x']
+            print '-'*80
+                
+        assert cnt==0, ('Error in new_pic\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_price_pic(self):
+        """ Проверка блока с пиктограммой "Особая цена" """
+        cnt=0
+        price = self.driver.find_element_by_id('slControl2')
+
+        if price.size['width'] != 130:
+            cnt+=1
+            print 'Нужная ширина блока с пиктограммой "Особая цена" - 130, а на странице: ', price.size['width']
+            print '-'*80
+            
+        if price.size['height'] != 69:
+            cnt+=1
+            print 'Нужная высота блока с пиктограммой "Особая цена" - 69, а на странице: ', price.size['height']
+            print '-'*80
+            
+        if not price.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с пиктограммой "Особая цена" не отображается'
+            print '-'*80
+        
+        if price.location['y'] != 568:
+            cnt+=1
+            print 'Расположение блока с пиктограммой "Особая цена" по оси y - 568, а на странице: ', price.location['y']
+            print '-'*80
+            
+        if price.location['x'] != 425:
+            cnt+=1
+            print 'Расположение блока с пиктограммой "Особая цена" по оси x - 425, а на странице: ', price.location['x']
+            print '-'*80
+                
+        assert cnt==0, ('Error in price_pic\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_best_pic(self):
+        """ Проверка блока с пиктограммой "Популярные" """
+        cnt=0
+        best = self.driver.find_element_by_id('slControl3')
+
+        if best.size['width'] != 130:
+            cnt+=1
+            print 'Нужная ширина блока с пиктограммой "Популярные" - 130, а на странице: ', best.size['width']
+            print '-'*80
+            
+        if best.size['height'] != 69:
+            cnt+=1
+            print 'Нужная высота блока с пиктограммой "Популярные" - 69, а на странице: ', best.size['height']
+            print '-'*80
+            
+        if not best.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с пиктограммой "Популярные" не отображается'
+            print '-'*80
+        
+        if best.location['y'] != 568:
+            cnt+=1
+            print 'Расположение блока с пиктограммой "Популярные" по оси y - 568, а на странице: ', best.location['y']
+            print '-'*80
+            
+        if best.location['x'] != 578:
+            cnt+=1
+            print 'Расположение блока с пиктограммой "Популярные" по оси x - 578, а на странице: ', best.location['x']
+            print '-'*80
+                
+        assert cnt==0, ('Error in best_pic\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_guide(self):
+        """ Проверка блока "Как выбрать" """
+        cnt=0
+        guide = self.driver.find_element_by_class_name('altLook')
+
+        if guide.size['width'] != 959:
+            cnt+=1
+            print 'Нужная ширина блока "Как выбрать" - 959, а на странице: ', guide.size['width']
+            print '-'*80
+            
+        if guide.size['height'] != 256:
+            cnt+=1
+            print 'Нужная высота блока "Как выбрать" - 256, а на странице: ', guide.size['height']
+            print '-'*80
+            
+        if not guide.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок "Как выбрать" не отображается'
+            print '-'*80
+        
+        if guide.location['y'] != 1026:
+            cnt+=1
+            print 'Расположение блока "Как выбрать" по оси y - 1026, а на странице: ', guide.location['y']
+            print '-'*80
+            
+        if guide.location['x'] != 10:
+            cnt+=1
+            print 'Расположение блока "Как выбрать" по оси x - 10, а на странице: ', guide.location['x']
+            print '-'*80
+                
+        assert cnt==0, ('Error in guide\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_guide_pic(self):
+        """ Проверка блока с пиктограммой "Как выбрать" """
+        cnt=0
+        pguide = self.driver.find_element_by_class_name('quide')
+
+        if pguide.size['width'] != 130:
+            cnt+=1
+            print 'Нужная ширина блока с пиктограммой "Как выбрать" - 130, а на странице: ', pguide.size['width']
+            print '-'*80
+            
+        if pguide.size['height'] != 69:
+            cnt+=1
+            print 'Нужная высота блока с пиктограммой "Как выбрать" - 69, а на странице: ', pguide.size['height']
+            print '-'*80
+            
+        if not pguide.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с пиктограммой "Как выбрать" не отображается'
+            print '-'*80
+        
+        if pguide.location['y'] != 1011:
+            cnt+=1
+            print 'Расположение блока с пиктограммой "Как выбрать" по оси y - 1011, а на странице: ', pguide.location['y']
+            print '-'*80
+            
+        if pguide.location['x'] != 425:
+            cnt+=1
+            print 'Расположение блока с пиктограммой "Как выбрать" по оси x - 425, а на странице: ', pguide.location['x']
+            print '-'*80
+        
+        if pguide.get_attribute('href') != '%sguide/' % self.HOST:
+            cnt+=1
+            print 'Некорректная ссылка блока с пиктограммой "Как выбрать" '
+            print 'Надо: ', '%sguide/' % self.HOST
+            print 'На сайте: ', pguide.get_attribute('href')
+            print '-'*80
+                
+        assert cnt==0, ('Error in guide_pic\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_content_box(self):
+        """ Проверка блока с нижним меню """
+        cnt=0
+        content = self.driver.find_element_by_class_name('contBotBox')
+
+        if content.size['width'] != 960:
+            cnt+=1
+            print 'Нужная ширина блока с нижним меню - 960, а на странице: ', content.size['width']
+            print '-'*80
+            
+        if content.size['height'] != 150:
+            cnt+=1
+            print 'Нужная высота блока с нижним меню - 150, а на странице: ', content.size['height']
+            print '-'*80
+            
+        if not content.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с нижним меню не отображается'
+            print '-'*80
+        
+        if content.location['y'] != 1282:
+            cnt+=1
+            print 'Расположение блока с нижним меню по оси y - 1282, а на странице: ', content.location['y']
+            print '-'*80
+            
+        if content.location['x'] != 9:
+            cnt+=1
+            print 'Расположение блока с нижним меню по оси x - 9, а на странице: ', content.location['x']
+            print '-'*80
+                
+        assert cnt==0, ('Error in content_box\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_footer(self):
+        """ Проверка блока с футером """
+        cnt=0
+        footer = self.driver.find_element_by_id('footer')
+
+        if footer.size['width'] != 974:
+            cnt+=1
+            print 'Нужная ширина блока с футером - 974, а на странице: ', footer.size['width']
+            print '-'*80
+            
+        if footer.size['height'] != 154:
+            cnt+=1
+            print 'Нужная высота блока с футером - 154, а на странице: ', footer.size['height']
+            print '-'*80
+            
+        if not footer.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с футером не отображается'
+            print '-'*80
+        
+        if footer.location['y'] != 1474:
+            cnt+=1
+            print 'Расположение блока с футером по оси y - 1474, а на странице: ', footer.location['y']
+            print '-'*80
+            
+        if footer.location['x'] != 3:
+            cnt+=1
+            print 'Расположение блока с футером по оси x - 3, а на странице: ', footer.location['x']
+            print '-'*80
+                
+        assert cnt==0, ('Error in footer\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_logo_footer(self):
+        """ Проверка блока с логотипом в футере """
+        cnt=0
+        flogo = self.driver.find_element_by_class_name('logoBot')
+        
+        if flogo.size['width'] != 215:
+            cnt+=1
+            print 'Нужная ширина блока с логотипом в футере - 215, а на странице: ', flogo.size['width']
+            print '-'*80
+            
+        if flogo.size['height'] != 52:
+            cnt+=1
+            print 'Нужная высота блока с логотипом в футере - 52, а на странице: ', flogo.size['height']
+            print '-'*80
+            
+        if not flogo.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с логотипом в футере не отображается'
+            print '-'*80
+        
+        if flogo.location['y'] != 1474:
+            cnt+=1
+            print 'Расположение блока с логотипом в футере по оси y - 1474, а на странице: ', flogo.location['y']
+            print '-'*80
+            
+        if flogo.location['x'] != 20:
+            cnt+=1
+            print 'Расположение блока с логотипом в футере по оси x - 20, а на странице: ', flogo.location['x']
+            print '-'*80
+            
+        if flogo.find_elements_by_tag_name('a')[1].get_attribute('href') != self.HOST:
+            cnt+=1
+            print 'Некорректная ссылка на логотипе в футере: '
+            print 'На сайте: ', flogo.find_elements_by_tag_name('a')[1].get_attribute('href')
+            print 'Надо: ', self.HOST
+            print '-'*80
+        
+                
+        assert cnt==0, ('Error in footer\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_logo_warranty(self):
+        """ Проверка блока со ссылкой "Надежная покупка" """
+        cnt=0
+        wlogo = self.driver.find_element_by_class_name('sertwidg')
+        
+        if wlogo.size['width'] != 48:
+            cnt+=1
+            print 'Нужная ширина блока со ссылкой "Надежная покупка" - 48, а на странице: ', wlogo.size['width']
+            print '-'*80
+            
+        if wlogo.size['height'] != 47:
+            cnt+=1
+            print 'Нужная высота блока со ссылкой "Надежная покупка" - 47, а на странице: ', wlogo.size['height']
+            print '-'*80
+            
+        if not wlogo.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок со ссылкой "Надежная покупка" не отображается'
+            print '-'*80
+        
+        if wlogo.location['y'] != 1464:
+            cnt+=1
+            print 'Расположение блока со ссылкой "Надежная покупка" по оси y - 1464, а на странице: ', wlogo.location['y']
+            print '-'*80
+            
+        if wlogo.location['x'] != 177:
+            cnt+=1
+            print 'Расположение блока со ссылкой "Надежная покупка" по оси x - 177, а на странице: ', wlogo.location['x']
+            print '-'*80
+                
+        assert cnt==0, ('Error in logo_warranty\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_up_button(self):
+        """ Проверка блока со ссылкой "Наверх" """
+        cnt=0
+        self.driver.execute_script('scroll(0, 500);')
+        toTop = self.driver.find_element_by_class_name('toTop')
+        
+        if toTop.size['width'] != 33:
+            cnt+=1
+            print 'Нужная ширина блока со ссылкой "Надежная покупка" - 33, а на странице: ', toTop.size['width']
+            print '-'*80
+            
+        if toTop.size['height'] != 48:
+            cnt+=1
+            print 'Нужная высота блока со ссылкой "Надежная покупка" - 48, а на странице: ', toTop.size['height']
+            print '-'*80
+            
+        if not toTop.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок со ссылкой "Надежная покупка" не отображается'
+            print '-'*80
+        
+        if toTop.location['y'] != 366:
+            cnt+=1
+            print 'Расположение блока со ссылкой "Надежная покупка" по оси y - 366, а на странице: ', toTop.location['y']
+            print '-'*80
+            
+        if toTop.location['x'] != -50:
+            cnt+=1
+            print 'Расположение блока со ссылкой "Надежная покупка" по оси x - -50, а на странице: ', toTop.location['x']
+            print '-'*80
+              
+        assert cnt==0, ('Error in up_button\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_vk_link(self):
+        """ Проверка блока со ссылкой на "Вконтакте" """
+        cnt=0
+        vk = self.driver.find_element_by_class_name('vk')
+        
+        if vk.size['width'] != 117:
+            cnt+=1
+            print 'Нужная ширина блока со ссылкой на "Вконтакте" - 117, а на странице: ', vk.size['width']
+            print '-'*80
+            
+        if vk.size['height'] != 34:
+            cnt+=1
+            print 'Нужная высота блока со ссылкой на "Вконтакте" - 34, а на странице: ', vk.size['height']
+            print '-'*80
+            
+        if not vk.is_enabled(): #проверяем отображается ли блок
+            cnt+=1
+            print 'Блок со ссылкой на "Вконтакте" не отображается'
+            print '-'*80
+        
+        if vk.location['y'] != 1055:
+            cnt+=1
+            print 'Расположение блока со ссылкой на "Вконтакте" по оси y - 1055, а на странице: ', vk.location['y']
+            print '-'*80
+            
+        if vk.location['x'] != 843:
+            cnt+=1
+            print 'Расположение блока со ссылкой на "Вконтакте" по оси x - 843, а на странице: ', vk.location['x']
+            print '-'*80
+            
+        if vk.value_of_css_property('color') != 'rgba(100, 33, 157, 1)':
+            cnt+=1
+            print 'Цвет текста блока со ссылкой на "Вконтакте" не соответствует заданному( rgba(100, 33, 157, 1) ). На странице: ', vk.value_of_css_property('color')
+            print '-'*80
+            
+        if vk.value_of_css_property('font-size') != '14px':
+            cnt+=1
+            print 'Размер шрифта блока со ссылкой на "Вконтакте" не соответствует заданному( 14px ). На странице: ', vk.value_of_css_property('font-size')
+            print '-'*80
+        
+                
+        assert cnt==0, ('Error in vk_link\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_zanons_lk(self):
+        """ Проверка блока с анонсом ЛК """
+        cnt=0
+        self.driver.get('%slogin/' % self.HOST)
+        self.driver.find_element_by_id('username').send_keys(os.getenv('AUTH'))
+        self.driver.find_element_by_id('password').send_keys(os.getenv('AUTHPASS'))
+        self.driver.find_element_by_class_name('btn-primary').click()
+        time.sleep(5)
+        self.driver.find_element_by_class_name('cab').click()
+        anons = self.driver.find_element_by_class_name('profControl')
+
+        if anons.size['width'] != 261:
+            cnt+=1
+            print 'Нужная ширина блока с анонсом ЛК - 261, а на странице: ', anons.size['width']
+            print '-'*80
+            
+        if anons.size['height'] != 112:
+            cnt+=1
+            print 'Нужная высота блока с анонсом ЛК - 112, а на странице: ', anons.size['height']
+            print '-'*80
+            
+        if not anons.is_displayed(): #проверяем отображается ли блок
+            cnt+=1
+            print 'Блок с анонсом ЛК не отображается'
+            print '-'*80
+        
+        if anons.location['y'] != 184:
+            cnt+=1
+            print 'Расположение блока с анонсом ЛК по оси y - 184, а на странице: ', anons.location['y']
+            print '-'*80
+            
+        if anons.location['x'] != 645:
+            cnt+=1
+            print 'Расположение блока с анонсом ЛК по оси x - 645, а на странице: ', anons.location['x']
+            print '-'*80
+            
+        if anons.value_of_css_property('color') != 'rgba(76, 76, 76, 1)':
+            cnt+=1
+            print 'Цвет текста блока с анонсом ЛК не соответствует заданному( rgba(76, 76, 76, 1) ). На странице: ', anons.value_of_css_property('color')
+            print '-'*80
+            
+        if anons.value_of_css_property('font-size') != '15px':
+            cnt+=1
+            print 'Размер шрифта блока с анонсом ЛК не соответствует заданному( 15px ). На странице: ', anons.value_of_css_property('font-size')
+            print '-'*80
+        
+        self.driver.get('%slogout' % self.HOST)
+        self.driver.close()
+                
+        assert cnt==0, ('Error in anons_lk\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
 class CatPageTest(unittest.TestCase):
 
     HOST = 'http://%s.%s/' % (os.getenv('CITY'), os.getenv('DOMAIN'))
@@ -3599,3 +4575,534 @@ class FavoritePageTest(unittest.TestCase):
         self.driver.close()
         
         assert cnt==0, ('Error in serviceText\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+class ModalFormsTest(unittest.TestCase):
+
+    CONNECT_STRING = 'mysql://%s:%s@%s:%s/%s?charset=utf8' %(os.getenv('USER'), os.getenv('PSWD'), os.getenv('DBHOST'), os.getenv('PORT'), os.getenv('SCHEMA'))
+    engine = create_engine(CONNECT_STRING, echo=False) #Значение False параметра echo убирает отладочную информацию
+    metadata = MetaData(engine)
+    session = create_session(bind = engine)
+
+    #ищем магазин - склад
+    store_shop = session.query(Shops.db_sort_field).\
+              join(Region, Shops.city_id == Region.id).\
+              filter(Shops.active == 1).\
+              filter(Shops.flag_store_shop_kbt == 1).\
+              filter(Region.domain == os.getenv('CITY')).\
+              first()
+    if store_shop != None:
+        store_shop = store_shop[0]
+    else:
+        store_shop = session.query(Shops.db_sort_field).\
+                         filter(Shops.id == session.query(Region.supplier_id).filter(Region.domain == os.getenv('CITY')).first()[0]).\
+                         first()[0]
+        
+    item = session.query(Goods).\
+               join(Goods_stat, Goods.id == Goods_stat.goods_id).\
+               join(Region, Goods_stat.city_id == Region.id).\
+               join(Goods_block, Goods.block_id == Goods_block.id).\
+               join(Goods_price, Goods.id == Goods_price.goods_id ).\
+               join(Remains, Remains.goods_id == Goods.id).\
+               filter(Region.domain == os.getenv('CITY')).\
+               filter(Goods_stat.status == 1).\
+               filter(Goods.overall_type == 0).\
+               filter(Goods_block.delivery_type == 2).\
+               filter(Goods_price.price_type_guid == Region.price_type_guid).\
+               filter(Goods_price.price > 9000).\
+               filter('t_goods_remains.%s > 0' % store_shop).\
+               first()
+
+    HOST = 'http://%s.%s/' % (os.getenv('CITY'), os.getenv('DOMAIN'))
+    driver = webdriver.Firefox()
+    GOOD = HOST + ('product/%s/' % item.alias)
+    driver.get(GOOD)
+
+    def tearDown(self):
+        """Удаление переменных для всех тестов. Остановка приложения"""
+        
+        if sys.exc_info()[0]:   
+            print sys.exc_info()[0]
+
+    def test_dop_uslugi(self):
+        cnt=0
+        try:
+            self.driver.find_element_by_id("abilityLink2").click()
+        except:
+            raise NoSuchElementException, 'Element "sloi s dop uslugami" not found or not clickable'
+        
+        goodsLayer = self.driver.find_element_by_class_name('goodsLayer')#проверка всей формы
+        
+        if goodsLayer.size['width'] != 630:
+            cnt+=1
+            print 'Нужная ширина слоя - 630, а на странице: ', goodsLayer.size['width']
+            
+        if goodsLayer.size['height'] != 284:
+            cnt+=1
+            print 'Нужная высота слоя - 284, а на странице: ', goodsLayer.size['height']
+            
+        if not goodsLayer.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Слой не отображается'
+        
+        if goodsLayer.location['y'] != 93:
+            cnt+=1
+            print 'Расположение слоя по оси y - 93, а на странице: ', goodsLayer.location['y']
+            
+        if goodsLayer.location['x'] != 76:
+            cnt+=1
+            print 'Расположение слоя по оси x - 76, а на странице: ', goodsLayer.location['x']
+            
+        print '-'*80
+
+        title = goodsLayer.find_element_by_class_name('ui-dialog-title')#проверка заголовка
+        
+        if title.size['width'] != 541:
+            cnt+=1
+            print 'Нужная ширина заголовка - 541, а на странице: ', title.size['width']
+            
+        if title.size['height'] != 28:
+            cnt+=1
+            print 'Нужная высота заголовка - 28, а на странице: ', title.size['height']
+            
+        if not title.is_displayed(): #проверяем отображается ли заголовок
+            cnt+=1
+            print 'Заголовок не отображается'
+        
+        if title.location['y'] != 110:
+            cnt+=1
+            print 'Расположение заголовка по оси y - 110, а на странице: ', title.location['y']
+            
+        if title.location['x'] != 91:
+            cnt+=1
+            print 'Расположение заголовка по оси x - 91, а на странице: ', title.location['x']
+            
+        if title.value_of_css_property('color') != 'rgba(100, 33, 158, 1)':
+            cnt+=1
+            print 'Цвет заголовка не соответствует заданному( rgba(100, 33, 158, 1) ). На странице: ', title.value_of_css_property('color')
+            
+        if title.value_of_css_property('font-size') != '24px':
+            cnt+=1
+            print 'Размер шрифта заголовка не соответствует заданному( 24px ). На странице: ', title.value_of_css_property('font-size')
+            
+        print '-'*80
+
+        closebutton = goodsLayer.find_element_by_class_name('ui-dialog-titlebar-close')#проверка кнопки закрытия
+
+        if closebutton.size['width'] != 27:
+            cnt+=1
+            print 'Нужная ширина кнопки закрытия- 27, а на странице: ', closebutton.size['width']
+            
+        if closebutton.size['height'] != 26:
+            cnt+=1
+            print 'Нужная высота кнопки закрытия - 26, а на странице: ', closebutton.size['height']
+            
+        if not closebutton.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Кнопка закрытия не отображается'
+        
+        if closebutton.location['y'] != 108:
+            cnt+=1
+            print 'Расположение кнопки закрытия по оси y - 108, а на странице: ', closebutton.location['y']
+            
+        if closebutton.location['x'] != 664:
+            cnt+=1
+            print 'Расположение кнопки закрытия по оси x - 664, а на странице: ', closebutton.location['x']
+        
+        print '-'*80
+
+        form = goodsLayer.find_element_by_class_name('form_in-dialog')#провека блока выбора доп.услуг
+
+        if form.size['width'] != 600:
+            cnt+=1
+            print 'Нужная ширина блока выбора доп.услуг - 600, а на странице: ', form.size['width']
+            
+        if form.size['height'] != 202:
+            cnt+=1
+            print 'Нужная высота блока выбора доп.услуг - 202, а на странице: ', form.size['height']
+            
+        if not form.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок выбора доп.услуг не отображается'
+        
+        if form.location['y'] != 160:
+            cnt+=1
+            print 'Расположение блока выбора доп.услуг по оси y - 160, а на странице: ', form.location['y']
+            
+        if form.location['x'] != 91:
+            cnt+=1
+            print 'Расположение блока выбора доп.услуг по оси x - 91, а на странице: ', form.location['x']
+        
+        print '-'*80
+
+        btn = goodsLayer.find_element_by_class_name('btn-primary')#провека кнопки
+        
+        if btn.size['width'] != 118:
+            cnt+=1
+            print 'Нужная ширина кнопки - 118, а на странице: ', btn.size['width']
+            
+        if btn.size['height'] != 40:
+            cnt+=1
+            print 'Нужная высота кнопки - 40, а на странице: ', btn.size['height']
+            
+        if not btn.is_displayed(): #проверяем отображается ли заголовок
+            cnt+=1
+            print 'Kнопкa не отображается'
+        
+        if btn.location['y'] != 322:
+            cnt+=1
+            print 'Расположение кнопки по оси y - 322, а на странице: ', btn.location['y']
+            
+        if btn.location['x'] != 91:
+            cnt+=1
+            print 'Расположение кнопки по оси x - 91, а на странице: ', btn.location['x']
+            
+        if btn.value_of_css_property('color') != 'rgba(255, 255, 255, 1)':
+            cnt+=1
+            print 'Цвет кнопки не соответствует заданному( rgba(255, 255, 255, 1) ). На странице: ', btn.value_of_css_property('color')
+            
+        if btn.value_of_css_property('font-size') != '14px':
+            cnt+=1
+            print 'Размер шрифта кнопки не соответствует заданному( 14px ). На странице: ', btn.value_of_css_property('font-size')
+        
+        print '-'*80
+
+        clear = goodsLayer.find_element_by_class_name('s-clear-form')#провека ссылки очистить
+        
+        if clear.size['width'] != 50:
+            cnt+=1
+            print 'Нужная ширина ссылки очистить - 50, а на странице: ', clear.size['width']
+            
+        if clear.size['height'] != 17:
+            cnt+=1
+            print 'Нужная высота ссылки очистить - 17, а на странице: ', clear.size['height']
+            
+        if not clear.is_displayed(): #проверяем отображается ли заголовок
+            cnt+=1
+            print 'Cсылкa очистить не отображается'
+        
+        if clear.location['y'] != 334:
+            cnt+=1
+            print 'Расположение ссылки очистить по оси y - 334, а на странице: ', clear.location['y']
+            
+        if clear.location['x'] != 222:
+            cnt+=1
+            print 'Расположение ссылки очистить по оси x - 222, а на странице: ', clear.location['x']
+            
+        if clear.value_of_css_property('color') != 'rgba(100, 33, 158, 1)':
+            cnt+=1
+            print 'Цвет ссылки очистить не соответствует заданному( rgba(100, 33, 158, 1) ). На странице: ', clear.value_of_css_property('color')
+            
+        if clear.value_of_css_property('font-size') != '14px':
+            cnt+=1
+            print 'Размер шрифта ссылки очистить не соответствует заданному( 14px ). На странице: ', clear.value_of_css_property('font-size')
+        
+        span = goodsLayer.find_element_by_class_name('s-control-group').find_elements_by_tag_name('span')
+        span[-1].click()
+        if span[-1].get_attribute('style') == 'background-position: 0px 0px;':
+            cnt+=1
+            print 'Не получилось выбрать доп.услугу'
+        clear.click()
+        if span[-1].get_attribute('style') != 'background-position: 0px 0px;':
+            cnt+=1
+            print 'Ссылка очистить работает некорректно'
+            
+        print '-'*80
+
+        closebutton.click()
+        try:
+            goodsLayer.is_displayed()
+            cnt+=1
+            print 'Кнопка "закрыть" слоя работает некорректно'
+        except:
+            pass
+        
+        print '-'*80
+
+        assert cnt==0, ('Error in test_dop_uslugi\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+
+    def test_obratnii_zvonok(self):
+        cnt=0
+        try:
+            self.driver.find_element_by_id("abilityLink3").click()
+        except:
+            raise NoSuchElementException, 'Element "sloi obratnii zvonok" not found or not clickable'
+        goodsLayer = self.driver.find_element_by_class_name('goodsLayer')#проверка всей формы
+
+        if goodsLayer.size['width'] != 606:
+            cnt+=1
+            print 'Нужная ширина слоя - 606, а на странице: ', goodsLayer.size['width']
+            
+        if goodsLayer.size['height'] != 589:
+            cnt+=1
+            print 'Нужная высота слоя - 589, а на странице: ', goodsLayer.size['height']
+            
+        if not goodsLayer.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Слой не отображается'
+        
+        if goodsLayer.location['y'] != -59:
+            cnt+=1
+            print 'Расположение слоя по оси y - -59, а на странице: ', goodsLayer.location['y']
+            
+        if goodsLayer.location['x'] != 88:
+            cnt+=1
+            print 'Расположение слоя по оси x - 88, а на странице: ', goodsLayer.location['x']
+        
+        print '-'*80
+
+        title = goodsLayer.find_element_by_class_name('ui-dialog-title')#проверка заголовка
+
+        if title.size['width'] != 158:
+            cnt+=1
+            print 'Нужная ширина заголовка - 158, а на странице: ', title.size['width']
+            
+        if title.size['height'] != 28:
+            cnt+=1
+            print 'Нужная высота заголовка - 28, а на странице: ', title.size['height']
+            
+        if not title.is_displayed(): #проверяем отображается ли заголовок
+            cnt+=1
+            print 'Заголовок не отображается'
+        
+        if title.location['y'] != -42:
+            cnt+=1
+            print 'Расположение заголовка по оси y - -42, а на странице: ', title.location['y']
+            
+        if title.location['x'] != 123:
+            cnt+=1
+            print 'Расположение заголовка по оси x - 123, а на странице: ', title.location['x']
+            
+        if title.value_of_css_property('color') != 'rgba(100, 33, 158, 1)':
+            cnt+=1
+            print 'Цвет заголовка не соответствует заданному( rgba(100, 33, 158, 1) ). На странице: ', title.value_of_css_property('color')
+            
+        if title.value_of_css_property('font-size') != '24px':
+            cnt+=1
+            print 'Размер шрифта заголовка не соответствует заданному( 24px ). На странице: ', title.value_of_css_property('font-size')
+        
+        print '-'*80
+
+        closebutton = goodsLayer.find_element_by_class_name('ui-dialog-titlebar-close')#проверка кнопки закрытия
+
+        if closebutton.size['width'] != 27:
+            cnt+=1
+            print 'Нужная ширина кнопки закрытия- 27, а на странице: ', closebutton.size['width']
+            
+        if closebutton.size['height'] != 26:
+            cnt+=1
+            print 'Нужная высота кнопки закрытия - 26, а на странице: ', closebutton.size['height']
+            
+        if not closebutton.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Кнопка закрытия не отображается'
+        
+        if closebutton.location['y'] != -44:
+            cnt+=1
+            print 'Расположение кнопки закрытия по оси y - -44, а на странице: ', closebutton.location['y']
+            
+        if closebutton.location['x'] != 652:
+            cnt+=1
+            print 'Расположение кнопки закрытия по оси x - 652, а на странице: ', closebutton.location['x']
+        
+        print '-'*80
+
+        tagblock = goodsLayer.find_element_by_class_name('messageTag')#провека блока с тегами
+
+        if tagblock.size['width'] != 525:
+            cnt+=1
+            print 'Нужная ширина блока с тегами- 525, а на странице: ', tagblock.size['width']
+            
+        if tagblock.size['height'] != 113:
+            cnt+=1
+            print 'Нужная высота блока с тегами - 113, а на странице: ', tagblock.size['height']
+            
+        if not tagblock.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с тегами не отображается'
+        
+        if tagblock.location['y'] != 1:
+            cnt+=1
+            print 'Расположение блока с тегами по оси y - 1, а на странице: ', tagblock.location['y']
+            
+        if tagblock.location['x'] != 123:
+            cnt+=1
+            print 'Расположение блока с тегами по оси x - 123, а на странице: ', tagblock.location['x']
+        
+        print '-'*80
+
+        fields = goodsLayer.find_element_by_class_name('fields')#провека блока с формой
+
+        if fields.size['width'] != 525:
+            cnt+=1
+            print 'Нужная ширина блока с формой- 525, а на странице: ', fields.size['width']
+            
+        if fields.size['height'] != 371:
+            cnt+=1
+            print 'Нужная высота блока с формой - 371, а на странице: ', fields.size['height']
+            
+        if not fields.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Блок с формой не отображается'
+        
+        if fields.location['y'] != 134:
+            cnt+=1
+            print 'Расположение блока с формой по оси y - 134, а на странице: ', fields.location['y']
+            
+        if fields.location['x'] != 123:
+            cnt+=1
+            print 'Расположение блока с формой по оси x - 123, а на странице: ', fields.location['x']
+        
+        print '-'*80
+
+        f_labels = fields.find_elements_by_class_name('lbl')
+        
+        for lbl in f_labels:
+            
+            if lbl.size['width'] != 258 and lbl.size['width'] != 525:
+                cnt+=1
+                print 'Нужная ширина заголовка поля - 258 или 525 для "Текст сообщения*", а на странице: ', lbl.size['width']
+            
+            if lbl.size['height'] != 22:
+                cnt+=1
+                print 'Нужная высота заголовка поля - 22, а на странице: ', lbl.size['height']
+            
+            if not lbl.is_displayed(): #проверяем отображается ли заголовок поля
+                cnt+=1
+                print 'Заголовок поля не отображается'
+            
+            if lbl.value_of_css_property('color') != 'rgba(34, 34, 34, 1)':
+                cnt+=1
+                print 'Цвет заголовка поля не соответствует заданному( rgba(34, 34, 34, 1) ). На странице: ', lbl.value_of_css_property('color')
+            
+            if lbl.value_of_css_property('font-size') != '15.4px':
+                cnt+=1
+                print 'Размер шрифта заголовка поля не соответствует заданному( 15.4px ). На странице: ', lbl.value_of_css_property('font-size')
+                
+        print '-'*80
+
+        textarea = fields.find_element_by_tag_name('textarea')
+        
+        if textarea.size['width'] != 525:
+            cnt+=1
+            print 'Нужная ширина textarea - 525, а на странице: ', textarea.size['width']
+            
+        if textarea.size['height'] != 93:
+            cnt+=1
+            print 'Нужная высота textarea - 93, а на странице: ', textarea.size['height']
+            
+        if not textarea.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'textarea не отображается'
+        
+        if textarea.location['y'] != 156:
+            cnt+=1
+            print 'Расположение textarea по оси y - 156, а на странице: ', textarea.location['y']
+            
+        if textarea.location['x'] != 123:
+            cnt+=1
+            print 'Расположение textarea по оси x - 123, а на странице: ', textarea.location['x']
+            
+        print '-'*80
+
+        inputs = fields.find_elements_by_tag_name('input')[0:2]
+        for inp in inputs:
+            i=1
+            if inp.size['width'] != 258:
+                cnt+=1
+                print 'Нужная ширина поля %s - 258, а на странице: ' % i, inp.size['width']
+            
+            if inp.size['height'] != 29:
+                cnt+=1
+                print 'Нужная высота поля %s - 29, а на странице: ' % i, inp.size['height']
+            
+            if not inp.is_displayed(): #проверяем отображается ли поле
+                cnt+=1
+                print 'Заголовок поля %s не отображается' % i
+            i+=1
+                
+        print '-'*80
+
+        backLinks = fields.find_element_by_class_name('backLinks')#Проверка блока с ссылками
+        
+        if backLinks.size['width'] != 526:
+            cnt+=1
+            print 'Нужная ширина блока с ссылками - 526, а на странице: ', backLinks.size['width']
+            
+        if backLinks.size['height'] != 50:
+            cnt+=1
+            print 'Нужная высота блока с ссылками - 50, а на странице: ', backLinks.size['height']
+            
+        if not backLinks.is_displayed(): #проверяем отображается ли заголовок
+            cnt+=1
+            print 'Блок с ссылками не отображается'
+        
+        if backLinks.location['y'] != 410:
+            cnt+=1
+            print 'Расположение блока с ссылками по оси y - 410, а на странице: ', backLinks.location['y']
+            
+        if backLinks.location['x'] != 123:
+            cnt+=1
+            print 'Расположение блока с ссылками по оси x - 123, а на странице: ', backLinks.location['x']
+            
+        if backLinks.value_of_css_property('color') != 'rgba(34, 34, 34, 1)':
+            cnt+=1
+            print 'Цвет блока с ссылками не соответствует заданному( rgba(34, 34, 34, 1) ). На странице: ', backLinks.value_of_css_property('color')
+            
+        if backLinks.value_of_css_property('font-size') != '15.4px':
+            cnt+=1
+            print 'Размер шрифта блока с ссылками не соответствует заданному( 15.4px ). На странице: ', backLinks.value_of_css_property('font-size')
+            
+        if backLinks.value_of_css_property('font-family') != "'BarnaulGroteskRegular'":
+            cnt+=1
+            print 'Шрифт блока с ссылками не соответствует заданному( BarnaulGroteskRegular ). На странице: ', backLinks.value_of_css_property('font-family')
+            
+        for a in backLinks.find_elements_by_tag_name('a'):
+            if a.get_attribute('href') not in ['http://ok.terminal.ru/','http://vk.com/terminalru','http://market.yandex.ru/shop/43558/reviews']:
+                cnt+=1
+                print 'Ссылка на внешние ресурсы не соответствует -', a.get_attribute('href')
+
+        print '-'*80 
+
+        submitButton = fields.find_element_by_class_name('submitButton')
+
+        if backLinks.size['width'] != 526:
+            cnt+=1
+            print 'Нужная ширина кнопки - 526, а на странице: ', backLinks.size['width']
+            
+        if backLinks.size['height'] != 50:
+            cnt+=1
+            print 'Нужная высота кнопки - 50, а на странице: ', backLinks.size['height']
+            
+        if not backLinks.is_displayed(): #проверяем отображается ли
+            cnt+=1
+            print 'Кнопка не отображается'
+        
+        if backLinks.location['y'] != 410:
+            cnt+=1
+            print 'Расположение кнопки по оси y - 410, а на странице: ', backLinks.location['y']
+            
+        if backLinks.location['x'] != 123:
+            cnt+=1
+            print 'Расположение кнопки по оси x - 123, а на странице: ', backLinks.location['x']
+            
+        if backLinks.value_of_css_property('color') != 'rgba(34, 34, 34, 1)':
+            cnt+=1
+            print 'Цвет кнопки не соответствует заданному( rgba(34, 34, 34, 1) ). На странице: ', backLinks.value_of_css_property('color')
+            
+        if backLinks.value_of_css_property('font-size') != '15.4px':
+            cnt+=1
+            print 'Размер шрифта кнопки не соответствует заданному( 15.4px ). На странице: ', backLinks.value_of_css_property('font-size')
+        
+        print '-'*80
+
+        closebutton.click()
+        try:
+            goodsLayer.is_displayed()
+            cnt+=1
+            print 'Кнопка "закрыть" слоя работает некорректно'
+        except:
+            pass
+        
+        print '-'*80
+
+        assert cnt==0, ('Error in test_obratnii_zvonok\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
