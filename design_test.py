@@ -119,13 +119,8 @@ class MainPageTest(unittest.TestCase):
             cnt+=1
             print 'Расположение промоблока по оси y - 221, а на странице: ', promo.location['y']
             print '-'*80
-            
-        if promo.location['x'] != 40:
-            cnt+=1
-            print 'Расположение промоблока по оси x - 40, а на странице: ', promo.location['x']
-            print '-'*80
 
-        assert cnt==0, ('Error in logo\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Error in promo\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
         
     def test_seg_nav(self):
         """ Проверка блока с отточиями-листалками баннера """
@@ -171,9 +166,9 @@ class MainPageTest(unittest.TestCase):
             print 'Нужная ширина блока с контентом - 974, а на странице: ', cont.size['width']
             print '-'*80
             
-        if cont.size['height'] != 1628:
+        if cont.size['height'] != 1636:
             cnt+=1
-            print 'Нужная высота блока с контентом - 1628, а на странице: ', cont.size['height']
+            print 'Нужная высота блока с контентом - 1636, а на странице: ', cont.size['height']
             print '-'*80
             
         if not cont.is_displayed(): #проверяем отображается ли
@@ -731,9 +726,9 @@ class MainPageTest(unittest.TestCase):
             print 'Нужная ширина блока с нижним меню - 960, а на странице: ', content.size['width']
             print '-'*80
             
-        if content.size['height'] != 150:
+        if content.size['height'] != 158:
             cnt+=1
-            print 'Нужная высота блока с нижним меню - 150, а на странице: ', content.size['height']
+            print 'Нужная высота блока с нижним меню - 158, а на странице: ', content.size['height']
             print '-'*80
             
         if not content.is_displayed(): #проверяем отображается ли
@@ -773,9 +768,9 @@ class MainPageTest(unittest.TestCase):
             print 'Блок с футером не отображается'
             print '-'*80
         
-        if footer.location['y'] != 1474:
+        if footer.location['y'] != 1483:
             cnt+=1
-            print 'Расположение блока с футером по оси y - 1474, а на странице: ', footer.location['y']
+            print 'Расположение блока с футером по оси y - 1483, а на странице: ', footer.location['y']
             print '-'*80
             
         if footer.location['x'] != 3:
@@ -805,9 +800,9 @@ class MainPageTest(unittest.TestCase):
             print 'Блок с логотипом в футере не отображается'
             print '-'*80
         
-        if flogo.location['y'] != 1474:
+        if flogo.location['y'] != 1483:
             cnt+=1
-            print 'Расположение блока с логотипом в футере по оси y - 1474, а на странице: ', flogo.location['y']
+            print 'Расположение блока с логотипом в футере по оси y - 1483, а на странице: ', flogo.location['y']
             print '-'*80
             
         if flogo.location['x'] != 20:
@@ -845,9 +840,9 @@ class MainPageTest(unittest.TestCase):
             print 'Блок со ссылкой "Надежная покупка" не отображается'
             print '-'*80
         
-        if wlogo.location['y'] != 1464:
+        if wlogo.location['y'] != 1473:
             cnt+=1
-            print 'Расположение блока со ссылкой "Надежная покупка" по оси y - 1464, а на странице: ', wlogo.location['y']
+            print 'Расположение блока со ссылкой "Надежная покупка" по оси y - 1473, а на странице: ', wlogo.location['y']
             print '-'*80
             
         if wlogo.location['x'] != 177:
@@ -878,9 +873,9 @@ class MainPageTest(unittest.TestCase):
             print 'Блок со ссылкой "Надежная покупка" не отображается'
             print '-'*80
         
-        if toTop.location['y'] != 366:
+        if toTop.location['y'] != 336:
             cnt+=1
-            print 'Расположение блока со ссылкой "Надежная покупка" по оси y - 366, а на странице: ', toTop.location['y']
+            print 'Расположение блока со ссылкой "Надежная покупка" по оси y - 336, а на странице: ', toTop.location['y']
             print '-'*80
             
         if toTop.location['x'] != -50:
@@ -910,9 +905,9 @@ class MainPageTest(unittest.TestCase):
             print 'Блок со ссылкой на "Вконтакте" не отображается'
             print '-'*80
         
-        if vk.location['y'] != 1055:
+        if vk.location['y'] != 1064:
             cnt+=1
-            print 'Расположение блока со ссылкой на "Вконтакте" по оси y - 1055, а на странице: ', vk.location['y']
+            print 'Расположение блока со ссылкой на "Вконтакте" по оси y - 1064, а на странице: ', vk.location['y']
             print '-'*80
             
         if vk.location['x'] != 843:
@@ -1597,9 +1592,9 @@ class CatinnerPageTest(unittest.TestCase):
         cnt=0
         pageListing = self.driver.find_element_by_class_name('pageListing')
 
-        if pageListing.size['width'] != 246:
+        if pageListing.size['width'] != 240:
             cnt+=1
-            print 'Нужная ширина блока с пагинатором - 246, а на странице: ', pageListing.size['width']
+            print 'Нужная ширина блока с пагинатором - 240, а на странице: ', pageListing.size['width']
             print '-'*80
 
         if pageListing.size['height'] != 38:
@@ -1612,9 +1607,9 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Блок с пагинатором не отображается'
             print '-'*80
             
-        if pageListing.location['x'] != 703:
+        if pageListing.location['x'] != 709:
             cnt+=1
-            print 'Расположение блока с пагинатором по оси x - 703, а на странице: ', pageListing.location['x']
+            print 'Расположение блока с пагинатором по оси x - 709, а на странице: ', pageListing.location['x']
             print '-'*80
                 
         assert cnt==0, ('Error in pageListing\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -2089,9 +2084,9 @@ class CartPageTest(unittest.TestCase):
             print 'Блок с пиктограммами купить, сравнение, избранное не отображается'
             print '-'*80
         
-        if standartFeatures.location['y'] != 542:
+        if standartFeatures.location['y'] != 537:
             cnt+=1
-            print 'Расположение блока с пиктограммами купить, сравнение, избранное по оси y - 542, а на странице: ', standartFeatures.location['y']
+            print 'Расположение блока с пиктограммами купить, сравнение, избранное по оси y - 537, а на странице: ', standartFeatures.location['y']
             print '-'*80
             
         if standartFeatures.location['x'] != 495:
@@ -2121,9 +2116,9 @@ class CartPageTest(unittest.TestCase):
             print 'Блок с пиктограммой купить не отображается'
             print '-'*80
         
-        if basket.location['y'] != 542:
+        if basket.location['y'] != 537:
             cnt+=1
-            print 'Расположение блока с пиктограммой купить по оси y - 542, а на странице: ', basket.location['y']
+            print 'Расположение блока с пиктограммой купить по оси y - 537, а на странице: ', basket.location['y']
             print '-'*80
             
         if basket.location['x'] != 581:
@@ -2160,9 +2155,9 @@ class CartPageTest(unittest.TestCase):
             print 'Блок с пиктограммой в избранное не отображается'
             print '-'*80
         
-        if fave1.location['y'] != 542:
+        if fave1.location['y'] != 537:
             cnt+=1
-            print 'Расположение блока с пиктограммой в избранное по оси y - 542, а на странице: ', fave1.location['y']
+            print 'Расположение блока с пиктограммой в избранное по оси y - 537, а на странице: ', fave1.location['y']
             print '-'*80
             
         if fave1.location['x'] != 674:
@@ -2199,9 +2194,9 @@ class CartPageTest(unittest.TestCase):
             print 'Блок с пиктограммой в сравнение не отображается'
             print '-'*80
         
-        if compare2.location['y'] != 542:
+        if compare2.location['y'] != 537:
             cnt+=1
-            print 'Расположение блока с пиктограммой в сравнение по оси y - 542, а на странице: ', compare2.location['y']
+            print 'Расположение блока с пиктограммой в сравнение по оси y - 537, а на странице: ', compare2.location['y']
             print '-'*80
             
         if compare2.location['x'] != 779:
@@ -2238,9 +2233,9 @@ class CartPageTest(unittest.TestCase):
             print 'Блок вызова доп.слоев не отображается'
             print '-'*80
         
-        if capabilities.location['y'] != 576:
+        if capabilities.location['y'] != 571:
             cnt+=1
-            print 'Расположение блока вызова доп.слоев по оси y - 576, а на странице: ', capabilities.location['y']
+            print 'Расположение блока вызова доп.слоев по оси y - 571, а на странице: ', capabilities.location['y']
             print '-'*80
             
         if capabilities.location['x'] != 495:
@@ -2270,9 +2265,9 @@ class CartPageTest(unittest.TestCase):
             print 'Блок вызова слоя "Дополнительные услуги" не отображается'
             print '-'*80
         
-        if abilityLink2.location['y'] != 586:
+        if abilityLink2.location['y'] != 581:
             cnt+=1
-            print 'Расположение блока вызова слоя "Дополнительные услуги" по оси y - 586, а на странице: ', abilityLink2.location['y']
+            print 'Расположение блока вызова слоя "Дополнительные услуги" по оси y - 581, а на странице: ', abilityLink2.location['y']
             print '-'*80
             
         if abilityLink2.location['x'] != 534:
@@ -2302,9 +2297,9 @@ class CartPageTest(unittest.TestCase):
             print 'Блок вызова слоя "Обратный звонок" не отображается'
             print '-'*80
         
-        if abilityLink3.location['y'] != 586:
+        if abilityLink3.location['y'] != 581:
             cnt+=1
-            print 'Расположение блока вызова слоя "Обратный звонок" по оси y - 586, а на странице: ', abilityLink3.location['y']
+            print 'Расположение блока вызова слоя "Обратный звонок" по оси y - 581, а на странице: ', abilityLink3.location['y']
             print '-'*80
             
         if abilityLink3.location['x'] != 715:
@@ -2334,9 +2329,9 @@ class CartPageTest(unittest.TestCase):
             print 'Блок вызова слоя "Услуга доставки" не отображается'
             print '-'*80
         
-        if abilityLink1.location['y'] != 586:
+        if abilityLink1.location['y'] != 581:
             cnt+=1
-            print 'Расположение блока вызова слоя "Услуга доставки" по оси y - 586, а на странице: ', abilityLink1.location['y']
+            print 'Расположение блока вызова слоя "Услуга доставки" по оси y - 581, а на странице: ', abilityLink1.location['y']
             print '-'*80
             
         if abilityLink1.location['x'] != 854:
@@ -2813,9 +2808,9 @@ class BasketPageTest(unittest.TestCase):
             print 'Заголовок не отображается'
             print '-'*80
         
-        if h1.location['y'] != 187:
+        if h1.location['y'] != 168:
             cnt+=1
-            print 'Расположение заголовка по оси y - 187, а на странице: ', h1.location['y']
+            print 'Расположение заголовка по оси y - 168, а на странице: ', h1.location['y']
             print '-'*80
             
         if h1.location['x'] != 28:
@@ -3537,11 +3532,6 @@ class OrderCompletePageTest(unittest.TestCase):
             cnt+=1
             print 'Заголовок не отображается'
             print '-'*80
-        
-        if h1.location['y'] != -776:
-            cnt+=1
-            print 'Расположение заголовка по оси y - -776, а на странице: ', h1.location['y']
-            print '-'*80
             
         if h1.location['x'] != -99:
             cnt+=1
@@ -4030,9 +4020,9 @@ class ComparePageTest(unittest.TestCase):
             print 'Блок с ссылками "Главные" и "Отличия" не отображается'
             print '-'*80
         
-        if comparing_mode_tabs.location['y'] != 251:
+        if comparing_mode_tabs.location['y'] != 244:
             cnt+=1
-            print 'Расположение блока с ссылками "Главные" и "Отличия" по оси y - 251, а на странице: ', comparing_mode_tabs.location['y']
+            print 'Расположение блока с ссылками "Главные" и "Отличия" по оси y - 244, а на странице: ', comparing_mode_tabs.location['y']
             print '-'*80
             
         if comparing_mode_tabs.location['x'] != 802:
@@ -4072,9 +4062,9 @@ class ComparePageTest(unittest.TestCase):
             print 'Блок с ссылкой "Главные" не отображается'
             print '-'*80
         
-        if li.location['y'] != 251:
+        if li.location['y'] != 244:
             cnt+=1
-            print 'Расположение блока с ссылкой "Главные" по оси y - 251, а на странице: ', li.location['y']
+            print 'Расположение блока с ссылкой "Главные" по оси y - 244, а на странице: ', li.location['y']
             print '-'*80
             
         if li.location['x'] != 802:
@@ -4114,9 +4104,9 @@ class ComparePageTest(unittest.TestCase):
             print 'Блок с ссылкой "Отличия" не отображается'
             print '-'*80
         
-        if li.location['y'] != 251:
+        if li.location['y'] != 244:
             cnt+=1
-            print 'Расположение блока ссылкой "Отличия" по оси y - 251, а на странице: ', li.location['y']
+            print 'Расположение блока ссылкой "Отличия" по оси y - 244, а на странице: ', li.location['y']
             print '-'*80
             
         if li.location['x'] != 875:
@@ -4161,9 +4151,9 @@ class ComparePageTest(unittest.TestCase):
             print 'Расположение блока с превью товаров по оси y - 468, а на странице: ', catList.location['y']
             print '-'*80
             
-        if catList.location['x'] != 249:
+        if catList.location['x'] != 258:
             cnt+=1
-            print 'Расположение блока с превью товаров по оси x - 249, а на странице: ', catList.location['x']
+            print 'Расположение блока с превью товаров по оси x - 258, а на странице: ', catList.location['x']
             print '-'*80
 
         assert cnt==0, ('Error in catList\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -4249,9 +4239,9 @@ class ComparePageTest(unittest.TestCase):
             print 'Расположение блока c превью одного товара по оси y - 468, а на странице: ', catCard.location['y']
             print '-'*80
             
-        if catCard.location['x'] != 249:
+        if catCard.location['x'] != 258:
             cnt+=1
-            print 'Расположение блока c превью одного товара по оси x - 249, а на странице: ', catCard.location['x']
+            print 'Расположение блока c превью одного товара по оси x - 258, а на странице: ', catCard.location['x']
             print '-'*80
 
         assert cnt==0, ('Error in catCard\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -4261,9 +4251,9 @@ class ComparePageTest(unittest.TestCase):
         cnt=0
         features_group = self.driver.find_element_by_class_name('features-group')
 
-        if features_group.size['width'] != 929:
+        if features_group.size['width'] != 920:
             cnt+=1
-            print 'Нужная ширина блока со списком характеристик - 929, а на странице: ', features_group.size['width']
+            print 'Нужная ширина блока со списком характеристик - 920, а на странице: ', features_group.size['width']
             print '-'*80
             
         if not features_group.is_displayed(): #проверяем отображается ли
