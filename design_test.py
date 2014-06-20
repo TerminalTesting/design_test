@@ -127,11 +127,6 @@ class MainPageTest(unittest.TestCase):
         cnt=0
         
         seg = self.driver.find_element_by_class_name('segNavControl')
-
-        if seg.size['width'] != 195:
-            cnt+=1
-            print 'Нужная ширина промоблока - 195, а на странице: ', seg.size['width']
-            print '-'*80
             
         if seg.size['height'] != 17:
             cnt+=1
@@ -1200,11 +1195,6 @@ class CatPageTest(unittest.TestCase):
             print 'Нужная ширина блока с cсылками в слайдере - 223, а на странице: ', segNavi.size['width']
             print '-'*80
             
-        if segNavi.size['height'] != 138:
-            cnt+=1
-            print 'Нужная высота блока с cсылками в слайдере - 138, а на странице: ', segNavi.size['height']
-            print '-'*80
-            
         if not segNavi.is_displayed():
             cnt+=1
             print 'Ссылки в слайдере не отображается'
@@ -2083,11 +2073,6 @@ class CartPageTest(unittest.TestCase):
             cnt+=1
             print 'Блок с пиктограммами купить, сравнение, избранное не отображается'
             print '-'*80
-        
-        if standartFeatures.location['y'] != 537:
-            cnt+=1
-            print 'Расположение блока с пиктограммами купить, сравнение, избранное по оси y - 537, а на странице: ', standartFeatures.location['y']
-            print '-'*80
             
         if standartFeatures.location['x'] != 495:
             cnt+=1
@@ -2114,11 +2099,6 @@ class CartPageTest(unittest.TestCase):
         if not basket.is_displayed(): #проверяем отображается ли
             cnt+=1
             print 'Блок с пиктограммой купить не отображается'
-            print '-'*80
-        
-        if basket.location['y'] != 537:
-            cnt+=1
-            print 'Расположение блока с пиктограммой купить по оси y - 537, а на странице: ', basket.location['y']
             print '-'*80
             
         if basket.location['x'] != 581:
@@ -2154,11 +2134,6 @@ class CartPageTest(unittest.TestCase):
             cnt+=1
             print 'Блок с пиктограммой в избранное не отображается'
             print '-'*80
-        
-        if fave1.location['y'] != 537:
-            cnt+=1
-            print 'Расположение блока с пиктограммой в избранное по оси y - 537, а на странице: ', fave1.location['y']
-            print '-'*80
             
         if fave1.location['x'] != 674:
             cnt+=1
@@ -2192,11 +2167,6 @@ class CartPageTest(unittest.TestCase):
         if not compare2.is_enabled(): #проверяем отображается ли
             cnt+=1
             print 'Блок с пиктограммой в сравнение не отображается'
-            print '-'*80
-        
-        if compare2.location['y'] != 537:
-            cnt+=1
-            print 'Расположение блока с пиктограммой в сравнение по оси y - 537, а на странице: ', compare2.location['y']
             print '-'*80
             
         if compare2.location['x'] != 779:
@@ -2232,11 +2202,6 @@ class CartPageTest(unittest.TestCase):
             cnt+=1
             print 'Блок вызова доп.слоев не отображается'
             print '-'*80
-        
-        if capabilities.location['y'] != 571:
-            cnt+=1
-            print 'Расположение блока вызова доп.слоев по оси y - 571, а на странице: ', capabilities.location['y']
-            print '-'*80
             
         if capabilities.location['x'] != 495:
             cnt+=1
@@ -2263,11 +2228,6 @@ class CartPageTest(unittest.TestCase):
         if not abilityLink2.is_displayed(): #проверяем отображается ли
             cnt+=1
             print 'Блок вызова слоя "Дополнительные услуги" не отображается'
-            print '-'*80
-        
-        if abilityLink2.location['y'] != 581:
-            cnt+=1
-            print 'Расположение блока вызова слоя "Дополнительные услуги" по оси y - 581, а на странице: ', abilityLink2.location['y']
             print '-'*80
             
         if abilityLink2.location['x'] != 534:
@@ -2296,11 +2256,6 @@ class CartPageTest(unittest.TestCase):
             cnt+=1
             print 'Блок вызова слоя "Обратный звонок" не отображается'
             print '-'*80
-        
-        if abilityLink3.location['y'] != 581:
-            cnt+=1
-            print 'Расположение блока вызова слоя "Обратный звонок" по оси y - 581, а на странице: ', abilityLink3.location['y']
-            print '-'*80
             
         if abilityLink3.location['x'] != 715:
             cnt+=1
@@ -2327,11 +2282,6 @@ class CartPageTest(unittest.TestCase):
         if not abilityLink1.is_enabled(): #проверяем отображается ли
             cnt+=1
             print 'Блок вызова слоя "Услуга доставки" не отображается'
-            print '-'*80
-        
-        if abilityLink1.location['y'] != 581:
-            cnt+=1
-            print 'Расположение блока вызова слоя "Услуга доставки" по оси y - 581, а на странице: ', abilityLink1.location['y']
             print '-'*80
             
         if abilityLink1.location['x'] != 854:
@@ -2400,9 +2350,9 @@ class CartPageTest(unittest.TestCase):
             print 'Нужная ширина блока "Поделиться" от Яндекс - 454, а на странице: ', sharing.size['width']
             print '-'*80
             
-        if sharing.size['height'] != 70:
+        if sharing.size['height'] != 69:
             cnt+=1
-            print 'Нужная высота блока "Поделиться" от Яндекс - 70, а на странице: ', sharing.size['height']
+            print 'Нужная высота блока "Поделиться" от Яндекс - 69, а на странице: ', sharing.size['height']
             print '-'*80
             
         if not sharing.is_displayed(): #проверяем отображается ли
@@ -2779,13 +2729,12 @@ class BasketPageTest(unittest.TestCase):
     driver.find_element_by_partial_link_text('Купить').click()
     time.sleep(5)
     driver.get('%sbasket/' % HOST)
+    driver.get_screenshot_as_file('Test.png')
     try:
-        dcityContainer = driver.find_element_by_class_name('dcityContainer')
-        span = dcityContainer.find_element_by_tag_name('span')
-        span.click()
-    except:
-        driver.get_screenshot_as_file('Test.png')
         dcityContainer = driver.find_element_by_css_selector("div.dcityContainer > span.radio")
+        dcityContainer.click()
+    except:
+        dcityContainer = driver.find_element_by_id('zone-417909-1')
         dcityContainer.click()
 
     def tearDown(self):
@@ -4027,9 +3976,9 @@ class ComparePageTest(unittest.TestCase):
             print 'Блок с ссылками "Главные" и "Отличия" не отображается'
             print '-'*80
         
-        if comparing_mode_tabs.location['y'] != 244:
+        if comparing_mode_tabs.location['y'] != 252:
             cnt+=1
-            print 'Расположение блока с ссылками "Главные" и "Отличия" по оси y - 244, а на странице: ', comparing_mode_tabs.location['y']
+            print 'Расположение блока с ссылками "Главные" и "Отличия" по оси y - 252, а на странице: ', comparing_mode_tabs.location['y']
             print '-'*80
             
         if comparing_mode_tabs.location['x'] != 802:
@@ -4069,9 +4018,9 @@ class ComparePageTest(unittest.TestCase):
             print 'Блок с ссылкой "Главные" не отображается'
             print '-'*80
         
-        if li.location['y'] != 244:
+        if li.location['y'] != 252:
             cnt+=1
-            print 'Расположение блока с ссылкой "Главные" по оси y - 244, а на странице: ', li.location['y']
+            print 'Расположение блока с ссылкой "Главные" по оси y - 252, а на странице: ', li.location['y']
             print '-'*80
             
         if li.location['x'] != 802:
@@ -4111,9 +4060,9 @@ class ComparePageTest(unittest.TestCase):
             print 'Блок с ссылкой "Отличия" не отображается'
             print '-'*80
         
-        if li.location['y'] != 244:
+        if li.location['y'] != 252:
             cnt+=1
-            print 'Расположение блока ссылкой "Отличия" по оси y - 244, а на странице: ', li.location['y']
+            print 'Расположение блока ссылкой "Отличия" по оси y - 252, а на странице: ', li.location['y']
             print '-'*80
             
         if li.location['x'] != 875:
