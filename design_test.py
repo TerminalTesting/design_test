@@ -2784,6 +2784,7 @@ class BasketPageTest(unittest.TestCase):
         span = dcityContainer.find_element_by_tag_name('span')
         span.click()
     except:
+        driver.get_screenshot_as_file('Test.png')
         dcityContainer = driver.find_element_by_css_selector("div.dcityContainer > span.radio")
         dcityContainer.click()
 
