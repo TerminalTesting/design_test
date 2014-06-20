@@ -2762,11 +2762,6 @@ class BasketPageTest(unittest.TestCase):
             cnt+=1
             print 'Заголовок не отображается'
             print '-'*80
-        
-        if h1.location['y'] != 168:
-            cnt+=1
-            print 'Расположение заголовка по оси y - 168, а на странице: ', h1.location['y']
-            print '-'*80
             
         if h1.location['x'] != 28:
             cnt+=1
@@ -2807,11 +2802,6 @@ class BasketPageTest(unittest.TestCase):
         """ Проверка блока с ценой и доставкой """
         cnt=0
         total_price = self.driver.find_element_by_class_name('total-price-and-delivery')
-
-        if total_price.size['width'] != 373:
-            cnt+=1
-            print 'Нужная ширина блока с ценой и доставкой - 373, а на странице: ', total_price.size['width']
-            print '-'*80
             
         if total_price.size['height'] != 109:
             cnt+=1
@@ -2821,12 +2811,7 @@ class BasketPageTest(unittest.TestCase):
         if not total_price.is_displayed(): #проверяем отображается ли
             cnt+=1
             print 'Блок с ценой и доставкой не отображается'
-            print '-'*80
-
-        if total_price.location['x'] != 482:
-            cnt+=1
-            print 'Расположение блока с ценой и доставкой по оси x - 482, а на странице: ', total_price.location['x']
-            print '-'*80        
+            print '-'*80  
 
         assert cnt==0, ('Error in total_price\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
 
@@ -2838,11 +2823,6 @@ class BasketPageTest(unittest.TestCase):
         if basket_tabs.size['width'] != 588:
             cnt+=1
             print 'Нужная ширина блока с формой для оформления заказа - 588, а на странице: ', basket_tabs.size['width']
-            print '-'*80
-            
-        if basket_tabs.size['height'] != 757:
-            cnt+=1
-            print 'Нужная высота блока с формой для оформления заказа - 757, а на странице: ', basket_tabs.size['height']
             print '-'*80
             
         if not basket_tabs.is_displayed(): #проверяем отображается ли
@@ -3151,7 +3131,7 @@ class BasketPageTest(unittest.TestCase):
     def test_region(self):
         """ Поле для ввода региона доставки """
         cnt=0
-        if delivery:
+        if self.delivery:
             region = self.driver.find_element_by_id('region')
 
             if region.size['width'] != 257:
@@ -3187,7 +3167,7 @@ class BasketPageTest(unittest.TestCase):
     def test_city(self):
         """ Поле для ввода города доставки """
         cnt=0
-        if delivery:
+        if self.delivery:
             city = self.driver.find_element_by_id('city')
 
             if city.size['width'] != 257:
@@ -3223,7 +3203,7 @@ class BasketPageTest(unittest.TestCase):
     def test_personal_order_form_addressStreet(self):
         """ Поле для ввода улицы доставки """
         cnt=0
-        if delivery:
+        if self.delivery:
             addressStreet = self.driver.find_element_by_id('personal_order_form_addressStreet')
 
             if addressStreet.size['width'] != 347:
@@ -3258,7 +3238,7 @@ class BasketPageTest(unittest.TestCase):
     def test_personal_order_form_addressHouse(self):
         """ Поле для ввода дома доставки """
         cnt=0
-        if delivery:
+        if self.delivery:
             addressHouse = self.driver.find_element_by_id('personal_order_form_addressHouse')
 
             if addressHouse.size['width'] != 166:
@@ -3293,7 +3273,7 @@ class BasketPageTest(unittest.TestCase):
     def test_personal_order_form_addressBuilding(self):
         """ Поле для ввода строения доставки """
         cnt=0
-        if delivery:
+        if self.delivery:
             addressBuilding = self.driver.find_element_by_id('personal_order_form_addressBuilding')
 
             if addressBuilding.size['width'] != 166:
@@ -3328,7 +3308,7 @@ class BasketPageTest(unittest.TestCase):
     def test_personal_order_form_addressAppartment(self):
         """ Поле для ввода квартиры доставки """
         cnt=0
-        if delivery:
+        if self.delivery:
             addressAppartment = self.driver.find_element_by_id('personal_order_form_addressAppartment')
 
             if addressAppartment.size['width'] != 166:
