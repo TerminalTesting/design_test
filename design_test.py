@@ -143,9 +143,9 @@ class MainPageTest(unittest.TestCase):
             print 'Расположение промоблока по оси y - 551, а на странице: ', seg.location['y']
             print '-'*80
             
-        if seg.location['x'] != 393:
+        if seg.location['x'] != 382:
             cnt+=1
-            print 'Расположение промоблока по оси x - 393, а на странице: ', seg.location['x']
+            print 'Расположение промоблока по оси x - 382, а на странице: ', seg.location['x']
             print '-'*80
 
         assert cnt==0, ('Error in logo\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -2718,8 +2718,8 @@ class BasketPageTest(unittest.TestCase):
                filter(Goods.overall_type == 0).\
                filter(Goods_block.delivery_type == 2).\
                filter(Goods_price.price_type_guid == Region.price_type_guid).\
-               filter(Goods_price.price > 5000).\
-               filter('t_goods_remains.%s > 1' % store_shop).\
+               filter(Goods_price.price > 7000).\
+               filter('t_goods_remains.%s > 0' % store_shop).\
                first()
 
     HOST = 'http://%s.%s/' % (os.getenv('CITY'), os.getenv('DOMAIN'))
