@@ -2769,7 +2769,7 @@ class BasketPageTest(unittest.TestCase):
                filter(Goods_block.delivery_type == 2).\
                filter(Goods_price.price_type_guid == Region.price_type_guid).\
                filter(Goods_price.price > 5000).\
-               filter('t_goods_remains.%s > 1' % store_shop).\
+               filter('t_goods_remains.%s > 0' % store_shop).\
                first()
 
     HOST = 'http://%s.%s/' % (os.getenv('CITY'), os.getenv('DOMAIN'))
@@ -2779,7 +2779,13 @@ class BasketPageTest(unittest.TestCase):
     driver.find_element_by_partial_link_text('Купить').click()
     time.sleep(5)
     driver.get('%sbasket/' % HOST)
-    driver.find_element_by_css_selector("div.dcityContainer > span.radio").click()
+    try:
+        dcityContainer = driver.find_element_by_class_name('dcityContainer')
+        span = dcityContainer.find_element_by_tag_name('span')
+        span.click()
+    except:
+        dcityContainer = driver.find_element_by_css_selector("div.dcityContainer > span.radio")
+        dcityContainer.click()
 
     def tearDown(self):
         """Удаление переменных для всех тестов. Остановка приложения"""
