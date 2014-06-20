@@ -2732,9 +2732,9 @@ class BasketPageTest(unittest.TestCase):
     try:
         dcityContainer = driver.find_element_by_css_selector("div.dcityContainer > span.radio")
         dcityContainer.click()
+        delivery = True
     except:
-        dcityContainer = driver.find_element_by_id('zone-417909-1')
-        dcityContainer.click()
+        delivery = False
 
     def tearDown(self):
         """Удаление переменных для всех тестов. Остановка приложения"""
@@ -3151,206 +3151,212 @@ class BasketPageTest(unittest.TestCase):
     def test_region(self):
         """ Поле для ввода региона доставки """
         cnt=0
-        region = self.driver.find_element_by_id('region')
+        if delivery:
+            region = self.driver.find_element_by_id('region')
 
-        if region.size['width'] != 257:
-            cnt+=1
-            print 'Нужная ширина поля для ввода региона доставки - 257, а на странице: ', region.size['width']
-            print '-'*80
+            if region.size['width'] != 257:
+                cnt+=1
+                print 'Нужная ширина поля для ввода региона доставки - 257, а на странице: ', region.size['width']
+                print '-'*80
             
-        if region.size['height'] != 29:
-            cnt+=1
-            print 'Нужная высота поля для ввода региона доставки - 29, а на странице: ', region.size['height']
-            print '-'*80
+            if region.size['height'] != 29:
+                cnt+=1
+                print 'Нужная высота поля для ввода региона доставки - 29, а на странице: ', region.size['height']
+                print '-'*80
             
-        if not region.is_displayed(): #проверяем отображается ли
-            cnt+=1
-            print 'Поле для ввода региона доставки не отображается'
-            print '-'*80
+            if not region.is_displayed(): #проверяем отображается ли
+                cnt+=1
+                print 'Поле для ввода региона доставки не отображается'
+                print '-'*80
 
-        if region.location['x'] != 231:
-            cnt+=1
-            print 'Расположение поля для ввода региона доставки по оси x - 231, а на странице: ', region.location['x']
-            print '-'*80
+            if region.location['x'] != 231:
+                cnt+=1
+                print 'Расположение поля для ввода региона доставки по оси x - 231, а на странице: ', region.location['x']
+                print '-'*80
         
-        try:
-            self.driver.find_element_by_id('region').send_keys('AutoTEST design')
-            cnt+=1
-            print 'Поле для ввода региона доставки доступно для ввода'
-            print '-'*80
-        except:
-            pass
+            try:
+                self.driver.find_element_by_id('region').send_keys('AutoTEST design')
+                cnt+=1
+                print 'Поле для ввода региона доставки доступно для ввода'
+                print '-'*80
+            except:
+                pass
 
         assert cnt==0, ('Error in region\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
 
     def test_city(self):
         """ Поле для ввода города доставки """
         cnt=0
-        city = self.driver.find_element_by_id('city')
+        if delivery:
+            city = self.driver.find_element_by_id('city')
 
-        if city.size['width'] != 257:
-            cnt+=1
-            print 'Нужная ширина поля для ввода города доставки - 257, а на странице: ', city.size['width']
-            print '-'*80
+            if city.size['width'] != 257:
+                cnt+=1
+                print 'Нужная ширина поля для ввода города доставки - 257, а на странице: ', city.size['width']
+                print '-'*80
             
-        if city.size['height'] != 29:
-            cnt+=1
-            print 'Нужная высота поля для ввода города доставки - 29, а на странице: ', city.size['height']
-            print '-'*80
+            if city.size['height'] != 29:
+                cnt+=1
+                print 'Нужная высота поля для ввода города доставки - 29, а на странице: ', city.size['height']
+                print '-'*80
             
-        if not city.is_displayed(): #проверяем отображается ли
-            cnt+=1
-            print 'Поле для ввода города доставки не отображается'
-            print '-'*80
+            if not city.is_displayed(): #проверяем отображается ли
+                cnt+=1
+                print 'Поле для ввода города доставки не отображается'
+                print '-'*80
 
-        if city.location['x'] != 498:
-            cnt+=1
-            print 'Расположение поля для ввода города доставки по оси x - 498, а на странице: ', city.location['x']
-            print '-'*80
+            if city.location['x'] != 498:
+                cnt+=1
+                print 'Расположение поля для ввода города доставки по оси x - 498, а на странице: ', city.location['x']
+                print '-'*80
         
-        try:
-            self.driver.find_element_by_id('city').send_keys('AutoTEST design')
-            cnt+=1
-            print 'Поле для ввода города доставки доступно для ввода'
-            print '-'*80
-        except:
-            pass
+            try:
+                self.driver.find_element_by_id('city').send_keys('AutoTEST design')
+                cnt+=1
+                print 'Поле для ввода города доставки доступно для ввода'
+                print '-'*80
+            except:
+                pass
 
         assert cnt==0, ('Error in city\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
 
     def test_personal_order_form_addressStreet(self):
         """ Поле для ввода улицы доставки """
         cnt=0
-        addressStreet = self.driver.find_element_by_id('personal_order_form_addressStreet')
+        if delivery:
+            addressStreet = self.driver.find_element_by_id('personal_order_form_addressStreet')
 
-        if addressStreet.size['width'] != 347:
-            cnt+=1
-            print 'Нужная ширина поля для ввода улицы доставки - 347, а на странице: ', addressStreet.size['width']
-            print '-'*80
+            if addressStreet.size['width'] != 347:
+                cnt+=1
+                print 'Нужная ширина поля для ввода улицы доставки - 347, а на странице: ', addressStreet.size['width']
+                print '-'*80
             
-        if addressStreet.size['height'] != 29:
-            cnt+=1
-            print 'Нужная высота поля для ввода улицы доставки - 29, а на странице: ', addressStreet.size['height']
-            print '-'*80
+            if addressStreet.size['height'] != 29:
+                cnt+=1
+                print 'Нужная высота поля для ввода улицы доставки - 29, а на странице: ', addressStreet.size['height']
+                print '-'*80
             
-        if not addressStreet.is_displayed(): #проверяем отображается ли
-            cnt+=1
-            print 'Поле для ввода улицы доставки не отображается'
-            print '-'*80
+            if not addressStreet.is_displayed(): #проверяем отображается ли
+                cnt+=1
+                print 'Поле для ввода улицы доставки не отображается'
+                print '-'*80
 
-        if addressStreet.location['x'] != 231:
-            cnt+=1
-            print 'Расположение поля для ввода улицы доставки по оси x - 231, а на странице: ', addressStreet.location['x']
-            print '-'*80            
+            if addressStreet.location['x'] != 231:
+                cnt+=1
+                print 'Расположение поля для ввода улицы доставки по оси x - 231, а на странице: ', addressStreet.location['x']
+                print '-'*80            
         
-        try:
-            self.driver.find_element_by_id('personal_order_form_addressStreet').send_keys('AutoTEST design')
-        except:
-            cnt+=1
-            print 'Поле для улицы доставки недоступно для ввода'
-            print '-'*80
+            try:
+                self.driver.find_element_by_id('personal_order_form_addressStreet').send_keys('AutoTEST design')
+            except:
+                cnt+=1
+                print 'Поле для улицы доставки недоступно для ввода'
+                print '-'*80
 
         assert cnt==0, ('Error in addressStreet\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
 
     def test_personal_order_form_addressHouse(self):
         """ Поле для ввода дома доставки """
         cnt=0
-        addressHouse = self.driver.find_element_by_id('personal_order_form_addressHouse')
+        if delivery:
+            addressHouse = self.driver.find_element_by_id('personal_order_form_addressHouse')
 
-        if addressHouse.size['width'] != 166:
-            cnt+=1
-            print 'Нужная ширина поля для ввода дома доставки - 166, а на странице: ', addressHouse.size['width']
-            print '-'*80
+            if addressHouse.size['width'] != 166:
+                cnt+=1
+                print 'Нужная ширина поля для ввода дома доставки - 166, а на странице: ', addressHouse.size['width']
+                print '-'*80
             
-        if addressHouse.size['height'] != 29:
-            cnt+=1
-            print 'Нужная высота поля для ввода дома доставки - 29, а на странице: ', addressHouse.size['height']
-            print '-'*80
+            if addressHouse.size['height'] != 29:
+                cnt+=1
+                print 'Нужная высота поля для ввода дома доставки - 29, а на странице: ', addressHouse.size['height']
+                print '-'*80
             
-        if not addressHouse.is_displayed(): #проверяем отображается ли
-            cnt+=1
-            print 'Поле для ввода дома доставки не отображается'
-            print '-'*80
+            if not addressHouse.is_displayed(): #проверяем отображается ли
+                cnt+=1
+                print 'Поле для ввода дома доставки не отображается'
+                print '-'*80
 
-        if addressHouse.location['x'] != 588:
-            cnt+=1
-            print 'Расположение поля для ввода дома доставки по оси x - 588, а на странице: ', addressHouse.location['x']
-            print '-'*80
+            if addressHouse.location['x'] != 588:
+                cnt+=1
+                print 'Расположение поля для ввода дома доставки по оси x - 588, а на странице: ', addressHouse.location['x']
+                print '-'*80
         
-        try:
-            self.driver.find_element_by_id('personal_order_form_addressHouse').send_keys('AutoTEST design')
-        except:
-            cnt+=1
-            print 'Поле для дома доставки недоступно для ввода'
-            print '-'*80
+            try:
+                self.driver.find_element_by_id('personal_order_form_addressHouse').send_keys('AutoTEST design')
+            except:
+                cnt+=1
+                print 'Поле для дома доставки недоступно для ввода'
+                print '-'*80
 
         assert cnt==0, ('Error in form_addressHouse\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
 
     def test_personal_order_form_addressBuilding(self):
         """ Поле для ввода строения доставки """
         cnt=0
-        addressBuilding = self.driver.find_element_by_id('personal_order_form_addressBuilding')
+        if delivery:
+            addressBuilding = self.driver.find_element_by_id('personal_order_form_addressBuilding')
 
-        if addressBuilding.size['width'] != 166:
-            cnt+=1
-            print 'Нужная ширина поля для ввода строения доставки - 166, а на странице: ', addressBuilding.size['width']
-            print '-'*80
+            if addressBuilding.size['width'] != 166:
+                cnt+=1
+                print 'Нужная ширина поля для ввода строения доставки - 166, а на странице: ', addressBuilding.size['width']
+                print '-'*80
             
-        if addressBuilding.size['height'] != 29:
-            cnt+=1
-            print 'Нужная высота поля для ввода строения доставки - 29, а на странице: ', addressBuilding.size['height']
-            print '-'*80
+            if addressBuilding.size['height'] != 29:
+                cnt+=1
+                print 'Нужная высота поля для ввода строения доставки - 29, а на странице: ', addressBuilding.size['height']
+                print '-'*80
             
-        if not addressBuilding.is_displayed(): #проверяем отображается ли
-            cnt+=1
-            print 'Поле для ввода строения доставки не отображается'
-            print '-'*80
+            if not addressBuilding.is_displayed(): #проверяем отображается ли
+                cnt+=1
+                print 'Поле для ввода строения доставки не отображается'
+                print '-'*80
 
-        if addressBuilding.location['x'] != 231:
-            cnt+=1
-            print 'Расположение поля для ввода строения доставки по оси x - 231, а на странице: ', addressBuilding.location['x']
-            print '-'*80
+            if addressBuilding.location['x'] != 231:
+                cnt+=1
+                print 'Расположение поля для ввода строения доставки по оси x - 231, а на странице: ', addressBuilding.location['x']
+                print '-'*80
         
-        try:
-            self.driver.find_element_by_id('personal_order_form_addressBuilding').send_keys('AutoTEST design')
-        except:
-            cnt+=1
-            print 'Поле для строения доставки недоступно для ввода'
-            print '-'*80
+            try:
+                self.driver.find_element_by_id('personal_order_form_addressBuilding').send_keys('AutoTEST design')
+            except:
+                cnt+=1
+                print 'Поле для строения доставки недоступно для ввода'
+                print '-'*80
 
         assert cnt==0, ('Error in order_form_addressBuilding\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
 
     def test_personal_order_form_addressAppartment(self):
         """ Поле для ввода квартиры доставки """
         cnt=0
-        addressAppartment = self.driver.find_element_by_id('personal_order_form_addressAppartment')
+        if delivery:
+            addressAppartment = self.driver.find_element_by_id('personal_order_form_addressAppartment')
 
-        if addressAppartment.size['width'] != 166:
-            cnt+=1
-            print 'Нужная ширина поля для ввода квартиры доставки - 166, а на странице: ', addressAppartment.size['width']
-            print '-'*80
+            if addressAppartment.size['width'] != 166:
+                cnt+=1
+                print 'Нужная ширина поля для ввода квартиры доставки - 166, а на странице: ', addressAppartment.size['width']
+                print '-'*80
             
-        if addressAppartment.size['height'] != 29:
-            cnt+=1
-            print 'Нужная высота поля для ввода квартиры доставки - 29, а на странице: ', addressAppartment.size['height']
-            print '-'*80
+            if addressAppartment.size['height'] != 29:
+                cnt+=1
+                print 'Нужная высота поля для ввода квартиры доставки - 29, а на странице: ', addressAppartment.size['height']
+                print '-'*80
             
-        if not addressAppartment.is_displayed(): #проверяем отображается ли
-            cnt+=1
-            print 'Поле для ввода квартиры доставки не отображается'
-            print '-'*80
+            if not addressAppartment.is_displayed(): #проверяем отображается ли
+                cnt+=1
+                print 'Поле для ввода квартиры доставки не отображается'
+                print '-'*80
 
-        if addressAppartment.location['x'] != 589:
-            cnt+=1
-            print 'Расположение поля для ввода квартиры доставки по оси x - 589, а на странице: ', addressAppartment.location['x']
-            print '-'*80
+            if addressAppartment.location['x'] != 589:
+                cnt+=1
+                print 'Расположение поля для ввода квартиры доставки по оси x - 589, а на странице: ', addressAppartment.location['x']
+                print '-'*80
 
-        try:
-            self.driver.find_element_by_id('personal_order_form_addressAppartment').send_keys('AutoTEST design')
-        except:
-            cnt+=1
-            print 'Поле для квартиры доставки недоступно для ввода'
-            print '-'*80
+            try:
+                self.driver.find_element_by_id('personal_order_form_addressAppartment').send_keys('AutoTEST design')
+            except:
+                cnt+=1
+                print 'Поле для квартиры доставки недоступно для ввода'
+                print '-'*80
 
         assert cnt==0, ('Error in order_form_addressAppartment\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
 
