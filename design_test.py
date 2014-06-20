@@ -145,7 +145,7 @@ class MainPageTest(unittest.TestCase):
             
         if seg.location['x'] != 393:
             cnt+=1
-            print 'Расположение промоблока по оси x - 393, а на странице: ', top.location['x']
+            print 'Расположение промоблока по оси x - 393, а на странице: ', seg.location['x']
             print '-'*80
 
         assert cnt==0, ('Error in logo\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -2729,7 +2729,6 @@ class BasketPageTest(unittest.TestCase):
     driver.find_element_by_partial_link_text('Купить').click()
     time.sleep(5)
     driver.get('%sbasket/' % HOST)
-    driver.get_screenshot_as_file('Test.png')
     try:
         dcityContainer = driver.find_element_by_css_selector("div.dcityContainer > span.radio")
         dcityContainer.click()
