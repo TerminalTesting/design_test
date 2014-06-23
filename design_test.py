@@ -3419,7 +3419,7 @@ class OrderCompletePageTest(unittest.TestCase):
     driver.find_element_by_partial_link_text('Купить').click()
     time.sleep(5)
     driver.get('%sbasket/' % HOST)
-    driver.find_element_by_css_selector("div.dcityContainer > span.radio").click()
+    time.sleep(5)
     driver.find_element_by_id('personal_order_form_firstName').send_keys('AutoTEST design')
     driver.find_element_by_id('personal_order_form_phoneNumber').send_keys('123456789')
     driver.find_element_by_id('personal_order_form_email').send_keys('AutoTEST@design.test')
