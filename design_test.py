@@ -130,22 +130,17 @@ class MainPageTest(unittest.TestCase):
             
         if seg.size['height'] != 17:
             cnt+=1
-            print 'Нужная высота промоблока - 17, а на странице: ', seg.size['height']
+            print 'Нужная высота блока с отточиями-листалками баннера - 17, а на странице: ', seg.size['height']
             print '-'*80
             
         if not seg.is_displayed(): #проверяем отображается ли
             cnt+=1
-            print 'Промоблок не отображается'
+            print 'Блок с отточиями-листалками баннера не отображается'
             print '-'*80
         
         if seg.location['y'] != 551:
             cnt+=1
-            print 'Расположение промоблока по оси y - 551, а на странице: ', seg.location['y']
-            print '-'*80
-            
-        if seg.location['x'] != 382:
-            cnt+=1
-            print 'Расположение промоблока по оси x - 382, а на странице: ', seg.location['x']
+            print 'Расположение блока с отточиями-листалками баннера по оси y - 551, а на странице: ', seg.location['y']
             print '-'*80
 
         assert cnt==0, ('Error in logo\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
