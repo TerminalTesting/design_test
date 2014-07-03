@@ -1162,9 +1162,9 @@ class CatPageTest(unittest.TestCase):
             print 'Нужная ширина сегмента - 920, а на странице: ', catSegLeft.size['width']
             print '-'*80
             
-        if catSegLeft.size['height'] != 323:
+        if catSegLeft.size['height'] != 323 and catSegLeft.size['height'] != 303:
             cnt+=1
-            print 'Нужная высота сегмента - 323, а на странице: ', catSegLeft.size['height']
+            print 'Нужная высота сегмента - 323 или 303, а на странице: ', catSegLeft.size['height']
             print '-'*80
             
         if not catSegLeft.is_displayed():
