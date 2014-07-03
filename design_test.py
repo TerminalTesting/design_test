@@ -1577,9 +1577,9 @@ class CatinnerPageTest(unittest.TestCase):
         cnt=0
         pageListing = self.driver.find_element_by_class_name('pageListing')
 
-        if pageListing.size['width'] != 245:
+        if pageListing.size['width'] != 246:
             cnt+=1
-            print 'Нужная ширина блока с пагинатором - 245, а на странице: ', pageListing.size['width']
+            print 'Нужная ширина блока с пагинатором - 246, а на странице: ', pageListing.size['width']
             print '-'*80
 
         if pageListing.size['height'] != 38:
@@ -1592,9 +1592,9 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Блок с пагинатором не отображается'
             print '-'*80
             
-        if pageListing.location['x'] != 704:
+        if pageListing.location['x'] != 703:
             cnt+=1
-            print 'Расположение блока с пагинатором по оси x - 704, а на странице: ', pageListing.location['x']
+            print 'Расположение блока с пагинатором по оси x - 703, а на странице: ', pageListing.location['x']
             print '-'*80
                 
         assert cnt==0, ('Error in pageListing\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -1951,9 +1951,9 @@ class CartPageTest(unittest.TestCase):
         cnt=0
         middlePrice = self.driver.find_element_by_class_name('cardPrice').find_element_by_class_name('middlePrice')
 
-        if middlePrice.size['width'] != 174:
+        if middlePrice.size['width'] != 170:
             cnt+=1
-            print 'Нужная ширина блока с ценой товара - 174, а на странице: ', middlePrice.size['width']
+            print 'Нужная ширина блока с ценой товара - 170, а на странице: ', middlePrice.size['width']
             print '-'*80
             
         if middlePrice.size['height'] != 55:
@@ -1993,9 +1993,9 @@ class CartPageTest(unittest.TestCase):
             print 'Блок с кнопкой купить не отображается'
             print '-'*80
             
-        if basketButton.location['x'] != 669:
+        if basketButton.location['x'] != 665:
             cnt+=1
-            print 'Расположение блока с кнопкой купить по оси x - 669, а на странице: ', basketButton.location['x']
+            print 'Расположение блока с кнопкой купить по оси x - 665, а на странице: ', basketButton.location['x']
             print '-'*80
 
         assert cnt==0, ('Error in basketButton\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -2005,9 +2005,9 @@ class CartPageTest(unittest.TestCase):
         cnt=0
         serviceInfo = self.driver.find_element_by_class_name('serviceInfo')
 
-        if serviceInfo.size['width'] != 155:
+        if serviceInfo.size['width'] != 159:
             cnt+=1
-            print 'Нужная ширина блока со статусом товара - 155, а на странице: ', serviceInfo.size['width']
+            print 'Нужная ширина блока со статусом товара - 159, а на странице: ', serviceInfo.size['width']
             print '-'*80
             
         if serviceInfo.size['height'] != 55:
@@ -2020,9 +2020,9 @@ class CartPageTest(unittest.TestCase):
             print 'Блок со статусом товара не отображается'
             print '-'*80
             
-        if serviceInfo.location['x'] != 794:
+        if serviceInfo.location['x'] != 790:
             cnt+=1
-            print 'Расположение блока со статусом товара по оси x - 794, а на странице: ', serviceInfo.location['x']
+            print 'Расположение блока со статусом товара по оси x - 790, а на странице: ', serviceInfo.location['x']
             print '-'*80
 
         assert cnt==0, ('Error in serviceInfo\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
