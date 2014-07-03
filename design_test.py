@@ -549,9 +549,9 @@ class MainPageTest(unittest.TestCase):
             print 'Нужная ширина блока с пиктограммой "Новинки" - 130, а на странице: ', new.size['width']
             print '-'*80
             
-        if new.size['height'] != 69:
+        if new.size['height'] != 74:
             cnt+=1
-            print 'Нужная высота блока с пиктограммой "Новинки" - 69, а на странице: ', new.size['height']
+            print 'Нужная высота блока с пиктограммой "Новинки" - 74, а на странице: ', new.size['height']
             print '-'*80
             
         if not new.is_displayed(): #проверяем отображается ли
@@ -564,9 +564,9 @@ class MainPageTest(unittest.TestCase):
             print 'Расположение блока с пиктограммой "Новинки" по оси y - 568, а на странице: ', new.location['y']
             print '-'*80
             
-        if new.location['x'] != 272:
+        if new.location['x'] != 423:
             cnt+=1
-            print 'Расположение блока с пиктограммой "Новинки" по оси x - 272, а на странице: ', new.location['x']
+            print 'Расположение блока с пиктограммой "Новинки" по оси x - 423, а на странице: ', new.location['x']
             print '-'*80
                 
         assert cnt==0, ('Error in new_pic\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -581,9 +581,9 @@ class MainPageTest(unittest.TestCase):
             print 'Нужная ширина блока с пиктограммой "Особая цена" - 130, а на странице: ', price.size['width']
             print '-'*80
             
-        if price.size['height'] != 69:
+        if price.size['height'] != 74:
             cnt+=1
-            print 'Нужная высота блока с пиктограммой "Особая цена" - 69, а на странице: ', price.size['height']
+            print 'Нужная высота блока с пиктограммой "Особая цена" - 74, а на странице: ', price.size['height']
             print '-'*80
             
         if not price.is_displayed(): #проверяем отображается ли
@@ -591,14 +591,14 @@ class MainPageTest(unittest.TestCase):
             print 'Блок с пиктограммой "Особая цена" не отображается'
             print '-'*80
         
-        if price.location['y'] != 568:
+        if price.location['y'] != 1006:
             cnt+=1
-            print 'Расположение блока с пиктограммой "Особая цена" по оси y - 568, а на странице: ', price.location['y']
+            print 'Расположение блока с пиктограммой "Особая цена" по оси y - 1006, а на странице: ', price.location['y']
             print '-'*80
             
-        if price.location['x'] != 425:
+        if price.location['x'] != 423:
             cnt+=1
-            print 'Расположение блока с пиктограммой "Особая цена" по оси x - 425, а на странице: ', price.location['x']
+            print 'Расположение блока с пиктограммой "Особая цена" по оси x - 423, а на странице: ', price.location['x']
             print '-'*80
                 
         assert cnt==0, ('Error in price_pic\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -613,9 +613,9 @@ class MainPageTest(unittest.TestCase):
             print 'Нужная ширина блока с пиктограммой "Популярные" - 130, а на странице: ', best.size['width']
             print '-'*80
             
-        if best.size['height'] != 69:
+        if best.size['height'] != 74:
             cnt+=1
-            print 'Нужная высота блока с пиктограммой "Популярные" - 69, а на странице: ', best.size['height']
+            print 'Нужная высота блока с пиктограммой "Популярные" - 74, а на странице: ', best.size['height']
             print '-'*80
             
         if not best.is_displayed(): #проверяем отображается ли
@@ -623,14 +623,14 @@ class MainPageTest(unittest.TestCase):
             print 'Блок с пиктограммой "Популярные" не отображается'
             print '-'*80
         
-        if best.location['y'] != 568:
+        if best.location['y'] != 1412:
             cnt+=1
-            print 'Расположение блока с пиктограммой "Популярные" по оси y - 568, а на странице: ', best.location['y']
+            print 'Расположение блока с пиктограммой "Популярные" по оси y - 1412, а на странице: ', best.location['y']
             print '-'*80
             
-        if best.location['x'] != 578:
+        if best.location['x'] != 423:
             cnt+=1
-            print 'Расположение блока с пиктограммой "Популярные" по оси x - 578, а на странице: ', best.location['x']
+            print 'Расположение блока с пиктограммой "Популярные" по оси x - 423, а на странице: ', best.location['x']
             print '-'*80
                 
         assert cnt==0, ('Error in best_pic\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -1577,9 +1577,9 @@ class CatinnerPageTest(unittest.TestCase):
         cnt=0
         pageListing = self.driver.find_element_by_class_name('pageListing')
 
-        if pageListing.size['width'] != 246:
+        if pageListing.size['width'] != 247:
             cnt+=1
-            print 'Нужная ширина блока с пагинатором - 246, а на странице: ', pageListing.size['width']
+            print 'Нужная ширина блока с пагинатором - 247, а на странице: ', pageListing.size['width']
             print '-'*80
 
         if pageListing.size['height'] != 38:
@@ -1592,9 +1592,9 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Блок с пагинатором не отображается'
             print '-'*80
             
-        if pageListing.location['x'] != 703:
+        if pageListing.location['x'] != 702:
             cnt+=1
-            print 'Расположение блока с пагинатором по оси x - 703, а на странице: ', pageListing.location['x']
+            print 'Расположение блока с пагинатором по оси x - 702, а на странице: ', pageListing.location['x']
             print '-'*80
                 
         assert cnt==0, ('Error in pageListing\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
