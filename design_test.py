@@ -156,9 +156,9 @@ class MainPageTest(unittest.TestCase):
             print 'Нужная ширина блока с контентом - 974, а на странице: ', cont.size['width']
             print '-'*80
             
-        if cont.size['height'] != 1636:
+        if cont.size['height'] != 2463:
             cnt+=1
-            print 'Нужная высота блока с контентом - 1636, а на странице: ', cont.size['height']
+            print 'Нужная высота блока с контентом - 2463, а на странице: ', cont.size['height']
             print '-'*80
             
         if not cont.is_displayed(): #проверяем отображается ли
@@ -517,9 +517,9 @@ class MainPageTest(unittest.TestCase):
             print 'Нужная ширина блока в слайдере товаров - 974, а на странице: ', gpromo.size['width']
             print '-'*80
             
-        if gpromo.size['height'] != 403:
+        if gpromo.size['height'] != 1230:
             cnt+=1
-            print 'Нужная высота блока в слайдере товаров - 403, а на странице: ', gpromo.size['height']
+            print 'Нужная высота блока в слайдере товаров - 1230, а на странице: ', gpromo.size['height']
             print '-'*80
             
         if not gpromo.is_displayed(): #проверяем отображается ли
@@ -542,7 +542,7 @@ class MainPageTest(unittest.TestCase):
     def test_new_pic(self):
         """ Проверка блока с пиктограммой "Новинки" """
         cnt=0
-        new = self.driver.find_element_by_id('slControl1')
+        new = self.driver.find_element_by_css_selector('div.i-label.new')
 
         if new.size['width'] != 130:
             cnt+=1
@@ -574,7 +574,7 @@ class MainPageTest(unittest.TestCase):
     def test_price_pic(self):
         """ Проверка блока с пиктограммой "Особая цена" """
         cnt=0
-        price = self.driver.find_element_by_id('slControl2')
+        price = self.driver.find_element_by_css_selector('div.i-label.price')
 
         if price.size['width'] != 130:
             cnt+=1
@@ -606,7 +606,7 @@ class MainPageTest(unittest.TestCase):
     def test_best_pic(self):
         """ Проверка блока с пиктограммой "Популярные" """
         cnt=0
-        best = self.driver.find_element_by_id('slControl3')
+        best = self.driver.find_element_by_css_selector('div.i-label.best')
 
         if best.size['width'] != 130:
             cnt+=1
@@ -655,9 +655,9 @@ class MainPageTest(unittest.TestCase):
             print 'Блок "Как выбрать" не отображается'
             print '-'*80
         
-        if guide.location['y'] != 1026:
+        if guide.location['y'] != 1853:
             cnt+=1
-            print 'Расположение блока "Как выбрать" по оси y - 1026, а на странице: ', guide.location['y']
+            print 'Расположение блока "Как выбрать" по оси y - 1853, а на странице: ', guide.location['y']
             print '-'*80
             
         if guide.location['x'] != 10:
@@ -687,14 +687,14 @@ class MainPageTest(unittest.TestCase):
             print 'Блок с пиктограммой "Как выбрать" не отображается'
             print '-'*80
         
-        if pguide.location['y'] != 1011:
+        if pguide.location['y'] != 1838:
             cnt+=1
-            print 'Расположение блока с пиктограммой "Как выбрать" по оси y - 1011, а на странице: ', pguide.location['y']
+            print 'Расположение блока с пиктограммой "Как выбрать" по оси y - 1838, а на странице: ', pguide.location['y']
             print '-'*80
             
-        if pguide.location['x'] != 425:
+        if pguide.location['x'] != 430:
             cnt+=1
-            print 'Расположение блока с пиктограммой "Как выбрать" по оси x - 425, а на странице: ', pguide.location['x']
+            print 'Расположение блока с пиктограммой "Как выбрать" по оси x - 430, а на странице: ', pguide.location['x']
             print '-'*80
         
         if pguide.get_attribute('href') != '%sguide/' % self.HOST:
@@ -726,9 +726,9 @@ class MainPageTest(unittest.TestCase):
             print 'Блок с нижним меню не отображается'
             print '-'*80
         
-        if content.location['y'] != 1282:
+        if content.location['y'] != 2109:
             cnt+=1
-            print 'Расположение блока с нижним меню по оси y - 1282, а на странице: ', content.location['y']
+            print 'Расположение блока с нижним меню по оси y - 2109, а на странице: ', content.location['y']
             print '-'*80
             
         if content.location['x'] != 9:
@@ -758,9 +758,9 @@ class MainPageTest(unittest.TestCase):
             print 'Блок с футером не отображается'
             print '-'*80
         
-        if footer.location['y'] != 1483:
+        if footer.location['y'] != 2310:
             cnt+=1
-            print 'Расположение блока с футером по оси y - 1483, а на странице: ', footer.location['y']
+            print 'Расположение блока с футером по оси y - 2310, а на странице: ', footer.location['y']
             print '-'*80
             
         if footer.location['x'] != 3:
@@ -790,9 +790,9 @@ class MainPageTest(unittest.TestCase):
             print 'Блок с логотипом в футере не отображается'
             print '-'*80
         
-        if flogo.location['y'] != 1483:
+        if flogo.location['y'] != 2310:
             cnt+=1
-            print 'Расположение блока с логотипом в футере по оси y - 1483, а на странице: ', flogo.location['y']
+            print 'Расположение блока с логотипом в футере по оси y - 2310, а на странице: ', flogo.location['y']
             print '-'*80
             
         if flogo.location['x'] != 20:
@@ -830,9 +830,9 @@ class MainPageTest(unittest.TestCase):
             print 'Блок со ссылкой "Надежная покупка" не отображается'
             print '-'*80
         
-        if wlogo.location['y'] != 1473:
+        if wlogo.location['y'] != 2300:
             cnt+=1
-            print 'Расположение блока со ссылкой "Надежная покупка" по оси y - 1473, а на странице: ', wlogo.location['y']
+            print 'Расположение блока со ссылкой "Надежная покупка" по оси y - 2300, а на странице: ', wlogo.location['y']
             print '-'*80
             
         if wlogo.location['x'] != 177:
@@ -895,9 +895,9 @@ class MainPageTest(unittest.TestCase):
             print 'Блок со ссылкой на "Вконтакте" не отображается'
             print '-'*80
         
-        if vk.location['y'] != 1064:
+        if vk.location['y'] != 1891:
             cnt+=1
-            print 'Расположение блока со ссылкой на "Вконтакте" по оси y - 1064, а на странице: ', vk.location['y']
+            print 'Расположение блока со ссылкой на "Вконтакте" по оси y - 1891, а на странице: ', vk.location['y']
             print '-'*80
             
         if vk.location['x'] != 843:
