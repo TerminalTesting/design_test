@@ -13,6 +13,7 @@ class MainPageTest(unittest.TestCase):
     HOST = 'http://%s.%s/' % (os.getenv('CITY'), os.getenv('DOMAIN'))
     driver = webdriver.Firefox()
     driver.get(HOST)
+    time.sleep(15)
     driver.get_screenshot_as_file('MainPageTest.png')
     
 
@@ -3624,6 +3625,7 @@ class StaticPageTest(unittest.TestCase):
     HOST = 'http://%s.%s/' % (os.getenv('CITY'), os.getenv('DOMAIN'))
     driver = webdriver.Firefox()
     driver.get(HOST + 'about/')
+    time.sleep(15)
     driver.get_screenshot_as_file('StaticPageTest.png')
     
 
@@ -3809,6 +3811,7 @@ class ComparePageTest(unittest.TestCase):
     driver.find_element_by_id('password').send_keys(os.getenv('AUTHPASS'))
     driver.find_element_by_class_name('btn-primary').click()
     driver.get('%scompare/' % HOST)
+    time.sleep(15)
     driver.get_screenshot_as_file('ComparePageTest.png')
 
     def tearDown(self):
@@ -4312,6 +4315,7 @@ class FavoritePageTest(unittest.TestCase):
     driver.find_element_by_id('password').send_keys(os.getenv('AUTHPASS'))
     driver.find_element_by_class_name('btn-primary').click()
     driver.get('%sfavorite/' % HOST)
+    time.sleep(15)
     driver.get_screenshot_as_file('FavoritePageTest.png')
         
 
