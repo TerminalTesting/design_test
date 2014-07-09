@@ -1867,6 +1867,7 @@ class CartPageTest(unittest.TestCase):
     HOST = 'http://%s.%s/' % (os.getenv('CITY'), os.getenv('DOMAIN'))
     driver = webdriver.Firefox()
     driver.get(HOST + 'product/' + item.alias)
+    time.sleep(15)
     driver.get_screenshot_as_file('CartPageTest.png')
     
 
