@@ -13,6 +13,7 @@ class MainPageTest(unittest.TestCase):
     HOST = 'http://%s.%s/' % (os.getenv('CITY'), os.getenv('DOMAIN'))
     driver = webdriver.Firefox()
     driver.get(HOST)
+    driver.get_screenshot_as_file('MainPageTest.png')
     
 
     def tearDown(self):
@@ -980,6 +981,7 @@ class CatPageTest(unittest.TestCase):
     a = tm_first_icon.find_element_by_tag_name('a').get_attribute('href') #открывается страница шаблона cat, при изменении ТОП-меню, возможны правки
     driver.get(a)
     time.sleep(5)
+    driver.get_screenshot_as_file('CatPageTest.png')
     
 
     def tearDown(self):
@@ -1301,6 +1303,7 @@ class CatinnerPageTest(unittest.TestCase):
     CATINNER = HOST + 'catalog/%s/' % (os.getenv('CATINNER'))
     driver.get(CATINNER)
     time.sleep(5)
+    driver.get_screenshot_as_file('CatinnerPageTest.png')
 
     def tearDown(self):
         """Удаление переменных для всех тестов. Остановка приложения"""
@@ -1864,6 +1867,7 @@ class CartPageTest(unittest.TestCase):
     HOST = 'http://%s.%s/' % (os.getenv('CITY'), os.getenv('DOMAIN'))
     driver = webdriver.Firefox()
     driver.get(HOST + 'product/' + item.alias)
+    driver.get_screenshot_as_file('CartPageTest.png')
     
 
     def tearDown(self):
@@ -2432,6 +2436,7 @@ class BasketAnonsTest(unittest.TestCase):
     driver.get(HOST + ('product/%s/' % item.alias))
     driver.find_element_by_partial_link_text('Купить').click()
     time.sleep(5)
+    driver.get_screenshot_as_file('BasketAnonsTest.png')
 
     def tearDown(self):
         """Удаление переменных для всех тестов. Остановка приложения"""
@@ -2725,6 +2730,7 @@ class BasketPageTest(unittest.TestCase):
         delivery = True
     except:
         delivery = False
+    driver.get_screenshot_as_file('BasketPageTest.png')
 
     def tearDown(self):
         """Удаление переменных для всех тестов. Остановка приложения"""
@@ -3415,6 +3421,7 @@ class OrderCompletePageTest(unittest.TestCase):
     driver.find_element_by_id('personal_order_form_email').send_keys('AutoTEST@design.test')
     driver.find_element_by_id('personal_order_form_comment').send_keys('AutoTEST design')
     driver.find_element_by_class_name('btn-primary').click()
+    driver.get_screenshot_as_file('OrderCompletePageTest.png')
 
     def tearDown(self):
         """Удаление переменных для всех тестов. Остановка приложения"""
@@ -3616,6 +3623,7 @@ class StaticPageTest(unittest.TestCase):
     HOST = 'http://%s.%s/' % (os.getenv('CITY'), os.getenv('DOMAIN'))
     driver = webdriver.Firefox()
     driver.get(HOST + 'about/')
+    driver.get_screenshot_as_file('StaticPageTest.png')
     
 
     def tearDown(self):
@@ -3800,6 +3808,7 @@ class ComparePageTest(unittest.TestCase):
     driver.find_element_by_id('password').send_keys(os.getenv('AUTHPASS'))
     driver.find_element_by_class_name('btn-primary').click()
     driver.get('%scompare/' % HOST)
+    driver.get_screenshot_as_file('ComparePageTest.png')
 
     def tearDown(self):
         """ Удаление переменных для всех тестов. Остановка приложения """
@@ -4302,6 +4311,7 @@ class FavoritePageTest(unittest.TestCase):
     driver.find_element_by_id('password').send_keys(os.getenv('AUTHPASS'))
     driver.find_element_by_class_name('btn-primary').click()
     driver.get('%sfavorite/' % HOST)
+    driver.get_screenshot_as_file('FavoritePageTest.png')
         
 
     def tearDown(self):
@@ -4543,6 +4553,8 @@ class ModalFormsTest(unittest.TestCase):
         
         goodsLayer = self.driver.find_element_by_class_name('goodsLayer')#проверка всей формы
         
+        self.driver.get_screenshot_as_file('dop_uslugi.png')
+        
         if goodsLayer.size['width'] != 630:
             cnt+=1
             print 'Нужная ширина слоя - 630, а на странице: ', goodsLayer.size['width']
@@ -4738,6 +4750,8 @@ class ModalFormsTest(unittest.TestCase):
         except:
             raise NoSuchElementException, 'Element "sloi obratnii zvonok" not found or not clickable'
         goodsLayer = self.driver.find_element_by_class_name('goodsLayer')#проверка всей формы
+
+        self.driver.get_screenshot_as_file('obratnii_zvonok.png')
 
         if goodsLayer.size['width'] != 606:
             cnt+=1
