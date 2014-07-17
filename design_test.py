@@ -54,7 +54,7 @@ class MainPageTest(unittest.TestCase):
             print 'Расположение ТОП-меню по оси x - 3, а на странице: ', top.location['x']
             print '-'*80
 
-        assert cnt==0, ('Error in top_menu\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/MainPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_logo(self):
         """ Проверка блока с логотипом """
@@ -94,7 +94,7 @@ class MainPageTest(unittest.TestCase):
             print 'Надо: ', self.HOST
             print '-'*80
 
-        assert cnt==0, ('Error in logo\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/MainPageTest.png' % os.getenv('BUILD_URL'))
         
     def test_promo(self):
         """ Проверка промоблока """
@@ -122,7 +122,7 @@ class MainPageTest(unittest.TestCase):
             print 'Расположение промоблока по оси y - 221, а на странице: ', promo.location['y']
             print '-'*80
 
-        assert cnt==0, ('Error in promo\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/MainPageTest.png' % os.getenv('BUILD_URL'))
         
     def test_seg_nav(self):
         """ Проверка блока с отточиями-листалками баннера """
@@ -145,7 +145,7 @@ class MainPageTest(unittest.TestCase):
             print 'Расположение блока с отточиями-листалками баннера по оси y - 551, а на странице: ', seg.location['y']
             print '-'*80
 
-        assert cnt==0, ('Error in logo\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/MainPageTest.png' % os.getenv('BUILD_URL'))
         
     def test_container(self):
         cnt=0
@@ -169,7 +169,7 @@ class MainPageTest(unittest.TestCase):
             print '-'*80
 
 
-        assert cnt==0, ('Error in logo\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/MainPageTest.png' % os.getenv('BUILD_URL'))
         
     def test_sliding_panel(self):
         """ Проверка блока с панелью прокрутки """
@@ -202,7 +202,7 @@ class MainPageTest(unittest.TestCase):
             cnt+=1
             print 'Расположение блока с панелью прокрутки по оси x - 6, а на странице: ', sliding.location['x']
 
-        assert cnt==0, ('Error in logo\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/MainPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_why_cheaper_icon(self):
         """ Проверка блока с иконкой "Почему дешевле?" """
@@ -233,7 +233,7 @@ class MainPageTest(unittest.TestCase):
             cnt+=1
             print 'Расположение блока с иконкой "Почему дешевле?" по оси x - 13, а на странице: ', cheaper.location['x']
 
-        assert cnt==0, ('Error in why_cheaper_icon\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/MainPageTest.png' % os.getenv('BUILD_URL'))
         
     def test_why_cheaper_dia(self):
         cnt=0
@@ -327,7 +327,7 @@ class MainPageTest(unittest.TestCase):
             print 'Расположение кнопки закрытия слоя "Почему дешевле?" по оси x - 937, а на странице: ', close.location['x']
             print '-'*80
         
-        assert cnt==0, ('Error in why_cheaper_dia\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/MainPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_region_select(self):
         """ Проверка блока с выбором региона """
@@ -358,7 +358,7 @@ class MainPageTest(unittest.TestCase):
             cnt+=1
             print 'Расположение блока с выбором региона по оси x - 103, а на странице: ', region.location['x']
 
-        assert cnt==0, ('Error in region_select\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/MainPageTest.png' % os.getenv('BUILD_URL'))
         
     def test_mags_page(self):
         """ Проверка блока со ссылкой на магазины """
@@ -397,7 +397,7 @@ class MainPageTest(unittest.TestCase):
             print 'На сайте: ', region.find_element_by_tag_name('a').get_attribute('href')
             print '-'*80
                 
-        assert cnt==0, ('Error in mags_page\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/MainPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_search_block(self):
         """ Проверка блока с поиском """
@@ -429,7 +429,7 @@ class MainPageTest(unittest.TestCase):
             print 'Расположение блока с поиском по оси x - 401, а на странице: ', search.location['x']
             print '-'*80
                 
-        assert cnt==0, ('Error in search_block\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/MainPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_profile_block(self):
         """ Проверка блока "Войти" """
@@ -468,7 +468,7 @@ class MainPageTest(unittest.TestCase):
             print 'На сайте: ', profile.find_element_by_partial_link_text('Войти').get_attribute('href')
             print '-'*80
     
-        assert cnt==0, ('Error in profile_block\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Error in anons_lk\nErrors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/MainPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_basket_block(self):
         """ Проверка блока "Корзина" """
@@ -507,7 +507,7 @@ class MainPageTest(unittest.TestCase):
             print 'На сайте: ', basket.find_element_by_tag_name('a').get_attribute('href')
             print '-'*80
                 
-        assert cnt==0, ('Error in basket_block\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/MainPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_goods_promo(self):
         """ Проверка блока в слайдере товаров """
@@ -539,7 +539,7 @@ class MainPageTest(unittest.TestCase):
             print 'Расположение блока в слайдере товаров по оси x - 3, а на странице: ', gpromo.location['x']
             print '-'*80
                 
-        assert cnt==0, ('Error in goods_promo\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/MainPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_new_pic(self):
         """ Проверка блока с пиктограммой "Новинки" """
@@ -571,7 +571,7 @@ class MainPageTest(unittest.TestCase):
             print 'Расположение блока с пиктограммой "Новинки" по оси x - 423, а на странице: ', new.location['x']
             print '-'*80
                 
-        assert cnt==0, ('Error in new_pic\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/MainPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_price_pic(self):
         """ Проверка блока с пиктограммой "Особая цена" """
@@ -603,7 +603,7 @@ class MainPageTest(unittest.TestCase):
             print 'Расположение блока с пиктограммой "Особая цена" по оси x - 423, а на странице: ', price.location['x']
             print '-'*80
                 
-        assert cnt==0, ('Error in price_pic\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/MainPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_best_pic(self):
         """ Проверка блока с пиктограммой "Популярные" """
@@ -635,7 +635,7 @@ class MainPageTest(unittest.TestCase):
             print 'Расположение блока с пиктограммой "Популярные" по оси x - 423, а на странице: ', best.location['x']
             print '-'*80
                 
-        assert cnt==0, ('Error in best_pic\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/MainPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_guide(self):
         """ Проверка блока "Как выбрать" """
@@ -667,7 +667,7 @@ class MainPageTest(unittest.TestCase):
             print 'Расположение блока "Как выбрать" по оси x - 10, а на странице: ', guide.location['x']
             print '-'*80
                 
-        assert cnt==0, ('Error in guide\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/MainPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_guide_pic(self):
         """ Проверка блока с пиктограммой "Как выбрать" """
@@ -706,7 +706,7 @@ class MainPageTest(unittest.TestCase):
             print 'На сайте: ', pguide.get_attribute('href')
             print '-'*80
                 
-        assert cnt==0, ('Error in guide_pic\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/MainPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_content_box(self):
         """ Проверка блока с нижним меню """
@@ -738,7 +738,7 @@ class MainPageTest(unittest.TestCase):
             print 'Расположение блока с нижним меню по оси x - 9, а на странице: ', content.location['x']
             print '-'*80
                 
-        assert cnt==0, ('Error in content_box\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/MainPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_footer(self):
         """ Проверка блока с футером """
@@ -770,7 +770,7 @@ class MainPageTest(unittest.TestCase):
             print 'Расположение блока с футером по оси x - 3, а на странице: ', footer.location['x']
             print '-'*80
                 
-        assert cnt==0, ('Error in footer\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
 
     def test_logo_footer(self):
         """ Проверка блока с логотипом в футере """
@@ -810,7 +810,7 @@ class MainPageTest(unittest.TestCase):
             print '-'*80
         
                 
-        assert cnt==0, ('Error in footer\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/MainPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_logo_warranty(self):
         """ Проверка блока со ссылкой "Надежная покупка" """
@@ -842,7 +842,7 @@ class MainPageTest(unittest.TestCase):
             print 'Расположение блока со ссылкой "Надежная покупка" по оси x - 177, а на странице: ', wlogo.location['x']
             print '-'*80
                 
-        assert cnt==0, ('Error in logo_warranty\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/MainPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_up_button(self):
         """ Проверка блока со ссылкой "Наверх" """
@@ -875,7 +875,7 @@ class MainPageTest(unittest.TestCase):
             print 'Расположение блока со ссылкой "Надежная покупка" по оси x - -50, а на странице: ', toTop.location['x']
             print '-'*80
               
-        assert cnt==0, ('Error in up_button\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/MainPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_vk_link(self):
         """ Проверка блока со ссылкой на "Вконтакте" """
@@ -918,7 +918,7 @@ class MainPageTest(unittest.TestCase):
             print '-'*80
         
                 
-        assert cnt==0, ('Error in vk_link\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/MainPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_zanons_lk(self):
         """ Проверка блока с анонсом ЛК """
@@ -969,7 +969,7 @@ class MainPageTest(unittest.TestCase):
         self.driver.get('%slogout' % self.HOST)
         self.driver.close()
                 
-        assert cnt==0, ('Error in anons_lk\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/MainPageTest.png' % os.getenv('BUILD_URL'))
 
 class CatPageTest(unittest.TestCase):
 
@@ -1005,7 +1005,7 @@ class CatPageTest(unittest.TestCase):
             print 'Контентная область не отображается'
             print '-'*80
             
-        assert cnt==0, ('Error in content field\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CatPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_vs_title(self):
         """ Проверка заголовка страницы(название ВС) """
@@ -1047,7 +1047,7 @@ class CatPageTest(unittest.TestCase):
             print 'Размер шрифта заголовка не соответствует заданному( 36px ). На странице: ', title.value_of_css_property('font-size')
             print '-'*80
             
-        assert cnt==0, ('Error in vs title\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CatPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_goods_cat_block(self):
         """ Блок с ссылками на дочерние ВС """
@@ -1069,7 +1069,7 @@ class CatPageTest(unittest.TestCase):
             print 'Блок с сылками на ВС не отображается'
             print '-'*80
                 
-        assert cnt==0, ('Error in goods cat block\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CatPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_guide_pic(self):#can be removed
         cnt=0
@@ -1105,7 +1105,7 @@ class CatPageTest(unittest.TestCase):
             print 'Ссылка на страницу товарного гида некорректная - ', quideLink.get_attribute('href')
             print '-'*80
         
-        assert cnt==0, ('Error in goods cat block\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CatPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_arrows(self):
         cnt=0
@@ -1153,7 +1153,7 @@ class CatPageTest(unittest.TestCase):
             print 'Расположение правой стрелки по оси x - 945, а на странице: ', arrowRight.location['x']
             print '-'*80
         
-        assert cnt==0, ('Error in arrows\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CatPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_catSeg(self):
         """ Проверка сегмента слайдера(товары + ссылки + нижний бордер)"""
@@ -1181,7 +1181,7 @@ class CatPageTest(unittest.TestCase):
             print '-'*80
         
                 
-        assert cnt==0, ('Error in catSeg\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CatPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_segNavi(self):
         """ Проверка блока с ссылками на дочерние секции"""
@@ -1214,7 +1214,7 @@ class CatPageTest(unittest.TestCase):
             print '-'*80
         
                 
-        assert cnt==0, ('Error in segNavi\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CatPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_text_block(self):
         """ Проверка текстового блока под лентами """
@@ -1252,7 +1252,7 @@ class CatPageTest(unittest.TestCase):
             print '-'*80
         
                 
-        assert cnt==0, ('Error in text_block\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CatPageTest.png' % os.getenv('BUILD_URL'))
 
 
     def test_xmini_logo(self):
@@ -1295,7 +1295,7 @@ class CatPageTest(unittest.TestCase):
         
         self.driver.close()
         
-        assert cnt==0, ('Error in mini_logo\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CatPageTest.png' % os.getenv('BUILD_URL'))
 
 class CatinnerPageTest(unittest.TestCase):
 
@@ -1327,7 +1327,7 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Контентная область не отображается'
             print '-'*80
       
-        assert cnt==0, ('Error in content\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CatinnerPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_header(self):
         """ Проверка заголовка(наименование секции) """
@@ -1370,7 +1370,7 @@ class CatinnerPageTest(unittest.TestCase):
             print '-'*80
         
                 
-        assert cnt==0, ('Error in header\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CatinnerPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_brands(self):
         """ Блок товаров с дочерними секциями """
@@ -1408,7 +1408,7 @@ class CatinnerPageTest(unittest.TestCase):
             print '-'*80
         
                 
-        assert cnt==0, ('Error in brands\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CatinnerPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_tags(self):
         """ проверка блока с тегами """
@@ -1450,7 +1450,7 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Размер шрифта блока товаров с тегами не соответствует заданному( 14px ). На странице: ', tags.value_of_css_property('font-size')
             print '-'*80
                 
-        assert cnt==0, ('Error in tags\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CatinnerPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_picking(self):
         """ Тестирование панели выбора видов вывода товара """
@@ -1482,7 +1482,7 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Расположение панели выбора видов вывода товара по оси x - 262, а на странице: ', picking.location['x']
             print '-'*80
                 
-        assert cnt==0, ('Error in picking\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
 
     def test_available(self):
         """ Блок с фильтром "показать в наличии" """
@@ -1510,7 +1510,7 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Расположение блока с фильтром "показать в наличии" по оси x - 572, а на странице: ', available.location['x']
             print '-'*80
                 
-        assert cnt==0, ('Error in available\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CatinnerPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_dropStyleBase_title(self):
         """ Проверка блока с заголовком вида сортировки """
@@ -1542,7 +1542,7 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Расположение блока с заголовком вида сортировки по оси x - 727, а на странице: ', dropStyleBase_title.location['x']
             print '-'*80
                 
-        assert cnt==0, ('Error in dropStyleBase_title\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CatinnerPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_changeOrderBy(self):
         """ Проверка блока с пиктограмой направления сортировки """
@@ -1574,7 +1574,7 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Расположение блока с пиктограмой направления сортировки по оси x - 860, а на странице: ', changeOrderBy.location['x']
             print '-'*80
                 
-        assert cnt==0, ('Error in changeOrderBy\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CatinnerPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_pageListing(self):
         """ Проверка пагинатора """
@@ -1601,7 +1601,7 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Расположение блока с пагинатором по оси x - 702 или 703, а на странице: ', pageListing.location['x']
             print '-'*80
                 
-        assert cnt==0, ('Error in pageListing\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CatinnerPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_lastPick(self):
         """ Блок навигации внизу страницы - пагинация, 'выводить по' """
@@ -1628,7 +1628,7 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Расположение блока навигации внизу страницы по оси x - 262, а на странице: ', lastPick.location['x']
             print '-'*80
                 
-        assert cnt==0, ('Error in lastPick\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CatinnerPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_filter(self):
         """ Проверка блока с подбором по параметрам """
@@ -1655,7 +1655,7 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Расположение блока с подбором по параметрам по оси x - 29, а на странице: ', bfilter.location['x']
             print '-'*80
         
-        assert cnt==0, ('Error in midNavi\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CatinnerPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_clearFilter(self):
         """ Проверка блока с ссылкой "сбросить фильтр" """
@@ -1689,7 +1689,7 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Ссылка "сбросить фильтр" не доступна для щелчка'
             print '-'*80
         
-        assert cnt==0, ('Error in clearFilter\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CatinnerPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_button_pick(self):
         """ Проверка кнопки "Показать" """
@@ -1727,7 +1727,7 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Кнопка "Показать" не доступна для щелчка'
             print '-'*80
             
-        assert cnt==0, ('Error in button_pick\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CatinnerPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_allParameters(self):
         """ Проверка блока с ссылкой "Все характеристики" """
@@ -1766,7 +1766,7 @@ class CatinnerPageTest(unittest.TestCase):
             print '-'*80
         
                 
-        assert cnt==0, ('Error in allParameters\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CatinnerPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_goods_block(self):
         """ Проверка области со всеми товарами """
@@ -1788,7 +1788,7 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Количество контейнеров с товаром должно быть равно 18, а на странице - ', len(cardCont.find_elements_by_class_name('cardCont'))
             print '-'*80
                 
-        assert cnt==0, ('Error in goods_block\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CatinnerPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_xpageCap(self):
         """ Проверка блока "Выводить по" """
@@ -1827,7 +1827,7 @@ class CatinnerPageTest(unittest.TestCase):
         
         self.driver.close()
                 
-        assert cnt==0, ('Error in pageCap\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CatinnerPageTest.png' % os.getenv('BUILD_URL'))
 
 class CartPageTest(unittest.TestCase):
 
@@ -1913,7 +1913,7 @@ class CartPageTest(unittest.TestCase):
             print 'Размер шрифта заголовка не соответствует заданному( 36px ). На странице: ', componentHeader.value_of_css_property('font-size')
             print '-'*80
 
-        assert cnt==0, ('Error in card header\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CartPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_artTop(self):
         """ Проверка блока с кодом товара """
@@ -1950,7 +1950,7 @@ class CartPageTest(unittest.TestCase):
             print 'Размер шрифта текста с кодом товара не соответствует заданному( 14px ). На странице: ', artTop.value_of_css_property('font-size')
             print '-'*80
 
-        assert cnt==0, ('Error in artTop\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CartPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_middlePrice(self):
         """ Проверка блока с ценой товара """
@@ -1977,7 +1977,7 @@ class CartPageTest(unittest.TestCase):
             print 'Расположение блока с ценой товара по оси x - 495, а на странице: ', middlePrice.location['x']
             print '-'*80
 
-        assert cnt==0, ('Error in middlePrice\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CartPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_basketButton(self):
         """ Проверка кнопки купить """
@@ -2004,7 +2004,7 @@ class CartPageTest(unittest.TestCase):
             print 'Расположение блока с кнопкой купить по оси x - 665, а на странице: ', basketButton.location['x']
             print '-'*80
 
-        assert cnt==0, ('Error in basketButton\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CartPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_serviceInfo(self):
         """ Проверка блока со статусом товара """
@@ -2031,7 +2031,7 @@ class CartPageTest(unittest.TestCase):
             print 'Расположение блока со статусом товара по оси x - 790, а на странице: ', serviceInfo.location['x']
             print '-'*80
 
-        assert cnt==0, ('Error in serviceInfo\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CartPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_currentItemTags(self):
         """ Проверка блока с тегами """
@@ -2053,7 +2053,7 @@ class CartPageTest(unittest.TestCase):
             print 'Расположение блока с тегами товара по оси x - 495, а на странице: ', currentItemTags.location['x']
             print '-'*80
 
-        assert cnt==0, ('Error in currentItemTags\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Error in anons_lk\nErrors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CartPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_standartFeatures(self):
         """ Проверка блока с пиктограммами купить, сравнение, избранное """
@@ -2080,7 +2080,7 @@ class CartPageTest(unittest.TestCase):
             print 'Расположение блока с пиктограммами купить, сравнение, избранное по оси x - 495, а на странице: ', standartFeatures.location['x']
             print '-'*80
 
-        assert cnt==0, ('Error in standartFeatures\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CartPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_basket(self):
         """ Проверка блока с пиктограммой купить """
@@ -2114,7 +2114,7 @@ class CartPageTest(unittest.TestCase):
             print 'На странице: ', basket.get_attribute('href')
             print '-'*80
 
-        assert cnt==0, ('Error in basket\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CartPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_fave1(self):
         """ Проверка блока с пиктограммой в избранное """
@@ -2148,7 +2148,7 @@ class CartPageTest(unittest.TestCase):
             print 'На странице: ', fave1.get_attribute('href')
             print '-'*80
 
-        assert cnt==0, ('Error in fave1\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CartPageTest.png' % os.getenv('BUILD_URL'))
         
     def test_compare2(self):
         """ Проверка блока с пиктограммой в сравнение """
@@ -2182,7 +2182,7 @@ class CartPageTest(unittest.TestCase):
             print 'На странице: ', compare2.get_attribute('href')
             print '-'*80
 
-        assert cnt==0, ('Error in compare2\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CartPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_capabilities(self):
         """ Проверка блока вызова доп.слоев """
@@ -2209,7 +2209,7 @@ class CartPageTest(unittest.TestCase):
             print 'Расположение блока вызова доп.слоев по оси x - 495, а на странице: ', capabilities.location['x']
             print '-'*80
 
-        assert cnt==0, ('Error in capabilities\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CartPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_abilityLink2(self):
         """ Блок вызова слоя 'Дополнительные услуги' """
@@ -2236,7 +2236,7 @@ class CartPageTest(unittest.TestCase):
             print 'Расположение блока вызова слоя "Дополнительные услуги" по оси x - 534, а на странице: ', abilityLink2.location['x']
             print '-'*80
 
-        assert cnt==0, ('Error in abilityLink2\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CartPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_abilityLink3(self):
         """ Блок вызова слоя 'Обратный звонок' """
@@ -2263,7 +2263,7 @@ class CartPageTest(unittest.TestCase):
             print 'Расположение блока вызова слоя "Обратный звонок" по оси x - 715, а на странице: ', abilityLink3.location['x']
             print '-'*80
 
-        assert cnt==0, ('Error in abilityLink3\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CartPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_abilityLink1(self):
         """ Блок вызова слоя 'Услуга доставки' """
@@ -2290,7 +2290,7 @@ class CartPageTest(unittest.TestCase):
             print 'Расположение блока вызова слоя "Услуга доставки" по оси x - 854, а на странице: ', abilityLink1.location['x']
             print '-'*80
 
-        assert cnt==0, ('Error in abilityLink3\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CartPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_imageContainer(self):
         """ Проверка контейнера с основным изображением """
@@ -2312,7 +2312,7 @@ class CartPageTest(unittest.TestCase):
             print 'Расположение блока с основным изображением по оси x - 29, а на странице: ', imageContainer.location['x']
             print '-'*80
 
-        assert cnt==0, ('Error in imageContainer\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CartPageTest.png' % os.getenv('BUILD_URL'))
     #этого пункта может и не быть
     def test_rolloverControl(self):
         cnt=0
@@ -2323,7 +2323,7 @@ class CartPageTest(unittest.TestCase):
             print 'Блок с миниатюрами изображений не отображается'
             print '-'*80
 
-        assert cnt==0, ('Error in rolloverControl\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Error in anons_lk\nErrors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CartPageTest.png' % os.getenv('BUILD_URL'))
     #этого пункта может и не быть
     def test_description(self):
         cnt=0
@@ -2334,7 +2334,7 @@ class CartPageTest(unittest.TestCase):
             print 'Блок с описанием не отображается'
             print '-'*80
 
-        assert cnt==0, ('Error in description\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CartPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_sharing(self):
         """ Проверка блока "Поделиться" от Яндекс """
@@ -2361,7 +2361,7 @@ class CartPageTest(unittest.TestCase):
             print 'Расположение блока "Поделиться" от Яндекс по оси x - 29, а на странице: ', sharing.location['x']
             print '-'*80
 
-        assert cnt==0, ('Error in sharing\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CartPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_feedBack(self):
         cnt=0
@@ -2372,7 +2372,7 @@ class CartPageTest(unittest.TestCase):
             print 'Блок с отзывом не отображается'
             print '-'*80
 
-        assert cnt==0, ('Error in feedBack\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CartPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_xparams(self):
         cnt=0
@@ -2395,7 +2395,7 @@ class CartPageTest(unittest.TestCase):
 
         self.driver.close()
 
-        assert cnt==0, ('Error in params\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CartPageTest.png' % os.getenv('BUILD_URL'))
 
 class BasketAnonsTest(unittest.TestCase):
 
@@ -2472,7 +2472,7 @@ class BasketAnonsTest(unittest.TestCase):
             print 'Расположение слоя анонса корзины по оси x - 263 или 254, а на странице: ', basketParams.location['x']
             print '-'*80
 
-        assert cnt==0, ('Error in basketParams\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/BasketAnonsTest.png' % os.getenv('BUILD_URL'))
 
     def test_colGoods(self):
         """ Проверка заголовка слоя """
@@ -2514,7 +2514,7 @@ class BasketAnonsTest(unittest.TestCase):
             print 'Размер шрифта заголовка не соответствует заданному( 24px ). На странице: ', colGoods.value_of_css_property('font-size')
             print '-'*80
             
-        assert cnt==0, ('Error in colGoods\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/BasketAnonsTest.png' % os.getenv('BUILD_URL'))
 
     def test_close(self):
         """ Проверка кнопки закрыть """
@@ -2547,7 +2547,7 @@ class BasketAnonsTest(unittest.TestCase):
             print 'Расположение блока кнопки закрыть по оси x - 907 или 898, а на странице: ', close.location['x']
             print '-'*80
 
-        assert cnt==0, ('Error in close\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/BasketAnonsTest.png' % os.getenv('BUILD_URL'))
 
     def test_td_name(self):
         """ Блок с наименованием товара """
@@ -2574,7 +2574,7 @@ class BasketAnonsTest(unittest.TestCase):
             print 'Расположение блока с наименованием товара по оси x - 393 или 384, а на странице: ', td_name.location['x']
             print '-'*80
 
-        assert cnt==0, ('Error in td_name\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Error in anons_lk\nErrors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/BasketAnonsTest.png' % os.getenv('BUILD_URL'))
 
     def test_smallPrice(self):
         """ Проверка итогового ценника """
@@ -2596,7 +2596,7 @@ class BasketAnonsTest(unittest.TestCase):
             print 'Расположение блока итогового ценника по оси x - 787 или 766, а на странице: ', smallPrice.location['x']
             print '-'*80
 
-        assert cnt==0, ('Error in smallPrice\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/BasketAnonsTest.png' % os.getenv('BUILD_URL'))
 
     def test_button(self):
         """ Блок кнопки "Оформить заказ" """
@@ -2635,7 +2635,7 @@ class BasketAnonsTest(unittest.TestCase):
             print 'На странице:', button.get_attribute('href')
             print '-'*80
 
-        assert cnt==0, ('Error in button\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/BasketAnonsTest.png' % os.getenv('BUILD_URL'))
 
     def test_zcontinues(self):
         """ Проверка блока с ссылкой "Продолжить покупки" """
@@ -2681,7 +2681,7 @@ class BasketAnonsTest(unittest.TestCase):
         
         self.driver.close()
 
-        assert cnt==0, ('Error in continues\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/BasketAnonsTest.png' % os.getenv('BUILD_URL'))
 
 class BasketPageTest(unittest.TestCase):
 
@@ -2776,7 +2776,7 @@ class BasketPageTest(unittest.TestCase):
             print 'Размер шрифта заголовка не соответствует заданному( 36px ). На странице: ', h1.value_of_css_property('font-size')
             print '-'*80
             
-        assert cnt==0, ('Error in header\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/BasketPageTest.png' % os.getenv('BUILD_URL'))
 
 
     def test_item(self):
@@ -2794,7 +2794,7 @@ class BasketPageTest(unittest.TestCase):
             print 'Блок с товаром не отображается'
             print '-'*80
 
-        assert cnt==0, ('Error in item\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/BasketPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_total_price(self):
         """ Проверка блока с ценой и доставкой """
@@ -2811,7 +2811,7 @@ class BasketPageTest(unittest.TestCase):
             print 'Блок с ценой и доставкой не отображается'
             print '-'*80  
 
-        assert cnt==0, ('Error in total_price\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/BasketPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_basket_tabs(self):
         """ Проверка блока с формой для оформления заказа """
@@ -2833,7 +2833,7 @@ class BasketPageTest(unittest.TestCase):
             print 'Расположение блока с формой для оформления заказа по оси x - 195, а на странице: ', basket_tabs.location['x']
             print '-'*80
 
-        assert cnt==0, ('Error in basket_tabs\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/BasketPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_form_tabs(self):
         """ Проверка блока с вкладками формы """
@@ -2870,7 +2870,7 @@ class BasketPageTest(unittest.TestCase):
             print 'Размер шрифта текста блока с вкладками формы не соответствует заданному( 18px ). На странице: ', form_tabs.value_of_css_property('font-size')
             print '-'*80
 
-        assert cnt==0, ('Error in form_tabs\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/BasketPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_btn_primary(self):
         """ Проверка блока с кнопкой купить """
@@ -2907,7 +2907,7 @@ class BasketPageTest(unittest.TestCase):
             print 'Размер шрифта текста блока с кнопкой купить не соответствует заданному( 24px ). На странице: ', btn_primary.value_of_css_property('font-size')
             print '-'*80
 
-        assert cnt==0, ('Error in btn_primary\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/BasketPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_personal_order_form_firstName(self):
         """ Поле для ввода имени """
@@ -2941,7 +2941,7 @@ class BasketPageTest(unittest.TestCase):
             print 'Поле для имени недоступно для ввода'
             print '-'*80
 
-        assert cnt==0, ('Error in order_form_firstName\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/BasketPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_personal_order_form_lastName(self):
         """ Поле для ввода фамилии """
@@ -2975,7 +2975,7 @@ class BasketPageTest(unittest.TestCase):
             print 'Поле для фамилии недоступно для ввода'
             print '-'*80
 
-        assert cnt==0, ('Error in order_form_lastName\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/BasketPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_personal_order_form_phoneNumber(self):
         """ Поле для ввода телефона """
@@ -3009,7 +3009,7 @@ class BasketPageTest(unittest.TestCase):
             print 'Поле для телефона недоступно для ввода'
             print '-'*80
 
-        assert cnt==0, ('Error in phoneNumber\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
 
     def test_personal_order_form_email(self):
         """ Поле для ввода адреса эл.почты """
@@ -3043,7 +3043,7 @@ class BasketPageTest(unittest.TestCase):
             print 'Поле для адреса эл.почты недоступно для ввода'
             print '-'*80
 
-        assert cnt==0, ('Error in order_form_email\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/BasketPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_personal_order_form_birthDate_day_title(self):
         """ Поле для ввода дня рождения """
@@ -3070,7 +3070,7 @@ class BasketPageTest(unittest.TestCase):
             print 'Расположение поля для ввода дня рождения по оси x - 232, а на странице: ', birthDate_day.location['x']
             print '-'*80
 
-        assert cnt==0, ('Error in birthDate_day\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/BasketPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_personal_order_form_birthDate_month_title(self):
         """ Поле для ввода месяца рождения """
@@ -3097,7 +3097,7 @@ class BasketPageTest(unittest.TestCase):
             print 'Расположение поля для ввода месяца рождения по оси x - 296, а на странице: ', birthDate_month.location['x']
             print '-'*80
 
-        assert cnt==0, ('Error in total_price\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/BasketPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_personal_order_form_birthDate_year_title(self):
         """ Поле для ввода года рождения """
@@ -3124,7 +3124,7 @@ class BasketPageTest(unittest.TestCase):
             print 'Расположение поля для ввода года рождения по оси x - 360, а на странице: ', birthDate_year.location['x']
             print '-'*80
 
-        assert cnt==0, ('Error in order_form_birthDate_year_title\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/BasketPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_region(self):
         """ Поле для ввода региона доставки """
@@ -3160,7 +3160,7 @@ class BasketPageTest(unittest.TestCase):
             except:
                 pass
 
-        assert cnt==0, ('Error in region\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/BasketPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_city(self):
         """ Поле для ввода города доставки """
@@ -3196,7 +3196,7 @@ class BasketPageTest(unittest.TestCase):
             except:
                 pass
 
-        assert cnt==0, ('Error in city\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/BasketPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_personal_order_form_addressStreet(self):
         """ Поле для ввода улицы доставки """
@@ -3231,7 +3231,7 @@ class BasketPageTest(unittest.TestCase):
                 print 'Поле для улицы доставки недоступно для ввода'
                 print '-'*80
 
-        assert cnt==0, ('Error in addressStreet\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/BasketPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_personal_order_form_addressHouse(self):
         """ Поле для ввода дома доставки """
@@ -3266,7 +3266,7 @@ class BasketPageTest(unittest.TestCase):
                 print 'Поле для дома доставки недоступно для ввода'
                 print '-'*80
 
-        assert cnt==0, ('Error in form_addressHouse\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/BasketPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_personal_order_form_addressBuilding(self):
         """ Поле для ввода строения доставки """
@@ -3301,7 +3301,7 @@ class BasketPageTest(unittest.TestCase):
                 print 'Поле для строения доставки недоступно для ввода'
                 print '-'*80
 
-        assert cnt==0, ('Error in order_form_addressBuilding\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/BasketPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_personal_order_form_addressAppartment(self):
         """ Поле для ввода квартиры доставки """
@@ -3336,7 +3336,7 @@ class BasketPageTest(unittest.TestCase):
                 print 'Поле для квартиры доставки недоступно для ввода'
                 print '-'*80
 
-        assert cnt==0, ('Error in order_form_addressAppartment\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/BasketPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_xpersonal_order_form_comment(self):
         """ Поле для ввода комментария """
@@ -3372,7 +3372,7 @@ class BasketPageTest(unittest.TestCase):
 
         self.driver.close()
 
-        assert cnt==0, ('Error in order_form_comment\nErrors: %d\n\nError page: %s\nError good: %s') % (cnt, self.driver.current_url, self.GOOD)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/BasketPageTest.png' % os.getenv('BUILD_URL'))
 
 class OrderCompletePageTest(unittest.TestCase):
 
@@ -3451,7 +3451,7 @@ class OrderCompletePageTest(unittest.TestCase):
             print 'Расположение блока с заказом по оси x - -168, а на странице: ', order.location['x']
             print '-'*80
 
-        assert cnt==0, ('Error in order\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/OrderCompletePageTest.png' % os.getenv('BUILD_URL'))
 
     def test_h1(self):
         """ Проверка заголовка с именем покупателя """
@@ -3488,7 +3488,7 @@ class OrderCompletePageTest(unittest.TestCase):
             print 'Размер шрифта заголовка не соответствует заданному( 36px ). На странице: ', h1.value_of_css_property('font-size')
             print '-'*80
             
-        assert cnt==0, ('Error in h1\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/OrderCompletePageTest.png' % os.getenv('BUILD_URL'))
 
 
     def test_lead(self):
@@ -3539,7 +3539,7 @@ class OrderCompletePageTest(unittest.TestCase):
             print 'Размер шрифта блока с номером заказа не соответствует заданному( 24px ). На странице: ', lead.value_of_css_property('font-size')
             print '-'*80
 
-        assert cnt==0, ('Error in lead\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/OrderCompletePageTest.png' % os.getenv('BUILD_URL'))
 
     def test_order_details(self):
         """ Проверка блока с информацией о товаре """
@@ -3571,7 +3571,7 @@ class OrderCompletePageTest(unittest.TestCase):
             print 'Размер шрифта блока с информацией о товаре не соответствует заданному( 14px ). На странице: ', order_details.value_of_css_property('font-size')
             print '-'*80
 
-        assert cnt==0, ('Error in order_details\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/OrderCompletePageTest.png' % os.getenv('BUILD_URL'))
 
     def test_xpost_message(self):
         """ Проверка блока с информацией после описания заказа """
@@ -3618,7 +3618,7 @@ class OrderCompletePageTest(unittest.TestCase):
             
         self.driver.close()
 
-        assert cnt==0, ('Error in h1\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/OrderCompletePageTest.png' % os.getenv('BUILD_URL'))
 
 class StaticPageTest(unittest.TestCase):
     
@@ -3665,7 +3665,7 @@ class StaticPageTest(unittest.TestCase):
             print 'Расположение контентной области по оси x - 9, а на странице: ', pds.location['x']
             print '-'*80
 
-        assert cnt==0, ('Error in pds\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/StaticPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_midNavi(self):
         """ Проверка блока с левым меню """
@@ -3692,7 +3692,7 @@ class StaticPageTest(unittest.TestCase):
             print 'Расположение блока с левым меню по оси x - 29, а на странице: ', midNavi.location['x']
             print '-'*80
 
-        assert cnt==0, ('Error in midNavi\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/StaticPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_narrow(self):
         """ Проверка блока с контентом страницы(без меню) """
@@ -3724,7 +3724,7 @@ class StaticPageTest(unittest.TestCase):
             print 'Расположение блока с контентом страницы(без меню) по оси x - 262, а на странице: ', narrow.location['x']
             print '-'*80
 
-        assert cnt==0, ('Error in narrow\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/StaticPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_h1(self):
         """ Проверка заголовка страницы """
@@ -3766,7 +3766,7 @@ class StaticPageTest(unittest.TestCase):
             print 'Размер шрифта заголовка не соответствует заданному( 36px ). На странице: ', h1.value_of_css_property('font-size')
             print '-'*80
 
-        assert cnt==0, ('Error in h1\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/StaticPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_xcontBotBox(self):
         """ Проверка блока с нижним меню """
@@ -3800,7 +3800,7 @@ class StaticPageTest(unittest.TestCase):
         
         self.driver.close()
 
-        assert cnt==0, ('Error in contBotBox\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/StaticPageTest.png' % os.getenv('BUILD_URL'))
 
 class ComparePageTest(unittest.TestCase):
 
@@ -3840,7 +3840,7 @@ class ComparePageTest(unittest.TestCase):
             print 'Расположение контентной области по оси x - 9, а на странице: ', pds.location['x']
             print '-'*80
 
-        assert cnt==0, ('Error in pds\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/ComparePageTest.png' % os.getenv('BUILD_URL'))
 
 
     def test_componentHeader(self):
@@ -3883,7 +3883,7 @@ class ComparePageTest(unittest.TestCase):
             print 'Размер шрифта заголовка не соответствует заданному( 36px ). На странице: ', h1.value_of_css_property('font-size')
             print '-'*80
 
-        assert cnt==0, ('Error in componentHeader\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/ComparePageTest.png' % os.getenv('BUILD_URL'))
 
     def test_catNav(self):
         """ Проверка блока с группами товаров """
@@ -3915,7 +3915,7 @@ class ComparePageTest(unittest.TestCase):
             print 'Расположение блока с группами товаров по оси x - 29, а на странице: ', catNav.location['x']
             print '-'*80
 
-        assert cnt==0, ('Error in catNav\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/ComparePageTest.png' % os.getenv('BUILD_URL'))
 
     def test_clearfix(self):
         """ Проверка блока с превью и описанием товаров """
@@ -3942,7 +3942,7 @@ class ComparePageTest(unittest.TestCase):
             print 'Расположение блока с превью и описанием товаров по оси x - 29, а на странице: ', clearfix.location['x']
             print '-'*80
 
-        assert cnt==0, ('Error in clearfix\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/ComparePageTest.png' % os.getenv('BUILD_URL'))
 
     def test_comparing_mode_tabs(self):
         """ Проверка блока с ссылками "Главные" и "Отличия" """
@@ -3984,7 +3984,7 @@ class ComparePageTest(unittest.TestCase):
             print 'Размер шрифта текста блока с ссылками "Главные" и "Отличия" не соответствует заданному( 14px ). На странице: ', comparing_mode_tabs.value_of_css_property('font-size')
             print '-'*80
 
-        assert cnt==0, ('Error in comparing_mode_tabs\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
 
     def test_li_main(self):
         """ Проверка блока с ссылкой "Главные" """
@@ -4026,7 +4026,7 @@ class ComparePageTest(unittest.TestCase):
             print 'Размер шрифта текста блока с ссылкой "Главные" не соответствует заданному( 13px ). На странице: ', li.value_of_css_property('font-size')
             print '-'*80
         
-        assert cnt==0, ('Error in li_main\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/ComparePageTest.png' % os.getenv('BUILD_URL'))
 
     def test_li_other(self):
         """ Проверка блока с ссылкой "Отличия" """
@@ -4068,7 +4068,7 @@ class ComparePageTest(unittest.TestCase):
             print 'Размер шрифта текста блока с ссылкой "Отличия" не соответствует заданному( 13px ). На странице: ', li.value_of_css_property('font-size')
             print '-'*80
 
-        assert cnt==0, ('Error in li_other\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/ComparePageTest.png' % os.getenv('BUILD_URL'))
 
     def test_catList(self):
         """ Блок с превью товаров """
@@ -4100,7 +4100,7 @@ class ComparePageTest(unittest.TestCase):
             print 'Расположение блока с превью товаров по оси x - 258, а на странице: ', catList.location['x']
             print '-'*80
 
-        assert cnt==0, ('Error in catList\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/ComparePageTest.png' % os.getenv('BUILD_URL'))
 
     def test_cancel(self):
         """ Блок с ссылкой "Удалить все товары..." """
@@ -4156,7 +4156,7 @@ class ComparePageTest(unittest.TestCase):
             print 'На сайте: ', cancel.text
             print '-'*80
 
-        assert cnt==0, ('Error in cancel\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/ComparePageTest.png' % os.getenv('BUILD_URL'))
 
     def test_catCard(self):
         """ Блок c превью одного товара """
@@ -4188,7 +4188,7 @@ class ComparePageTest(unittest.TestCase):
             print 'Расположение блока c превью одного товара по оси x - 258, а на странице: ', catCard.location['x']
             print '-'*80
 
-        assert cnt==0, ('Error in catCard\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/ComparePageTest.png' % os.getenv('BUILD_URL'))
 
     def test_features_group(self):
         """ Проверка блока со списком характеристик """
@@ -4215,7 +4215,7 @@ class ComparePageTest(unittest.TestCase):
             print 'Расположение блока со списком характеристик по оси x - 29, а на странице: ', features_group.location['x']
             print '-'*80
 
-        assert cnt==0, ('Error in features_group\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/ComparePageTest.png' % os.getenv('BUILD_URL'))
 
     def test_footer(self):
         """ Блок с информацией после списка сравнения """
@@ -4252,7 +4252,7 @@ class ComparePageTest(unittest.TestCase):
             print 'Размер шрифта текста блока с информацией после списка сравнения не соответствует заданному( 14px ). На странице: ', footer.value_of_css_property('font-size')
             print '-'*80
 
-        assert cnt==0, ('Error in footer\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/ComparePageTest.png' % os.getenv('BUILD_URL'))
 
     def test_xbreadcrumbs(self):
         """ Проверка блока с хлебными крошками """
@@ -4304,7 +4304,7 @@ class ComparePageTest(unittest.TestCase):
         self.driver.get('%slogout' % self.HOST)
         self.driver.close()
         
-        assert cnt==0, ('Error in xbreadcrumbs\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/ComparePageTest.png' % os.getenv('BUILD_URL'))
 
 class FavoritePageTest(unittest.TestCase):
 
@@ -4345,7 +4345,7 @@ class FavoritePageTest(unittest.TestCase):
             print 'Расположение контентной области по оси x - 9, а на странице: ', pds.location['x']
             print '-'*80
 
-        assert cnt==0, ('Error in pds\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/FavoritePageTest.png' % os.getenv('BUILD_URL'))
 
     def test_componentHeader(self):
         """ Проверяем заголовок страницы """
@@ -4387,7 +4387,7 @@ class FavoritePageTest(unittest.TestCase):
             print 'Размер шрифта заголовка не соответствует заданному( 36px ). На странице: ', h1.value_of_css_property('font-size')
             print '-'*80
 
-        assert cnt==0, ('Error in componentHeader\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/FavoritePageTest.png' % os.getenv('BUILD_URL'))
 
     def test_catList(self):
         """ Проверяем блок с превью всех товаров """
@@ -4414,7 +4414,7 @@ class FavoritePageTest(unittest.TestCase):
             print 'Расположение блок с превью всех товаров по оси x - 29, а на странице: ', catList.location['x']
             print '-'*80
 
-        assert cnt==0, ('Error in catList\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/FavoritePageTest.png' % os.getenv('BUILD_URL'))
 
     def test_catCard(self):
         """ Проверяем блок с превью одного товара """
@@ -4446,7 +4446,7 @@ class FavoritePageTest(unittest.TestCase):
             print 'Расположение блок с превью одного товара по оси x - 29, а на странице: ', catCard.location['x']
             print '-'*80
 
-        assert cnt==0, ('Error in catCard\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/FavoritePageTest.png' % os.getenv('BUILD_URL'))
 
     def test_xserviceText(self):
         """ Проверяем блок с ссылкой "Очистить список..." """
@@ -4500,7 +4500,7 @@ class FavoritePageTest(unittest.TestCase):
         self.driver.get('%slogout' % self.HOST)
         self.driver.close()
         
-        assert cnt==0, ('Error in serviceText\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/FavoritePageTest.png' % os.getenv('BUILD_URL'))
 
 class ModalFormsTest(unittest.TestCase):
 
@@ -4746,7 +4746,7 @@ class ModalFormsTest(unittest.TestCase):
         
         print '-'*80
 
-        assert cnt==0, ('Error in test_dop_uslugi\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/dop_uslugi.png' % os.getenv('BUILD_URL'))
 
     def test_obratnii_zvonok(self):
         cnt=0
@@ -5035,4 +5035,4 @@ class ModalFormsTest(unittest.TestCase):
         
         print '-'*80
 
-        assert cnt==0, ('Error in test_obratnii_zvonok\nErrors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
+        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/obratnii_zvonok.png' % os.getenv('BUILD_URL'))
