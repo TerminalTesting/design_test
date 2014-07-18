@@ -4616,10 +4616,6 @@ class ModalFormsTest(unittest.TestCase):
         if not btn.is_displayed(): #проверяем отображается ли заголовок
             cnt+=1
             print 'Kнопкa не отображается'
-        
-        if btn.location['y'] != 316:
-            cnt+=1
-            print 'Расположение кнопки по оси y - 316, а на странице: ', btn.location['y']
             
         if btn.location['x'] != 91:
             cnt+=1
@@ -4648,11 +4644,7 @@ class ModalFormsTest(unittest.TestCase):
         if not clear.is_displayed(): #проверяем отображается ли заголовок
             cnt+=1
             print 'Cсылкa очистить не отображается'
-        
-        if clear.location['y'] != 334:
-            cnt+=1
-            print 'Расположение ссылки очистить по оси y - 334, а на странице: ', clear.location['y']
-            
+           
         if clear.location['x'] != 222:
             cnt+=1
             print 'Расположение ссылки очистить по оси x - 222, а на странице: ', clear.location['x']
