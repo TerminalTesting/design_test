@@ -4509,17 +4509,13 @@ class ModalFormsTest(unittest.TestCase):
             cnt+=1
             print 'Нужная ширина слоя - 630, а на странице: ', goodsLayer.size['width']
             
-        if goodsLayer.size['height'] != 284:
-            cnt+=1
-            print 'Нужная высота слоя - 284, а на странице: ', goodsLayer.size['height']
-            
         if not goodsLayer.is_displayed(): #проверяем отображается ли
             cnt+=1
             print 'Слой не отображается'
         
-        if goodsLayer.location['y'] != 93:
+        if goodsLayer.location['y'] != 111:
             cnt+=1
-            print 'Расположение слоя по оси y - 93, а на странице: ', goodsLayer.location['y']
+            print 'Расположение слоя по оси y - 111, а на странице: ', goodsLayer.location['y']
             
         if goodsLayer.location['x'] != 76:
             cnt+=1
@@ -4541,9 +4537,9 @@ class ModalFormsTest(unittest.TestCase):
             cnt+=1
             print 'Заголовок не отображается'
         
-        if title.location['y'] != 110:
+        if title.location['y'] != 128:
             cnt+=1
-            print 'Расположение заголовка по оси y - 110, а на странице: ', title.location['y']
+            print 'Расположение заголовка по оси y - 128, а на странице: ', title.location['y']
             
         if title.location['x'] != 91:
             cnt+=1
@@ -4573,9 +4569,9 @@ class ModalFormsTest(unittest.TestCase):
             cnt+=1
             print 'Кнопка закрытия не отображается'
         
-        if closebutton.location['y'] != 108:
+        if closebutton.location['y'] != 126:
             cnt+=1
-            print 'Расположение кнопки закрытия по оси y - 108, а на странице: ', closebutton.location['y']
+            print 'Расположение кнопки закрытия по оси y - 126, а на странице: ', closebutton.location['y']
             
         if closebutton.location['x'] != 664:
             cnt+=1
@@ -4589,17 +4585,17 @@ class ModalFormsTest(unittest.TestCase):
             cnt+=1
             print 'Нужная ширина блока выбора доп.услуг - 600, а на странице: ', form.size['width']
             
-        if form.size['height'] != 202:
+        if form.size['height'] != 166:
             cnt+=1
-            print 'Нужная высота блока выбора доп.услуг - 202, а на странице: ', form.size['height']
+            print 'Нужная высота блока выбора доп.услуг - 166, а на странице: ', form.size['height']
             
         if not form.is_displayed(): #проверяем отображается ли
             cnt+=1
             print 'Блок выбора доп.услуг не отображается'
         
-        if form.location['y'] != 160:
+        if form.location['y'] != 178:
             cnt+=1
-            print 'Расположение блока выбора доп.услуг по оси y - 160, а на странице: ', form.location['y']
+            print 'Расположение блока выбора доп.услуг по оси y - 178, а на странице: ', form.location['y']
             
         if form.location['x'] != 91:
             cnt+=1
@@ -4621,9 +4617,9 @@ class ModalFormsTest(unittest.TestCase):
             cnt+=1
             print 'Kнопкa не отображается'
         
-        if btn.location['y'] != 322:
+        if btn.location['y'] != 316:
             cnt+=1
-            print 'Расположение кнопки по оси y - 322, а на странице: ', btn.location['y']
+            print 'Расположение кнопки по оси y - 316, а на странице: ', btn.location['y']
             
         if btn.location['x'] != 91:
             cnt+=1
