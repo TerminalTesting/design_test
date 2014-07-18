@@ -1026,11 +1026,6 @@ class CatPageTest(unittest.TestCase):
             cnt+=1
             print 'Заголовок не отображается'
             print '-'*80
-        
-        if title.location['y'] != 244:
-            cnt+=1
-            print 'Расположение заголовка по оси y - 244, а на странице: ', title.location['y']
-            print '-'*80
             
         if title.location['x'] != 28:
             cnt+=1
@@ -1053,11 +1048,6 @@ class CatPageTest(unittest.TestCase):
         """ Блок с ссылками на дочерние ВС """
         cnt=0
         block = self.driver.find_element_by_class_name('catNav')
-        
-        if block.size['width'] != 920:
-            cnt+=1
-            print 'Нужная ширина блока с сылками на ВС - 920, а на странице: ', block.size['width']
-            print '-'*80
             
         if block.size['height'] != 74:
             cnt+=1
@@ -1088,11 +1078,6 @@ class CatPageTest(unittest.TestCase):
         if not quideLink.is_enabled():#обязательно разобраться, элемент отображается, но метод возвращает False
             cnt+=1
             print 'Блок с ссылкой на товарный гид не отображается'
-            print '-'*80
-            
-        if quideLink.location['y'] != 251:
-            cnt+=1
-            print 'Расположение ссылки на товарный гид по оси y - 251, а на странице: ', quideLink.location['y']
             print '-'*80
             
         if quideLink.location['x'] != 825:
@@ -1348,11 +1333,6 @@ class CatinnerPageTest(unittest.TestCase):
             cnt+=1
             print 'Заголовок(наименование секции) область не отображается'
             print '-'*80
-
-        if ComponentHeader.location['y'] != 244:
-            cnt+=1
-            print 'Расположение заголовка(наименование секции) по оси y - 244, а на странице: ', ComponentHeader.location['y']
-            print '-'*80
             
         if ComponentHeader.location['x'] != 28:
             cnt+=1
@@ -1377,11 +1357,6 @@ class CatinnerPageTest(unittest.TestCase):
         cnt=0
         catNav = self.driver.find_element_by_class_name('catNav')
 
-        if catNav.size['width'] != 920:
-            cnt+=1
-            print 'Нужная ширина блока товаров с дочерними секциями - 920, а на странице: ', catNav.size['width']
-            print '-'*80
-
         if catNav.size['height'] != 42:
             cnt+=1
             print 'Нужная высота блока товаров с дочерними секциями - 42, а на странице: ', catNav.size['height']
@@ -1392,9 +1367,9 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Блок товаров с дочерними секциями не отображается'
             print '-'*80
             
-        if catNav.location['x'] != 29:
+        if catNav.location['x'] != 14:
             cnt+=1
-            print 'Расположение блока товаров с дочерними секциями по оси x - 29, а на странице: ', catNav.location['x']
+            print 'Расположение блока товаров с дочерними секциями по оси x - 14, а на странице: ', catNav.location['x']
             print '-'*80
             
         if catNav.value_of_css_property('color') != 'rgba(76, 76, 76, 1)':
@@ -1428,11 +1403,6 @@ class CatinnerPageTest(unittest.TestCase):
         if not tags.is_displayed(): #проверяем отображается ли
             cnt+=1
             print 'Блок товаров с тегами не отображается'
-            print '-'*80
-
-        if tags.location['y'] != 332:
-            cnt+=1
-            print 'Расположение блока товаров с тегами по оси y - 332, а на странице: ', tags.location['y']
             print '-'*80
             
         if tags.location['x'] != 29:
@@ -1470,11 +1440,6 @@ class CatinnerPageTest(unittest.TestCase):
         if not picking.is_displayed(): #проверяем отображается ли
             cnt+=1
             print 'Панели выбора видов вывода товара не отображается'
-            print '-'*80
-
-        if picking.location['y'] != 430:
-            cnt+=1
-            print 'Расположение панели выбора видов вывода товара по оси y - 430, а на странице: ', picking.location['y']
             print '-'*80
             
         if picking.location['x'] != 262:
@@ -1531,11 +1496,6 @@ class CatinnerPageTest(unittest.TestCase):
             cnt+=1
             print 'Блок с заголовком вида сортировки не отображается'
             print '-'*80
-
-        if dropStyleBase_title.location['y'] != 442:
-            cnt+=1
-            print 'Расположение блока с заголовком вида сортировки по оси y - 442, а на странице: ', dropStyleBase_title.location['y']
-            print '-'*80
             
         if dropStyleBase_title.location['x'] != 727:
             cnt+=1
@@ -1562,11 +1522,6 @@ class CatinnerPageTest(unittest.TestCase):
         if not changeOrderBy.is_enabled(): #проверяем отображается ли
             cnt+=1
             print 'Блок с пиктограмой направления сортировки не отображается'
-            print '-'*80
-
-        if changeOrderBy.location['y'] != 441:
-            cnt+=1
-            print 'Расположение блока с пиктограмой направления сортировки по оси y - 441, а на странице: ', changeOrderBy.location['y']
             print '-'*80
             
         if changeOrderBy.location['x'] != 860:
@@ -1643,11 +1598,6 @@ class CatinnerPageTest(unittest.TestCase):
         if not bfilter.is_displayed(): #проверяем отображается ли
             cnt+=1
             print 'Блок с подбором по параметрам не отображается'
-            print '-'*80
-
-        if bfilter.location['y'] != 430:
-            cnt+=1
-            print 'Расположение блока с подбором по параметрам по оси y - 430, а на странице: ', bfilter.location['y']
             print '-'*80
             
         if bfilter.location['x'] != 29:
@@ -1808,11 +1758,6 @@ class CatinnerPageTest(unittest.TestCase):
         if not pageCap.is_displayed(): #проверяем отображается ли
             cnt+=1
             print 'Блок "Выводить по" не отображается'
-            print '-'*80
-
-        if pageCap.location['y'] != 430:
-            cnt+=1
-            print 'Расположение блока "Выводить по" по оси y - 447, а на странице: ', pageCap.location['y']
             print '-'*80
             
         if pageCap.location['x'] != 262:
