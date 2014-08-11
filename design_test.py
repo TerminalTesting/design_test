@@ -2345,7 +2345,7 @@ class CartPageTest(unittest.TestCase):
 class BasketAnonsTest(unittest.TestCase):
 
     CONNECT_STRING = 'mysql://%s:%s@%s:%s/%s?charset=utf8' %(os.getenv('USER'), os.getenv('PSWD'), os.getenv('DBHOST'), os.getenv('PORT'), os.getenv('SCHEMA'))
-    engine = create_engine(CONNECT_STRING, echo=False) #Значение False параметра echo убирает отладочную информацию
+    engine = create_engine(CONNECT_STRING, echo=True) #Значение False параметра echo убирает отладочную информацию
     metadata = MetaData(engine)
     session = create_session(bind = engine)
 
@@ -2374,7 +2374,7 @@ class BasketAnonsTest(unittest.TestCase):
                filter(Goods.overall_type == 0).\
                filter(Goods_block.delivery_type == 2).\
                filter(Goods_price.price_type_guid == Region.price_type_guid).\
-               filter(Goods_price.price > 9000).\
+               filter(Goods_price.price > 5000).\
                filter('t_goods_remains.%s > 0' % store_shop).\
                first()
 
