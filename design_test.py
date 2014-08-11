@@ -3347,8 +3347,6 @@ class OrderCompletePageTest(unittest.TestCase):
                join(Remains, Remains.goods_id == Goods.id).\
                filter(Region.domain == os.getenv('CITY')).\
                filter(Goods_stat.status == 1).\
-               filter(Goods.overall_type == 0).\
-               filter(Goods_block.delivery_type == 2).\
                filter(Goods_price.price_type_guid == Region.price_type_guid).\
                filter(Goods_price.price > 3000).\
                filter('t_goods_remains.%s > 0' % store_shop).\
