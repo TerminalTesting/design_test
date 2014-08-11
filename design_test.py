@@ -8,7 +8,10 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from models import *
 
+os.system('find -iname \*.png -delete')
+
 class MainPageTest(unittest.TestCase):
+    
     
     HOST = 'http://%s.%s/' % (os.getenv('CITY'), os.getenv('DOMAIN'))
     driver = webdriver.Firefox()
