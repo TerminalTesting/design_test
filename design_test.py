@@ -482,11 +482,6 @@ class MainPageTest(unittest.TestCase):
             cnt+=1
             print 'Нужная высота блока "Корзина" - 50, а на странице: ', basket.size['height']
             print '-'*80
-            
-        if basket.is_displayed(): #проверяем отображается ли
-            cnt+=1
-            print 'Блок "Корзина" не отображается'
-            print '-'*80
         
         if basket.location['y'] != 134:
             cnt+=1
@@ -517,9 +512,9 @@ class MainPageTest(unittest.TestCase):
             print 'Нужная ширина блока в слайдере товаров - 974, а на странице: ', gpromo.size['width']
             print '-'*80
             
-        if gpromo.size['height'] != 1230 and gpromo.size['height'] != 1328:
+        if gpromo.size['height'] != 1348 and gpromo.size['height'] != 1328:
             cnt+=1
-            print 'Нужная высота блока в слайдере товаров - 1230 или 1328, а на странице: ', gpromo.size['height']
+            print 'Нужная высота блока в слайдере товаров - 1348 или 1328, а на странице: ', gpromo.size['height']
             print '-'*80
             
         if not gpromo.is_displayed(): #проверяем отображается ли
@@ -650,9 +645,9 @@ class MainPageTest(unittest.TestCase):
             print 'Блок "Как выбрать" не отображается'
             print '-'*80
         
-        if guide.location['y'] != 1853 and guide.location['y'] != 1951:
+        if guide.location['y'] != 1971 and guide.location['y'] != 1951:
             cnt+=1
-            print 'Расположение блока "Как выбрать" по оси y - 1853 или 1951, а на странице: ', guide.location['y']
+            print 'Расположение блока "Как выбрать" по оси y - 1971 или 1951, а на странице: ', guide.location['y']
             print '-'*80
             
         if guide.location['x'] != 232:
@@ -682,9 +677,9 @@ class MainPageTest(unittest.TestCase):
             print 'Блок с пиктограммой "Как выбрать" не отображается'
             print '-'*80
         
-        if pguide.location['y'] != 1838 and pguide.location['y'] != 1936:
+        if pguide.location['y'] != 1956 and pguide.location['y'] != 1936:
             cnt+=1
-            print 'Расположение блока с пиктограммой "Как выбрать" по оси y - 1838 или 1936, а на странице: ', pguide.location['y']
+            print 'Расположение блока с пиктограммой "Как выбрать" по оси y - 1956 или 1936, а на странице: ', pguide.location['y']
             print '-'*80
             
         if pguide.location['x'] != 652:
@@ -721,9 +716,9 @@ class MainPageTest(unittest.TestCase):
             print 'Блок с нижним меню не отображается'
             print '-'*80
         
-        if content.location['y'] != 2109 and content.location['y'] != 2207:
+        if content.location['y'] != 2227 and content.location['y'] != 2207:
             cnt+=1
-            print 'Расположение блока с нижним меню по оси y - 2109 или 2207, а на странице: ', content.location['y']
+            print 'Расположение блока с нижним меню по оси y - 2227 или 2207, а на странице: ', content.location['y']
             print '-'*80
             
         if content.location['x'] != 231:
@@ -753,9 +748,9 @@ class MainPageTest(unittest.TestCase):
             print 'Блок с футером не отображается'
             print '-'*80
         
-        if footer.location['y'] != 2310 and footer.location['y'] != 2408:
+        if footer.location['y'] != 2427 and footer.location['y'] != 2408:
             cnt+=1
-            print 'Расположение блока с футером по оси y - 2310 или 2408, а на странице: ', footer.location['y']
+            print 'Расположение блока с футером по оси y - 2427 или 2408, а на странице: ', footer.location['y']
             print '-'*80
             
         if footer.location['x'] != 225:
