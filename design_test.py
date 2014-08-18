@@ -483,7 +483,7 @@ class MainPageTest(unittest.TestCase):
             print 'Нужная высота блока "Корзина" - 50, а на странице: ', basket.size['height']
             print '-'*80
             
-        if basket.is_enabled(): #проверяем отображается ли
+        if basket.is_displayed(): #проверяем отображается ли
             cnt+=1
             print 'Блок "Корзина" не отображается'
             print '-'*80
@@ -623,9 +623,9 @@ class MainPageTest(unittest.TestCase):
             print 'Блок с пиктограммой "Популярные" не отображается'
             print '-'*80
             
-        if best.location['x'] != 423:
+        if best.location['x'] != 645:
             cnt+=1
-            print 'Расположение блока с пиктограммой "Популярные" по оси x - 423, а на странице: ', best.location['x']
+            print 'Расположение блока с пиктограммой "Популярные" по оси x - 645, а на странице: ', best.location['x']
             print '-'*80
                 
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/MainPageTest.png' % os.getenv('BUILD_URL'))
@@ -1005,9 +1005,9 @@ class CatPageTest(unittest.TestCase):
             print 'Заголовок не отображается'
             print '-'*80
             
-        if title.location['x'] != 28:
+        if title.location['x'] != 250:
             cnt+=1
-            print 'Расположение заголовка по оси x - 28, а на странице: ', title.location['x']
+            print 'Расположение заголовка по оси x - 250, а на странице: ', title.location['x']
             print '-'*80
             
         if title.value_of_css_property('color') != 'rgba(0, 0, 0, 1)':
@@ -1058,9 +1058,9 @@ class CatPageTest(unittest.TestCase):
             print 'Блок с ссылкой на товарный гид не отображается'
             print '-'*80
             
-        if quideLink.location['x'] != 825:
+        if quideLink.location['x'] != 1047:
             cnt+=1
-            print 'Расположение ссылки на товарный гид по оси x - 825, а на странице: ', quideLink.location['x']
+            print 'Расположение ссылки на товарный гид по оси x - 1047, а на странице: ', quideLink.location['x']
             print '-'*80
             
         if u'/guide/' not in quideLink.get_attribute('href'):
@@ -1090,9 +1090,9 @@ class CatPageTest(unittest.TestCase):
             print 'Левая стрелка не отображается'
             print '-'*80
             
-        if arrowLeft.location['x'] != -17:
+        if arrowLeft.location['x'] != 205:
             cnt+=1
-            print 'Расположение левой стрелки по оси x - -17, а на странице: ', arrowLeft.location['x']
+            print 'Расположение левой стрелки по оси x - 205, а на странице: ', arrowLeft.location['x']
             print '-'*80
             
         #проверка правой стрелки   
@@ -1111,9 +1111,9 @@ class CatPageTest(unittest.TestCase):
             print 'Правая стрелка не отображается'
             print '-'*80
             
-        if arrowRight.location['x'] != 945:
+        if arrowRight.location['x'] != 1167:
             cnt+=1
-            print 'Расположение правой стрелки по оси x - 945, а на странице: ', arrowRight.location['x']
+            print 'Расположение правой стрелки по оси x - 1167, а на странице: ', arrowRight.location['x']
             print '-'*80
         
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CatPageTest.png' % os.getenv('BUILD_URL'))
@@ -1161,9 +1161,9 @@ class CatPageTest(unittest.TestCase):
             print 'Ссылки в слайдере не отображается'
             print '-'*80
             
-        if segNavi.location['x'] != 29:
+        if segNavi.location['x'] != 251:
             cnt+=1
-            print 'Расположение блока с сcылками по оси x - 29, а на странице: ', segNavi.location['x']
+            print 'Расположение блока с сcылками по оси x - 251, а на странице: ', segNavi.location['x']
             print '-'*80
             
         if segNavi.value_of_css_property('color') != 'rgba(76, 76, 76, 1)':
@@ -1199,9 +1199,9 @@ class CatPageTest(unittest.TestCase):
             print 'Текстовый блок под лентами не отображается'
             print '-'*80
             
-        if vs.location['x'] != 262:
+        if vs.location['x'] != 484:
             cnt+=1
-            print 'Расположение блока с текстом по оси x - 262, а на странице: ', vs.location['x']
+            print 'Расположение блока с текстом по оси x - 484, а на странице: ', vs.location['x']
             print '-'*80
             
         if vs.value_of_css_property('color') != 'rgba(76, 76, 76, 1)':
@@ -1229,9 +1229,9 @@ class CatPageTest(unittest.TestCase):
             print 'Расположение урезанного логотипа(терм. версия) по оси y - 321, а на странице: ', mini.location['y']
             print '-'*80
             
-        if mini.location['x'] != 29:
+        if mini.location['x'] != 251:
             cnt+=1
-            print 'Расположение урезанного логотипа(терм. версия) по оси x - 29, а на странице: ', mini.location['x']
+            print 'Расположение урезанного логотипа(терм. версия) по оси x - 251, а на странице: ', mini.location['x']
             print '-'*80
             
         if mini.size['width'] != 120:
@@ -1345,9 +1345,9 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Блок товаров с дочерними секциями не отображается'
             print '-'*80
             
-        if catNav.location['x'] != 14:
+        if catNav.location['x'] != 236:
             cnt+=1
-            print 'Расположение блока товаров с дочерними секциями по оси x - 14, а на странице: ', catNav.location['x']
+            print 'Расположение блока товаров с дочерними секциями по оси x - 236, а на странице: ', catNav.location['x']
             print '-'*80
             
         if catNav.value_of_css_property('color') != 'rgba(76, 76, 76, 1)':
@@ -1383,9 +1383,9 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Блок товаров с тегами не отображается'
             print '-'*80
             
-        if tags.location['x'] != 29:
+        if tags.location['x'] != 251:
             cnt+=1
-            print 'Расположение блока товаров с тегами по оси x - 29, а на странице: ', tags.location['x']
+            print 'Расположение блока товаров с тегами по оси x - 251, а на странице: ', tags.location['x']
             print '-'*80
             
         if tags.value_of_css_property('color') != 'rgba(76, 76, 76, 1)':
@@ -1420,9 +1420,9 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Панели выбора видов вывода товара не отображается'
             print '-'*80
             
-        if picking.location['x'] != 262:
+        if picking.location['x'] != 484:
             cnt+=1
-            print 'Расположение панели выбора видов вывода товара по оси x - 262, а на странице: ', picking.location['x']
+            print 'Расположение панели выбора видов вывода товара по оси x - 484, а на странице: ', picking.location['x']
             print '-'*80
                 
         assert cnt==0, ('Errors: %d\n\nError page: %s') % (cnt, self.driver.current_url)
@@ -1448,9 +1448,9 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Блок с фильтром "показать в наличии" не отображается'
             print '-'*80
             
-        if available.location['x'] != 572:
+        if available.location['x'] != 794:
             cnt+=1
-            print 'Расположение блока с фильтром "показать в наличии" по оси x - 572, а на странице: ', available.location['x']
+            print 'Расположение блока с фильтром "показать в наличии" по оси x - 794, а на странице: ', available.location['x']
             print '-'*80
                 
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CatinnerPageTest.png' % os.getenv('BUILD_URL'))
@@ -1475,9 +1475,9 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Блок с заголовком вида сортировки не отображается'
             print '-'*80
             
-        if dropStyleBase_title.location['x'] != 727:
+        if dropStyleBase_title.location['x'] != 949:
             cnt+=1
-            print 'Расположение блока с заголовком вида сортировки по оси x - 727, а на странице: ', dropStyleBase_title.location['x']
+            print 'Расположение блока с заголовком вида сортировки по оси x - 949, а на странице: ', dropStyleBase_title.location['x']
             print '-'*80
                 
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CatinnerPageTest.png' % os.getenv('BUILD_URL'))
@@ -1502,9 +1502,9 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Блок с пиктограмой направления сортировки не отображается'
             print '-'*80
             
-        if changeOrderBy.location['x'] != 860:
+        if changeOrderBy.location['x'] != 1082:
             cnt+=1
-            print 'Расположение блока с пиктограмой направления сортировки по оси x - 860, а на странице: ', changeOrderBy.location['x']
+            print 'Расположение блока с пиктограмой направления сортировки по оси x - 1082, а на странице: ', changeOrderBy.location['x']
             print '-'*80
                 
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CatinnerPageTest.png' % os.getenv('BUILD_URL'))
@@ -1529,9 +1529,9 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Блок с пагинатором не отображается'
             print '-'*80
             
-        if pageListing.location['x'] != 702 and pageListing.location['x'] != 703:
+        if pageListing.location['x'] != 702 and pageListing.location['x'] != 925:
             cnt+=1
-            print 'Расположение блока с пагинатором по оси x - 702 или 703, а на странице: ', pageListing.location['x']
+            print 'Расположение блока с пагинатором по оси x - 702 или 925, а на странице: ', pageListing.location['x']
             print '-'*80
                 
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CatinnerPageTest.png' % os.getenv('BUILD_URL'))
@@ -1556,9 +1556,9 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Блок навигации внизу страницы не отображается'
             print '-'*80
             
-        if lastPick.location['x'] != 262:
+        if lastPick.location['x'] != 484:
             cnt+=1
-            print 'Расположение блока навигации внизу страницы по оси x - 262, а на странице: ', lastPick.location['x']
+            print 'Расположение блока навигации внизу страницы по оси x - 484, а на странице: ', lastPick.location['x']
             print '-'*80
                 
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CatinnerPageTest.png' % os.getenv('BUILD_URL'))
@@ -1578,9 +1578,9 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Блок с подбором по параметрам не отображается'
             print '-'*80
             
-        if bfilter.location['x'] != 29:
+        if bfilter.location['x'] != 251:
             cnt+=1
-            print 'Расположение блока с подбором по параметрам по оси x - 29, а на странице: ', bfilter.location['x']
+            print 'Расположение блока с подбором по параметрам по оси x - 251, а на странице: ', bfilter.location['x']
             print '-'*80
         
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CatinnerPageTest.png' % os.getenv('BUILD_URL'))
@@ -1605,9 +1605,9 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Блок с ссылкой "сбросить фильтр" не отображается'
             print '-'*80
             
-        if clearFilter.location['x'] != 40:
+        if clearFilter.location['x'] != 262:
             cnt+=1
-            print 'Расположение блока с ссылкой "сбросить фильтр" по оси x - 40, а на странице: ', clearFilter.location['x']
+            print 'Расположение блока с ссылкой "сбросить фильтр" по оси x - 262, а на странице: ', clearFilter.location['x']
             print '-'*80
 
         try:
@@ -1639,9 +1639,9 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Кнопка "Показать" не отображается'
             print '-'*80
             
-        if button.location['x'] != 40:
+        if button.location['x'] != 262:
             cnt+=1
-            print 'Расположение кнопки "Показать" по оси x - 40, а на странице: ', button.location['x']
+            print 'Расположение кнопки "Показать" по оси x - 262, а на странице: ', button.location['x']
             print '-'*80
 
         try:
@@ -1677,9 +1677,9 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Блок с ссылкой "Все характеристики" не отображается'
             print '-'*80
             
-        if allParameters.location['x'] != 40:
+        if allParameters.location['x'] != 262:
             cnt+=1
-            print 'Расположение блока с ссылкой "Все характеристики" по оси x - 40, а на странице: ', allParameters.location['x']
+            print 'Расположение блока с ссылкой "Все характеристики" по оси x - 262, а на странице: ', allParameters.location['x']
             print '-'*80
 
         try:
@@ -1738,9 +1738,9 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Блок "Выводить по" не отображается'
             print '-'*80
             
-        if pageCap.location['x'] != 262:
+        if pageCap.location['x'] != 484:
             cnt+=1
-            print 'Расположение блока "Выводить по" по оси x - 272, а на странице: ', pageCap.location['x']
+            print 'Расположение блока "Выводить по" по оси x - 484, а на странице: ', pageCap.location['x']
             print '-'*80
 
         if len(self.driver.find_elements_by_class_name('pageCap')) != 2:
@@ -2512,9 +2512,9 @@ class BasketAnonsTest(unittest.TestCase):
             print 'Блок итогового ценника не отображается'
             print '-'*80
             
-        if smallPrice.location['x'] != 787 and smallPrice.location['x'] != 997:
+        if smallPrice.location['x'] != 1009 and smallPrice.location['x'] != 997:
             cnt+=1
-            print 'Расположение блока итогового ценника по оси x - 787 или 997, а на странице: ', smallPrice.location['x']
+            print 'Расположение блока итогового ценника по оси x - 1009 или 997, а на странице: ', smallPrice.location['x']
             print '-'*80
 
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/BasketAnonsTest.png' % os.getenv('BUILD_URL'))
@@ -2680,9 +2680,9 @@ class BasketPageTest(unittest.TestCase):
             print 'Заголовок не отображается'
             print '-'*80
             
-        if h1.location['x'] != 28:
+        if h1.location['x'] != 250:
             cnt+=1
-            print 'Расположение заголовка по оси x - 28, а на странице: ', h1.location['x']
+            print 'Расположение заголовка по оси x - 250, а на странице: ', h1.location['x']
             print '-'*80
             
         if h1.value_of_css_property('color') != 'rgba(0, 0, 0, 1)':
@@ -3363,9 +3363,9 @@ class OrderCompletePageTest(unittest.TestCase):
             print 'блока с заказом не отображается'
             print '-'*80
             
-        if order.location['x'] != 29:
+        if order.location['x'] != 251:
             cnt+=1
-            print 'Расположение блока с заказом по оси x - 29, а на странице: ', order.location['x']
+            print 'Расположение блока с заказом по оси x - 251, а на странице: ', order.location['x']
             print '-'*80
 
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/OrderCompletePageTest.png' % os.getenv('BUILD_URL'))
@@ -3390,9 +3390,9 @@ class OrderCompletePageTest(unittest.TestCase):
             print 'Заголовок не отображается'
             print '-'*80
             
-        if h1.location['x'] != 98:
+        if h1.location['x'] != 320:
             cnt+=1
-            print 'Расположение заголовка по оси x - 98, а на странице: ', h1.location['x']
+            print 'Расположение заголовка по оси x - 320, а на странице: ', h1.location['x']
             print '-'*80
             
         if h1.value_of_css_property('color') != 'rgba(0, 0, 0, 1)':
@@ -3441,9 +3441,9 @@ class OrderCompletePageTest(unittest.TestCase):
             print 'Блок с номером заказа не отображается'
             print '-'*80
             
-        if lead.location['x'] != 99:
+        if lead.location['x'] != 321:
             cnt+=1
-            print 'Расположение блока с номером заказа по оси x - 99, а на странице: ', lead.location['x']
+            print 'Расположение блока с номером заказа по оси x - 321, а на странице: ', lead.location['x']
             print '-'*80
             
         if lead.value_of_css_property('color') != 'rgba(76, 76, 76, 1)':
@@ -3473,9 +3473,9 @@ class OrderCompletePageTest(unittest.TestCase):
             print 'Блок с информацией о товаре не отображается'
             print '-'*80
             
-        if order_details.location['x'] != 99:
+        if order_details.location['x'] != 321:
             cnt+=1
-            print 'Расположение блока с информацией о товаре по оси x - 99, а на странице: ', order_details.location['x']
+            print 'Расположение блока с информацией о товаре по оси x - 321, а на странице: ', order_details.location['x']
             print '-'*80
             
         if order_details.value_of_css_property('color') != 'rgba(102, 102, 102, 1)':
@@ -3510,9 +3510,9 @@ class OrderCompletePageTest(unittest.TestCase):
             print 'Блок с информацией после описания заказа не отображается'
             print '-'*80
             
-        if post_message.location['x'] != 99:
+        if post_message.location['x'] != 321:
             cnt+=1
-            print 'Расположение блока с информацией после описания заказа по оси x - 99, а на странице: ', post_message.location['x']
+            print 'Расположение блока с информацией после описания заказа по оси x - 321, а на странице: ', post_message.location['x']
             print '-'*80
             
         if post_message.value_of_css_property('color') != 'rgba(76, 76, 76, 1)':
@@ -3577,9 +3577,9 @@ class StaticPageTest(unittest.TestCase):
             print 'Расположение контентной области по оси y - 231, а на странице: ', pds.location['y']
             print '-'*80
             
-        if pds.location['x'] != 9:
+        if pds.location['x'] != 231:
             cnt+=1
-            print 'Расположение контентной области по оси x - 9, а на странице: ', pds.location['x']
+            print 'Расположение контентной области по оси x - 231, а на странице: ', pds.location['x']
             print '-'*80
 
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/StaticPageTest.png' % os.getenv('BUILD_URL'))
@@ -3604,9 +3604,9 @@ class StaticPageTest(unittest.TestCase):
             print 'Расположение блока с левым меню по оси y - 251, а на странице: ', midNavi.location['y']
             print '-'*80
             
-        if midNavi.location['x'] != 29:
+        if midNavi.location['x'] != 251:
             cnt+=1
-            print 'Расположение блока с левым меню по оси x - 29, а на странице: ', midNavi.location['x']
+            print 'Расположение блока с левым меню по оси x - 251, а на странице: ', midNavi.location['x']
             print '-'*80
 
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/StaticPageTest.png' % os.getenv('BUILD_URL'))
@@ -3636,9 +3636,9 @@ class StaticPageTest(unittest.TestCase):
             print 'Расположение блока с контентом страницы(без меню) по оси y - 251, а на странице: ', narrow.location['y']
             print '-'*80
             
-        if narrow.location['x'] != 262:
+        if narrow.location['x'] != 484:
             cnt+=1
-            print 'Расположение блока с контентом страницы(без меню) по оси x - 262, а на странице: ', narrow.location['x']
+            print 'Расположение блока с контентом страницы(без меню) по оси x - 484, а на странице: ', narrow.location['x']
             print '-'*80
 
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/StaticPageTest.png' % os.getenv('BUILD_URL'))
@@ -3668,9 +3668,9 @@ class StaticPageTest(unittest.TestCase):
             print 'Расположение заголовка по оси y - 244, а на странице: ', h1.location['y']
             print '-'*80
             
-        if h1.location['x'] != 261:
+        if h1.location['x'] != 483:
             cnt+=1
-            print 'Расположение заголовка по оси x - 261, а на странице: ', h1.location['x']
+            print 'Расположение заголовка по оси x - 483, а на странице: ', h1.location['x']
             print '-'*80
             
         if h1.value_of_css_property('color') != 'rgba(0, 0, 0, 1)':
@@ -3710,9 +3710,9 @@ class StaticPageTest(unittest.TestCase):
             print 'Расположение блока с нижним меню по оси y - 1910, а на странице: ', contBotBox.location['y']
             print '-'*80
             
-        if contBotBox.location['x'] != 9:
+        if contBotBox.location['x'] != 231:
             cnt+=1
-            print 'Расположение блока с нижним меню по оси x - 9, а на странице: ', contBotBox.location['x']
+            print 'Расположение блока с нижним меню по оси x - 231, а на странице: ', contBotBox.location['x']
             print '-'*80
         
         self.driver.close()
@@ -3752,9 +3752,9 @@ class ComparePageTest(unittest.TestCase):
             print 'Контентная область не отображается'
             print '-'*80
             
-        if pds.location['x'] != 9:
+        if pds.location['x'] != 231:
             cnt+=1
-            print 'Расположение контентной области по оси x - 9, а на странице: ', pds.location['x']
+            print 'Расположение контентной области по оси x - 231, а на странице: ', pds.location['x']
             print '-'*80
 
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/ComparePageTest.png' % os.getenv('BUILD_URL'))
@@ -3785,9 +3785,9 @@ class ComparePageTest(unittest.TestCase):
             print 'Расположение заголовка по оси y - 244, а на странице: ', h1.location['y']
             print '-'*80
             
-        if h1.location['x'] != 28:
+        if h1.location['x'] != 250:
             cnt+=1
-            print 'Расположение заголовка по оси x - 28, а на странице: ', h1.location['x']
+            print 'Расположение заголовка по оси x - 250, а на странице: ', h1.location['x']
             print '-'*80
             
         if h1.value_of_css_property('color') != 'rgba(0, 0, 0, 1)':
@@ -3827,9 +3827,9 @@ class ComparePageTest(unittest.TestCase):
             print 'Расположение блока с группами товаров по оси y - 290, а на странице: ', catNav.location['y']
             print '-'*80
             
-        if catNav.location['x'] != 29:
+        if catNav.location['x'] != 251:
             cnt+=1
-            print 'Расположение блока с группами товаров по оси x - 29, а на странице: ', catNav.location['x']
+            print 'Расположение блока с группами товаров по оси x - 251, а на странице: ', catNav.location['x']
             print '-'*80
 
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/ComparePageTest.png' % os.getenv('BUILD_URL'))
@@ -3854,9 +3854,9 @@ class ComparePageTest(unittest.TestCase):
             print 'Расположение блока с превью и описанием товаров по оси y - 428, а на странице: ', clearfix.location['y']
             print '-'*80
             
-        if clearfix.location['x'] != 29:
+        if clearfix.location['x'] != 251:
             cnt+=1
-            print 'Расположение блока с превью и описанием товаров по оси x - 29, а на странице: ', clearfix.location['x']
+            print 'Расположение блока с превью и описанием товаров по оси x - 251, а на странице: ', clearfix.location['x']
             print '-'*80
 
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/ComparePageTest.png' % os.getenv('BUILD_URL'))
@@ -3886,9 +3886,9 @@ class ComparePageTest(unittest.TestCase):
             print 'Расположение блока с ссылками "Главные" и "Отличия" по оси y - 252, а на странице: ', comparing_mode_tabs.location['y']
             print '-'*80
             
-        if comparing_mode_tabs.location['x'] != 802:
+        if comparing_mode_tabs.location['x'] != 1024:
             cnt+=1
-            print 'Расположение блока с ссылками "Главные" и "Отличия" по оси x - 802, а на странице: ', comparing_mode_tabs.location['x']
+            print 'Расположение блока с ссылками "Главные" и "Отличия" по оси x - 1024, а на странице: ', comparing_mode_tabs.location['x']
             print '-'*80
             
         if comparing_mode_tabs.value_of_css_property('color') != 'rgba(76, 76, 76, 1)':
@@ -3928,9 +3928,9 @@ class ComparePageTest(unittest.TestCase):
             print 'Расположение блока с ссылкой "Главные" по оси y - 252, а на странице: ', li.location['y']
             print '-'*80
             
-        if li.location['x'] != 802:
+        if li.location['x'] != 1024:
             cnt+=1
-            print 'Расположение блока с ссылкой "Главные" по оси x - 802, а на странице: ', li.location['x']
+            print 'Расположение блока с ссылкой "Главные" по оси x - 1024, а на странице: ', li.location['x']
             print '-'*80
             
         if li.value_of_css_property('color') != 'rgba(179, 24, 172, 1)':
@@ -3970,9 +3970,9 @@ class ComparePageTest(unittest.TestCase):
             print 'Расположение блока ссылкой "Отличия" по оси y - 252, а на странице: ', li.location['y']
             print '-'*80
             
-        if li.location['x'] != 875:
+        if li.location['x'] != 1097:
             cnt+=1
-            print 'Расположение блока с ссылкой "Отличия" по оси x - 875, а на странице: ', li.location['x']
+            print 'Расположение блока с ссылкой "Отличия" по оси x - 1097, а на странице: ', li.location['x']
             print '-'*80
             
         if li.value_of_css_property('color') != 'rgba(100, 33, 157, 1)':
@@ -4012,9 +4012,9 @@ class ComparePageTest(unittest.TestCase):
             print 'Расположение блока с превью товаров по оси y - 468, а на странице: ', catList.location['y']
             print '-'*80
             
-        if catList.location['x'] != 258:
+        if catList.location['x'] != 480:
             cnt+=1
-            print 'Расположение блока с превью товаров по оси x - 258, а на странице: ', catList.location['x']
+            print 'Расположение блока с превью товаров по оси x - 480, а на странице: ', catList.location['x']
             print '-'*80
 
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/ComparePageTest.png' % os.getenv('BUILD_URL'))
@@ -4044,9 +4044,9 @@ class ComparePageTest(unittest.TestCase):
             print 'Расположение блока с ссылкой "Удалить все товары..." по оси y - 548, а на странице: ', cancel.location['y']
             print '-'*80
             
-        if cancel.location['x'] != 29:
+        if cancel.location['x'] != 251:
             cnt+=1
-            print 'Расположение блока с ссылкой "Удалить все товары..." по оси x - 29, а на странице: ', cancel.location['x']
+            print 'Расположение блока с ссылкой "Удалить все товары..." по оси x - 251, а на странице: ', cancel.location['x']
             print '-'*80
             
         if cancel.value_of_css_property('color') != 'rgba(100, 33, 157, 1)':
@@ -4100,9 +4100,9 @@ class ComparePageTest(unittest.TestCase):
             print 'Расположение блока c превью одного товара по оси y - 468, а на странице: ', catCard.location['y']
             print '-'*80
             
-        if catCard.location['x'] != 258:
+        if catCard.location['x'] != 480:
             cnt+=1
-            print 'Расположение блока c превью одного товара по оси x - 258, а на странице: ', catCard.location['x']
+            print 'Расположение блока c превью одного товара по оси x - 480, а на странице: ', catCard.location['x']
             print '-'*80
 
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/ComparePageTest.png' % os.getenv('BUILD_URL'))
@@ -4127,9 +4127,9 @@ class ComparePageTest(unittest.TestCase):
             print 'Расположение блока со списком характеристик по оси y - 859, а на странице: ', features_group.location['y']
             print '-'*80
             
-        if features_group.location['x'] != 29:
+        if features_group.location['x'] != 251:
             cnt+=1
-            print 'Расположение блока со списком характеристик по оси x - 29, а на странице: ', features_group.location['x']
+            print 'Расположение блока со списком характеристик по оси x - 251, а на странице: ', features_group.location['x']
             print '-'*80
 
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/ComparePageTest.png' % os.getenv('BUILD_URL'))
@@ -4154,9 +4154,9 @@ class ComparePageTest(unittest.TestCase):
             print 'Блок с информацией после списка сравнения не отображается'
             print '-'*80
             
-        if footer.location['x'] != 29:
+        if footer.location['x'] != 251:
             cnt+=1
-            print 'Расположение блока с информацией после списка сравнения по оси x - 29, а на странице: ', footer.location['x']
+            print 'Расположение блока с информацией после списка сравнения по оси x - 251, а на странице: ', footer.location['x']
             print '-'*80
             
         if footer.value_of_css_property('color') != 'rgba(76, 76, 76, 1)':
@@ -4196,9 +4196,9 @@ class ComparePageTest(unittest.TestCase):
             print 'Расположение блока с хлебными крошками по оси y - 187, а на странице: ', breadcrumbs.location['y']
             print '-'*80
             
-        if breadcrumbs.location['x'] != 3:
+        if breadcrumbs.location['x'] != 225:
             cnt+=1
-            print 'Расположение блока с хлебными крошками по оси x - 3, а на странице: ', breadcrumbs.location['x']
+            print 'Расположение блока с хлебными крошками по оси x - 225, а на странице: ', breadcrumbs.location['x']
             print '-'*80
             
         if breadcrumbs.value_of_css_property('color') != 'rgba(100, 33, 157, 1)':
@@ -4257,9 +4257,9 @@ class FavoritePageTest(unittest.TestCase):
             print 'Контентная область не отображается'
             print '-'*80
             
-        if pds.location['x'] != 9:
+        if pds.location['x'] != 231:
             cnt+=1
-            print 'Расположение контентной области по оси x - 9, а на странице: ', pds.location['x']
+            print 'Расположение контентной области по оси x - 231, а на странице: ', pds.location['x']
             print '-'*80
 
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/FavoritePageTest.png' % os.getenv('BUILD_URL'))
@@ -4289,9 +4289,9 @@ class FavoritePageTest(unittest.TestCase):
             print 'Расположение заголовка по оси y - 244, а на странице: ', h1.location['y']
             print '-'*80
             
-        if h1.location['x'] != 28:
+        if h1.location['x'] != 250:
             cnt+=1
-            print 'Расположение заголовка по оси x - 28, а на странице: ', h1.location['x']
+            print 'Расположение заголовка по оси x - 250, а на странице: ', h1.location['x']
             print '-'*80
             
         if h1.value_of_css_property('color') != 'rgba(0, 0, 0, 1)':
@@ -4326,9 +4326,9 @@ class FavoritePageTest(unittest.TestCase):
             print 'Расположение блок с превью всех товаров по оси y - 290, а на странице: ', catList.location['y']
             print '-'*80
             
-        if catList.location['x'] != 29:
+        if catList.location['x'] != 251:
             cnt+=1
-            print 'Расположение блок с превью всех товаров по оси x - 29, а на странице: ', catList.location['x']
+            print 'Расположение блок с превью всех товаров по оси x - 251, а на странице: ', catList.location['x']
             print '-'*80
 
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/FavoritePageTest.png' % os.getenv('BUILD_URL'))
@@ -4353,9 +4353,9 @@ class FavoritePageTest(unittest.TestCase):
             print 'Расположение блок с превью одного товара по оси y - 290, а на странице: ', catCard.location['y']
             print '-'*80
             
-        if catCard.location['x'] != 29:
+        if catCard.location['x'] != 251:
             cnt+=1
-            print 'Расположение блок с превью одного товара по оси x - 29, а на странице: ', catCard.location['x']
+            print 'Расположение блок с превью одного товара по оси x - 251, а на странице: ', catCard.location['x']
             print '-'*80
 
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/FavoritePageTest.png' % os.getenv('BUILD_URL'))
@@ -4380,9 +4380,9 @@ class FavoritePageTest(unittest.TestCase):
             print 'Блок с ссылкой "Очистить список..." не отображается'
             print '-'*80
             
-        if serviceText.location['x'] != 29:
+        if serviceText.location['x'] != 251:
             cnt+=1
-            print 'Расположение блока с ссылкой "Очистить список..." по оси x - 29, а на странице: ', serviceText.location['x']
+            print 'Расположение блока с ссылкой "Очистить список..." по оси x - 251, а на странице: ', serviceText.location['x']
             print '-'*80
             
         if serviceText.value_of_css_property('color') != 'rgba(100, 33, 157, 1)':
@@ -4478,13 +4478,13 @@ class ModalFormsTest(unittest.TestCase):
             cnt+=1
             print 'Слой не отображается'
         
-        if goodsLayer.location['y'] != 584:
+        if goodsLayer.location['y'] != 187:
             cnt+=1
-            print 'Расположение слоя по оси y - 584, а на странице: ', goodsLayer.location['y']
+            print 'Расположение слоя по оси y - 187, а на странице: ', goodsLayer.location['y']
             
-        if goodsLayer.location['x'] != 76:
+        if goodsLayer.location['x'] != 412:
             cnt+=1
-            print 'Расположение слоя по оси x - 76, а на странице: ', goodsLayer.location['x']
+            print 'Расположение слоя по оси x - 412, а на странице: ', goodsLayer.location['x']
             
         print '-'*80
 
@@ -4502,13 +4502,13 @@ class ModalFormsTest(unittest.TestCase):
             cnt+=1
             print 'Заголовок не отображается'
         
-        if title.location['y'] != 601:
+        if title.location['y'] != 204:
             cnt+=1
-            print 'Расположение заголовка по оси y - 601, а на странице: ', title.location['y']
+            print 'Расположение заголовка по оси y - 204, а на странице: ', title.location['y']
             
-        if title.location['x'] != 91:
+        if title.location['x'] != 427:
             cnt+=1
-            print 'Расположение заголовка по оси x - 91, а на странице: ', title.location['x']
+            print 'Расположение заголовка по оси x - 427, а на странице: ', title.location['x']
             
         if title.value_of_css_property('color') != 'rgba(100, 33, 158, 1)':
             cnt+=1
@@ -4534,13 +4534,13 @@ class ModalFormsTest(unittest.TestCase):
             cnt+=1
             print 'Кнопка закрытия не отображается'
         
-        if closebutton.location['y'] != 599:
+        if closebutton.location['y'] != 202:
             cnt+=1
-            print 'Расположение кнопки закрытия по оси y - 599, а на странице: ', closebutton.location['y']
+            print 'Расположение кнопки закрытия по оси y - 202, а на странице: ', closebutton.location['y']
             
-        if closebutton.location['x'] != 664:
+        if closebutton.location['x'] != 1000:
             cnt+=1
-            print 'Расположение кнопки закрытия по оси x - 664, а на странице: ', closebutton.location['x']
+            print 'Расположение кнопки закрытия по оси x - 1000, а на странице: ', closebutton.location['x']
         
         print '-'*80
 
@@ -4558,13 +4558,13 @@ class ModalFormsTest(unittest.TestCase):
             cnt+=1
             print 'Блок выбора доп.услуг не отображается'
         
-        if form.location['y'] != 651:
+        if form.location['y'] != 254:
             cnt+=1
-            print 'Расположение блока выбора доп.услуг по оси y - 651, а на странице: ', form.location['y']
+            print 'Расположение блока выбора доп.услуг по оси y - 254, а на странице: ', form.location['y']
             
-        if form.location['x'] != 91:
+        if form.location['x'] != 427:
             cnt+=1
-            print 'Расположение блока выбора доп.услуг по оси x - 91, а на странице: ', form.location['x']
+            print 'Расположение блока выбора доп.услуг по оси x - 427, а на странице: ', form.location['x']
         
         print '-'*80
 
@@ -4582,9 +4582,9 @@ class ModalFormsTest(unittest.TestCase):
             cnt+=1
             print 'Kнопкa не отображается'
             
-        if btn.location['x'] != 91:
+        if btn.location['x'] != 427:
             cnt+=1
-            print 'Расположение кнопки по оси x - 91, а на странице: ', btn.location['x']
+            print 'Расположение кнопки по оси x - 427, а на странице: ', btn.location['x']
             
         if btn.value_of_css_property('color') != 'rgba(255, 255, 255, 1)':
             cnt+=1
@@ -4610,9 +4610,9 @@ class ModalFormsTest(unittest.TestCase):
             cnt+=1
             print 'Cсылкa очистить не отображается'
            
-        if clear.location['x'] != 222:
+        if clear.location['x'] != 558:
             cnt+=1
-            print 'Расположение ссылки очистить по оси x - 222, а на странице: ', clear.location['x']
+            print 'Расположение ссылки очистить по оси x - 558, а на странице: ', clear.location['x']
             
         if clear.value_of_css_property('color') != 'rgba(100, 33, 158, 1)':
             cnt+=1
@@ -4668,13 +4668,13 @@ class ModalFormsTest(unittest.TestCase):
             cnt+=1
             print 'Слой не отображается'
         
-        if goodsLayer.location['y'] != 455:
+        if goodsLayer.location['y'] != 58:
             cnt+=1
-            print 'Расположение слоя по оси y - 455, а на странице: ', goodsLayer.location['y']
+            print 'Расположение слоя по оси y - 58, а на странице: ', goodsLayer.location['y']
             
-        if goodsLayer.location['x'] != 88:
+        if goodsLayer.location['x'] != 424:
             cnt+=1
-            print 'Расположение слоя по оси x - 88, а на странице: ', goodsLayer.location['x']
+            print 'Расположение слоя по оси x - 424, а на странице: ', goodsLayer.location['x']
         
         print '-'*80
 
@@ -4692,13 +4692,13 @@ class ModalFormsTest(unittest.TestCase):
             cnt+=1
             print 'Заголовок не отображается'
         
-        if title.location['y'] != 472:
+        if title.location['y'] != 75:
             cnt+=1
-            print 'Расположение заголовка по оси y - 472, а на странице: ', title.location['y']
+            print 'Расположение заголовка по оси y - 75, а на странице: ', title.location['y']
             
-        if title.location['x'] != 123:
+        if title.location['x'] != 459:
             cnt+=1
-            print 'Расположение заголовка по оси x - 123, а на странице: ', title.location['x']
+            print 'Расположение заголовка по оси x - 459, а на странице: ', title.location['x']
             
         if title.value_of_css_property('color') != 'rgba(100, 33, 158, 1)':
             cnt+=1
@@ -4724,13 +4724,13 @@ class ModalFormsTest(unittest.TestCase):
             cnt+=1
             print 'Кнопка закрытия не отображается'
         
-        if closebutton.location['y'] != 470:
+        if closebutton.location['y'] != 73:
             cnt+=1
-            print 'Расположение кнопки закрытия по оси y - 470, а на странице: ', closebutton.location['y']
+            print 'Расположение кнопки закрытия по оси y - 73, а на странице: ', closebutton.location['y']
             
-        if closebutton.location['x'] != 652:
+        if closebutton.location['x'] != 988:
             cnt+=1
-            print 'Расположение кнопки закрытия по оси x - 652, а на странице: ', closebutton.location['x']
+            print 'Расположение кнопки закрытия по оси x - 988, а на странице: ', closebutton.location['x']
         
         print '-'*80
 
@@ -4748,13 +4748,13 @@ class ModalFormsTest(unittest.TestCase):
             cnt+=1
             print 'Блок с тегами не отображается'
         
-        if tagblock.location['y'] != 515:
+        if tagblock.location['y'] != 118:
             cnt+=1
-            print 'Расположение блока с тегами по оси y - 515, а на странице: ', tagblock.location['y']
+            print 'Расположение блока с тегами по оси y - 118, а на странице: ', tagblock.location['y']
             
-        if tagblock.location['x'] != 123:
+        if tagblock.location['x'] != 459:
             cnt+=1
-            print 'Расположение блока с тегами по оси x - 123, а на странице: ', tagblock.location['x']
+            print 'Расположение блока с тегами по оси x - 459, а на странице: ', tagblock.location['x']
         
         print '-'*80
 
@@ -4772,13 +4772,13 @@ class ModalFormsTest(unittest.TestCase):
             cnt+=1
             print 'Блок с формой не отображается'
         
-        if fields.location['y'] != 648:
+        if fields.location['y'] != 251:
             cnt+=1
-            print 'Расположение блока с формой по оси y - 648, а на странице: ', fields.location['y']
+            print 'Расположение блока с формой по оси y - 251, а на странице: ', fields.location['y']
             
-        if fields.location['x'] != 123:
+        if fields.location['x'] != 459:
             cnt+=1
-            print 'Расположение блока с формой по оси x - 123, а на странице: ', fields.location['x']
+            print 'Расположение блока с формой по оси x - 459, а на странице: ', fields.location['x']
         
         print '-'*80
 
@@ -4822,13 +4822,13 @@ class ModalFormsTest(unittest.TestCase):
             cnt+=1
             print 'textarea не отображается'
         
-        if textarea.location['y'] != 670:
+        if textarea.location['y'] != 273:
             cnt+=1
-            print 'Расположение textarea по оси y - 670, а на странице: ', textarea.location['y']
+            print 'Расположение textarea по оси y - 273, а на странице: ', textarea.location['y']
             
-        if textarea.location['x'] != 123:
+        if textarea.location['x'] != 459:
             cnt+=1
-            print 'Расположение textarea по оси x - 123, а на странице: ', textarea.location['x']
+            print 'Расположение textarea по оси x - 459, а на странице: ', textarea.location['x']
             
         print '-'*80
 
@@ -4864,13 +4864,13 @@ class ModalFormsTest(unittest.TestCase):
             cnt+=1
             print 'Блок с ссылками не отображается'
         
-        if backLinks.location['y'] != 924:
+        if backLinks.location['y'] != 527:
             cnt+=1
-            print 'Расположение блока с ссылками по оси y - 924, а на странице: ', backLinks.location['y']
+            print 'Расположение блока с ссылками по оси y - 527, а на странице: ', backLinks.location['y']
             
-        if backLinks.location['x'] != 123:
+        if backLinks.location['x'] != 459:
             cnt+=1
-            print 'Расположение блока с ссылками по оси x - 123, а на странице: ', backLinks.location['x']
+            print 'Расположение блока с ссылками по оси x - 459, а на странице: ', backLinks.location['x']
             
         if backLinks.value_of_css_property('color') != 'rgba(34, 34, 34, 1)':
             cnt+=1
@@ -4905,13 +4905,13 @@ class ModalFormsTest(unittest.TestCase):
             cnt+=1
             print 'Кнопка не отображается'
         
-        if backLinks.location['y'] != 924:
+        if backLinks.location['y'] != 527:
             cnt+=1
-            print 'Расположение кнопки по оси y - 924, а на странице: ', backLinks.location['y']
+            print 'Расположение кнопки по оси y - 527, а на странице: ', backLinks.location['y']
             
-        if backLinks.location['x'] != 123:
+        if backLinks.location['x'] != 459:
             cnt+=1
-            print 'Расположение кнопки по оси x - 123, а на странице: ', backLinks.location['x']
+            print 'Расположение кнопки по оси x - 459, а на странице: ', backLinks.location['x']
             
         if backLinks.value_of_css_property('color') != 'rgba(34, 34, 34, 1)':
             cnt+=1
