@@ -114,11 +114,6 @@ class MainPageTest(unittest.TestCase):
             cnt+=1
             print 'Нужная высота промоблока - 304, а на странице: ', promo.size['height']
             print '-'*80
-            
-        if not promo.is_displayed(): #проверяем отображается ли
-            cnt+=1
-            print 'Промоблок не отображается'
-            print '-'*80
         
         if promo.location['y'] != 221:
             cnt+=1
