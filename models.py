@@ -67,7 +67,7 @@ class Remains( Base ):
     goods_id = Column(Integer, ForeignKey('t_goods.id'), primary_key=True )
 
 class Goods_price( Base ):
-    """ Цены товара """
+    """ Основные цены товара """
     __tablename__='t_goods_prices'#, metadata,
     price_type_guid=Column( String(), primary_key=True )
     goods_id =Column(Integer, primary_key=True)
