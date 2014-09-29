@@ -1806,7 +1806,7 @@ class CartPageTest(unittest.TestCase):
             print 'Заголовок не отображается'
             print '-'*80
         
-        if componentHeader.location['y'] != 244 or componentHeader.location['y'] != 261:
+        if componentHeader.location['y'] != 244 and componentHeader.location['y'] != 261:
             cnt+=1
             print 'Расположение заголовка по оси y - 244 или 261, а на странице: ', componentHeader.location['y']
             print '-'*80
@@ -1870,9 +1870,9 @@ class CartPageTest(unittest.TestCase):
         cnt=0
         middlePrice = self.driver.find_element_by_class_name('cardPrice').find_element_by_class_name('middlePrice')
 
-        if middlePrice.size['width'] != 191:
+        if middlePrice.size['width'] != 191 and middlePrice.size['width'] != 170:
             cnt+=1
-            print 'Нужная ширина блока с ценой товара - 191, а на странице: ', middlePrice.size['width']
+            print 'Нужная ширина блока с ценой товара - 191 или 170, а на странице: ', middlePrice.size['width']
             print '-'*80
             
         if middlePrice.size['height'] != 55:
@@ -1924,9 +1924,9 @@ class CartPageTest(unittest.TestCase):
         cnt=0
         serviceInfo = self.driver.find_element_by_class_name('serviceInfo')
 
-        if serviceInfo.size['width'] != 138:
+        if serviceInfo.size['width'] != 138 and serviceInfo.size['width'] != 159:
             cnt+=1
-            print 'Нужная ширина блока со статусом товара - 138, а на странице: ', serviceInfo.size['width']
+            print 'Нужная ширина блока со статусом товара - 138 или 159, а на странице: ', serviceInfo.size['width']
             print '-'*80
             
         if serviceInfo.size['height'] != 55:
@@ -1939,9 +1939,9 @@ class CartPageTest(unittest.TestCase):
             print 'Блок со статусом товара не отображается'
             print '-'*80
             
-        if serviceInfo.location['x'] != 1033:
+        if serviceInfo.location['x'] != 1033 and serviceInfo.location['x'] != 1012:
             cnt+=1
-            print 'Расположение блока со статусом товара по оси x - 1033, а на странице: ', serviceInfo.location['x']
+            print 'Расположение блока со статусом товара по оси x - 1033 или 1012, а на странице: ', serviceInfo.location['x']
             print '-'*80
 
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CartPageTest.png' % os.getenv('BUILD_URL'))
@@ -3770,7 +3770,8 @@ class ComparePageTest(unittest.TestCase):
             print 'Заголовок не отображается'
             print '-'*80
         
-        if h1.location['y'] != 261 or h1.location['y'] != 244:
+        if h1.location['y'] != 261 and h1.location['y'] != 244:
+            cnt+=1
             print 'Расположение заголовка по оси y - 261 или 244, а на странице: ', h1.location['y']
             print '-'*80
             
