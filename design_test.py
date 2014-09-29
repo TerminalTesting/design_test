@@ -219,12 +219,12 @@ class MainPageTest(unittest.TestCase):
         
         if cheaper.location['y'] != 500:
             cnt+=1
-            print 'Расположение блока с иконкой "Почему дешевле?" по оси y - 500, а на странице: ', cheaper.location['y']
+            print 'Расположение блока с иконкой обратного звонка по оси y - 500, а на странице: ', cheaper.location['y']
             print '-'*80
             
-        if cheaper.location['x'] != 235:
+        if cheaper.location['x'] != 231:
             cnt+=1
-            print 'Расположение блока с иконкой "Почему дешевле?" по оси x - 235, а на странице: ', cheaper.location['x']
+            print 'Расположение блока с иконкой обратного звонка по оси x - 231, а на странице: ', cheaper.location['x']
 
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/MainPageTest.png' % os.getenv('BUILD_URL'))
         
@@ -838,9 +838,9 @@ class MainPageTest(unittest.TestCase):
             print 'Блок со ссылкой "Наверх" не отображается'
             print '-'*80
         
-        if toTop.location['y'] != 1100:
+        if toTop.location['y'] != 1070:
             cnt+=1
-            print 'Расположение блока со ссылкой "Наверх" по оси y - 1100, а на странице: ', toTop.location['y']
+            print 'Расположение блока со ссылкой "Наверх" по оси y - 1070, а на странице: ', toTop.location['y']
             print '-'*80
             
         if toTop.location['x'] != 172:
@@ -1870,9 +1870,9 @@ class CartPageTest(unittest.TestCase):
         cnt=0
         middlePrice = self.driver.find_element_by_class_name('cardPrice').find_element_by_class_name('middlePrice')
 
-        if middlePrice.size['width'] != 170:
+        if middlePrice.size['width'] != 191:
             cnt+=1
-            print 'Нужная ширина блока с ценой товара - 170, а на странице: ', middlePrice.size['width']
+            print 'Нужная ширина блока с ценой товара - 191, а на странице: ', middlePrice.size['width']
             print '-'*80
             
         if middlePrice.size['height'] != 55:
@@ -1912,9 +1912,9 @@ class CartPageTest(unittest.TestCase):
             print 'Блок с кнопкой купить не отображается'
             print '-'*80
             
-        if basketButton.location['x'] != 887:
+        if basketButton.location['x'] != 908:
             cnt+=1
-            print 'Расположение блока с кнопкой купить по оси x - 887, а на странице: ', basketButton.location['x']
+            print 'Расположение блока с кнопкой купить по оси x - 908, а на странице: ', basketButton.location['x']
             print '-'*80
 
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CartPageTest.png' % os.getenv('BUILD_URL'))
@@ -1924,9 +1924,9 @@ class CartPageTest(unittest.TestCase):
         cnt=0
         serviceInfo = self.driver.find_element_by_class_name('serviceInfo')
 
-        if serviceInfo.size['width'] != 159:
+        if serviceInfo.size['width'] != 138:
             cnt+=1
-            print 'Нужная ширина блока со статусом товара - 159, а на странице: ', serviceInfo.size['width']
+            print 'Нужная ширина блока со статусом товара - 138, а на странице: ', serviceInfo.size['width']
             print '-'*80
             
         if serviceInfo.size['height'] != 55:
@@ -1939,9 +1939,9 @@ class CartPageTest(unittest.TestCase):
             print 'Блок со статусом товара не отображается'
             print '-'*80
             
-        if serviceInfo.location['x'] != 1012:
+        if serviceInfo.location['x'] != 1033:
             cnt+=1
-            print 'Расположение блока со статусом товара по оси x - 1012, а на странице: ', serviceInfo.location['x']
+            print 'Расположение блока со статусом товара по оси x - 1033, а на странице: ', serviceInfo.location['x']
             print '-'*80
 
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CartPageTest.png' % os.getenv('BUILD_URL'))
@@ -2373,9 +2373,9 @@ class BasketAnonsTest(unittest.TestCase):
             print 'Слой анонса корзины не отображается'
             print '-'*80
         
-        if basketParams.location['y'] != -2:
+        if basketParams.location['y'] != 185:
             cnt+=1
-            print 'Расположение слоя анонса корзины по оси y - -2, а на странице: ', basketParams.location['y']
+            print 'Расположение слоя анонса корзины по оси y - 185, а на странице: ', basketParams.location['y']
             print '-'*80
             
         if basketParams.location['x'] != 263 and basketParams.location['x'] != 485:
@@ -2405,9 +2405,9 @@ class BasketAnonsTest(unittest.TestCase):
             print 'Заголовка слоя не отображается'
             print '-'*80
         
-        if colGoods.location['y'] != 13:
+        if colGoods.location['y'] != 200:
             cnt+=1
-            print 'Расположение заголовка слоя по оси y - 13, а на странице: ', colGoods.location['y']
+            print 'Расположение заголовка слоя по оси y - 200, а на странице: ', colGoods.location['y']
             print '-'*80
             
         if colGoods.location['x'] != 283 and colGoods.location['x'] != 505:
@@ -2448,9 +2448,9 @@ class BasketAnonsTest(unittest.TestCase):
             print 'Блок кнопки закрыть не отображается'
             print '-'*80
         
-        if close.location['y'] != 11:
+        if close.location['y'] != 198:
             cnt+=1
-            print 'Расположение блока кнопки закрыть по оси y - 11, а на странице: ', close.location['y']
+            print 'Расположение блока кнопки закрыть по оси y - 198, а на странице: ', close.location['y']
             print '-'*80
             
         if close.location['x'] != 907 and close.location['x'] != 1129:
@@ -4524,9 +4524,9 @@ class ModalFormsTest(unittest.TestCase):
             cnt+=1
             print 'Кнопка закрытия не отображается'
         
-        if closebutton.location['y'] != 306:
+        if closebutton.location['y'] != 254:
             cnt+=1
-            print 'Расположение кнопки закрытия по оси y - 306, а на странице: ', closebutton.location['y']
+            print 'Расположение кнопки закрытия по оси y - 254, а на странице: ', closebutton.location['y']
             
         if closebutton.location['x'] != 1000:
             cnt+=1
@@ -4548,9 +4548,9 @@ class ModalFormsTest(unittest.TestCase):
             cnt+=1
             print 'Блок выбора доп.услуг не отображается'
         
-        if form.location['y'] != 254:
+        if form.location['y'] != 306:
             cnt+=1
-            print 'Расположение блока выбора доп.услуг по оси y - 254, а на странице: ', form.location['y']
+            print 'Расположение блока выбора доп.услуг по оси y - 306, а на странице: ', form.location['y']
             
         if form.location['x'] != 427:
             cnt+=1
