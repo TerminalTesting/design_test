@@ -217,9 +217,9 @@ class MainPageTest(unittest.TestCase):
             print 'Блок с иконкой "Почему дешевле?" не отображается'
             print '-'*80
         
-        if cheaper.location['y'] != 500:
+        if cheaper.location['y'] != 134:
             cnt+=1
-            print 'Расположение блока с иконкой обратного звонка по оси y - 500, а на странице: ', cheaper.location['y']
+            print 'Расположение блока с иконкой обратного звонка по оси y - 134, а на странице: ', cheaper.location['y']
             print '-'*80
             
         if cheaper.location['x'] != 231:
@@ -4274,9 +4274,9 @@ class FavoritePageTest(unittest.TestCase):
             print 'Заголовок не отображается'
             print '-'*80
         
-        if h1.location['y'] != 244:
+        if h1.location['y'] != 261:
             cnt+=1
-            print 'Расположение заголовка по оси y - 244, а на странице: ', h1.location['y']
+            print 'Расположение заголовка по оси y - 261, а на странице: ', h1.location['y']
             print '-'*80
             
         if h1.location['x'] != 250:
