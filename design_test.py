@@ -197,10 +197,10 @@ class MainPageTest(unittest.TestCase):
 
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/MainPageTest.png' % os.getenv('BUILD_URL'))
 
-    def test_why_cheaper_icon(self):
+    def test_call_back_icon(self):
         """ Проверка блока с иконкой "Почему дешевле?" """
         cnt=0
-        cheaper = self.driver.find_element_by_class_name('not')
+        cheaper = self.driver.find_element_by_class_name('callBackIcon')
 
         if cheaper.size['width'] != 91:
             cnt+=1
@@ -228,10 +228,10 @@ class MainPageTest(unittest.TestCase):
 
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/MainPageTest.png' % os.getenv('BUILD_URL'))
         
-    def test_why_cheaper_dia(self):
+    def test_call_back_dia(self):
         cnt=0
-        self.driver.find_element_by_class_name('not').click()
-        cheaper = self.driver.find_element_by_class_name('whyCheaperDialog')
+        self.driver.find_element_by_class_name('callBackIcon').click()
+        cheaper = self.driver.find_element_by_class_name('j-callback-container')
 
         if cheaper.size['width'] != 960:
             cnt+=1
@@ -327,9 +327,9 @@ class MainPageTest(unittest.TestCase):
         cnt=0
         region = self.driver.find_element_by_class_name('telDropList')
 
-        if region.size['width'] != 210:
+        if region.size['width'] != 136:
             cnt+=1
-            print 'Нужная ширина блока с выбором региона - 210, а на странице: ', region.size['width']
+            print 'Нужная ширина блока с выбором региона - 136, а на странице: ', region.size['width']
             print '-'*80
             
         if region.size['height'] != 50:
@@ -358,7 +358,7 @@ class MainPageTest(unittest.TestCase):
         cnt=0
         region = self.driver.find_element_by_class_name('magsList')
 
-        if region.size['width'] != 82:
+        if region.size['width'] != 272:
             cnt+=1
             print 'Нужная ширина блока со ссылкой на магазины - 82, а на странице: ', region.size['width']
             print '-'*80
@@ -378,9 +378,9 @@ class MainPageTest(unittest.TestCase):
             print 'Расположение блока со ссылкой на магазины по оси y - 134, а на странице: ', region.location['y']
             print '-'*80
             
-        if region.location['x'] != 538:
+        if region.location['x'] != 464:
             cnt+=1
-            print 'Расположение блока со ссылкой на магазины по оси x - 538, а на странице: ', region.location['x']
+            print 'Расположение блока со ссылкой на магазины по оси x - 464, а на странице: ', region.location['x']
             print '-'*80
         
         if region.find_element_by_tag_name('a').get_attribute('href') != '%sour-contacts/' % self.HOST:
@@ -397,9 +397,9 @@ class MainPageTest(unittest.TestCase):
         cnt=0
         search = self.driver.find_element_by_class_name('search')
 
-        if search.size['width'] != 288:
+        if search.size['width'] != 208:
             cnt+=1
-            print 'Нужная ширина блока с поиском - 288, а на странице: ', search.size['width']
+            print 'Нужная ширина блока с поиском - 208, а на странице: ', search.size['width']
             print '-'*80
             
         if search.size['height'] != 50:
@@ -417,9 +417,9 @@ class MainPageTest(unittest.TestCase):
             print 'Расположение блока с поиском по оси y - 134, а на странице: ', search.location['y']
             print '-'*80
             
-        if search.location['x'] != 623:
+        if search.location['x'] != 739:
             cnt+=1
-            print 'Расположение блока с поиском по оси x - 623, а на странице: ', search.location['x']
+            print 'Расположение блока с поиском по оси x - 739, а на странице: ', search.location['x']
             print '-'*80
                 
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/MainPageTest.png' % os.getenv('BUILD_URL'))
@@ -429,9 +429,9 @@ class MainPageTest(unittest.TestCase):
         cnt=0
         profile = self.driver.find_element_by_class_name('profile')
 
-        if profile.size['width'] != 109:
+        if profile.size['width'] != 114:
             cnt+=1
-            print 'Нужная ширина блока "Войти" - 109, а на странице: ', profile.size['width']
+            print 'Нужная ширина блока "Войти" - 114, а на странице: ', profile.size['width']
             print '-'*80
             
         if profile.size['height'] != 50:
@@ -449,9 +449,9 @@ class MainPageTest(unittest.TestCase):
             print 'Расположение блока "Войти" по оси y - 134, а на странице: ', profile.location['y']
             print '-'*80
             
-        if profile.location['x'] != 914:
+        if profile.location['x'] != 950:
             cnt+=1
-            print 'Расположение блока "Войти" по оси x - 914, а на странице: ', profile.location['x']
+            print 'Расположение блока "Войти" по оси x - 950, а на странице: ', profile.location['x']
             print '-'*80
         
         if profile.find_element_by_partial_link_text('Войти').get_attribute('href') != '%slogin/' % self.HOST:
@@ -468,9 +468,9 @@ class MainPageTest(unittest.TestCase):
         cnt=0
         basket = self.driver.find_element_by_class_name('basket')
 
-        if basket.size['width'] != 128:
+        if basket.size['width'] != 106:
             cnt+=1
-            print 'Нужная ширина блока "Корзина" - 128, а на странице: ', basket.size['width']
+            print 'Нужная ширина блока "Корзина" - 106, а на странице: ', basket.size['width']
             print '-'*80
             
         if basket.size['height'] != 50:
@@ -483,9 +483,9 @@ class MainPageTest(unittest.TestCase):
             print 'Расположение блока "Корзина" по оси y - 134, а на странице: ', basket.location['y']
             print '-'*80
             
-        if basket.location['x'] != 1026:
+        if basket.location['x'] != 1067:
             cnt+=1
-            print 'Расположение блока "Корзина" по оси x - 1026, а на странице: ', basket.location['x']
+            print 'Расположение блока "Корзина" по оси x - 1067, а на странице: ', basket.location['x']
             print '-'*80
         
         if basket.find_element_by_tag_name('a').get_attribute('href') != '%s#' % self.HOST:
@@ -507,9 +507,9 @@ class MainPageTest(unittest.TestCase):
             print 'Нужная ширина блока в слайдере товаров - 974, а на странице: ', gpromo.size['width']
             print '-'*80
             
-        if gpromo.size['height'] != 1348 and gpromo.size['height'] != 1328:
+        if gpromo.size['height'] != 1348 and gpromo.size['height'] != 1368:
             cnt+=1
-            print 'Нужная высота блока в слайдере товаров - 1348 или 1328, а на странице: ', gpromo.size['height']
+            print 'Нужная высота блока в слайдере товаров - 1348 или 1368, а на странице: ', gpromo.size['height']
             print '-'*80
             
         if not gpromo.is_displayed(): #проверяем отображается ли
@@ -581,9 +581,9 @@ class MainPageTest(unittest.TestCase):
             print 'Блок с пиктограммой "Особая цена" не отображается'
             print '-'*80
         
-        if price.location['y'] != 1006 and price.location['y'] != 987:
+        if price.location['y'] != 1006 and price.location['y'] != 1026:
             cnt+=1
-            print 'Расположение блока с пиктограммой "Особая цена" по оси y - 1006 или 987, а на странице: ', price.location['y']
+            print 'Расположение блока с пиктограммой "Особая цена" по оси y - 1006 или 1026, а на странице: ', price.location['y']
             print '-'*80
             
         if price.location['x'] != 645:
@@ -640,9 +640,9 @@ class MainPageTest(unittest.TestCase):
             print 'Блок "Как выбрать" не отображается'
             print '-'*80
         
-        if guide.location['y'] != 1971 and guide.location['y'] != 1951:
+        if guide.location['y'] != 1971 and guide.location['y'] != 1991:
             cnt+=1
-            print 'Расположение блока "Как выбрать" по оси y - 1971 или 1951, а на странице: ', guide.location['y']
+            print 'Расположение блока "Как выбрать" по оси y - 1971 или 1991, а на странице: ', guide.location['y']
             print '-'*80
             
         if guide.location['x'] != 232:
@@ -672,9 +672,9 @@ class MainPageTest(unittest.TestCase):
             print 'Блок с пиктограммой "Как выбрать" не отображается'
             print '-'*80
         
-        if pguide.location['y'] != 1956 and pguide.location['y'] != 1936:
+        if pguide.location['y'] != 1956 and pguide.location['y'] != 1976:
             cnt+=1
-            print 'Расположение блока с пиктограммой "Как выбрать" по оси y - 1956 или 1936, а на странице: ', pguide.location['y']
+            print 'Расположение блока с пиктограммой "Как выбрать" по оси y - 1956 или 1976, а на странице: ', pguide.location['y']
             print '-'*80
             
         if pguide.location['x'] != 652:
@@ -711,9 +711,9 @@ class MainPageTest(unittest.TestCase):
             print 'Блок с нижним меню не отображается'
             print '-'*80
         
-        if content.location['y'] != 2227 and content.location['y'] != 2207:
+        if content.location['y'] != 2227 and content.location['y'] != 2247:
             cnt+=1
-            print 'Расположение блока с нижним меню по оси y - 2227 или 2207, а на странице: ', content.location['y']
+            print 'Расположение блока с нижним меню по оси y - 2227 или 2247, а на странице: ', content.location['y']
             print '-'*80
             
         if content.location['x'] != 231:
@@ -743,9 +743,9 @@ class MainPageTest(unittest.TestCase):
             print 'Блок с футером не отображается'
             print '-'*80
         
-        if footer.location['y'] != 2427 and footer.location['y'] != 2408:
+        if footer.location['y'] != 2427 and footer.location['y'] != 2447:
             cnt+=1
-            print 'Расположение блока с футером по оси y - 2427 или 2408, а на странице: ', footer.location['y']
+            print 'Расположение блока с футером по оси y - 2427 или 2447, а на странице: ', footer.location['y']
             print '-'*80
             
         if footer.location['x'] != 225:
@@ -838,9 +838,9 @@ class MainPageTest(unittest.TestCase):
             print 'Блок со ссылкой "Наверх" не отображается'
             print '-'*80
         
-        if toTop.location['y'] != 1070:
+        if toTop.location['y'] != 1100:
             cnt+=1
-            print 'Расположение блока со ссылкой "Наверх" по оси y - 1070, а на странице: ', toTop.location['y']
+            print 'Расположение блока со ссылкой "Наверх" по оси y - 1100, а на странице: ', toTop.location['y']
             print '-'*80
             
         if toTop.location['x'] != 172:
@@ -899,9 +899,9 @@ class MainPageTest(unittest.TestCase):
         self.driver.find_element_by_class_name('cab').click()
         anons = self.driver.find_element_by_class_name('profControl')
 
-        if anons.size['width'] != 261:
+        if anons.size['width'] != 227:
             cnt+=1
-            print 'Нужная ширина блока с анонсом ЛК - 261, а на странице: ', anons.size['width']
+            print 'Нужная ширина блока с анонсом ЛК - 227, а на странице: ', anons.size['width']
             print '-'*80
             
         if anons.size['height'] != 112:
@@ -919,9 +919,9 @@ class MainPageTest(unittest.TestCase):
             print 'Расположение блока с анонсом ЛК по оси y - 184, а на странице: ', anons.location['y']
             print '-'*80
             
-        if anons.location['x'] != 914:
+        if anons.location['x'] != 950:
             cnt+=1
-            print 'Расположение блока с анонсом ЛК по оси x - 914, а на странице: ', anons.location['x']
+            print 'Расположение блока с анонсом ЛК по оси x - 950, а на странице: ', anons.location['x']
             print '-'*80
             
         if anons.value_of_css_property('color') != 'rgba(76, 76, 76, 1)':
@@ -1504,9 +1504,9 @@ class CatinnerPageTest(unittest.TestCase):
         cnt=0
         pageListing = self.driver.find_element_by_class_name('pageListing')
 
-        if pageListing.size['width'] != 247 and pageListing.size['width'] != 246:
+        if pageListing.size['width'] != 247 and pageListing.size['width'] != 248:
             cnt+=1
-            print 'Нужная ширина блока с пагинатором - 247 или 246, а на странице: ', pageListing.size['width']
+            print 'Нужная ширина блока с пагинатором - 247 или 248, а на странице: ', pageListing.size['width']
             print '-'*80
 
         if pageListing.size['height'] != 38:
@@ -1519,9 +1519,9 @@ class CatinnerPageTest(unittest.TestCase):
             print 'Блок с пагинатором не отображается'
             print '-'*80
             
-        if pageListing.location['x'] != 702 and pageListing.location['x'] != 925:
+        if pageListing.location['x'] != 923 and pageListing.location['x'] != 925:
             cnt+=1
-            print 'Расположение блока с пагинатором по оси x - 702 или 925, а на странице: ', pageListing.location['x']
+            print 'Расположение блока с пагинатором по оси x - 923 или 925, а на странице: ', pageListing.location['x']
             print '-'*80
                 
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CatinnerPageTest.png' % os.getenv('BUILD_URL'))
@@ -1774,7 +1774,7 @@ class CartPageTest(unittest.TestCase):
                filter(Goods.overall_type == 0).\
                filter(Goods_block.delivery_type == 1).\
                filter(Goods_price.price_type_guid == Region.price_type_guid).\
-               filter(Goods_price.price > 3000).\
+               filter(Goods_price.price > 15000).\
                filter('t_goods_remains.%s > 0' % store_shop).\
                first()
 
@@ -2373,9 +2373,9 @@ class BasketAnonsTest(unittest.TestCase):
             print 'Слой анонса корзины не отображается'
             print '-'*80
         
-        if basketParams.location['y'] != 185:
+        if basketParams.location['y'] != -2:
             cnt+=1
-            print 'Расположение слоя анонса корзины по оси y - 185, а на странице: ', basketParams.location['y']
+            print 'Расположение слоя анонса корзины по оси y - -2, а на странице: ', basketParams.location['y']
             print '-'*80
             
         if basketParams.location['x'] != 263 and basketParams.location['x'] != 485:
@@ -2405,9 +2405,9 @@ class BasketAnonsTest(unittest.TestCase):
             print 'Заголовка слоя не отображается'
             print '-'*80
         
-        if colGoods.location['y'] != 200:
+        if colGoods.location['y'] != 13:
             cnt+=1
-            print 'Расположение заголовка слоя по оси y - 200, а на странице: ', colGoods.location['y']
+            print 'Расположение заголовка слоя по оси y - 13, а на странице: ', colGoods.location['y']
             print '-'*80
             
         if colGoods.location['x'] != 283 and colGoods.location['x'] != 505:
@@ -2448,9 +2448,9 @@ class BasketAnonsTest(unittest.TestCase):
             print 'Блок кнопки закрыть не отображается'
             print '-'*80
         
-        if close.location['y'] != 198:
+        if close.location['y'] != 11:
             cnt+=1
-            print 'Расположение блока кнопки закрыть по оси y - 198, а на странице: ', close.location['y']
+            print 'Расположение блока кнопки закрыть по оси y - 11, а на странице: ', close.location['y']
             print '-'*80
             
         if close.location['x'] != 907 and close.location['x'] != 1129:
@@ -2475,9 +2475,9 @@ class BasketAnonsTest(unittest.TestCase):
             print 'Блок с наименованием товара не отображается'
             print '-'*80
 
-        if td_name.location['y'] != 239:
+        if td_name.location['y'] != 52:
             cnt+=1
-            print 'Расположение блока с наименованием товара по оси y - 239, а на странице: ', td_name.location['y']
+            print 'Расположение блока с наименованием товара по оси y - 52, а на странице: ', td_name.location['y']
             print '-'*80
             
         if td_name.location['x'] != 393 and td_name.location['x'] != 615:
@@ -2986,9 +2986,9 @@ class BasketPageTest(unittest.TestCase):
         cnt=0
         birthDate_month = self.driver.find_element_by_id('personal_order_form_birthDate_month_title')
 
-        if birthDate_month.size['width'] != 52:
+        if birthDate_month.size['width'] != 107:
             cnt+=1
-            print 'Нужная ширина поля для ввода месяца рождения - 52, а на странице: ', birthDate_month.size['width']
+            print 'Нужная ширина поля для ввода месяца рождения - 107, а на странице: ', birthDate_month.size['width']
             print '-'*80
             
         if birthDate_month.size['height'] != 30:
@@ -3028,9 +3028,9 @@ class BasketPageTest(unittest.TestCase):
             print 'Поле для ввода года рождения не отображается'
             print '-'*80
 
-        if birthDate_year.location['x'] != 582:
+        if birthDate_year.location['x'] != 637:
             cnt+=1
-            print 'Расположение поля для ввода года рождения по оси x - 582, а на странице: ', birthDate_year.location['x']
+            print 'Расположение поля для ввода года рождения по оси x - 637, а на странице: ', birthDate_year.location['x']
             print '-'*80
 
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/BasketPageTest.png' % os.getenv('BUILD_URL'))
@@ -3982,9 +3982,9 @@ class ComparePageTest(unittest.TestCase):
         cnt=0
         catList = self.driver.find_element_by_class_name('catList')
 
-        if catList.size['width'] != 700:
+        if catList.size['width'] != 697:
             cnt+=1
-            print 'Нужная ширина блока с превью товаров - 700, а на странице: ', catList.size['width']
+            print 'Нужная ширина блока с превью товаров - 697, а на странице: ', catList.size['width']
             print '-'*80
             
         if catList.size['height'] != 375:
@@ -4014,14 +4014,14 @@ class ComparePageTest(unittest.TestCase):
         cnt=0
         cancel = self.driver.find_element_by_partial_link_text(u'Удалить')
 
-        if cancel.size['width'] != 181:
+        if cancel.size['width'] != 195:
             cnt+=1
-            print 'Нужная ширина блока с ссылкой "Удалить все товары..." - 181, а на странице: ', cancel.size['width']
+            print 'Нужная ширина блока с ссылкой "Удалить все товары..." - 195, а на странице: ', cancel.size['width']
             print '-'*80
             
-        if cancel.size['height'] != 18:
+        if cancel.size['height'] != 21:
             cnt+=1
-            print 'Нужная высота блока с ссылкой "Удалить все товары..." - 18, а на странице: ', cancel.size['height']
+            print 'Нужная высота блока с ссылкой "Удалить все товары..." - 21, а на странице: ', cancel.size['height']
             print '-'*80
             
         if not cancel.is_enabled(): #проверяем отображается ли
@@ -4029,9 +4029,9 @@ class ComparePageTest(unittest.TestCase):
             print 'Блок с ссылкой "Удалить все товары..." не отображается'
             print '-'*80
         
-        if cancel.location['y'] != 548:
+        if cancel.location['y'] != 561:
             cnt+=1
-            print 'Расположение блока с ссылкой "Удалить все товары..." по оси y - 548, а на странице: ', cancel.location['y']
+            print 'Расположение блока с ссылкой "Удалить все товары..." по оси y - 561, а на странице: ', cancel.location['y']
             print '-'*80
             
         if cancel.location['x'] != 251:
@@ -4355,14 +4355,14 @@ class FavoritePageTest(unittest.TestCase):
         cnt=0
         serviceText = self.driver.find_element_by_partial_link_text(u'Очистить')
 
-        if serviceText.size['width'] != 196:
+        if serviceText.size['width'] != 210:
             cnt+=1
-            print 'Нужная ширина блока с ссылкой "Очистить список..." - 196, а на странице: ', serviceText.size['width']
+            print 'Нужная ширина блока с ссылкой "Очистить список..." - 210, а на странице: ', serviceText.size['width']
             print '-'*80
             
-        if serviceText.size['height'] != 17:
+        if serviceText.size['height'] != 21:
             cnt+=1
-            print 'Нужная высота блока с ссылкой "Очистить список..." - 17, а на странице: ', serviceText.size['height']
+            print 'Нужная высота блока с ссылкой "Очистить список..." - 21, а на странице: ', serviceText.size['height']
             print '-'*80
             
         if not serviceText.is_enabled(): #проверяем отображается ли
@@ -4468,9 +4468,9 @@ class ModalFormsTest(unittest.TestCase):
             cnt+=1
             print 'Слой не отображается'
         
-        if goodsLayer.location['y'] != 187:
+        if goodsLayer.location['y'] != 239:
             cnt+=1
-            print 'Расположение слоя по оси y - 187, а на странице: ', goodsLayer.location['y']
+            print 'Расположение слоя по оси y - 239, а на странице: ', goodsLayer.location['y']
             
         if goodsLayer.location['x'] != 412:
             cnt+=1
@@ -4492,9 +4492,9 @@ class ModalFormsTest(unittest.TestCase):
             cnt+=1
             print 'Заголовок не отображается'
         
-        if title.location['y'] != 204:
+        if title.location['y'] != 256:
             cnt+=1
-            print 'Расположение заголовка по оси y - 204, а на странице: ', title.location['y']
+            print 'Расположение заголовка по оси y - 256, а на странице: ', title.location['y']
             
         if title.location['x'] != 427:
             cnt+=1
@@ -4524,9 +4524,9 @@ class ModalFormsTest(unittest.TestCase):
             cnt+=1
             print 'Кнопка закрытия не отображается'
         
-        if closebutton.location['y'] != 202:
+        if closebutton.location['y'] != 306:
             cnt+=1
-            print 'Расположение кнопки закрытия по оси y - 202, а на странице: ', closebutton.location['y']
+            print 'Расположение кнопки закрытия по оси y - 306, а на странице: ', closebutton.location['y']
             
         if closebutton.location['x'] != 1000:
             cnt+=1
@@ -4540,9 +4540,9 @@ class ModalFormsTest(unittest.TestCase):
             cnt+=1
             print 'Нужная ширина блока выбора доп.услуг - 600, а на странице: ', form.size['width']
             
-        if form.size['height'] != 248:
+        if form.size['height'] != 144:
             cnt+=1
-            print 'Нужная высота блока выбора доп.услуг - 248, а на странице: ', form.size['height']
+            print 'Нужная высота блока выбора доп.услуг - 144, а на странице: ', form.size['height']
             
         if not form.is_displayed(): #проверяем отображается ли
             cnt+=1
@@ -4639,10 +4639,10 @@ class ModalFormsTest(unittest.TestCase):
     def test_obratnii_zvonok(self):
         cnt=0
         try:
-            self.driver.find_element_by_id("abilityLink3").click()
+            self.driver.find_element_by_class_name('callBackIcon').click()
         except:
             raise NoSuchElementException, 'Element "sloi obratnii zvonok" not found or not clickable'
-        goodsLayer = self.driver.find_element_by_class_name('goodsLayer')#проверка всей формы
+        goodsLayer = self.driver.find_element_by_class_name('j-callback-container')#проверка всей формы
 
         self.driver.get_screenshot_as_file('obratnii_zvonok.png')
 
