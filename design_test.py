@@ -2373,9 +2373,9 @@ class BasketAnonsTest(unittest.TestCase):
             print 'Слой анонса корзины не отображается'
             print '-'*80
         
-        if basketParams.location['y'] != 185:
+        if basketParams.location['y'] != -2:
             cnt+=1
-            print 'Расположение слоя анонса корзины по оси y - 185, а на странице: ', basketParams.location['y']
+            print 'Расположение слоя анонса корзины по оси y - -2, а на странице: ', basketParams.location['y']
             print '-'*80
             
         if basketParams.location['x'] != 263 and basketParams.location['x'] != 485:
@@ -2405,9 +2405,9 @@ class BasketAnonsTest(unittest.TestCase):
             print 'Заголовка слоя не отображается'
             print '-'*80
         
-        if colGoods.location['y'] != 200:
+        if colGoods.location['y'] != 13:
             cnt+=1
-            print 'Расположение заголовка слоя по оси y - 200, а на странице: ', colGoods.location['y']
+            print 'Расположение заголовка слоя по оси y - 13, а на странице: ', colGoods.location['y']
             print '-'*80
             
         if colGoods.location['x'] != 283 and colGoods.location['x'] != 505:
@@ -2448,9 +2448,9 @@ class BasketAnonsTest(unittest.TestCase):
             print 'Блок кнопки закрыть не отображается'
             print '-'*80
         
-        if close.location['y'] != 198:
+        if close.location['y'] != 11:
             cnt+=1
-            print 'Расположение блока кнопки закрыть по оси y - 198, а на странице: ', close.location['y']
+            print 'Расположение блока кнопки закрыть по оси y - 11, а на странице: ', close.location['y']
             print '-'*80
             
         if close.location['x'] != 907 and close.location['x'] != 1129:
@@ -3770,9 +3770,9 @@ class ComparePageTest(unittest.TestCase):
             print 'Заголовок не отображается'
             print '-'*80
         
-        if h1.location['y'] != 244:
+        if h1.location['y'] != 261:
             cnt+=1
-            print 'Расположение заголовка по оси y - 244, а на странице: ', h1.location['y']
+            print 'Расположение заголовка по оси y - 261, а на странице: ', h1.location['y']
             print '-'*80
             
         if h1.location['x'] != 250:
@@ -4274,9 +4274,9 @@ class FavoritePageTest(unittest.TestCase):
             print 'Заголовок не отображается'
             print '-'*80
         
-        if h1.location['y'] != 261:
+        if h1.location['y'] != 244:
             cnt+=1
-            print 'Расположение заголовка по оси y - 261, а на странице: ', h1.location['y']
+            print 'Расположение заголовка по оси y - 244, а на странице: ', h1.location['y']
             print '-'*80
             
         if h1.location['x'] != 250:
