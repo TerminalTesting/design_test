@@ -1806,9 +1806,9 @@ class CartPageTest(unittest.TestCase):
             print 'Заголовок не отображается'
             print '-'*80
         
-        if componentHeader.location['y'] != 244:
+        if componentHeader.location['y'] != 244 or componentHeader.location['y'] != 261:
             cnt+=1
-            print 'Расположение заголовка по оси y - 244, а на странице: ', componentHeader.location['y']
+            print 'Расположение заголовка по оси y - 244 или 261, а на странице: ', componentHeader.location['y']
             print '-'*80
             
         if componentHeader.location['x'] != 250:
@@ -3770,9 +3770,8 @@ class ComparePageTest(unittest.TestCase):
             print 'Заголовок не отображается'
             print '-'*80
         
-        if h1.location['y'] != 261:
-            cnt+=1
-            print 'Расположение заголовка по оси y - 261, а на странице: ', h1.location['y']
+        if h1.location['y'] != 261 or h1.location['y'] != 244:
+            print 'Расположение заголовка по оси y - 261 или 244, а на странице: ', h1.location['y']
             print '-'*80
             
         if h1.location['x'] != 250:
