@@ -234,91 +234,91 @@ class MainPageTest(unittest.TestCase):
         time.sleep(7)
         cheaper = self.driver.find_element_by_css_selector('div.ui-dialog')
 
-        if cheaper.size['width'] != 960:
+        if cheaper.size['width'] != 570:
             cnt+=1
-            print 'Нужная ширина блока с иконкой "Почему дешевле?" - 960, а на странице: ', cheaper.size['width']
+            print 'Нужная ширина слоя "Обратный звонок" - 570, а на странице: ', cheaper.size['width']
             print '-'*80
             
-        if cheaper.size['height'] != 150:
+        if cheaper.size['height'] != 260:
             cnt+=1
-            print 'Нужная высота блока с иконкой "Почему дешевле?" - 150, а на странице: ', cheaper.size['height']
+            print 'Нужная высота слоя "Обратный звонок" - 260, а на странице: ', cheaper.size['height']
             print '-'*80
             
         if not cheaper.is_displayed(): #проверяем отображается ли
             cnt+=1
-            print 'Блок с иконкой "Почему дешевле?" не отображается'
+            print 'Cлой "Обратный звонок" не отображается'
             print '-'*80
         
-        if cheaper.location['y'] != 548:
+        if cheaper.location['y'] != 226:
             cnt+=1
-            print 'Расположение блока с иконкой "Почему дешевле?" по оси y - 548, а на странице: ', cheaper.location['y']
+            print 'Расположение слоя "Обратный звонок" по оси y - 226, а на странице: ', cheaper.location['y']
             print '-'*80
             
-        if cheaper.location['x'] != 241:
+        if cheaper.location['x'] != 427:
             cnt+=1
-            print 'Расположение блока с иконкой "Почему дешевле?" по оси x - 241, а на странице: ', cheaper.location['x']
+            print 'Расположение слоя "Обратный звонок" по оси x - 427, а на странице: ', cheaper.location['x']
             print '-'*80
 
         title = cheaper.find_element_by_class_name('ui-dialog-title')
-        if title.size['width'] != 381:
+        if title.size['width'] != 161:
             cnt+=1
-            print 'Нужная ширина заголовка слоя "Почему дешевле?" - 381, а на странице: ', title.size['width']
+            print 'Нужная ширина заголовка слоя "Обратный звонок" - 161, а на странице: ', title.size['width']
             print '-'*80
             
         if title.size['height'] != 28:
             cnt+=1
-            print 'Нужная высота заголовка слоя "Почему дешевле?" - 28, а на странице: ', title.size['height']
+            print 'Нужная высота заголовка слоя "Обратный звонок" - 28, а на странице: ', title.size['height']
             print '-'*80
             
         if not title.is_displayed(): #проверяем отображается ли заголовок слоя "Почему дешевле?"
             cnt+=1
-            print 'Заголовок слоя "Почему дешевле?" не отображается'
+            print 'Заголовок слоя "Обратный звонок" не отображается'
             print '-'*80
         
-        if title.location['y'] != 563:
+        if title.location['y'] != 241:
             cnt+=1
-            print 'Расположение заголовка слоя "Почему дешевле?" по оси y - 563, а на странице: ', title.location['y']
+            print 'Расположение заголовка слоя "Обратный звонок" по оси y - 241, а на странице: ', title.location['y']
             print '-'*80
             
-        if title.location['x'] != 258:
+        if title.location['x'] != 444:
             cnt+=1
-            print 'Расположение заголовка слоя "Почему дешевле?" по оси x - 258, а на странице: ', title.location['x']
+            print 'Расположение заголовка слоя "Обратный звонок" по оси x - 444, а на странице: ', title.location['x']
             print '-'*80
             
         if title.value_of_css_property('color') != 'rgba(100, 33, 158, 1)':
             cnt+=1
-            print 'Цвет заголовка слоя "Почему дешевле?" не соответствует заданному( rgba(100, 33, 158, 1) ). На странице: ', title.value_of_css_property('color')
+            print 'Цвет заголовка слоя "Обратный звонок" не соответствует заданному( rgba(100, 33, 158, 1) ). На странице: ', title.value_of_css_property('color')
             print '-'*80
             
         if title.value_of_css_property('font-size') != '24px':
             cnt+=1
-            print 'Размер шрифта заголовка слоя "Почему дешевле?" не соответствует заданному( 24px ). На странице: ', title.value_of_css_property('font-size')
+            print 'Размер шрифта заголовка слоя "Обратный звонок" не соответствует заданному( 24px ). На странице: ', title.value_of_css_property('font-size')
             print '-'*80
 
         close = cheaper.find_element_by_class_name('ui-icon-closethick')
         if close.size['width'] != 27:
             cnt+=1
-            print 'Нужная ширина кнопки закрытия слоя "Почему дешевле?" - 27, а на странице: ', close.size['width']
+            print 'Нужная ширина кнопки закрытия слоя "Обратный звонок" - 27, а на странице: ', close.size['width']
             print '-'*80
             
         if close.size['height'] != 26:
             cnt+=1
-            print 'Нужная высота кнопки закрытия слоя "Почему дешевле?" - 26, а на странице: ', close.size['height']
+            print 'Нужная высота кнопки закрытия слоя "Обратный звонок" - 26, а на странице: ', close.size['height']
             print '-'*80
             
         if not close.is_enabled(): #проверяем отображается ли заголовок слоя "Почему дешевле?"
             cnt+=1
-            print 'Кнопка закрытия "Почему дешевле?" не отображается'
+            print 'Кнопка закрытия "Обратный звонок" не отображается'
             print '-'*80
         
-        if close.location['y'] != 563:
+        if close.location['y'] != 241:
             cnt+=1
-            print 'Расположение кнопки закрытия слоя "Почему дешевле?" по оси y - 563, а на странице: ', close.location['y']
+            print 'Расположение кнопки закрытия слоя "Обратный звонок" по оси y - 241, а на странице: ', close.location['y']
             print '-'*80
             
-        if close.location['x'] != 1159:
+        if close.location['x'] != 955:
             cnt+=1
-            print 'Расположение кнопки закрытия слоя "Почему дешевле?" по оси x - 1159, а на странице: ', close.location['x']
+            print 'Расположение кнопки закрытия слоя "Обратный звонок" по оси x - 955, а на странице: ', close.location['x']
             print '-'*80
         
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/MainPageTest.png' % os.getenv('BUILD_URL'))
@@ -2358,9 +2358,9 @@ class BasketAnonsTest(unittest.TestCase):
             print 'Слой анонса корзины не отображается'
             print '-'*80
         
-        if basketParams.location['y'] != -2:
+        if basketParams.location['y'] != 185:
             cnt+=1
-            print 'Расположение слоя анонса корзины по оси y - -2, а на странице: ', basketParams.location['y']
+            print 'Расположение слоя анонса корзины по оси y - 185, а на странице: ', basketParams.location['y']
             print '-'*80
             
         if basketParams.location['x'] != 263 and basketParams.location['x'] != 485:
@@ -2390,9 +2390,9 @@ class BasketAnonsTest(unittest.TestCase):
             print 'Заголовка слоя не отображается'
             print '-'*80
         
-        if colGoods.location['y'] != 13:
+        if colGoods.location['y'] != 200:
             cnt+=1
-            print 'Расположение заголовка слоя по оси y - 13, а на странице: ', colGoods.location['y']
+            print 'Расположение заголовка слоя по оси y - 200, а на странице: ', colGoods.location['y']
             print '-'*80
             
         if colGoods.location['x'] != 283 and colGoods.location['x'] != 505:
@@ -2433,9 +2433,9 @@ class BasketAnonsTest(unittest.TestCase):
             print 'Блок кнопки закрыть не отображается'
             print '-'*80
         
-        if close.location['y'] != 11:
+        if close.location['y'] != 198:
             cnt+=1
-            print 'Расположение блока кнопки закрыть по оси y - 11, а на странице: ', close.location['y']
+            print 'Расположение блока кнопки закрыть по оси y - 198, а на странице: ', close.location['y']
             print '-'*80
             
         if close.location['x'] != 907 and close.location['x'] != 1129:
@@ -2460,9 +2460,9 @@ class BasketAnonsTest(unittest.TestCase):
             print 'Блок с наименованием товара не отображается'
             print '-'*80
 
-        if td_name.location['y'] != 52:
+        if td_name.location['y'] != 239:
             cnt+=1
-            print 'Расположение блока с наименованием товара по оси y - 52, а на странице: ', td_name.location['y']
+            print 'Расположение блока с наименованием товара по оси y - 239, а на странице: ', td_name.location['y']
             print '-'*80
             
         if td_name.location['x'] != 393 and td_name.location['x'] != 615:
@@ -4454,10 +4454,6 @@ class ModalFormsTest(unittest.TestCase):
         if not goodsLayer.is_displayed(): #проверяем отображается ли
             cnt+=1
             print 'Слой не отображается'
-        
-        if goodsLayer.location['y'] != 229:
-            cnt+=1
-            print 'Расположение слоя по оси y - 229, а на странице: ', goodsLayer.location['y']
             
         if goodsLayer.location['x'] != 412:
             cnt+=1
@@ -4478,10 +4474,6 @@ class ModalFormsTest(unittest.TestCase):
         if not title.is_displayed(): #проверяем отображается ли заголовок
             cnt+=1
             print 'Заголовок не отображается'
-        
-        if title.location['y'] != 246:
-            cnt+=1
-            print 'Расположение заголовка по оси y - 246, а на странице: ', title.location['y']
             
         if title.location['x'] != 427:
             cnt+=1
@@ -4510,10 +4502,6 @@ class ModalFormsTest(unittest.TestCase):
         if not closebutton.is_displayed(): #проверяем отображается ли
             cnt+=1
             print 'Кнопка закрытия не отображается'
-        
-        if closebutton.location['y'] != 244:
-            cnt+=1
-            print 'Расположение кнопки закрытия по оси y - 244, а на странице: ', closebutton.location['y']
             
         if closebutton.location['x'] != 1000:
             cnt+=1
@@ -4530,10 +4518,6 @@ class ModalFormsTest(unittest.TestCase):
         if not form.is_displayed(): #проверяем отображается ли
             cnt+=1
             print 'Блок выбора доп.услуг не отображается'
-        
-        if form.location['y'] != 296:
-            cnt+=1
-            print 'Расположение блока выбора доп.услуг по оси y - 296, а на странице: ', form.location['y']
             
         if form.location['x'] != 427:
             cnt+=1
@@ -4625,6 +4609,7 @@ class ModalFormsTest(unittest.TestCase):
             self.driver.find_element_by_class_name('callBackIcon').click()
         except:
             raise NoSuchElementException, 'Element "sloi obratnii zvonok" not found or not clickable'
+        time.sleep(7)
         goodsLayer = self.driver.find_element_by_css_selector('div.ui-dialog')#проверка всей формы
 
         self.driver.get_screenshot_as_file('obratnii_zvonok.png')
