@@ -4688,21 +4688,21 @@ class ModalFormsTest(unittest.TestCase):
             cnt+=1
             print 'Нужная ширина блока с формой- 525, а на странице: ', fields.size['width']
             
-        if fields.size['height'] != 371:
+        if fields.size['height'] != 183:
             cnt+=1
-            print 'Нужная высота блока с формой - 371, а на странице: ', fields.size['height']
+            print 'Нужная высота блока с формой - 183, а на странице: ', fields.size['height']
             
         if not fields.is_displayed(): #проверяем отображается ли
             cnt+=1
             print 'Блок с формой не отображается'
         
-        if fields.location['y'] != 251:
+        if fields.location['y'] != 285:
             cnt+=1
-            print 'Расположение блока с формой по оси y - 251, а на странице: ', fields.location['y']
+            print 'Расположение блока с формой по оси y - 285, а на странице: ', fields.location['y']
             
-        if fields.location['x'] != 459:
+        if fields.location['x'] != 448:
             cnt+=1
-            print 'Расположение блока с формой по оси x - 459, а на странице: ', fields.location['x']
+            print 'Расположение блока с формой по оси x - 448, а на странице: ', fields.location['x']
         
         print '-'*80
 
@@ -4730,9 +4730,9 @@ class ModalFormsTest(unittest.TestCase):
                 
         print '-'*80
 
-        if f_labels[1].size['width'] != 258:
+        if f_labels[1].size['width'] != 525:
                 cnt+=1
-                print 'Нужная ширина заголовка поля "Телефон:*" - 258, а на странице: ', f_labels[1].size['width']
+                print 'Нужная ширина заголовка поля "Телефон:*" - 525, а на странице: ', f_labels[1].size['width']
             
         if f_labels[1].size['height'] != 22:
                 cnt+=1
@@ -4754,9 +4754,9 @@ class ModalFormsTest(unittest.TestCase):
 
         inputs = fields.find_elements_by_tag_name('input')[0:2]
 
-        if inputs[0].size['width'] != 258:
+        if inputs[0].size['width'] != 525:
             cnt+=1
-            print 'Нужная ширина поля имя - 258, а на странице: ', inputs[0].size['width']
+            print 'Нужная ширина поля имя - 525, а на странице: ', inputs[0].size['width']
             
         if inputs[0].size['height'] != 29:
             cnt+=1
@@ -4768,9 +4768,9 @@ class ModalFormsTest(unittest.TestCase):
 
         print '-'*80
 
-        if inputs[1].size['width'] != 258:
+        if inputs[1].size['width'] != 400:
             cnt+=1
-            print 'Нужная ширина поля телефон - 258, а на странице: ', inputs[1].size['width']
+            print 'Нужная ширина поля телефон - 400, а на странице: ', inputs[1].size['width']
             
         if inputs[1].size['height'] != 29:
             cnt+=1
@@ -4785,33 +4785,33 @@ class ModalFormsTest(unittest.TestCase):
 
         submitButton = fields.find_element_by_class_name('submitButton')
 
-        if backLinks.size['width'] != 526:
+        if submitButton.size['width'] != 526:
             cnt+=1
-            print 'Нужная ширина кнопки - 526, а на странице: ', backLinks.size['width']
+            print 'Нужная ширина кнопки - 526, а на странице: ', submitButton.size['width']
             
-        if backLinks.size['height'] != 50:
+        if submitButton.size['height'] != 50:
             cnt+=1
-            print 'Нужная высота кнопки - 50, а на странице: ', backLinks.size['height']
+            print 'Нужная высота кнопки - 50, а на странице: ', submitButton.size['height']
             
-        if not backLinks.is_displayed(): #проверяем отображается ли
+        if not submitButton.is_displayed(): #проверяем отображается ли
             cnt+=1
             print 'Кнопка не отображается'
         
-        if backLinks.location['y'] != 527:
+        if submitButton.location['y'] != 527:
             cnt+=1
-            print 'Расположение кнопки по оси y - 527, а на странице: ', backLinks.location['y']
+            print 'Расположение кнопки по оси y - 527, а на странице: ', submitButton.location['y']
             
-        if backLinks.location['x'] != 459:
+        if submitButton.location['x'] != 459:
             cnt+=1
-            print 'Расположение кнопки по оси x - 459, а на странице: ', backLinks.location['x']
+            print 'Расположение кнопки по оси x - 459, а на странице: ', submitButton.location['x']
             
-        if backLinks.value_of_css_property('color') != 'rgba(34, 34, 34, 1)':
+        if submitButton.value_of_css_property('color') != 'rgba(34, 34, 34, 1)':
             cnt+=1
-            print 'Цвет кнопки не соответствует заданному( rgba(34, 34, 34, 1) ). На странице: ', backLinks.value_of_css_property('color')
+            print 'Цвет кнопки не соответствует заданному( rgba(34, 34, 34, 1) ). На странице: ', submitButton.value_of_css_property('color')
             
-        if backLinks.value_of_css_property('font-size') != '15.4px':
+        if submitButton.value_of_css_property('font-size') != '15.4px':
             cnt+=1
-            print 'Размер шрифта кнопки не соответствует заданному( 15.4px ). На странице: ', backLinks.value_of_css_property('font-size')
+            print 'Размер шрифта кнопки не соответствует заданному( 15.4px ). На странице: ', submitButton.value_of_css_property('font-size')
         
         print '-'*80
 
