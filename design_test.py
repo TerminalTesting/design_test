@@ -4785,33 +4785,33 @@ class ModalFormsTest(unittest.TestCase):
 
         submitButton = fields.find_element_by_class_name('submitButton')
 
-        if submitButton.size['width'] != 526:
+        if submitButton.size['width'] != 111:
             cnt+=1
-            print 'Нужная ширина кнопки - 526, а на странице: ', submitButton.size['width']
+            print 'Нужная ширина кнопки - 111, а на странице: ', submitButton.size['width']
             
-        if submitButton.size['height'] != 50:
+        if submitButton.size['height'] != 30:
             cnt+=1
-            print 'Нужная высота кнопки - 50, а на странице: ', submitButton.size['height']
+            print 'Нужная высота кнопки - 30, а на странице: ', submitButton.size['height']
             
         if not submitButton.is_displayed(): #проверяем отображается ли
             cnt+=1
             print 'Кнопка не отображается'
         
-        if submitButton.location['y'] != 527:
+        if submitButton.location['y'] != 403:
             cnt+=1
-            print 'Расположение кнопки по оси y - 527, а на странице: ', submitButton.location['y']
+            print 'Расположение кнопки по оси y - 403, а на странице: ', submitButton.location['y']
             
-        if submitButton.location['x'] != 459:
+        if submitButton.location['x'] != 862:
             cnt+=1
-            print 'Расположение кнопки по оси x - 459, а на странице: ', submitButton.location['x']
+            print 'Расположение кнопки по оси x - 862, а на странице: ', submitButton.location['x']
             
-        if submitButton.value_of_css_property('color') != 'rgba(34, 34, 34, 1)':
+        if submitButton.value_of_css_property('color') != 'rgba(255, 255, 255, 1)':
             cnt+=1
-            print 'Цвет кнопки не соответствует заданному( rgba(34, 34, 34, 1) ). На странице: ', submitButton.value_of_css_property('color')
+            print 'Цвет кнопки не соответствует заданному( rgba(255, 255, 255, 1) ). На странице: ', submitButton.value_of_css_property('color')
             
-        if submitButton.value_of_css_property('font-size') != '15.4px':
+        if submitButton.value_of_css_property('font-size') != '14px':
             cnt+=1
-            print 'Размер шрифта кнопки не соответствует заданному( 15.4px ). На странице: ', submitButton.value_of_css_property('font-size')
+            print 'Размер шрифта кнопки не соответствует заданному( 14px ). На странице: ', submitButton.value_of_css_property('font-size')
         
         print '-'*80
 
