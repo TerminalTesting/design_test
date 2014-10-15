@@ -1485,11 +1485,6 @@ class CatinnerPageTest(unittest.TestCase):
         cnt=0
         pageListing = self.driver.find_element_by_class_name('pageListing')
 
-        if pageListing.size['width'] != 247 and pageListing.size['width'] != 245:
-            cnt+=1
-            print 'Нужная ширина блока с пагинатором - 247 или 245, а на странице: ', pageListing.size['width']
-            print '-'*80
-
         if pageListing.size['height'] != 38:
             cnt+=1
             print 'Нужная высота блока с пагинатором - 38, а на странице: ', pageListing.size['height']
@@ -1498,11 +1493,6 @@ class CatinnerPageTest(unittest.TestCase):
         if not pageListing.is_displayed(): #проверяем отображается ли
             cnt+=1
             print 'Блок с пагинатором не отображается'
-            print '-'*80
-            
-        if pageListing.location['x'] != 923 and pageListing.location['x'] != 926:
-            cnt+=1
-            print 'Расположение блока с пагинатором по оси x - 923 или 926, а на странице: ', pageListing.location['x']
             print '-'*80
                 
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CatinnerPageTest.png' % os.getenv('BUILD_URL'))
@@ -4614,33 +4604,33 @@ class ModalFormsTest(unittest.TestCase):
 
         self.driver.get_screenshot_as_file('obratnii_zvonok.png')
 
-        if goodsLayer.size['width'] != 606:
+        if goodsLayer.size['width'] != 570:
             cnt+=1
-            print 'Нужная ширина слоя - 606, а на странице: ', goodsLayer.size['width']
+            print 'Нужная ширина слоя - 570, а на странице: ', goodsLayer.size['width']
             
-        if goodsLayer.size['height'] != 589:
+        if goodsLayer.size['height'] != 260:
             cnt+=1
-            print 'Нужная высота слоя - 589, а на странице: ', goodsLayer.size['height']
+            print 'Нужная высота слоя - 260, а на странице: ', goodsLayer.size['height']
             
         if not goodsLayer.is_displayed(): #проверяем отображается ли
             cnt+=1
             print 'Слой не отображается'
         
-        if goodsLayer.location['y'] != 58:
+        if goodsLayer.location['y'] != 226:
             cnt+=1
-            print 'Расположение слоя по оси y - 58, а на странице: ', goodsLayer.location['y']
+            print 'Расположение слоя по оси y - 226, а на странице: ', goodsLayer.location['y']
             
-        if goodsLayer.location['x'] != 424:
+        if goodsLayer.location['x'] != 427:
             cnt+=1
-            print 'Расположение слоя по оси x - 424, а на странице: ', goodsLayer.location['x']
+            print 'Расположение слоя по оси x - 427, а на странице: ', goodsLayer.location['x']
         
         print '-'*80
 
         title = goodsLayer.find_element_by_class_name('ui-dialog-title')#проверка заголовка
 
-        if title.size['width'] != 158:
+        if title.size['width'] != 161:
             cnt+=1
-            print 'Нужная ширина заголовка - 158, а на странице: ', title.size['width']
+            print 'Нужная ширина заголовка - 161, а на странице: ', title.size['width']
             
         if title.size['height'] != 28:
             cnt+=1
@@ -4650,13 +4640,13 @@ class ModalFormsTest(unittest.TestCase):
             cnt+=1
             print 'Заголовок не отображается'
         
-        if title.location['y'] != 75:
+        if title.location['y'] != 241:
             cnt+=1
-            print 'Расположение заголовка по оси y - 75, а на странице: ', title.location['y']
+            print 'Расположение заголовка по оси y - 241, а на странице: ', title.location['y']
             
-        if title.location['x'] != 459:
+        if title.location['x'] != 444:
             cnt+=1
-            print 'Расположение заголовка по оси x - 459, а на странице: ', title.location['x']
+            print 'Расположение заголовка по оси x - 444, а на странице: ', title.location['x']
             
         if title.value_of_css_property('color') != 'rgba(100, 33, 158, 1)':
             cnt+=1
@@ -4682,37 +4672,13 @@ class ModalFormsTest(unittest.TestCase):
             cnt+=1
             print 'Кнопка закрытия не отображается'
         
-        if closebutton.location['y'] != 73:
+        if closebutton.location['y'] != 241:
             cnt+=1
-            print 'Расположение кнопки закрытия по оси y - 73, а на странице: ', closebutton.location['y']
+            print 'Расположение кнопки закрытия по оси y - 241, а на странице: ', closebutton.location['y']
             
-        if closebutton.location['x'] != 988:
+        if closebutton.location['x'] != 955:
             cnt+=1
-            print 'Расположение кнопки закрытия по оси x - 988, а на странице: ', closebutton.location['x']
-        
-        print '-'*80
-
-        tagblock = goodsLayer.find_element_by_class_name('messageTag')#провека блока с тегами
-
-        if tagblock.size['width'] != 525:
-            cnt+=1
-            print 'Нужная ширина блока с тегами- 525, а на странице: ', tagblock.size['width']
-            
-        if tagblock.size['height'] != 113:
-            cnt+=1
-            print 'Нужная высота блока с тегами - 113, а на странице: ', tagblock.size['height']
-            
-        if not tagblock.is_displayed(): #проверяем отображается ли
-            cnt+=1
-            print 'Блок с тегами не отображается'
-        
-        if tagblock.location['y'] != 118:
-            cnt+=1
-            print 'Расположение блока с тегами по оси y - 118, а на странице: ', tagblock.location['y']
-            
-        if tagblock.location['x'] != 459:
-            cnt+=1
-            print 'Расположение блока с тегами по оси x - 459, а на странице: ', tagblock.location['x']
+            print 'Расположение кнопки закрытия по оси x - 955, а на странице: ', closebutton.location['x']
         
         print '-'*80
 
@@ -4742,112 +4708,80 @@ class ModalFormsTest(unittest.TestCase):
 
         f_labels = fields.find_elements_by_class_name('lbl')
         
-        for lbl in f_labels:
-            
-            if lbl.size['width'] != 258 and lbl.size['width'] != 525:
+        if f_labels[0].size['width'] != 258:
                 cnt+=1
-                print 'Нужная ширина заголовка поля - 258 или 525 для "Текст сообщения*", а на странице: ', lbl.size['width']
+                print 'Нужная ширина заголовка поля "Ваше имя:" - 258, а на странице: ', f_labels[0].size['width']
             
-            if lbl.size['height'] != 22:
+        if f_labels[0].size['height'] != 22:
                 cnt+=1
-                print 'Нужная высота заголовка поля - 22, а на странице: ', lbl.size['height']
+                print 'Нужная высота заголовка поля "Ваше имя:" - 22, а на странице: ', f_labels[0].size['height']
             
-            if not lbl.is_displayed(): #проверяем отображается ли заголовок поля
+        if not f_labels[0].is_displayed(): #проверяем отображается ли заголовок поля
                 cnt+=1
-                print 'Заголовок поля не отображается'
+                print 'Заголовок поля "Ваше имя:" не отображается'
             
-            if lbl.value_of_css_property('color') != 'rgba(34, 34, 34, 1)':
+        if f_labels[0].value_of_css_property('color') != 'rgba(34, 34, 34, 1)':
                 cnt+=1
-                print 'Цвет заголовка поля не соответствует заданному( rgba(34, 34, 34, 1) ). На странице: ', lbl.value_of_css_property('color')
+                print 'Цвет заголовка поля "Ваше имя:" не соответствует заданному( rgba(34, 34, 34, 1) ). На странице: ', f_labels[0].value_of_css_property('color')
             
-            if lbl.value_of_css_property('font-size') != '15.4px':
+        if f_labels[0].value_of_css_property('font-size') != '15.4px':
                 cnt+=1
-                print 'Размер шрифта заголовка поля не соответствует заданному( 15.4px ). На странице: ', lbl.value_of_css_property('font-size')
+                print 'Размер шрифта заголовка поля "Телефон:*" не соответствует заданному( 15.4px ). На странице: ', f_labels[0].value_of_css_property('font-size')
                 
         print '-'*80
 
-        textarea = fields.find_element_by_tag_name('textarea')
-        
-        if textarea.size['width'] != 525:
-            cnt+=1
-            print 'Нужная ширина textarea - 525, а на странице: ', textarea.size['width']
+        if f_labels[1].size['width'] != 258:
+                cnt+=1
+                print 'Нужная ширина заголовка поля "Телефон:*" - 258, а на странице: ', f_labels[1].size['width']
             
-        if textarea.size['height'] != 93:
-            cnt+=1
-            print 'Нужная высота textarea - 93, а на странице: ', textarea.size['height']
+        if f_labels[1].size['height'] != 22:
+                cnt+=1
+                print 'Нужная высота заголовка поля "Телефон:*" - 22, а на странице: ', f_labels[1].size['height']
             
-        if not textarea.is_displayed(): #проверяем отображается ли
-            cnt+=1
-            print 'textarea не отображается'
-        
-        if textarea.location['y'] != 273:
-            cnt+=1
-            print 'Расположение textarea по оси y - 273, а на странице: ', textarea.location['y']
+        if not f_labels[1].is_displayed(): #проверяем отображается ли заголовок поля
+                cnt+=1
+                print 'Заголовок поля "Телефон:*" не отображается'
             
-        if textarea.location['x'] != 459:
-            cnt+=1
-            print 'Расположение textarea по оси x - 459, а на странице: ', textarea.location['x']
+        if f_labels[1].value_of_css_property('color') != 'rgba(34, 34, 34, 1)':
+                cnt+=1
+                print 'Цвет заголовка поля "Телефон:*" не соответствует заданному( rgba(34, 34, 34, 1) ). На странице: ', f_labels[1].value_of_css_property('color')
             
+        if f_labels[1].value_of_css_property('font-size') != '15.4px':
+                cnt+=1
+                print 'Размер шрифта заголовка поля "Телефон:*" не соответствует заданному( 15.4px ). На странице: ', f_labels[1].value_of_css_property('font-size')
+                
         print '-'*80
 
         inputs = fields.find_elements_by_tag_name('input')[0:2]
-        for inp in inputs:
-            i=1
-            if inp.size['width'] != 258:
-                cnt+=1
-                print 'Нужная ширина поля %s - 258, а на странице: ' % i, inp.size['width']
+
+        if inputs[0].size['width'] != 258:
+            cnt+=1
+            print 'Нужная ширина поля имя - 258, а на странице: ', inputs[0].size['width']
             
-            if inp.size['height'] != 29:
-                cnt+=1
-                print 'Нужная высота поля %s - 29, а на странице: ' % i, inp.size['height']
-            
-            if not inp.is_displayed(): #проверяем отображается ли поле
-                cnt+=1
-                print 'Заголовок поля %s не отображается' % i
-            i+=1
-                
+        if inputs[0].size['height'] != 29:
+            cnt+=1
+            print 'Нужная высота поля имя - 29, а на странице: ', inputs[0].size['height']
+
+        if not inputs[0].is_displayed(): #проверяем отображается ли поле
+            cnt+=1
+            print 'Поле имя не отображается'
+
         print '-'*80
 
-        backLinks = fields.find_element_by_class_name('backLinks')#Проверка блока с ссылками
-        
-        if backLinks.size['width'] != 526:
+        if inputs[1].size['width'] != 258:
             cnt+=1
-            print 'Нужная ширина блока с ссылками - 526, а на странице: ', backLinks.size['width']
+            print 'Нужная ширина поля телефон - 258, а на странице: ', inputs[1].size['width']
             
-        if backLinks.size['height'] != 50:
+        if inputs[1].size['height'] != 29:
             cnt+=1
-            print 'Нужная высота блока с ссылками - 50, а на странице: ', backLinks.size['height']
-            
-        if not backLinks.is_displayed(): #проверяем отображается ли заголовок
-            cnt+=1
-            print 'Блок с ссылками не отображается'
-        
-        if backLinks.location['y'] != 527:
-            cnt+=1
-            print 'Расположение блока с ссылками по оси y - 527, а на странице: ', backLinks.location['y']
-            
-        if backLinks.location['x'] != 459:
-            cnt+=1
-            print 'Расположение блока с ссылками по оси x - 459, а на странице: ', backLinks.location['x']
-            
-        if backLinks.value_of_css_property('color') != 'rgba(34, 34, 34, 1)':
-            cnt+=1
-            print 'Цвет блока с ссылками не соответствует заданному( rgba(34, 34, 34, 1) ). На странице: ', backLinks.value_of_css_property('color')
-            
-        if backLinks.value_of_css_property('font-size') != '15.4px':
-            cnt+=1
-            print 'Размер шрифта блока с ссылками не соответствует заданному( 15.4px ). На странице: ', backLinks.value_of_css_property('font-size')
-            
-        if backLinks.value_of_css_property('font-family') != "'BarnaulGroteskRegular'":
-            cnt+=1
-            print 'Шрифт блока с ссылками не соответствует заданному( BarnaulGroteskRegular ). На странице: ', backLinks.value_of_css_property('font-family')
-            
-        for a in backLinks.find_elements_by_tag_name('a'):
-            if a.get_attribute('href') not in ['http://ok.terminal.ru/','http://vk.com/terminalru','http://market.yandex.ru/shop/43558/reviews']:
-                cnt+=1
-                print 'Ссылка на внешние ресурсы не соответствует -', a.get_attribute('href')
+            print 'Нужная высота поля телефон - 29, а на странице: ', inputs[1].size['height']
 
-        print '-'*80 
+        if not inputs[1].is_displayed(): #проверяем отображается ли поле
+            cnt+=1
+            print 'Поле телефон не отображается'
+
+        print '-'*80
+
 
         submitButton = fields.find_element_by_class_name('submitButton')
 
