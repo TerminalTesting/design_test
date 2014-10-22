@@ -198,23 +198,23 @@ class MainPageTest(unittest.TestCase):
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/MainPageTest.png' % os.getenv('BUILD_URL'))
 
     def test_call_back_icon(self):
-        """ Проверка блока с иконкой "Почему дешевле?" """
+        """ Проверка блока с иконкой "Обратный звонок" """
         cnt=0
         cheaper = self.driver.find_element_by_class_name('callBackIcon')
 
         if cheaper.size['width'] != 91:
             cnt+=1
-            print 'Нужная ширина блока с иконкой "Почему дешевле?" - 91, а на странице: ', cheaper.size['width']
+            print 'Нужная ширина блока с иконкой "Обратный звонок" - 91, а на странице: ', cheaper.size['width']
             print '-'*80
             
         if cheaper.size['height'] != 61:
             cnt+=1
-            print 'Нужная высота блока с иконкой "Почему дешевле?" - 61, а на странице: ', cheaper.size['height']
+            print 'Нужная высота блока с иконкой "Обратный звонок" - 61, а на странице: ', cheaper.size['height']
             print '-'*80
             
         if not cheaper.is_displayed(): #проверяем отображается ли
             cnt+=1
-            print 'Блок с иконкой "Почему дешевле?" не отображается'
+            print 'Блок с иконкой "Обратный звонок" не отображается'
             print '-'*80
         
         if cheaper.location['y'] != 134:
@@ -941,7 +941,7 @@ class CatPageTest(unittest.TestCase):
             print sys.exc_info()[0]
 
     def test_content_field(self):
-        """ Проверка контекстной области страницы CAT """
+        """ Проверка контентной области страницы CAT """
         cnt=0
         pds = self.driver.find_element_by_class_name('pds')
         if pds.size['width'] != 960:
@@ -2121,36 +2121,6 @@ class CartPageTest(unittest.TestCase):
             print '-'*80
 
         assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CartPageTest.png' % os.getenv('BUILD_URL'))
-
-    def test_abilityLink3(self):
-        """ Блок вызова слоя 'Обратный звонок' "" 
-        cnt=0
-        abilityLink3 = self.driver.find_element_by_class_name('capabilities').find_element_by_id('abilityLink3')
-
-        if abilityLink3.size['width'] != 60:
-            cnt+=1
-            print 'Нужная ширина блока вызова слоя "Обратный звонок" - 60, а на странице: ', abilityLink3.size['width']
-            print '-'*80
-            
-        if abilityLink3.size['height'] != 34:
-            cnt+=1
-            print 'Нужная высота блока вызова слоя "Обратный звонок" - 34, а на странице: ', abilityLink3.size['height']
-            print '-'*80
-            
-        if not abilityLink3.is_displayed(): #проверяем отображается ли
-            cnt+=1
-            print 'Блок вызова слоя "Обратный звонок" не отображается'
-            print '-'*80
-            
-        if abilityLink3.location['x'] != 937:
-            cnt+=1
-            print 'Расположение блока вызова слоя "Обратный звонок" по оси x - 937, а на странице: ', abilityLink3.location['x']
-            print '-'*80
-
-        assert cnt==0, ('Errors: %d\n\nError page: %s\nPage screenshot:\n%s') % (cnt, self.driver.current_url, '%sartifact/CartPageTest.png' % os.getenv('BUILD_URL'))
-        """
-        # need to fix query to db to select product with delivery
-        pass
 
 
     def test_abilityLink1(self):
@@ -4719,6 +4689,14 @@ class ModalFormsTest(unittest.TestCase):
         if not f_labels[0].is_displayed(): #проверяем отображается ли заголовок поля
                 cnt+=1
                 print 'Заголовок поля "Ваше имя:" не отображается'
+
+        if f_labels[0].location['y'] != 285:
+                cnt+=1
+                print 'Расположение заголовка поля "Ваше имя:" по оси y - 285, а на странице: ', f_labels[0].location['y']
+            
+        if f_labels[0].location['x'] != 448:
+                cnt+=1
+                print 'Расположение заголовка поля "Ваше имя:" по оси x - 448, а на странице: ', f_labels[0].location['x']
             
         if f_labels[0].value_of_css_property('color') != 'rgba(34, 34, 34, 1)':
                 cnt+=1
@@ -4741,6 +4719,14 @@ class ModalFormsTest(unittest.TestCase):
         if not f_labels[1].is_displayed(): #проверяем отображается ли заголовок поля
                 cnt+=1
                 print 'Заголовок поля "Телефон:*" не отображается'
+
+        if f_labels[1].location['y'] != 285:
+                cnt+=1
+                print 'Расположение заголовка поля "Телефон:*" по оси y - 285, а на странице: ', f_labels[1].location['y']
+            
+        if f_labels[1].location['x'] != 448:
+                cnt+=1
+                print 'Расположение заголовка поля "Телефон:*" по оси x - 448, а на странице: ', f_labels[1].location['x']
             
         if f_labels[1].value_of_css_property('color') != 'rgba(34, 34, 34, 1)':
                 cnt+=1
@@ -4762,6 +4748,14 @@ class ModalFormsTest(unittest.TestCase):
             cnt+=1
             print 'Нужная высота поля имя - 29, а на странице: ', inputs[0].size['height']
 
+        if inputs[0].location['y'] != 285:
+            cnt+=1
+            print 'Расположение поля "Ваше имя:" по оси y - 285, а на странице: ', inputs[0].location['y']
+            
+        if inputs[0].location['x'] != 448:
+            cnt+=1
+            print 'Расположение поля "Ваше имя:" по оси x - 448, а на странице: ', inputs[0].location['x']
+
         if not inputs[0].is_displayed(): #проверяем отображается ли поле
             cnt+=1
             print 'Поле имя не отображается'
@@ -4779,6 +4773,14 @@ class ModalFormsTest(unittest.TestCase):
         if not inputs[1].is_displayed(): #проверяем отображается ли поле
             cnt+=1
             print 'Поле телефон не отображается'
+
+        if inputs[1].location['y'] != 285:
+            cnt+=1
+            print 'Расположение поля "Ваше имя:" по оси y - 285, а на странице: ', inputs[1].location['y']
+            
+        if inputs[1].location['x'] != 448:
+            cnt+=1
+            print 'Расположение поля "Ваше имя:" по оси x - 448, а на странице: ', inputs[1].location['x']
 
         print '-'*80
 
