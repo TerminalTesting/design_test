@@ -4690,9 +4690,9 @@ class ModalFormsTest(unittest.TestCase):
                 cnt+=1
                 print 'Заголовок поля "Ваше имя:" не отображается'
 
-        if f_labels[0].location['y'] != 285:
+        if f_labels[0].location['y'] != 293:
                 cnt+=1
-                print 'Расположение заголовка поля "Ваше имя:" по оси y - 285, а на странице: ', f_labels[0].location['y']
+                print 'Расположение заголовка поля "Ваше имя:" по оси y - 293, а на странице: ', f_labels[0].location['y']
             
         if f_labels[0].location['x'] != 448:
                 cnt+=1
@@ -4720,9 +4720,9 @@ class ModalFormsTest(unittest.TestCase):
                 cnt+=1
                 print 'Заголовок поля "Телефон:*" не отображается'
 
-        if f_labels[1].location['y'] != 285:
+        if f_labels[1].location['y'] != 373:
                 cnt+=1
-                print 'Расположение заголовка поля "Телефон:*" по оси y - 285, а на странице: ', f_labels[1].location['y']
+                print 'Расположение заголовка поля "Телефон:*" по оси y - 373, а на странице: ', f_labels[1].location['y']
             
         if f_labels[1].location['x'] != 448:
                 cnt+=1
@@ -4748,9 +4748,9 @@ class ModalFormsTest(unittest.TestCase):
             cnt+=1
             print 'Нужная высота поля имя - 29, а на странице: ', inputs[0].size['height']
 
-        if inputs[0].location['y'] != 285:
+        if inputs[0].location['y'] != 323:
             cnt+=1
-            print 'Расположение поля "Ваше имя:" по оси y - 285, а на странице: ', inputs[0].location['y']
+            print 'Расположение поля "Ваше имя:" по оси y - 323, а на странице: ', inputs[0].location['y']
             
         if inputs[0].location['x'] != 448:
             cnt+=1
@@ -4774,9 +4774,9 @@ class ModalFormsTest(unittest.TestCase):
             cnt+=1
             print 'Поле телефон не отображается'
 
-        if inputs[1].location['y'] != 285:
+        if inputs[1].location['y'] != 403:
             cnt+=1
-            print 'Расположение поля "Ваше имя:" по оси y - 285, а на странице: ', inputs[1].location['y']
+            print 'Расположение поля "Ваше имя:" по оси y - 403, а на странице: ', inputs[1].location['y']
             
         if inputs[1].location['x'] != 448:
             cnt+=1
